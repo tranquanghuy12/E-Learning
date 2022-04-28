@@ -1,18 +1,12 @@
-import { Component } from "react";
-import { http } from "../util/setting/config";
+import { baseService } from "./baseService";
 
-
-// import { http } from "../util/settings/config";
-
-
-
-export class QuanLyNguoiDungService extends Component {
+export class QuanLyNguoiDungService extends baseService {
   constructor() {
     super();
   }
   dangNhap = (thongTinDangNhap) => {
     //{taiKhoan:'',matKhau:''}
-    return http.post(`/api/QuanLyNguoiDung/DangNhap`, thongTinDangNhap);
+    return this.post(`/api/QuanLyNguoiDung/DangNhap`, thongTinDangNhap);
   };
 }
 
