@@ -1,7 +1,62 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { history } from "../../../../App";
+import {USER_LOGIN,TOKEN_CYBERSOFT} from '../../../../util/setting/config'
+import _ from "lodash";
+import { useSelector } from "react-redux";
 export default function Header(props) {
+  const { userLogin } = useSelector(
+    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+  );
+  const renderLogin = () => {
+    if (_.isEmpty(userLogin)) {
+      return (
+        <Fragment>
+          <li className="nav-item">
+            <button
+              onClick={() => {
+                history.push("/login");
+              }}
+              className="btn btn-success mr-2 ml-2"
+            >
+              Đăng nhập
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className="btn btn-primary"
+              onClick={() => history.push("/register")}
+            >
+              Đăng ký
+            </button>
+          </li>
+        </Fragment>
+      );
+    }
+    return (
+      <>
+        <button
+          className="btn btn-success"
+          onClick={() => {
+            history.push("/profile");
+          }}
+        >
+          Hello ! {userLogin.taiKhoan}
+        </button>
+        <button
+          onClick={() => {
+            localStorage.removeItem(USER_LOGIN);
+            localStorage.removeItem(TOKEN_CYBERSOFT);
+            history.push("/home");
+            window.location.reload();
+          }}
+          className="btn btn-danger"
+        >
+          Đăng xuất
+        </button>
+      </>
+    );
+  };
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <a className="navbar-brand" href="#">
@@ -51,22 +106,7 @@ export default function Header(props) {
           </button>
         </form>
         <ul className="navbar-nav">
-          <li className="nav-item">
-            <button
-              onClick={() => {
-                history.push("/login");
-              }}
-              className="btn btn-success mr-2 ml-2"
-              to="/login"
-            >
-              Đăng nhập
-            </button>
-          </li>
-          <li className="nav-item">
-            <button className="btn btn-primary" to="/register">
-              Đăng ký
-            </button>
-          </li>
+          {renderLogin()}
         </ul>
       </div>
     </nav>
