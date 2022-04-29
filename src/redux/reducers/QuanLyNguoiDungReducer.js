@@ -1,6 +1,5 @@
-
 import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../util/setting/config";
-import { DANG_NHAP_ACTION } from "../types/QuanLyNguoiDungType";
+import { DANG_KY_ACTION, DANG_NHAP_ACTION } from "../types/QuanLyNguoiDungType";
 
 let user = {};
 if (localStorage.getItem(USER_LOGIN)) {
@@ -8,6 +7,7 @@ if (localStorage.getItem(USER_LOGIN)) {
 }
 const stateDefault = {
   userLogin: user,
+  arrUser: [],
 };
 
 export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
@@ -17,6 +17,10 @@ export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
       localStorage.setItem(USER_LOGIN, JSON.stringify(thongTinDangNhap));
       localStorage.setItem(TOKEN_CYBERSOFT, thongTinDangNhap.accessToken);
       return { ...state, userLogin: thongTinDangNhap };
+    }
+    case DANG_KY_ACTION: {
+      state.arrUser = [...state.arrUser, action.nguoiDung];
+      return { ...state };
     }
     default:
       return { ...state };
