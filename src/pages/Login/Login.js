@@ -10,6 +10,7 @@ export default function NormalLoginForm(props) {
   const dispatch = useDispatch();
   const { userLogin } = useSelector(rootReducer=>rootReducer.QuanLyNguoiDungReducer)
   console.log("userLogin useSelector: ", userLogin);
+  
   const formik = useFormik({
     initialValues: {
       taiKhoan: "",

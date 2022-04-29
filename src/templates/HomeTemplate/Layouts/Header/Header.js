@@ -30,6 +30,7 @@ export default function Header(props) {
               Đăng ký
             </button>
           </li>
+          
         </Fragment>
       );
     }

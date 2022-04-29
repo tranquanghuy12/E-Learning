@@ -1,118 +1,115 @@
-import { Field, Form, Formik } from "formik";
-import React, { Component } from "react";
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
+import { useDispatch, useSelector } from "react-redux";
+import { SignupSchema } from "./SignupSchema";
+import { Prompt } from "react-router-dom";
 
-class Register extends Component {
-  render() {
-    return (
-      <div className="w-50 mx-auto">
-        <h5 className="display-4 text-center">Sign Up</h5>
-        <Formik
-          initialValues={{
-            email: "",
-            hoTen: "",
-            maLoaiNguoiDung: "HV",
-            maNhom: "GP01",
-            soDT: "",
-            taiKhoan: "",
-            matKhau: "",
-          }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "Invalid email address";
-            }
-            return errors;
-          }}
-          onSubmit={(values) => {
-            console.log(values);
-          }}
-          render={(formikProps) => (
-            <Form>
-              <div className="form-group">
-                <label>Tài khoản: </label>
-                <Field
-                  className="form-control"
-                  name="taiKhoan"
-                  onChange={formikProps.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Mật khẩu: </label>
-                <Field
-                  className="form-control"
-                  name="matKhau"
-                  onChange={formikProps.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Họ tên: </label>
-                <Field
-                  className="form-control"
-                  name="hoTen"
-                  onChange={formikProps.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Email: </label>
-                <Field
-                  className="form-control"
-                  name="email"
-                  onChange={formikProps.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Số điện thoại: </label>
-                <Field
-                  className="form-control"
-                  name="soDT"
-                  onChange={formikProps.handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label>Mã loại người dùng: </label>
-                <select
-                  component="select"
-                  name="maLoaiNguoiDung"
-                  className="form-control"
-                  onChange={formikProps.handleChange}
-                >
-                  <option>HV</option>
-                  <option>GV</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label>Mã nhóm: </label>
-                <select
-                  component="select"
-                  name="maNhom"
-                  className="form-control"
-                  onChange={formikProps.handleChange}
-                >
-                  <option>GP01</option>
-                  <option>GP02</option>
-                  <option>GP03</option>
-                  <option>GP04</option>
-                  <option>GP05</option>
-                  <option>GP06</option>
-                  <option>GP07</option>
-                  <option>GP08</option>
-                  <option>GP09</option>
-                  <option>GP10</option>
-                </select>
-              </div>
-              <div>
-                <button className="btn btn-success">Đăng ký</button>
-              </div>
-            </Form>
-          )}
-        />
-      </div>
-    );
-  }
+export default function Register(props) {
+  const dispatch = useDispatch();
+  return (
+    <div className="w-50 mx-auto container">
+      <h3>Đăng ký</h3>
+      <Formik
+        initialValues={{
+          email: "",
+          hoTen: "",
+          maNhom: "GP01",
+          soDT: "",
+          taiKhoan: "",
+          matKhau: "",
+        }}
+        validationSchema={SignupSchema}
+        onSubmit={(values) => {
+          const action = dangKyAction(values);
+          dispatch(action);
+          console.log("values dangKy", values);
+        }}
+        render={(formikProps) => (
+          <Form>
+            <div className="form-group">
+              <label>Tài khoản</label>
+              <Field
+                type="text"
+                className="form-control"
+                name="taiKhoan"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="taiKhoan" />
+            </div>
+            <div className="form-group">
+              <label>Mật khẩu</label>
+
+              <Field
+                className="form-control"
+                name="matKhau"
+                type="password"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="matKhau" />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <Field
+                className="form-control"
+                name="email"
+                type="email"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="email" />
+            </div>
+            <div className="form-group">
+              <label>Họ tên: </label>
+              <Field
+                placeholder="Nhập họ tên"
+                className="form-control"
+                name="hoTen"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="hoTen" />
+            </div>
+            <div className="form-group">
+              <label>Số điện thoại: </label>
+              <Field
+                placeholder="Số điện thoại"
+                className="form-control"
+                name="soDT"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="soDT" />
+            </div>
+            <div className="form-group">
+              <label>Mã nhóm: </label>
+              <Field
+                component="select"
+                name="maNhom"
+                className="form-control"
+                onChange={formikProps.handleChange}
+              >
+                <option>GP01</option>
+                <option>GP02</option>
+                <option>GP03</option>
+                <option>GP04</option>
+                <option>GP05</option>
+                <option>GP06</option>
+                <option>GP07</option>
+                <option>GP08</option>
+                <option>GP09</option>
+                <option>GP10</option>
+              </Field>
+              <ErrorMessage name="maNhom" />
+            </div>
+            <button className="btn btn-secondary mr-2" type="submit">
+              Trở về
+            </button>
+
+            <button className="btn btn-primary" type="submit">
+              Đăng ký
+            </button>
+          </Form>
+        )}
+      />
+      <Prompt message={(location) => "Bạn thực sự muốn rời khỏi trang???"} />
+    </div>
+  );
 }
-
-export default Register;
