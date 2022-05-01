@@ -2,8 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import { useDispatch, useSelector } from "react-redux";
-import { SignupSchema } from "./SignupSchema";
-import { Prompt } from "react-router-dom";
+import { DangKySchema } from "../../services/NguoiDungSchema";
 
 export default function Register(props) {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ export default function Register(props) {
           taiKhoan: "",
           matKhau: "",
         }}
-        validationSchema={SignupSchema}
+        validationSchema={DangKySchema}
         onSubmit={(values) => {
           const action = dangKyAction(values);
           dispatch(action);
@@ -109,7 +108,7 @@ export default function Register(props) {
           </Form>
         )}
       />
-      <Prompt message={(location) => "Bạn thực sự muốn rời khỏi trang???"} />
+      
     </div>
   );
 }
