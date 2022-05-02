@@ -3,11 +3,16 @@ import swal from "sweetalert";
 import { history } from "../../App";
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 
-import {TOKEN_CYBERSOFT, DOMAIN,ACCESSTOKEN, http, USER_LOGIN } from "../../util/setting/config";
-
+import {
+  TOKEN_CYBERSOFT,
+  DOMAIN,
+  ACCESSTOKEN,
+  http,
+  USER_LOGIN,
+} from "../../util/setting/config";
+import {XOA_KHOA_HOC_DA_DANG_KY} from '../types/QuanLyKhoaHocType'
 import {
   DANG_KY_ACTION,
-  
   LAY_MA_LOAI_NGUOI_DUNG,
   THONG_TIN_NGUOI_DUNG_ACTION,
 } from "../types/QuanLyNguoiDungType";
@@ -16,13 +21,13 @@ export const dangNhapAction = (userLogin) => {
   return async (dispatch) => {
     try {
       let result = await axios({
-        url:`${DOMAIN}/api/QuanLyNguoiDung/DangNhap`,
-        method:'POST',
-        data:userLogin,
-        headers:{
-          'TokenCybersoft': TOKEN_CYBERSOFT
-        }
-      })
+        url: `${DOMAIN}/api/QuanLyNguoiDung/DangNhap`,
+        method: "POST",
+        data: userLogin,
+        headers: {
+          TokenCybersoft: TOKEN_CYBERSOFT,
+        },
+      });
 
       let usLogin = result.data;
       console.log(usLogin);
@@ -40,8 +45,6 @@ export const dangNhapAction = (userLogin) => {
       } else {
         history.push("/admin");
       }
-
-      
     } catch (error) {
       swal({
         title: "Đăng nhập thất bại",
@@ -54,7 +57,7 @@ export const dangNhapAction = (userLogin) => {
 export const dangKyAction = (thongTinDangKy) => {
   return async (dispatch) => {
     try {
-      const result = await quanLyNguoiDungService.dangKy(thongTinDangKy)
+      const result = await quanLyNguoiDungService.dangKy(thongTinDangKy);
       if (result.status === 200) {
         dispatch({
           type: DANG_KY_ACTION,
@@ -80,7 +83,6 @@ export const layThongTinNguoiDungAction = () => {
   return async (dispatch) => {
     try {
       const result = await quanLyNguoiDungService.layThongTinNguoiDung();
-      console.log("get user info", result);
 
       if (result.status === 200) {
         dispatch({
@@ -100,18 +102,35 @@ export const layThongTinNguoiDungAction = () => {
     }
   };
 };
-
+export const huyGhiDanhKhoaHoc = (khoaHoc) =>{
+  return async (dispatch)=>{
+    try {
+      let result = await http.post('/api/QuanLyKhoaHoc/HuyGhiDanh',khoaHoc)
+      console.log('huyghidanh',result);
+      swal({
+        title:'Thành công',
+        text:'Bạn đã xoá thành công'        
+      })
+      dispatch({
+        type:XOA_KHOA_HOC_DA_DANG_KY,
+        khoaHoc:result
+      })
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  }
+}
 export const layMaNguoiDungAction = () => {
   return async (dispatch) => {
     try {
       let result = await http.get(
         "/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung"
       );
+
       dispatch({
         type: LAY_MA_LOAI_NGUOI_DUNG,
         maLoaiNguoiDung: result.data,
       });
-      console.log(result);
     } catch (error) {
       console.log(error.response?.data);
     }

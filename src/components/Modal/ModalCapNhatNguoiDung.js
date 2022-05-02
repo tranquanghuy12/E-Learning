@@ -1,34 +1,45 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
-import { CapNhatNguoiDungSchema } from "../../services/NguoiDungSchema";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import swal from "sweetalert";
+import { CapNhatNguoiDungSchema, DangKySchema } from "../../services/NguoiDungSchema";
 
-const ModalCapNhatNguoiDung = ({ item }) => {
+const ModalCapNhatNguoiDung = ({ item, maLoaiNguoiDung }) => {
+  const dispatch = useDispatch();
   
-  // console.log('modal ma loai',maLoaiNguoiDung);
   const suaNguoiDung = (values) => {
-    console.log(values);
+    
+    swal({
+      title: "Bạn có chắc chắn muốn sửa không?",
+      text: "Bạn sẽ không thể phục hồi",
+      showCancelButton: true,
+      confirmButtonText: "Chắc chắn",
+    });
   };
-  
-  // const loadMaLoaiNguoiDung = () => {
-  //   return maLoaiNguoiDung.map((maLoai, index) => {
-  //     return (
-  //       <option value={maLoai.maLoaiNguoiDung} key={index}>
-  //           {item.tenLoaiNguoiDung}
-  //       </option>
-  //     );
-  //   });
-  // };
-  // console.log('map loadMaLoai',loadMaLoaiNguoiDung());
+
+  const loadMaLoaiNguoiDung = () => {
+    return maLoaiNguoiDung.map((item, index) => {
+      return (
+        <option value={item.maLoaiNguoiDung} key={index}>
+          {item.tenLoaiNguoiDung}
+        </option>
+      );
+    });
+  };
+  const [hienMatKhau, setHienMatKhau] = useState(false);
+  const batTatNutHienMatKhau = () => {
+    setHienMatKhau(!hienMatKhau);
+  };
   return (
     <div>
       {/* Button trigger modal */}
       <button
         type="button"
-        className="btn btn-primary btn-lg"
+        className="btn btn-primary"
         data-toggle="modal"
         data-target="#modelId"
       >
-        Launch
+        Sửa thông tin
       </button>
       {/* Modal */}
       <div
@@ -88,10 +99,22 @@ const ModalCapNhatNguoiDung = ({ item }) => {
                           <label>Mật khẩu</label>
                           <Field
                             className="form-control"
-                            type="text"
+                            type={hienMatKhau ? "text" : "password"}
                             name="matKhau"
+                            id="positionInput"
                             onChange={handleChange}
                           />
+                          {hienMatKhau ? (
+                            <i
+                              className="fas fa-eye field-icon"
+                              onClick={batTatNutHienMatKhau}
+                            ></i>
+                          ) : (
+                            <i
+                              className="far fa-eye-slash field-icon"
+                              onClick={batTatNutHienMatKhau}
+                            ></i>
+                          )}
                           <ErrorMessage name="matKhau">
                             {(msg) => <div className="text-danger">{msg}</div>}
                           </ErrorMessage>
@@ -124,7 +147,7 @@ const ModalCapNhatNguoiDung = ({ item }) => {
                           <label>Email</label>
                           <Field
                             className="form-control"
-                            type="text"
+                            type="email"
                             name="email"
                             onChange={handleChange}
                           />
@@ -134,7 +157,7 @@ const ModalCapNhatNguoiDung = ({ item }) => {
                         </div>
                         <div className="form-group pb-3">
                           <label>Mã lớp học</label>
-                          <select
+                          <Field
                             className="form-control"
                             name="maNhom"
                             component="select"
@@ -143,7 +166,7 @@ const ModalCapNhatNguoiDung = ({ item }) => {
                             <option>GP01</option>
                             <option>GP02</option>
                             <option>GP03</option>
-                          </select>
+                          </Field>
                         </div>
                         <div className="form-group pb-3">
                           <label>Mã loại người dùng</label>
@@ -152,8 +175,20 @@ const ModalCapNhatNguoiDung = ({ item }) => {
                             as="select"
                             name="maLoaiNguoiDung"
                           >
-                            {/* {loadMaLoaiNguoiDung()} */}
+                            {loadMaLoaiNguoiDung()}
                           </Field>
+                        </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Đóng
+                          </button>
+                          <button type="submit" className="btn btn-primary">
+                            Sửa
+                          </button>
                         </div>
                       </Form>
                     )}
@@ -162,18 +197,6 @@ const ModalCapNhatNguoiDung = ({ item }) => {
               ) : (
                 <>Loading</>
               )}
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save
-              </button>
             </div>
           </div>
         </div>

@@ -22,7 +22,7 @@ export default function Register(props) {
         onSubmit={(values) => {
           const action = dangKyAction(values);
           dispatch(action);
-          console.log("values dangKy", values);
+          
         }}
         render={(formikProps) => (
           <Form>

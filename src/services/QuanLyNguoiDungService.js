@@ -16,6 +16,7 @@ export class QuanLyNguoiDungService extends baseService {
       `/api/QuanLyNguoiDung/ThongTinTaiKhoan`      
     );
   };
+  
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService();
