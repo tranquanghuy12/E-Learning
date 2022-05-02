@@ -1,5 +1,6 @@
 import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../util/setting/config";
 import {
+  CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION,
   DANG_KY_ACTION,
   DANG_NHAP_ACTION,
   THONG_TIN_NGUOI_DUNG_ACTION,
@@ -30,6 +31,10 @@ export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
     case THONG_TIN_NGUOI_DUNG_ACTION: {
       state.userProfile = action.userProfile;
       return { ...state };
+    }
+    case CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION:{
+      state.info = action.payload;
+      return {...state}
     }
     default:
       return state;
