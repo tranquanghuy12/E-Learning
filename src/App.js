@@ -8,6 +8,7 @@ import {Router,Switch} from 'react-router-dom'
 import { HomeTemplate } from './templates/HomeTemplate/HomeTemplate';
 import { UserTemplate } from './templates/UserTemplate/UserTemplate';
 import Register from './pages/Register/Register';
+import UpdateUserInfo from './pages/UpdateUserInfo/UpdateUserInfo';
 
 
 

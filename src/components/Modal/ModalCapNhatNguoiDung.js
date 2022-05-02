@@ -1,36 +1,78 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
-import { CapNhatNguoiDungSchema } from "../../services/NguoiDungSchema";
+import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import swal from "sweetalert";
+import * as yup from "yup";
+import { capNhatThongTinNguoiDung } from "../../redux/actions/QuanLyNguoiDungAction";
+import { ACCESSTOKEN } from "../../util/setting/config";
 
-const ModalCapNhatNguoiDung = ({ item }) => {
-  
-  // console.log('modal ma loai',maLoaiNguoiDung);
-  const suaNguoiDung = (values) => {
-    console.log(values);
+const ModalCapNhatNguoiDung = (props) => {
+  const dispatch = useDispatch();
+  const { userProfile } = useSelector(
+    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+  );
+  console.log("user", userProfile);
+  const suaThongTinNguoiDung = (values) => {
+    swal({
+      title: "Bạn có chắc chắn muốn sửa không?",
+      text: "Bạn sẽ không thể phục hồi",
+      showCancelButton: true,
+      icon: "warning",
+      confirmButtonText: "Chắc chắn",
+    });
+    dispatch(capNhatThongTinNguoiDung(values));
   };
-  
-  // const loadMaLoaiNguoiDung = () => {
-  //   return maLoaiNguoiDung.map((maLoai, index) => {
-  //     return (
-  //       <option value={maLoai.maLoaiNguoiDung} key={index}>
-  //           {item.tenLoaiNguoiDung}
-  //       </option>
-  //     );
-  //   });
-  // };
-  // console.log('map loadMaLoai',loadMaLoaiNguoiDung());
+  let [edit, setEdit] = useState(true);
+  const editField = (flag) => {
+    setEdit(flag);
+  };
+  const pointerStyle = {
+    pointerEvents: "none",
+    cursor: "no-drop",
+  };
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      taiKhoan: userProfile.taiKhoan,
+      matKhau: userProfile.matKhau,
+      hoTen: userProfile.hoTen,
+      soDT: userProfile.soDT,
+      maNhom: userProfile.maNhom ? userProfile.maNhom : "GP01",
+      email: userProfile.email,
+      maLoaiNguoiDung: userProfile.maLoaiNguoiDung
+        ? userProfile.maLoaiNguoiDung
+        : "HV",
+    },
+    onSubmit: (values) => {
+      suaThongTinNguoiDung(values);
+    },
+    validationSchema: yup.object().shape({
+      taiKhoan: yup.string().required("* Field is required"),
+      hoTen: yup.string().required("* Field is required"),
+      soDT: yup
+        .string()
+        .matches(/^[0-9]+$/)
+        .required("* Field is required"),
+      email: yup
+        .string()
+        .email("* Email is invalid")
+        .required("* Field is required"),
+      matKhau: yup.string().required("* Field is required"),
+      maNhom: yup.string().required("* Field is required"),
+    }),
+  });
+  console.log(formik.validationSchema);
   return (
     <div>
-      {/* Button trigger modal */}
       <button
         type="button"
-        className="btn btn-primary btn-lg"
+        className="btn btn-primary"
         data-toggle="modal"
         data-target="#modelId"
       >
-        Launch
+        Sửa thông tin
       </button>
-      {/* Modal */}
+
       <div
         className="modal fade"
         id="modelId"
@@ -52,117 +94,85 @@ const ModalCapNhatNguoiDung = ({ item }) => {
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <div className="modal-body">
-              {item ? (
-                <>
-                  <Formik
-                    initialValues={{
-                      taiKhoan: item.taiKhoan || "",
-                      matKhau: item.matKhau || "",
-                      hoTen: item.hoTen || "",
-                      soDT: item.soDT || "",
-                      maNhom: item.maNhom || "GP01",
-                      email: item.email || "",
-                      maLoaiNguoiDung: item.maLoaiNguoiDung || "",
-                    }}
-                    onSubmit={(values) => {
-                      suaNguoiDung(values);
-                    }}
-                    validationSchema={CapNhatNguoiDungSchema}
-                  >
-                    {({ handleChange, handleSubmit, resetForm }) => (
-                      <Form onSubmit={handleSubmit}>
-                        <div className="form-group pb-3">
-                          <label>Tài khoản</label>
-                          <Field
-                            className="form-control"
-                            type="text"
-                            name="taiKhoan"
-                            onChange={handleChange}
-                          />
-                          <ErrorMessage name="taiKhoan">
-                            {(msg) => <div className="text-danger">{msg}</div>}
-                          </ErrorMessage>
-                        </div>
-                        <div className="form-group pb-3">
-                          <label>Mật khẩu</label>
-                          <Field
-                            className="form-control"
-                            type="text"
-                            name="matKhau"
-                            onChange={handleChange}
-                          />
-                          <ErrorMessage name="matKhau">
-                            {(msg) => <div className="text-danger">{msg}</div>}
-                          </ErrorMessage>
-                        </div>
-                        <div className="form-group pb-3">
-                          <label>Họ tên</label>
-                          <Field
-                            className="form-control"
-                            type="text"
-                            name="hoTen"
-                            onChange={handleChange}
-                          />
-                          <ErrorMessage name="hoTen">
-                            {(msg) => <div className="text-danger">{msg}</div>}
-                          </ErrorMessage>
-                        </div>
-                        <div className="form-group pb-3">
-                          <label>Số điện thoại</label>
-                          <Field
-                            className="form-control"
-                            type="text"
-                            name="soDT"
-                            onChange={handleChange}
-                          />
-                          <ErrorMessage name="soDT">
-                            {(msg) => <div className="text-danger">{msg}</div>}
-                          </ErrorMessage>
-                        </div>
-                        <div className="form-group pb-3">
-                          <label>Email</label>
-                          <Field
-                            className="form-control"
-                            type="text"
-                            name="email"
-                            onChange={handleChange}
-                          />
-                          <ErrorMessage name="email">
-                            {(msg) => <div className="text-danger">{msg}</div>}
-                          </ErrorMessage>
-                        </div>
-                        <div className="form-group pb-3">
-                          <label>Mã lớp học</label>
-                          <select
-                            className="form-control"
-                            name="maNhom"
-                            component="select"
-                            onChange={handleChange}
-                          >
-                            <option>GP01</option>
-                            <option>GP02</option>
-                            <option>GP03</option>
-                          </select>
-                        </div>
-                        <div className="form-group pb-3">
-                          <label>Mã loại người dùng</label>
-                          <Field
-                            className="form-control"
-                            as="select"
-                            name="maLoaiNguoiDung"
-                          >
-                            {/* {loadMaLoaiNguoiDung()} */}
-                          </Field>
-                        </div>
-                      </Form>
-                    )}
-                  </Formik>
-                </>
-              ) : (
-                <>Loading</>
-              )}
-            </div>
+            <form className="modal-body" onSubmit={formik.handleSubmit}>
+              <div className="form-group">
+                <label>Tài khoản</label>
+                <input
+                  className="form-control"
+                  value={formik.values.taiKhoan}
+                  type="text"
+                  name="taiKhoan"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Mật khẩu</label>
+                <input
+                  className="form-control"
+                  value={formik.values.matKhau}
+                  type="password"
+                  name="matKhau"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  className="form-control"
+                  value={formik.values.email}
+                  type="email"
+                  name="email"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Số điện thoại</label>
+                <input
+                  className="form-control"
+                  value={formik.values.soDT}
+                  type="number"
+                  name="soDT"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Họ tên</label>
+                <input
+                  className="form-control"
+                  value={formik.values.hoTen}
+                  type="text"
+                  name="hoTen"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Mã loại</label>
+                <select
+                  className="form-control"
+                  value={formik.values.maLoaiNguoiDung}
+                  type="select"
+                  name="maLoaiNguoiDung"
+                  onChange={formik.handleChange}
+                >
+                  <option>HV</option>
+                  <option>GV</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>Mã nhóm</label>
+                <select
+                  className="form-control"
+                  value={formik.values.maNhom}
+                  type="select"
+                  name="maNhom"
+                  onChange={formik.handleChange}
+                >
+                  <option>GP01</option>
+                  <option>GP02</option>
+                  <option>GP03</option>
+                </select>
+              </div>
+            </form>
             <div className="modal-footer">
               <button
                 type="button"
