@@ -37,12 +37,12 @@ export default function Header(props) {
     return (
       <>
         <button
-          className="btn btn-success"
+          className="btn btn-success ml-2"
           onClick={() => {
             history.push("/profile");
           }}
         >
-          Hello ! {userLogin.taiKhoan}
+          Hello, {userLogin.taiKhoan}
         </button>
         <button
           onClick={() => {
@@ -51,7 +51,7 @@ export default function Header(props) {
             history.push("/home");
             window.location.reload();
           }}
-          className="btn btn-danger"
+          className="btn btn-danger ml-2"
         >
           Đăng xuất
         </button>
