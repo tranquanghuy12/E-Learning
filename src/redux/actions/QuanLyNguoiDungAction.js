@@ -121,12 +121,19 @@ export const huyGhiDanhKhoaHoc = (khoaHoc) =>{
   }
 }
 
-export const capNhatThongTinNguoiDung=(values)=>{
+export const capNhatThongTinNguoiDung=(data)=>{
   return async (dispatch)=>{
     try {
-      let result = await http.put('/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',values);
-      console.log('result capNhatUser',result);
-      dispatch(createAction(CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION,result))
+      let result = await http.put('/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung',data);
+      
+      if(result.status === 200){
+        swal({
+          title:'Thành công',
+          text:'Đã cập nhật tài khoản',
+          icon:'success'
+        })
+      }      
+      dispatch(createAction(CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION,result))      
     } catch (error) {
       console.log(error.response?.data);
     }
