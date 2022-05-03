@@ -22,7 +22,6 @@ export default function Register(props) {
         onSubmit={(values) => {
           const action = dangKyAction(values);
           dispatch(action);
-          
         }}
         render={(formikProps) => (
           <Form>
@@ -38,7 +37,6 @@ export default function Register(props) {
             </div>
             <div className="form-group">
               <label>Mật khẩu</label>
-
               <Field
                 className="form-control"
                 name="matKhau"
@@ -108,7 +106,6 @@ export default function Register(props) {
           </Form>
         )}
       />
-      
     </div>
   );
 }

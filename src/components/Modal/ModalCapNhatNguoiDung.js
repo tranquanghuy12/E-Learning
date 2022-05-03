@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
-import { result, values } from "lodash";
+import styles from "./ModalCapNhatNguoiDung.module.css";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
@@ -28,8 +28,13 @@ const ModalCapNhatNguoiDung = (props) => {
     });
   };
 
+  const [passwordShow, setPasswordShow] = useState(false);
+  const togglePassword = () => {
+    setPasswordShow(!passwordShow);
+  };
   return (
     <Formik
+      enableReinitialize="true"
       initialValues={{
         taiKhoan: userProfile.taiKhoan,
         matKhau: userProfile.matKhau,
@@ -53,6 +58,7 @@ const ModalCapNhatNguoiDung = (props) => {
             data-toggle="modal"
             data-target="#modelId"
           >
+            <i className="fas fa-edit"></i>
             Sửa thông tin
           </button>
           <div
@@ -86,26 +92,40 @@ const ModalCapNhatNguoiDung = (props) => {
                       name="taiKhoan"
                       onChange={formikProps.handleChange}
                     />
+                    <ErrorMessage name="taiKhoan" />
                   </div>
                   <div className="form-group">
                     <label>Mật khẩu</label>
                     <Field
                       className="form-control"
                       value={formikProps.values.matKhau}
-                      type="password"
+                      type={passwordShow ? "text" : "password"}
                       name="matKhau"
                       onChange={formikProps.handleChange}
                     />
+                    {passwordShow ? (
+                      <i
+                        className={`fas fa-eye ${styles.flexIcon}`}
+                        onClick={togglePassword}
+                      ></i>
+                    ) : (
+                      <i
+                        className={`far fa-eye-slash ${styles.flexIcon}`}
+                        onClick={togglePassword}
+                      ></i>
+                    )}
+                    <ErrorMessage name="matKhau" />
                   </div>
                   <div className="form-group">
                     <label>Email</label>
                     <Field
                       className="form-control"
                       value={formikProps.values.email}
-                      type="email"
+                      type="text"
                       name="email"
                       onChange={formikProps.handleChange}
                     />
+                    <ErrorMessage name="email" />
                   </div>
                   <div className="form-group">
                     <label>Số điện thoại</label>
@@ -116,6 +136,7 @@ const ModalCapNhatNguoiDung = (props) => {
                       name="soDT"
                       onChange={formikProps.handleChange}
                     />
+                    <ErrorMessage name="soDT" />
                   </div>
                   <div className="form-group">
                     <label>Họ tên</label>
@@ -126,6 +147,7 @@ const ModalCapNhatNguoiDung = (props) => {
                       name="hoTen"
                       onChange={formikProps.handleChange}
                     />
+                    <ErrorMessage name="hoTen" />
                   </div>
                   <div className="form-group">
                     <label>Mã loại</label>
@@ -140,6 +162,7 @@ const ModalCapNhatNguoiDung = (props) => {
                       <option>HV</option>
                       <option>GV</option>
                     </Field>
+                    <ErrorMessage name="maLoaiNguoiDung" />
                   </div>
                   <div className="form-group">
                     <label>Mã nhóm</label>
@@ -162,6 +185,7 @@ const ModalCapNhatNguoiDung = (props) => {
                       <option>GP09</option>
                       <option>GP10</option>
                     </Field>
+                    <ErrorMessage name="maNhom" />
                   </div>
                 </div>
                 <div className="modal-footer">
