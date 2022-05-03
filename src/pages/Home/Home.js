@@ -1,10 +1,39 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { layDanhSachPhimAction } from "../../redux/actions/QuanLyKhoaHocAction";
 
+export default function Home(props) {
+  const dispatch = useDispatch();
+  const { mangKhoaHoc } = useSelector(
+    (rootReducer) => rootReducer.QuanLyKhoaHocReducer
+  );
+  console.log("danhsachKhoaHoc", mangKhoaHoc);
+  useEffect(() => {
+    const action = layDanhSachPhimAction();
+    dispatch(action);
+  }, []);
 
-export default function Home() {
+  const layDanhSachKhoaHoc = () => {
+    return mangKhoaHoc.map((item, index) => {
+      return (
+        <div className="col-3">
+        <div className="card text-white bg-primary" key={index}>
+          <img
+            className="card-img-top w-100"
+            src={item.hinhAnh}
+            alt="Hình ảnh khoá học"
+          />
+          <div className="card-body">
+            <h4 className="card-title">{item.tenKhoaHoc}</h4>
+          </div>
+        </div>
+        </div>
+      );
+    });
+  };
   return (
-    <div>Đây là pages home
-    
+    <div className="row">
+      {layDanhSachKhoaHoc()}
     </div>
-  )
+  );
 }
