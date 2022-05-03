@@ -108,6 +108,7 @@ export default function Profile() {
               <p>{userProfile.maLoaiNguoiDung}</p>
             </div>
             <div className="d-flex justify-content-center">
+            
               <ModalCapNhatNguoiDung userProfile={userProfile}/>              
               <button className="ml-3 btn btn-danger">Rời khỏi</button>
             </div>
