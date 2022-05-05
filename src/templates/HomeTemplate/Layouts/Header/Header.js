@@ -4,6 +4,7 @@ import { history } from "../../../../App";
 import {USER_LOGIN,TOKEN_CYBERSOFT} from '../../../../util/setting/config'
 import _ from "lodash";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 export default function Header(props) {
   const { userLogin } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
@@ -13,22 +14,20 @@ export default function Header(props) {
       return (
         <Fragment>
           <li className="nav-item">
-            <button
-              onClick={() => {
-                history.push("/login");
-              }}
+            <NavLink
+              to='/login'
               className="btn btn-success mr-2 ml-2"
             >
               Đăng nhập
-            </button>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <button
+            <NavLink
               className="btn btn-primary"
-              onClick={() => history.push("/register")}
+              to='/register'
             >
               Đăng ký
-            </button>
+            </NavLink>
           </li>
           
         </Fragment>
