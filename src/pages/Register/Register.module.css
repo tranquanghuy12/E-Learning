@@ -7,7 +7,7 @@
   padding: 4rem 1rem 4rem 1rem;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
 }
-.signinText {
+.signupText {
   font-style: normal;
   font-weight: 600 !important;
 }
@@ -17,7 +17,7 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  border-color: #00ac96 !important;
+  border-color: #fec107 !important;
   border-style: solid !important;
   border-width: 0 0 1px 0 !important;
   padding: 0px !important;
@@ -34,20 +34,19 @@
   outline: 0;
   box-shadow: none;
 }
-.btnClassLogin {
-  background-color: #00ac96;
-  color: #fff;
-}
-.btnClassLogin:hover {
-  border-color: #00ac96;
-  background-color: white;
-  color: #00ac96;
-}
 .btnClass {
-  border-color: #495057;
-  color: #495057;
+  background-color: #fec107;
+  color: #fff;
 }
 .btnClass:hover {
-  background-color: #495057;
+  background-color: #fec107;
   color: #fff;
+}
+.btnClassReturn{
+    border-color: #495057;
+    color: #495057;
+}
+.btnClassReturn:hover{
+    background-color: #495057;
+    color: #fff;
 }

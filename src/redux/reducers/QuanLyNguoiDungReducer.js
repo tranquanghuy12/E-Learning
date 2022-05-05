@@ -16,12 +16,13 @@ const stateDefault = {
   arrUser: [],
   userProfile: [],
 };
+console.log('usLogin reducer',userLogin);
 
 export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case DANG_NHAP_ACTION: {
       
-      state.userProfile = action.userProfile;
+      state.userLogin = action.payload;
       return { ...state};
     }
     case DANG_KY_ACTION: {
