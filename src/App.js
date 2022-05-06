@@ -4,7 +4,6 @@ import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import { Router, Switch } from "react-router-dom";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
-
 import Register from "./pages/Register/Register";
 import { AdminTemplate } from "./templates/AdminTemplate/AdminTemplate";
 import Admin from "./pages/Admin/Admin";

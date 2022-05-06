@@ -1,27 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import { useDispatch, useSelector } from "react-redux";
 import { DangKySchema } from "../../services/NguoiDungSchema";
 import Helmet from "react-helmet";
-import signUp from "../../assets/img/signup.png";
+import signUp from "../../assets/img/signup.jpg";
 import styles from "../Register/Register.module.css";
-const bgColor = "#fec107"
+
 export default function Register(props) {
+  useEffect(()=>{
+    document.body.style.backgroundColor="#fec107"
+    document.body.style.fontFamily="Roboto,sans-serif"
+  },[]);
   const dispatch = useDispatch();
   return (
-    <section
-      className="vh-100 mx-auto"
-    >
-    <Helmet>
-      <style>
-      {`body{background-color:${bgColor}}`}
-
-      </style>
-    </Helmet>
+    <section className="vh-100 mx-auto">
       <div className="container">
-        <div className={`row content ${styles.content}`}>
-          <div className="col-md-6 mb-3">
+        <div className={`row content align-items-center ${styles.content}`}>
+          <div className="col-md-6 mb-3 ">
             <img src={signUp} className="img-fluid" alt="đăng ký" />
           </div>
           <div className="col-md-6">
@@ -114,10 +110,16 @@ export default function Register(props) {
                     <ErrorMessage name="maNhom" />
 
                     <div className="d-flex justify-content-center mt-5">
-                      <button className={`btn ${styles.btnClassReturn} mr-2 `} type="submit">
+                      <button
+                        className={`btn ${styles.btnClassReturn} mr-2 `}
+                        type="submit"
+                      >
                         Trở về
                       </button>
-                      <button className={`btn ${styles.btnClass}`} type="submit">
+                      <button
+                        className={`btn ${styles.btnClass}`}
+                        type="submit"
+                      >
                         Đăng ký
                       </button>
                     </div>

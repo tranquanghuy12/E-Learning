@@ -20,41 +20,44 @@ export default function Profile() {
 
   useEffect(() => {
     //Gọi api lấy thông tin người dùng để load lên redux
-    const action = layThongTinNguoiDungAction();
-    dispatch(action);
-  }, []);
+    document.body.style.backgroundColor = "#fff";
+    dispatch(layThongTinNguoiDungAction());
+  }, [dispatch]);
   const xoaKhoaHoc = (maKhoaHoc) => {
     if (userProfile) {
       let taiKhoan = userProfile.taiKhoan;
-      console.log("taiKhoan", taiKhoan);
       let data = {
         taiKhoan: taiKhoan,
         maKhoaHoc: maKhoaHoc,
       };
-      console.log("data", data);
+      console.log("data index", data);
       swal({
         title: "Xoá khoá học",
         text: "Bạn có chắc chắc muốn xoá?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Chắc chắn!",
-      });
+      }).then((result)=>{
+        swal('Đã xoá!','Khoá học đã được xoá.')
+        console.log('data index',data);
+        dispatch(huyGhiDanhKhoaHoc(data));
+      })
 
-      dispatch(huyGhiDanhKhoaHoc(data));
+      
     }
   };
   const khoaHocDaDangKy = () => {
     return chiTietKhoaHocDaDangKy?.map((khoaHoc, index) => {
       return (
-        <div className="col-3" key={index}>
+        <div className="col-md-3 card-deck mt-5" key={index}>
           <div className="card text-white bg-primary">
             <img
-              className="w-100"
+              className="card-img-top"
               src={khoaHoc.hinhAnh}
               alt="Hình ảnh khoá học"
             />
             <div className="card-body">
-              <h4 className="card-title">{khoaHoc.tenKhoaHoc}</h4>
+              <h5 className="card-title">{khoaHoc.tenKhoaHoc}</h5>
               <button
                 onClick={() => xoaKhoaHoc(khoaHoc.maKhoaHoc)}
                 className="btn btn-danger"
@@ -72,10 +75,10 @@ export default function Profile() {
     return <Redirect to="/login" />;
   }
   return (
-    <div className="container rounded bg-white mt-5 mb-5">
+    <div className="container rounded bg-white mb-5 mt-5">
       <h3 className="text-center">Thông tin tài khoản</h3>
       <div className="row mt-5">
-        <div className="col-md-4 border-right">
+        <div className="col-md-4 border-right border-secondary">
           <div className="d-flex flex-column align-items-center p-3 py-5">
             <img
               src="https://picsum.photos/200"
@@ -92,23 +95,23 @@ export default function Profile() {
             <h5>Tài khoản</h5>
             <p>{userProfile.taiKhoan}</p>
           </div>
-          <div className="form-group border-top">
+          <div className="form-group border-top border-danger">
             <h5 className="mt-2">Họ Tên</h5>
             <p>{userProfile.hoTen}</p>
           </div>
-          <div className="form-group border-top">
+          <div className="form-group border-top border-danger">
             <h5 className="mt-2">Email</h5>
             <p>{userProfile.email}</p>
           </div>
-          <div className="form-group border-top">
+          <div className="form-group border-top border-danger">
             <h5 className="mt-2">Số điện thoại</h5>
             <p>{userProfile.soDT}</p>
           </div>
-          <div className="form-group border-top">
+          <div className="form-group border-top border-danger">
             <h5 className="mt-2">Mã nhóm</h5>
             <p>{userProfile.maNhom}</p>
           </div>
-          <div className="form-group border-top">
+          <div className="form-group border-top border-danger">
             <h5 className="mt-2">Mã loại người dùng</h5>
             <p>{userProfile.maLoaiNguoiDung}</p>
           </div>
@@ -122,17 +125,15 @@ export default function Profile() {
       </div>
 
       {/* Khoá học đã đăng ký */}
-      <div className="row mt-5">
-        <div className="col-md-12">
-          <h3 className="text-center">Khoá học đã đăng ký</h3>
-          <div className="mt-5">
-            {!userProfile.chiTietKhoaHocGhiDanh ? (
-              <h3>Bạn chưa đăng ký khoá học nào</h3>
-            ) : (
-              <div className="row">{khoaHocDaDangKy()}</div>
-            )}
-          </div>
-        </div>
+      <h1 className="text-center">Khoá học đã đăng ký</h1>
+      <div className="mt-5">
+        {!userProfile.chiTietKhoaHocGhiDanh ? (
+          <>Bạn chưa đăng ký khoá học nào</>
+        ) : (
+          <>
+            <div className="row">{khoaHocDaDangKy()}</div>
+          </>
+        )}
       </div>
     </div>
   );
