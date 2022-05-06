@@ -13,29 +13,27 @@ if (localStorage.getItem(USER_LOGIN)) {
 }
 const stateDefault = {
   userLogin: userLogin,
-  arrUser: [],
-  userProfile: [],
+  arrUser: {},
+  userProfile: {},
 };
-console.log('usLogin reducer',userLogin);
 
 export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case DANG_NHAP_ACTION: {
-      
       state.userLogin = action.payload;
-      return { ...state};
+      return { ...state };
     }
     case DANG_KY_ACTION: {
-      state.arrUser = [...state.arrUser, action.thongTinDangKy];
+      state.arrUser = action.payload;
       return { ...state };
     }
     case THONG_TIN_NGUOI_DUNG_ACTION: {
-      state.userProfile = action.userProfile;
+      state.userProfile = action.payload;
       return { ...state };
     }
-    case CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION:{
+    case CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION: {
       state.info = action.payload;
-      return {...state}
+      return { ...state };
     }
     default:
       return state;

@@ -1,16 +1,9 @@
-import axios from "axios";
 import swal from "sweetalert";
 import { createAction } from ".";
 import { history } from "../../App";
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 
-import {
-  TOKEN_CYBERSOFT,
-  DOMAIN,
-  ACCESSTOKEN,
-  http,
-  USER_LOGIN,
-} from "../../util/setting/config";
+import { ACCESSTOKEN, http, USER_LOGIN } from "../../util/setting/config";
 import { XOA_KHOA_HOC_DA_DANG_KY } from "../types/QuanLyKhoaHocType";
 import {
   CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION,
@@ -46,15 +39,13 @@ export const dangNhapAction = (userLogin) => {
     }
   };
 };
-export const dangKyAction = (thongTinDangKy) => {
+export const dangKyAction = (values) => {
   return async (dispatch) => {
     try {
-      const result = await quanLyNguoiDungService.dangKy(thongTinDangKy);
+      const result = await http.post(`/api/QuanLyNguoiDung/DangKy`, values);
+      console.log("result", result);
       if (result.status === 200) {
-        dispatch({
-          type: DANG_KY_ACTION,
-          thongTinDangKy: result.data,
-        });
+        dispatch(createAction(DANG_KY_ACTION, result.data));
         swal({
           title: "Đăng ký thành công",
           icon: "success",
@@ -74,13 +65,10 @@ export const dangKyAction = (thongTinDangKy) => {
 export const layThongTinNguoiDungAction = () => {
   return async (dispatch) => {
     try {
-      const result = await quanLyNguoiDungService.layThongTinNguoiDung();
+      const result = await http.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan");
 
       if (result.status === 200) {
-        dispatch({
-          type: THONG_TIN_NGUOI_DUNG_ACTION,
-          userProfile: result.data,
-        });
+        dispatch(createAction(THONG_TIN_NGUOI_DUNG_ACTION, result.data));
       } else if (result.status === 404) {
         //
         alert("Đường dẫn không hợp lệ!");
@@ -94,19 +82,16 @@ export const layThongTinNguoiDungAction = () => {
     }
   };
 };
-export const huyGhiDanhKhoaHoc = (khoaHoc) => {
+export const huyGhiDanhKhoaHoc = (data) => {
   return async (dispatch) => {
     try {
-      let result = await http.post("/api/QuanLyKhoaHoc/HuyGhiDanh", khoaHoc);
-
+      let result = await http.post("/api/QuanLyKhoaHoc/HuyGhiDanh", data);
+      console.log("data action", result);
       swal({
         title: "Thành công",
         text: "Bạn đã xoá thành công",
       });
-      dispatch({
-        type: XOA_KHOA_HOC_DA_DANG_KY,
-        khoaHoc: result,
-      });
+      dispatch(createAction(XOA_KHOA_HOC_DA_DANG_KY, result));
     } catch (error) {
       console.log(error.response?.data);
     }
@@ -127,6 +112,7 @@ export const capNhatThongTinNguoiDung = (data) => {
           text: "Đã cập nhật tài khoản",
           icon: "success",
         });
+        history.push("/profile");
       }
       dispatch(createAction(CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION, result));
     } catch (error) {

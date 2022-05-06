@@ -3,21 +3,23 @@ import {
   XOA_KHOA_HOC_DA_DANG_KY,
 } from "../types/QuanLyKhoaHocType";
 
-let stateDefault = {
-  mangKhoaHoc: [],
-};
+let stateDefault = [];
 
 const ChiTietKhoaHocReducer = (state = stateDefault, action) => {
   switch (action.type) {
-    case CHI_TIET_KHOA_HOC_DA_DANG_KY:
-      state.stateDefault = action.stateDefault;
-      return { ...state };
     case XOA_KHOA_HOC_DA_DANG_KY:
-      let mangKhoaHocUpdate = [...state.mangKhoaHoc];
-      mangKhoaHocUpdate = mangKhoaHocUpdate.filter(
-        (khoaHoc) => khoaHoc.maKhoaHoc !== action.maKhoaHoc
+      let mangKhoaHoc = [...state];
+      console.log('mangKhoaHoc',mangKhoaHoc)
+      const index = mangKhoaHoc.findIndex(
+        (data) => data.maKhoaHoc === action.payload
       );
-      state.mangKhoaHoc = mangKhoaHocUpdate;
+      console.log("index", index);
+      mangKhoaHoc.splice(index, 1);
+      state = mangKhoaHoc;
+      console.log("state reducer", state);
+      return [...state];
+    case CHI_TIET_KHOA_HOC_DA_DANG_KY:
+      state = action.payload;
       return { ...state };
     default:
       return state;
