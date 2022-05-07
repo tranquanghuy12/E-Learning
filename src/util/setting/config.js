@@ -1,14 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const DOMAIN = "https://elearningnew.cybersoft.edu.vn";
+export const DOMAIN = "https://elearningnew.cybersoft.edu.vn/api/";
 export const TOKEN_CYBERSOFT =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm9udCBFbmQgNzAiLCJIZXRIYW5TdHJpbmciOiIxNC8xMC8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NjU3MDU2MDAwMDAiLCJuYmYiOjE2Mzc0Mjc2MDAsImV4cCI6MTY2NTg1MzIwMH0.RAzH9H37ZyQ8ZT6A62fw3_bDfJOCq0A9vz08qT262EU";
 export const GROUPID = "GP01";
 
-
-
 export const USER_LOGIN = "userLogin";
 export const ACCESSTOKEN = "accessToken";
+
+export const API_KHOAHOC = "QuanLyKhoaHoc/";
+export const API_NGUOIDUNG = "QuanLyNguoiDung/";
+
+//API Người Dùng
+export const API_DANGNHAP_NGUOIDUNG = DOMAIN + API_NGUOIDUNG + "DangNhap";
+export const API_DANGKY_NGUOIDUNG = DOMAIN + API_NGUOIDUNG + "DangKy";
+export const API_THONGTIN_NGUOIDUNG = DOMAIN + API_NGUOIDUNG + "ThongTinTaiKhoan";
+export const API_CAPNHAT_THONGTIN_NGUOIDUNG =
+  DOMAIN + API_NGUOIDUNG + "CapNhatThongTinNguoiDung";
+//API Khoá Học
+export const API_HUYGHIDANH_KHOAHOC = DOMAIN + API_KHOAHOC + "HuyGhiDanh";
+
 //config axios
 export const http = axios.create({
   baseURL: DOMAIN,

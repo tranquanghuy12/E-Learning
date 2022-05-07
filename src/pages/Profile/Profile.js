@@ -9,15 +9,16 @@ import {
   huyGhiDanhKhoaHoc,
   layThongTinNguoiDungAction,
 } from "../../redux/actions/QuanLyNguoiDungAction";
+
 import { ACCESSTOKEN } from "../../util/setting/config";
 
 export default function Profile() {
   const dispatch = new useDispatch();
-  const { userProfile } = useSelector(
+  const {userProfile} = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
-  let chiTietKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh;
-
+  let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];
+  console.log(chiTietCacKhoaHocDaDangKy);
   useEffect(() => {
     //Gọi api lấy thông tin người dùng để load lên redux
     document.body.style.backgroundColor = "#fff";
@@ -37,19 +38,19 @@ export default function Profile() {
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Chắc chắn!",
-      }).then((result)=>{
-        swal('Đã xoá!','Khoá học đã được xoá.')
-        console.log('data index',data);
-        dispatch(huyGhiDanhKhoaHoc(data));
-      })
-
-      
+      }).then((result) => {
+        if (result === true) {
+          swal("Đã xoá!", "Khoá học đã được xoá.");
+          //dispatch vô đây mà ko qua Action
+          dispatch(huyGhiDanhKhoaHoc(data));
+        }
+      });
     }
   };
   const khoaHocDaDangKy = () => {
-    return chiTietKhoaHocDaDangKy?.map((khoaHoc, index) => {
+    return chiTietCacKhoaHocDaDangKy?.map((khoaHoc, index) => {
       return (
-        <div className="col-md-3 card-deck mt-5" key={index}>
+        <div className="col-md-3 card-deck mt-4" key={index}>
           <div className="card text-white bg-primary">
             <img
               className="card-img-top"
@@ -125,10 +126,12 @@ export default function Profile() {
       </div>
 
       {/* Khoá học đã đăng ký */}
-      <h1 className="text-center">Khoá học đã đăng ký</h1>
+      <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>
       <div className="mt-5">
         {!userProfile.chiTietKhoaHocGhiDanh ? (
-          <>Bạn chưa đăng ký khoá học nào</>
+          <>            
+            <div className="text-center">Bạn chưa đăng ký khoá học nào</div>
+          </>
         ) : (
           <>
             <div className="row">{khoaHocDaDangKy()}</div>

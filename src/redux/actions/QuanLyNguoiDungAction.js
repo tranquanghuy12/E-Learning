@@ -1,10 +1,20 @@
 import swal from "sweetalert";
 import { createAction } from ".";
 import { history } from "../../App";
-import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 
-import { ACCESSTOKEN, http, USER_LOGIN } from "../../util/setting/config";
-import { XOA_KHOA_HOC_DA_DANG_KY } from "../types/QuanLyKhoaHocType";
+import {
+  API_THONGTIN_NGUOIDUNG,
+  ACCESSTOKEN,
+  http,
+  USER_LOGIN,
+  API_DANGNHAP_NGUOIDUNG,
+  API_DANGKY_NGUOIDUNG,
+  API_HUYGHIDANH_KHOAHOC,
+  API_CAPNHAT_THONGTIN_NGUOIDUNG
+} from "../../util/setting/config";
+import {
+  CAP_NHAT_KHOA_HOC,
+} from "../types/QuanLyKhoaHocType";
 import {
   CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION,
   DANG_KY_ACTION,
@@ -15,7 +25,7 @@ import {
 export const dangNhapAction = (userLogin) => {
   return async (dispatch) => {
     try {
-      let result = await http.post("/api/QuanLyNguoiDung/DangNhap", userLogin);
+      let result = await http.post(API_DANGNHAP_NGUOIDUNG, userLogin);
       let usLogin = result.data;
       let token = usLogin.accessToken;
       localStorage.setItem(ACCESSTOKEN, token);
@@ -42,7 +52,7 @@ export const dangNhapAction = (userLogin) => {
 export const dangKyAction = (values) => {
   return async (dispatch) => {
     try {
-      const result = await http.post(`/api/QuanLyNguoiDung/DangKy`, values);
+      const result = await http.post(API_DANGKY_NGUOIDUNG, values);
       console.log("result", result);
       if (result.status === 200) {
         dispatch(createAction(DANG_KY_ACTION, result.data));
@@ -65,7 +75,7 @@ export const dangKyAction = (values) => {
 export const layThongTinNguoiDungAction = () => {
   return async (dispatch) => {
     try {
-      const result = await http.post("/api/QuanLyNguoiDung/ThongTinTaiKhoan");
+      const result = await http.post(API_THONGTIN_NGUOIDUNG);
 
       if (result.status === 200) {
         dispatch(createAction(THONG_TIN_NGUOI_DUNG_ACTION, result.data));
@@ -85,13 +95,15 @@ export const layThongTinNguoiDungAction = () => {
 export const huyGhiDanhKhoaHoc = (data) => {
   return async (dispatch) => {
     try {
-      let result = await http.post("/api/QuanLyKhoaHoc/HuyGhiDanh", data);
-      console.log("data action", result);
+      //Lấy data thì vẫn ok nhưng vô result
+      let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
       swal({
         title: "Thành công",
         text: "Bạn đã xoá thành công",
       });
-      dispatch(createAction(XOA_KHOA_HOC_DA_DANG_KY, result));
+      //Không cập nhật lại dc
+      //dispatch(createAction(CAP_NHAT_KHOA_HOC, result));
+      await dispatch(layThongTinNguoiDungAction());
     } catch (error) {
       console.log(error.response?.data);
     }
@@ -102,7 +114,7 @@ export const capNhatThongTinNguoiDung = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.put(
-        "/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+        API_CAPNHAT_THONGTIN_NGUOIDUNG,
         data
       );
 
