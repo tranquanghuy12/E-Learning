@@ -1,0 +1,38 @@
+.page_404{
+    padding: 40px 0;
+    background: #fff;
+    font-family: 'Poppins';
+}
+.page_404 img{
+    width: 100%;
+}
+.four_zero_four_bg{
+    background: url('../../assets/img/dribbble_404.gif');
+    height: 400px;
+    background-position: center;
+    margin-top: 120px;
+}
+h1{
+    font-weight: bold;
+    font-size: 100px;
+    color: rgba(255,0,0,0.7);
+}
+h3{
+    font-size: 80px;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #39ac31;
+    display: inline-block;
+}
+a:hover{
+    color: #fff;
+    text-decoration: none;
+    background-color: #29a072;
+    transition: 0.2s ease-in-out;
+}
+.content_box_404{
+    margin-top: -50px;
+}

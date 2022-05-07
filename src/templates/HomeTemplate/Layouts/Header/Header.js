@@ -59,12 +59,12 @@ export default function Header(props) {
   };
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <NavLink className="navbar-brand" to="/">
         <img
           src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png"
           alt="Logo Cyberlearn"
         />
-      </a>
+      </NavLink>
       <button
         className="navbar-toggler d-lg-none"
         data-toggle="collapse"
