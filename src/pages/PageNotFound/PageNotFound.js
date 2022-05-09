@@ -4,9 +4,6 @@ import styles from "./PageNotFound.module.css";
 export default function PageNotFound() {
   return (
     <>
-      {/* <Helmet>
-        <body></body>
-      </Helmet> */}
       <div className="page_404">
         <div className="container">
           <div className="row">
@@ -17,8 +14,12 @@ export default function PageNotFound() {
                 </div>
                 <div className={`${styles.content_box_404}`}>
                   <h3 className={`${styles.h3Size}`}>Looks Like You're Lost</h3>
-                  <p className={`${styles.pSize}`}>The page you are looking for not available</p>
-                  <a className={`${styles.a_page_not_found}`} href="/">Go to Home</a>
+                  <p className={`${styles.pSize}`}>
+                    The page you are looking for not available
+                  </p>
+                  <a className={`${styles.a_page_not_found}`} href="/">
+                    Go to Home
+                  </a>
                 </div>
               </div>
             </div>

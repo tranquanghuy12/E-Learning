@@ -15,9 +15,7 @@ export default function Register(props) {
   const dispatch = useDispatch();
   return (
     <>
-      {/* <Helmet>
-        <body></body>
-      </Helmet> */}
+      
       <div className="vh-100 mx-auto">
         <div className="container">
           <div className={`row align-items-center ${styles.contentRegister}`}>
@@ -46,29 +44,32 @@ export default function Register(props) {
                       <label>Tài khoản</label>
                       <Field
                         type="text"
-                        className={`form-control ${styles.formControl}`}
+                        className={`form-control ${styles.formControlRegister}`}
                         name="taiKhoan"
                         onChange={formikProps.handleChange}
+                        placeholder='Nhập tài khoản'
                       />
                       <ErrorMessage name="taiKhoan" />
                     </div>
                     <div className="form-group">
                       <label>Mật khẩu</label>
                       <Field
-                        className={`form-control ${styles.formControl}`}
+                        className={`form-control ${styles.formControlRegister}`}
                         name="matKhau"
                         type="password"
                         onChange={formikProps.handleChange}
+                        placeholder='Nhập nhập khẩu'
                       />
                       <ErrorMessage name="matKhau" />
                     </div>
                     <div className="form-group">
                       <label>Email</label>
                       <Field
-                        className={`form-control ${styles.formControl}`}
+                        className={`form-control ${styles.formControlRegister}`}
                         name="email"
                         type="email"
                         onChange={formikProps.handleChange}
+                        placeholder='Nhập email'
                       />
                       <ErrorMessage name="email" />
                     </div>
@@ -76,7 +77,7 @@ export default function Register(props) {
                       <label>Họ tên: </label>
                       <Field
                         placeholder="Nhập họ tên"
-                        className={`form-control ${styles.formControl}`}
+                        className={`form-control ${styles.formControlRegister}`}
                         name="hoTen"
                         onChange={formikProps.handleChange}
                       />
@@ -86,7 +87,7 @@ export default function Register(props) {
                       <label>Số điện thoại: </label>
                       <Field
                         placeholder="Số điện thoại"
-                        className={`form-control ${styles.formControl}`}
+                        className={`form-control ${styles.formControlRegister}`}
                         name="soDT"
                         onChange={formikProps.handleChange}
                       />
