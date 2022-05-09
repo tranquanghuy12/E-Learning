@@ -14,7 +14,7 @@ import { ACCESSTOKEN } from "../../util/setting/config";
 
 export default function Profile() {
   const dispatch = new useDispatch();
-  const {userProfile} = useSelector(
+  const { userProfile } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
   let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];
@@ -129,11 +129,24 @@ export default function Profile() {
       <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>
       <div className="mt-5">
         {!userProfile.chiTietKhoaHocGhiDanh ? (
-          <>            
+          <>
             <div className="text-center">Bạn chưa đăng ký khoá học nào</div>
           </>
         ) : (
           <>
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+              />
+              <div className="input-group-append">
+                <button className="btn btn-success" type="submit">
+                  Go
+                </button>
+              </div>
+            </div>
+
             <div className="row">{khoaHocDaDangKy()}</div>
           </>
         )}

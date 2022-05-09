@@ -4,7 +4,7 @@ import loginSvg from "../../assets/img/login.svg";
 import { Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
-
+import { Helmet } from "react-helmet";
 export default function Login() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,13 +23,13 @@ export default function Login() {
   });
 
   return (
-    <div className="container">
-      <div className={`row content ${styles.content}`}>
+    <>
+      <div className={`row ${styles.contentLogin}`}>
         <div className="col-md-6 mb-3">
           <img src={loginSvg} className="img-fluid" alt="image" />
         </div>
         <div className="col-md-6">
-          <h3 className={`${styles.signinText} mb-3`}>Đăng nhập</h3>
+          <h2 className={`${styles.signinText} mb-3`}>Đăng nhập</h2>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-group">
               <label htmlFor="taiKhoan">Tài khoản</label>
@@ -49,14 +49,14 @@ export default function Login() {
                 onChange={formik.handleChange}
               />
             </div>
-            <div className="form-group form-check">
+            <div className={`form-check ${styles.formCheck}`}>
               <input
                 type="checkbox"
                 name="checkbox"
                 className="form-check-input"
                 id="checkbox"
               />
-              <label className="form-check-label" htmlFor="checkbox">
+              <label className='form-check-label ml-4' htmlFor="checkbox">
                 Duy trì đăng nhập
               </label>
             </div>
@@ -84,6 +84,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-    </div>
+    </>
   );
 }

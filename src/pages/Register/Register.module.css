@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 
-.content {
+.contentRegister {
   margin: 8%;
   background-color: #fff;
   padding: 4rem 1rem 4rem 1rem;
@@ -11,10 +11,10 @@
   font-style: normal;
   font-weight: 600 !important;
 }
-.formControl {
+.formControlRegister {
   display: block;
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.5;
   border-color: #fec107 !important;
@@ -27,7 +27,7 @@
   background-color: #fff;
   background-clip: padding-box;
 }
-.formControl:focus {
+.formControlRegister:focus {
   color: #495057;
   background-color: #fff;
   border-color: #fff;
