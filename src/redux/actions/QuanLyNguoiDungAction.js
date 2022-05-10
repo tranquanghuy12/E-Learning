@@ -10,15 +10,14 @@ import {
   API_DANGNHAP_NGUOIDUNG,
   API_DANGKY_NGUOIDUNG,
   API_HUYGHIDANH_KHOAHOC,
-  API_CAPNHAT_THONGTIN_NGUOIDUNG
+  API_CAPNHAT_THONGTIN_NGUOIDUNG,
+  API_LAY_MA_LOAI_NGUOI_DUNG,
 } from "../../util/setting/config";
-import {
-  CAP_NHAT_KHOA_HOC,
-} from "../types/QuanLyKhoaHocType";
 import {
   CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION,
   DANG_KY_ACTION,
   DANG_NHAP_ACTION,
+  LAY_MA_LOAI_NGUOI_DUNG,
   THONG_TIN_NGUOI_DUNG_ACTION,
 } from "../types/QuanLyNguoiDungType";
 
@@ -95,14 +94,12 @@ export const layThongTinNguoiDungAction = () => {
 export const huyGhiDanhKhoaHoc = (data) => {
   return async (dispatch) => {
     try {
-      //Lấy data thì vẫn ok nhưng vô result
       let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
       swal({
         title: "Thành công",
         text: "Bạn đã xoá thành công",
       });
-      //Không cập nhật lại dc
-      //dispatch(createAction(CAP_NHAT_KHOA_HOC, result));
+
       await dispatch(layThongTinNguoiDungAction());
     } catch (error) {
       console.log(error.response?.data);
@@ -113,10 +110,7 @@ export const huyGhiDanhKhoaHoc = (data) => {
 export const capNhatThongTinNguoiDung = (data) => {
   return async (dispatch) => {
     try {
-      let result = await http.put(
-        API_CAPNHAT_THONGTIN_NGUOIDUNG,
-        data
-      );
+      let result = await http.put(API_CAPNHAT_THONGTIN_NGUOIDUNG, data);
 
       if (result.status === 200) {
         swal({
@@ -127,6 +121,17 @@ export const capNhatThongTinNguoiDung = (data) => {
         history.push("/profile");
       }
       dispatch(createAction(CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION, result));
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};
+
+export const layMaNguoiDung = () => {
+  return async (dispatch) => {
+    try {
+      let result = await http.get(API_LAY_MA_LOAI_NGUOI_DUNG);
+      dispatch(createAction(LAY_MA_LOAI_NGUOI_DUNG, result.data));
     } catch (error) {
       console.log(error.response?.data);
     }
