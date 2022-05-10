@@ -87,8 +87,8 @@ export default function Header(props) {
               Danh mục khoá học
             </a>
             <div className="dropdown-menu" aria-labelledby="dropdownId">
-              <Link className="dropdown-item" to="">
-                Contact
+              <Link className="dropdown-item" to="/danhmuckhoahoc">
+                Danh mục khóa học
               </Link>
               <Link className="dropdown-item" to="">
                 News

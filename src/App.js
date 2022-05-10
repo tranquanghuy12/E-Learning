@@ -11,6 +11,8 @@ import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import QuanLyNguoiDung from "./pages/Admin/QuanLyNguoiDung/QuanLyNguoiDung";
 import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyThongTIn/CapNhatThongTinNguoiDung";
+import DanhMucKhoaHoc from "./pages/Home/DanhMucKhoaHoc";
+import KhoaHocTheoDanhMuc from "./pages/Home/KhoaHocTheoDanhMuc";
 
 export const history = createBrowserHistory();
 function App() {
@@ -18,6 +20,8 @@ function App() {
     <Router history={history}>
       <Switch>
         <HomeTemplate path="/home" exact Component={Home} />
+        <HomeTemplate path="/danhmuckhoahoc" exact Component={DanhMucKhoaHoc} />
+        <HomeTemplate path="/danhmuckhoahoc/:madanhmuc" exact Component={KhoaHocTheoDanhMuc} />
         <HomeTemplate path="/profile" exact Component={Profile} />
         <HomeTemplate path="/login" exact Component={Login} />
         <HomeTemplate path="/register" exact Component={Register} />
