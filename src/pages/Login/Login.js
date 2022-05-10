@@ -8,8 +8,7 @@ import { Helmet } from "react-helmet";
 export default function Login() {
   const dispatch = useDispatch();
   useEffect(() => {
-    document.body.style.backgroundColor = "#00ac96";
-    document.body.style.fontFamily = "Roboto,sans-serif";
+   
   }, []);
   const formik = useFormik({
     initialValues: {
@@ -23,7 +22,7 @@ export default function Login() {
   });
 
   return (
-    <>
+    <div className={`${styles.containerLogin}`}>
       <div className={`row ${styles.contentLogin}`}>
         <div className="col-md-6 mb-3">
           <img src={loginSvg} className="img-fluid" alt="image" />
@@ -84,6 +83,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -8,13 +8,10 @@ import signUp from "../../assets/img/signup.jpg";
 import styles from "../Register/Register.module.css";
 
 export default function Register(props) {
-  useEffect(() => {
-    document.body.style.backgroundColor = "#fec107";
-    document.body.style.fontFamily = "Roboto,sans-serif";
-  }, []);
+  
   const dispatch = useDispatch();
   return (
-    <>
+    <div className={`${styles.containerRegister}`}>
       
       <div className="vh-100 mx-auto">
         <div className="container">
@@ -136,6 +133,6 @@ export default function Register(props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

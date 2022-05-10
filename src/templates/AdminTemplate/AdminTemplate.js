@@ -1,4 +1,6 @@
 import { Route } from "react-router-dom";
+import Footer from "./Layouts/Footer";
+import Header from "./Layouts/Header";
 
 export const AdminTemplate = (props) => {
   //props => props.path = '/login' , props.component = LoginComponent
@@ -9,10 +11,10 @@ export const AdminTemplate = (props) => {
       path={props.path}
       render={(propsRoute) => {
         return (
-          <div className="text-center">
-           
-              <props.Component {...propsRoute} />
-            
+          <div className="container">
+            <Header />
+            <props.Component {...propsRoute} />
+            <Footer />
           </div>
         );
       }}
