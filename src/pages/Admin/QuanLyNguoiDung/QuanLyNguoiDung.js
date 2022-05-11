@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { layMaNguoiDung } from "../../../redux/actions/QuanLyNguoiDungAction";
-import DanhSachNguoiDung from "../../../templates/AdminTemplate/Layouts/DanhSachNguoiDung/DanhSachNguoiDung";
-import ThemNguoiDung from "../ThemNguoiDung/ThemNguoiDung";
+// import DanhSachNguoiDung from "../../../templates/AdminTemplate/Layouts/DanhSachNguoiDung/DanhSachNguoiDung";
+import DanhSachNguoiDungTest from "../../../templates/AdminTemplate/Layouts/DanhSachNguoiDung/DanhSachNguoiDungTest";
+import ThemNguoiDung from "./ThemNguoiDung";
 
 export default function QuanLyNguoiDung() {
   const dispatch = useDispatch();
@@ -19,7 +20,8 @@ export default function QuanLyNguoiDung() {
         <>
           <div className="page home-page">
             <div className="page-contents">
-              <DanhSachNguoiDung maLoaiNguoiDung={maLoaiNguoiDung} />
+              {/* <DanhSachNguoiDung maLoaiNguoiDung={maLoaiNguoiDung} /> */}
+              <DanhSachNguoiDungTest />
             </div>
           </div>
 

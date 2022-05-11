@@ -7,9 +7,7 @@ import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import { Helmet } from "react-helmet";
 export default function Login() {
   const dispatch = useDispatch();
-  useEffect(() => {
-   
-  }, []);
+  useEffect(() => {}, []);
   const formik = useFormik({
     initialValues: {
       taiKhoan: "",
@@ -55,12 +53,12 @@ export default function Login() {
                 className="form-check-input"
                 id="checkbox"
               />
-              <label className='form-check-label ml-4' htmlFor="checkbox">
+              <label className="form-check-label ml-4" htmlFor="checkbox">
                 Duy trì đăng nhập
               </label>
             </div>
             <p className="text-center">
-              Nếu bạn quên mật khẩu. <a href="http://">Nhấp vào đây</a>
+              Nếu bạn quên mật khẩu. <a href="#">Nhấp vào đây</a>
             </p>
             <div className="row text-center mt-5">
               <div className="col-6">

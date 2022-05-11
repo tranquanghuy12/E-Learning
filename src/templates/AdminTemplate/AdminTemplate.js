@@ -11,10 +11,10 @@ export const AdminTemplate = (props) => {
       path={props.path}
       render={(propsRoute) => {
         return (
-          <div className="container">
-            <Header />
+          <div>
+            
             <props.Component {...propsRoute} />
-            <Footer />
+            
           </div>
         );
       }}

@@ -10,10 +10,13 @@ import Admin from "./pages/Admin/Admin";
 import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import QuanLyNguoiDung from "./pages/Admin/QuanLyNguoiDung/QuanLyNguoiDung";
-import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyThongTIn/CapNhatThongTinNguoiDung";
+import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
 import DanhMucKhoaHoc from "./pages/Home/DanhMucKhoaHoc";
 import KhoaHocTheoDanhMuc from "./pages/Home/KhoaHocTheoDanhMuc";
-
+import 'antd/dist/antd.css'
+import XoaNguoiDung from "./pages/Admin/QuanLyNguoiDung/XoaNguoiDung";
+import QuanLyKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/QuanLyKhoaHoc";
+import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung";
 export const history = createBrowserHistory();
 function App() {
   return (
@@ -29,7 +32,9 @@ function App() {
 
         <AdminTemplate path="/admin" exact Component={Admin} />
         <AdminTemplate path='/admin/quanlynguoidung' exact Component={QuanLyNguoiDung}/>
+        <AdminTemplate path='/admin/quanlynguoidung/themnguoidung' exact Component={ThemNguoiDung}/>
         <AdminTemplate path='/admin/quanlynguoidung/:taiKhoan' exact Component={CapNhatThongTinNguoiDung}/>
+        <AdminTemplate path='/admin/quanlykhoahoc' exact Component={QuanLyKhoaHoc}/>
         <Route component={PageNotFound} />
       </Switch>
     </Router>
