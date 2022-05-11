@@ -13,7 +13,7 @@ export const rootReducer = combineReducers({
   QuanLyKhoaHocReducer,
   MaLoaiNguoiDungReducer,
   DanhMucKhoaHocReducer,
-  KhoaHocTheoDanhMucReducer
+  KhoaHocTheoDanhMucReducer,
 });
 
 let middleWare = applyMiddleware(reduxThunk);

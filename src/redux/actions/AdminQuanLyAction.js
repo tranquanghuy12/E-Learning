@@ -1,7 +1,7 @@
 import React from 'react'
 import { createAction } from '.'
-import { API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG, http } from '../../util/setting/config'
-import { LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG, LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_DATA } from '../types/QuanLyNguoiDungType'
+import { API_LAY_DANH_SACH_NGUOI_DUNG, API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG, http } from '../../util/setting/config'
+import { LAY_DANH_SACH_NGUOI_DUNG, LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG, LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_DATA } from '../types/QuanLyNguoiDungType'
 
 export const layDanhSachNguoiDungPhanTrang = (param) => {
   return async dispatch => {
@@ -14,5 +14,15 @@ export const layDanhSachNguoiDungPhanTrang = (param) => {
           console.log(error.response?.data);
       }
   }
+}
+export const layDanhSachNguoiDung=()=>{
+    return async dispatch =>{
+        try {
+            let res = await http.get(API_LAY_DANH_SACH_NGUOI_DUNG)
+            dispatch(createAction(LAY_DANH_SACH_NGUOI_DUNG,res.data))
+        } catch (error) {
+            console.log(error.response?.data);
+        }
+    }
 }
 

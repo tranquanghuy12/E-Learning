@@ -24,7 +24,8 @@ export const API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung_PhanTrang?";
 //API Khoá Học
 export const API_HUYGHIDANH_KHOAHOC = DOMAIN + API_KHOAHOC + "HuyGhiDanh";
-
+export const API_LAY_DANH_SACH_NGUOI_DUNG =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung?";
 //config axios
 export const http = axios.create({
   baseURL: DOMAIN,
