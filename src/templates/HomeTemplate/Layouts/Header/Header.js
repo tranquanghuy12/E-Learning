@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../../../util/setting/config";
 import logo from "../../../../assets/img/logo-udemy.svg";
-import './main.scss'
+import "./main.scss";
 export default function Header(props) {
   const history = useHistory();
 
@@ -79,7 +79,7 @@ export default function Header(props) {
               <div className="nav-item dropdown Categories">
                 <Link
                   className="nav-link"
-                  to="/"
+                  to="/danhmuckhoahoc"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -88,9 +88,6 @@ export default function Header(props) {
                   <i className="fa fa-th"></i>
                   Danh Mục Khoá Học
                 </Link>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  Danh mục môn học
-                </div>
               </div>
 
               <form className="form__search ml-5">
@@ -160,7 +157,6 @@ export default function Header(props) {
           </div>
         </nav>
       </header>
-      
     </>
   );
 }

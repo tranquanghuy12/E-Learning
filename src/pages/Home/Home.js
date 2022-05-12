@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyKhoaHocAction";
+import HomeCarousel from "./HomeCarousel";
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -30,5 +31,10 @@ export default function Home(props) {
       );
     });
   };
-  return <div className="row">{layDanhSachKhoaHoc()}</div>;
+  return (
+    <div>
+      <div>{HomeCarousel()}</div>
+      <div className="row container m-auto">{layDanhSachKhoaHoc()}</div>
+    </div>
+  );
 }
