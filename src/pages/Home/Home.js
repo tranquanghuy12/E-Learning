@@ -15,7 +15,7 @@ export default function Home(props) {
   const layDanhSachKhoaHoc = () => {
     return mangKhoaHoc.map((item, index) => {
       return (
-        <div className="col-3">
+        <div className="col-3" key={index}>
           <div className="card text-white bg-primary" key={index}>
             <img
               className="card-img-top w-100"

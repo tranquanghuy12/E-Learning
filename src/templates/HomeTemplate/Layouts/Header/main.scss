@@ -1,0 +1,178 @@
+@import '../../../../assets/sass/app.scss';
+.displayWhenSmallScreen {
+  li {
+    padding-left: 12px;
+  }
+  .dropdown-submenu {
+    padding: 0 0 0 5px;
+    .dropdown-item {
+      padding-left: 12px;
+      i {
+        padding-right: 10px;
+      }
+    }
+  }
+  .dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+  #navbarDropdown {
+    color: black;
+    margin-top: 4px;
+    i {
+      margin-top: 3px;
+      font-size: 24px;
+    }
+  }
+}
+.header__left {
+  .navbar-brand {
+    img {
+      width: 90px;
+      
+    }
+    padding: 8px 16px !important;
+  }
+  .dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+  .Categories {
+    #navbarDropdown {
+      color: $second-color;
+      margin-top: 4px;
+      i {
+        margin-top: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+  .form__search {
+    flex-grow: 10;
+    .input-group{
+      display: flex !important;
+      position: relative;
+      flex-wrap: wrap;
+      align-items: stretch;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .form-control {
+      padding: 10px;
+      background-color: $bg-slate-2;
+      border: none !important;
+      transition: none;
+      font-size: 1.2rem;
+      transition: all ease 0.5s;
+      width: 90%;
+      &:focus {
+        box-shadow: none;
+        background-color: white;
+        padding: 9px;
+      }
+      &:value {
+        font-size: 1.2rem;
+      }
+      &:focus + .input-group-append {
+        .input-group-text {
+          text-decoration: none;
+          background-color: $btn-color;
+        }
+        &:hover {
+          .input-group-text {
+            background-color: $btn-color;
+            color: $bg-color;
+          }
+        }
+      }
+    }
+    .input-group-append {
+      .input-group-text {
+        border: none;
+        background-color: $bg-slate-2;
+        color: $primary-dark;
+        padding: 10px 14px;
+        margin-left: 1px;
+        font-size: 1.2rem;
+        transition: all ease 0.5s;
+        &:hover {
+          background-color: $btn-color;
+          color: white;
+        }
+      }
+    }
+  }
+}
+.header__right {
+  .navbar-nav {
+    height: 40px;
+    .nav-item {
+      .navlink {
+        text-decoration: none;
+        color: black;
+      }
+      .navlink.signUp {
+        padding: 10px;
+        text-decoration: none;
+        background-color: white;
+        color: $primary-darkblue;
+        transition: all ease 0.2s;
+        margin-right: 10px;
+        &:hover {
+          color: black;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+      }
+      .navlink.signIn {
+        padding: 10px;
+        text-decoration: none;
+        background-color: $primary-darkblue;
+        color: white;
+        transition: all ease 0.2s;
+        margin-right: 10px;
+        &:hover {
+          background-color: $second-color-light;
+        }
+      }
+      .navlink.nameUser {
+        padding: 10px;
+        text-decoration: none;
+        background-color: white;
+        color: black;
+      }
+      .navlink.logout {
+        line-height: height;
+        i {
+          color: black;
+          font-size: 14px;
+          margin-right: 4px;
+        }
+        padding: 10px;
+        text-decoration: none;
+        background-color: white;
+        color: black;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.header__right {
+ 
+}
+
+.header__left {
+  @include responsive(MD) {
+    .Categories {
+      display: none;
+    }
+  }
+  @include responsive(SM) {
+    .navbar-brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .form__search {
+      display: none;
+    }
+  }
+}

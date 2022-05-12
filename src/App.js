@@ -29,7 +29,7 @@ function App() {
         <HomeTemplate path="/login" exact Component={Login} />
         <HomeTemplate path="/register" exact Component={Register} />
         <HomeTemplate path="/" exact Component={Home} />
-
+        
         <AdminTemplate path="/admin" exact Component={Admin} />
         <AdminTemplate path='/admin/quanlynguoidung' exact Component={QuanLyNguoiDung}/>
         <AdminTemplate path='/admin/quanlynguoidung/themnguoidung' exact Component={ThemNguoiDung}/>
