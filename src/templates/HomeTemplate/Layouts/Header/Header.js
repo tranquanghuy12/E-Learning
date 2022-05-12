@@ -1,114 +1,166 @@
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-import { history } from "../../../../App";
-import {USER_LOGIN,TOKEN_CYBERSOFT} from '../../../../util/setting/config'
-import _ from "lodash";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../../../util/setting/config";
+import logo from "../../../../assets/img/logo-udemy.svg";
+import './main.scss'
 export default function Header(props) {
-  const { userLogin } = useSelector(
-    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
-  );
-  const renderLogin = () => {
-    if (_.isEmpty(userLogin)) {
-      return (
-        <Fragment>
-          <li className="nav-item">
-            <NavLink
-              to='/login'
-              className="btn btn-success mr-2 ml-2"
-            >
-              Đăng nhập
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="btn btn-primary"
-              to='/register'
-            >
-              Đăng ký
-            </NavLink>
-          </li>
-          
-        </Fragment>
-      );
-    }
-    return (
-      <>
-        <button
-          className="btn btn-success ml-2"
-          onClick={() => {
-            history.push("/profile");
-          }}
-        >
-          Hello, {userLogin.taiKhoan}
-        </button>
-        <button
-          onClick={() => {
-            localStorage.removeItem(USER_LOGIN);
-            localStorage.removeItem(TOKEN_CYBERSOFT);
-            history.push("/home");
-            window.location.reload();
-          }}
-          className="btn btn-danger ml-2"
-        >
-          Đăng xuất
-        </button>
-      </>
-    );
+  const history = useHistory();
+
+  const onSearch = (e) => {
+    console.log(e.target.value);
+  };
+  const userLogin =
+    useSelector(
+      (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
+    ) || {};
+
+  console.log("userLoginTest", userLogin);
+  const logout = () => {
+    localStorage.removeItem(USER_LOGIN);
+    localStorage.removeItem(TOKEN_CYBERSOFT);
+    history.push("/home");
+    window.location.reload();
   };
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <NavLink className="navbar-brand" to="/">
-        <img
-          src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png"
-          alt="Logo Cyberlearn"
-        />
-      </NavLink>
-      <button
-        className="navbar-toggler d-lg-none"
-        data-toggle="collapse"
-        data-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      />
-      <div className="collapse navbar-collapse" id="collapsibleNavId">
-        <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              to="/"
-              id="dropdownId"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Danh mục khoá học
-            </a>
-            <div className="dropdown-menu" aria-labelledby="dropdownId">
-              <Link className="dropdown-item" to="/danhmuckhoahoc">
-                Danh mục khóa học
+    <>
+      <header>
+        <nav className="bg-light navbar navbar-expand-md d-flex justify-content-between flex-row px-4">
+          <div className="col-sm-1 d-md-none d-lg-none">
+            <div className="nav-item dropdown displayWhenSmallScreen">
+              <Link
+                className="nav-link"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                to="#"
+              >
+                <i className="fa fa-bars" aria-hidden="true"></i>
               </Link>
-              <Link className="dropdown-item" to="">
-                News
-              </Link>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                {userLogin.taiKhoan ? (
+                  <>
+                    <Link className="dropdown-item" to="">
+                      {`Xin chào, ${
+                        userLogin.hoTen.toString().length > 20
+                          ? userLogin.hoTen.substring(0, 12) + "..."
+                          : userLogin.hoTen
+                      }`}
+                    </Link>
+                    <Link className="dropdown-item" onClick={logout} to="">
+                      <i className="fa fa-sign-out" aria-hidden="true"></i>
+                      Đăng xuất
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login" className="dropdown-item">
+                      <i className="fa fa-sign-in" aria-hidden="true"></i>
+                      Đăng nhập
+                    </Link>
+                    <Link to="/register" className="dropdown-item">
+                      <i className="fa fa-plus" aria-hidden="true"></i>
+                      Đăng kí
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
-          </li>
-        </ul>
-        <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2 input-group"
-            placeholder="Search"
-          />
-          <button className="btn btn-outline-success my-2 my-sm-0">
-            Search
-          </button>
-        </form>
-        <ul className="navbar-nav">
-          {renderLogin()}
-        </ul>
-      </div>
-    </nav>
+          </div>
+          <div className="col-sm-11 col-md-12 col-lg-9">
+            <div className="header__left d-flex justify-content-start flex-row align-items-start">
+              <NavLink className="navbar-brand text-center" to="/">
+                <img src={logo} alt="logo" />
+              </NavLink>
+              <div className="nav-item dropdown Categories">
+                <Link
+                  className="nav-link"
+                  to="/"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i className="fa fa-th"></i>
+                  Danh Mục Khoá Học
+                </Link>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  Danh mục môn học
+                </div>
+              </div>
+
+              <form className="form__search ml-5">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search for anything"
+                    aria-label="Recipient's username"
+                    aria-describedby="basic-addon2"
+                  />
+                  <div className="input-group-append">
+                    <Link
+                      to="/"
+                      className="input-group-text"
+                      id="basic-addon2"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <i className="fas fa-search"></i>
+                    </Link>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="col-lg-3 d-flex justify-content-between flex-row-reverse">
+            <div className="header__right">
+              <ul className="navbar-nav d-flex float-right align-items-center flex-row-reverse">
+                {userLogin.taiKhoan ? (
+                  <>
+                    <li className="nav-item">
+                      <NavLink
+                        to="/"
+                        className="navlink logout"
+                        onClick={logout}
+                      >
+                        <i className="fas fa-sign-out-alt  test__scss"></i>
+                        Đăng xuất
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/profile" className="navlink nameUser">
+                        {`Xin chào, ${
+                          userLogin.hoTen.toString().length > 20
+                            ? userLogin.hoTen.substring(0, 15) + "..."
+                            : userLogin.hoTen
+                        }`}
+                      </NavLink>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="nav-item">
+                      <NavLink to="/login" className="navlink signIn">
+                        Đăng nhập
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/register" className="navlink signUp">
+                        Đăng ký
+                      </NavLink>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      
+    </>
   );
 }

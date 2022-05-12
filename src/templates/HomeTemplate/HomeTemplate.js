@@ -1,6 +1,7 @@
-import { Fragment } from "react";
+import React,{ Fragment } from "react";
 import { Route } from "react-router-dom";
 import Header from "./Layouts/Header/Header";
+
 
 export const HomeTemplate = (props) => {
   //path,exact,Component
@@ -14,7 +15,7 @@ export const HomeTemplate = (props) => {
         return (
           <Fragment>
             <Header {...propsRoute} />
-
+            
             <Component {...propsRoute} />
             <footer className="bg-warning text-white">
               Đây là footer homepage
