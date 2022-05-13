@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -16,13 +16,42 @@ export default function Header(props) {
     useSelector(
       (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
     ) || {};
-
+  const { mangDanhMucKhoaHoc } = useSelector(
+    (rootReducer) => rootReducer.DanhMucKhoaHocReducer
+  );
   console.log("userLoginTest", userLogin);
+  console.log("danhmuckhoahoc", mangDanhMucKhoaHoc);
   const logout = () => {
     localStorage.removeItem(USER_LOGIN);
     localStorage.removeItem(TOKEN_CYBERSOFT);
     history.push("/home");
     window.location.reload();
+  };
+  const layDanhMucKhoaHoc = (mangDanhMucKhoaHoc) => {
+    return mangDanhMucKhoaHoc.map((item) => {
+      return (
+        <Link
+          key={item.maDanhMuc}
+          className="dropdown-item"
+          to={`/danhmuckhoahoc/${item.maDanhMuc}`}
+
+        >
+          {item.tenDanhMuc}
+        </Link>
+      );
+    });
+  };
+  const danhMucKhoaHocCollapse = () => {
+    return (
+      <ul className="dropdown-submenu list-unstyled">
+        <li>
+          Danh Mục
+          <ul className="dropdown-submenu">
+            {layDanhMucKhoaHoc(mangDanhMucKhoaHoc)}
+          </ul>
+        </li>
+      </ul>
+    );
   };
   return (
     <>
@@ -42,17 +71,17 @@ export default function Header(props) {
                 <i className="fa fa-bars" aria-hidden="true"></i>
               </Link>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                {danhMucKhoaHocCollapse()}
                 {userLogin.taiKhoan ? (
                   <>
                     <Link className="dropdown-item" to="">
                       {`Xin chào, ${
-                        userLogin.hoTen.toString().length > 20
-                          ? userLogin.hoTen.substring(0, 12) + "..."
+                        userLogin.hoTen.toString().length > 15
+                          ? userLogin.hoTen.substring(0, 8) + "..."
                           : userLogin.hoTen
                       }`}
                     </Link>
                     <Link className="dropdown-item" onClick={logout} to="">
-                      <i className="fa fa-sign-out" aria-hidden="true"></i>
                       Đăng xuất
                     </Link>
                   </>
@@ -63,7 +92,7 @@ export default function Header(props) {
                       Đăng nhập
                     </Link>
                     <Link to="/register" className="dropdown-item">
-                      <i className="fa fa-plus" aria-hidden="true"></i>
+                      
                       Đăng kí
                     </Link>
                   </>
@@ -131,8 +160,8 @@ export default function Header(props) {
                     <li className="nav-item">
                       <NavLink to="/profile" className="navlink nameUser">
                         {`Xin chào, ${
-                          userLogin.hoTen.toString().length > 20
-                            ? userLogin.hoTen.substring(0, 15) + "..."
+                          userLogin.hoTen.toString().length > 10
+                            ? userLogin.hoTen.substring(0, 8) + "..."
                             : userLogin.hoTen
                         }`}
                       </NavLink>

@@ -6,6 +6,7 @@ import reduxThunk from "redux-thunk";
 import { MaLoaiNguoiDungReducer } from "./reducers/MaLoaiNguoiDungReducer";
 import DanhMucKhoaHocReducer from "./reducers/DanhMucKhoaHocReducer";
 import KhoaHocTheoDanhMucReducer from "./reducers/KhoaHocTheoDanhMucReducer";
+import { AdminQuanLyNguoiDungReducer } from "./reducers/AdminQuanLyNguoiDung";
 export const rootReducer = combineReducers({
   //state ứng dụng
   QuanLyNguoiDungReducer,
@@ -14,6 +15,7 @@ export const rootReducer = combineReducers({
   MaLoaiNguoiDungReducer,
   DanhMucKhoaHocReducer,
   KhoaHocTheoDanhMucReducer,
+  AdminQuanLyNguoiDungReducer,
 });
 
 let middleWare = applyMiddleware(reduxThunk);

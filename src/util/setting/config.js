@@ -26,6 +26,10 @@ export const API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG =
 export const API_HUYGHIDANH_KHOAHOC = DOMAIN + API_KHOAHOC + "HuyGhiDanh";
 export const API_LAY_DANH_SACH_NGUOI_DUNG =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung?";
+
+//API Admin
+export const API_XOA_NGUOI_DUNG_ADMIN = DOMAIN + API_NGUOIDUNG + 'XoaNguoiDung?TaiKhoan=';
+export const API_THEM_NGUOI_DUNG_ADMIN = DOMAIN + API_NGUOIDUNG + 'ThemNguoiDung';
 //config axios
 export const http = axios.create({
   baseURL: DOMAIN,
