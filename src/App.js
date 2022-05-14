@@ -14,10 +14,13 @@ import KhoaHocTheoDanhMuc from "./pages/Home/KhoaHocTheoDanhMuc";
 import 'antd/dist/antd.css'
 import QuanLyKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/QuanLyKhoaHoc";
 import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung";
-import Admin from "./pages/Admin/Admin";
 import DanhSachNguoiDung from "./templates/AdminTemplate/Layouts/DanhSachNguoiDung/DanhSachNguoiDung";
+import Admin from "./pages/Admin/Admin";
+
+
 export const history = createBrowserHistory();
 function App() {
+  
   return (
     <Router history={history}>
       <Switch>
@@ -25,10 +28,11 @@ function App() {
         <HomeTemplate path="/danhmuckhoahoc" exact Component={DanhMucKhoaHoc} />
         <HomeTemplate path="/danhmuckhoahoc/:madanhmuc" exact Component={KhoaHocTheoDanhMuc} />
         <HomeTemplate path="/profile" exact Component={Profile} />
-        <HomeTemplate path="/login" exact Component={Login} />
-        <HomeTemplate path="/register" exact Component={Register} />
         <HomeTemplate path="/" exact Component={Home} />
         
+        <HomeTemplate path='/login' exact Component={Login} />
+        <HomeTemplate path="/register" exact Component={Register} />
+
         <AdminTemplate path="/admin" exact Component={Admin} />   
         <AdminTemplate path='/admin/quanlynguoidung' exact Component={DanhSachNguoiDung} />
         <AdminTemplate path='/admin/quanlynguoidung/themnguoidung' exact Component={ThemNguoiDung}/>

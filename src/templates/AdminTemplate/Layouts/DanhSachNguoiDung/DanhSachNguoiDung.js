@@ -14,6 +14,7 @@ import {
 import CapNhatThongTinNguoiDung from "../../../../pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 const { Search } = Input;
 
 export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
@@ -23,8 +24,15 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
   );
 
   const xoaNguoiDungAdmin = (taiKhoan) => {
-    console.log("test", taiKhoan);
-    dispatch(adminXoaNguoiDungAction(taiKhoan));
+    swal({
+      title: "Bạn có chắn muốn xoá không?",
+      showCancelButton: true,
+      confirmButtonText: "Chắc chắn",
+    }).then((result) => {
+      if (result === true) {
+        dispatch(adminXoaNguoiDungAction(taiKhoan));
+      }
+    });
   };
   useEffect(() => {
     dispatch(layDanhSachNguoiDung());
@@ -90,7 +98,7 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
           <Fragment>
             <NavLink
               className="btn bg-primary text-white mr-2"
-              to="/admin/quanlynguoidung/:taiKhoan"
+              to={`/admin/quanlynguoidung/${nguoiDung.taiKhoan}`}
               Component={CapNhatThongTinNguoiDung}
             >
               <EditOutlined />

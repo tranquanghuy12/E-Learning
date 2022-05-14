@@ -1,16 +1,20 @@
-import { values } from "lodash";
-import React from "react";
 import swal from "sweetalert";
 import { createAction } from ".";
 import { history } from "../../App";
 import {
+  API_CAPNHAT_THONGTIN_NGUOIDUNG_ADMIN,
+  API_CHI_TIET_NGUOI_DUNG_ADMIN,
   API_LAY_DANH_SACH_NGUOI_DUNG,
   API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
   API_THEM_NGUOI_DUNG_ADMIN,
   API_XOA_NGUOI_DUNG_ADMIN,
   http,
 } from "../../util/setting/config";
-import { ADMIN_THEM_NGUOI_DUNG } from "../types/AdminNguoiDungType";
+import {
+  ADMIN_CAPNHAT_THONGTIN_NGUOIDUNG,
+  ADMIN_CHI_TIET_THONG_TIN_NGUOI_DUNG,
+  ADMIN_THEM_NGUOI_DUNG,
+} from "../types/AdminNguoiDungType";
 import {
   LAY_DANH_SACH_NGUOI_DUNG,
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
@@ -84,6 +88,43 @@ export const adminXoaNguoiDungAction = (taikhoan) => {
       }
     } catch (error) {
       console.log("error", error.response?.data);
+    }
+  };
+};
+
+export const capNhatThongTinNguoiDungAdmin = (data) => {
+  return async (dispatch) => {
+    try {
+      let result = await http.put(API_CAPNHAT_THONGTIN_NGUOIDUNG_ADMIN, data);
+
+      if (result.status === 200) {
+        swal({
+          title: "Thành công",
+          text: "Đã cập nhật tài khoản",
+          icon: "success",
+        });
+        dispatch(createAction(ADMIN_CAPNHAT_THONGTIN_NGUOIDUNG, result));
+        history.push("/admin/quanlynguoidung");
+      }
+    } catch (error) {
+      swal("Error", error.response?.data);
+    }
+  };
+};
+
+export const chiTietNguoiDungAdminAction = () => {
+  return async (dispatch) => {
+    try {
+      let result = await http.get(API_CHI_TIET_NGUOI_DUNG_ADMIN);
+      console.log("res action", result);
+      if (result.status === 200) {
+        dispatch(
+          createAction(ADMIN_CHI_TIET_THONG_TIN_NGUOI_DUNG, result.data)
+        );
+      }
+    } catch (error) {
+      swal('Error',error.response?.data)
+      
     }
   };
 };

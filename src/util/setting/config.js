@@ -24,12 +24,18 @@ export const API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung_PhanTrang?";
 //API Khoá Học
 export const API_HUYGHIDANH_KHOAHOC = DOMAIN + API_KHOAHOC + "HuyGhiDanh";
-export const API_LAY_DANH_SACH_NGUOI_DUNG =
-  DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung?";
 
 //API Admin
-export const API_XOA_NGUOI_DUNG_ADMIN = DOMAIN + API_NGUOIDUNG + 'XoaNguoiDung?TaiKhoan=';
-export const API_THEM_NGUOI_DUNG_ADMIN = DOMAIN + API_NGUOIDUNG + 'ThemNguoiDung';
+export const API_LAY_DANH_SACH_NGUOI_DUNG =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung?";
+export const API_CAPNHAT_THONGTIN_NGUOIDUNG_ADMIN =
+  DOMAIN + API_NGUOIDUNG + "CapNhatThongTinNguoiDung";
+export const API_XOA_NGUOI_DUNG_ADMIN =
+  DOMAIN + API_NGUOIDUNG + "XoaNguoiDung?TaiKhoan=";
+export const API_THEM_NGUOI_DUNG_ADMIN =
+  DOMAIN + API_NGUOIDUNG + "ThemNguoiDung";
+export const API_CHI_TIET_NGUOI_DUNG_ADMIN =
+  DOMAIN + API_NGUOIDUNG + "TimKiemNguoiDung";
 //config axios
 export const http = axios.create({
   baseURL: DOMAIN,

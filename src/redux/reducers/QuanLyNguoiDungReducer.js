@@ -1,4 +1,4 @@
-import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../util/setting/config";
+import { USER_LOGIN } from "../../util/setting/config";
 import {
   CAP_NHAT_THONG_TIN_NGUOI_DUNG_ACTION,
   DANG_KY_ACTION,
@@ -15,6 +15,7 @@ const stateDefault = {
   userLogin: userLogin,
   arrUser: {},
   userProfile: {},
+  info: {},
 };
 
 export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {

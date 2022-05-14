@@ -41,7 +41,9 @@ export default function ThemNguoiDung({ maLoaiNguoiDung }) {
                         onChange={formikProps.handleChange}
                         placeholder="Nhập tài khoản"
                       />
-                      <ErrorMessage name="taiKhoan" />
+                      <ErrorMessage name="taiKhoan">
+                          {(msg)=><div>{msg}</div>}
+                      </ErrorMessage>
                     </div>
                     <div className="form-group">
                       <label>Mật khẩu</label>

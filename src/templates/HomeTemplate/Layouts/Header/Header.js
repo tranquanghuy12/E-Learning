@@ -19,8 +19,7 @@ export default function Header(props) {
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
-  console.log("userLoginTest", userLogin);
-  console.log("danhmuckhoahoc", mangDanhMucKhoaHoc);
+
   const logout = () => {
     localStorage.removeItem(USER_LOGIN);
     localStorage.removeItem(TOKEN_CYBERSOFT);
@@ -34,7 +33,6 @@ export default function Header(props) {
           key={item.maDanhMuc}
           className="dropdown-item"
           to={`/danhmuckhoahoc/${item.maDanhMuc}`}
-
         >
           {item.tenDanhMuc}
         </Link>
@@ -92,7 +90,6 @@ export default function Header(props) {
                       Đăng nhập
                     </Link>
                     <Link to="/register" className="dropdown-item">
-                      
                       Đăng kí
                     </Link>
                   </>

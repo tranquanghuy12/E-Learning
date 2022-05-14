@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import swal from "sweetalert";
 import ModalCapNhatNguoiDung from "../../components/Modal/ModalCapNhatNguoiDung";
@@ -20,8 +21,6 @@ export default function Profile() {
   let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];
   console.log(chiTietCacKhoaHocDaDangKy);
   useEffect(() => {
-    //Gọi api lấy thông tin người dùng để load lên redux
-    document.body.style.backgroundColor = "#fff";
     dispatch(layThongTinNguoiDungAction());
   }, [dispatch]);
   const xoaKhoaHoc = (maKhoaHoc) => {
@@ -118,6 +117,9 @@ export default function Profile() {
           </div>
           <div className="d-flex justify-content-center">
             <ModalCapNhatNguoiDung userProfile={userProfile} />
+            {userProfile.maLoaiNguoiDung==='GV' ? (<button className="btn btn-success ml-3">
+            <Link to='/admin' style={{color:'white'}}>Quản Lý</Link>
+            </button>) : (<></>)}
             <NavLink className="ml-3 btn btn-danger" to="/">
               Rời khỏi
             </NavLink>
