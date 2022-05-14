@@ -1,0 +1,16 @@
+@import "../../assets/sass/app.scss";
+
+.button-link {
+  width: 20rem;
+  height: 10rem;
+  color: white;
+  font-size: 1.7rem;
+  font-weight: 500;
+  background-image: url("../../assets/img/banner-gradient.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  &:hover {
+    color: yellow !important;
+  }
+}

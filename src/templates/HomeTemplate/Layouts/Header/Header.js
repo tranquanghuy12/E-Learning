@@ -107,9 +107,6 @@ export default function Header(props) {
                   className="nav-link"
                   to="/danhmuckhoahoc"
                   id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
                 >
                   <i className="fa fa-th"></i>
                   Danh Mục Khoá Học
