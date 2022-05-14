@@ -52,7 +52,7 @@ export const dangKyAction = (values) => {
   return async (dispatch) => {
     try {
       const result = await http.post(API_DANGKY_NGUOIDUNG, values);
-      console.log("result", result);
+      
       if (result.status === 200) {
         dispatch(createAction(DANG_KY_ACTION, result.data));
         swal({
@@ -61,7 +61,7 @@ export const dangKyAction = (values) => {
         });
         history.push("/login");
       }
-      console.log("result", result);
+      
     } catch (error) {
       swal({
         title: "Đăng ký thất bại",

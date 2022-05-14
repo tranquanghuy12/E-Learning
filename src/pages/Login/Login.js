@@ -4,8 +4,8 @@ import loginSvg from "../../assets/img/login.svg";
 import { Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
-import { Helmet } from "react-helmet";
-export default function Login() {
+
+export default function Login(props) {
   const dispatch = useDispatch();
   useEffect(() => {}, []);
   const formik = useFormik({

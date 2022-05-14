@@ -1,12 +1,12 @@
-import { applyMiddleware, combineReducers, createStore, compose } from "redux";
+import { combineReducers } from "redux";
 import ChiTietKhoaHocReducer from "./reducers/ChiTietKhoaHocReducer";
 import QuanLyKhoaHocReducer from "./reducers/QuanLyKhoaHocReducer";
 import { QuanLyNguoiDungReducer } from "./reducers/QuanLyNguoiDungReducer";
-import reduxThunk from "redux-thunk";
 import { MaLoaiNguoiDungReducer } from "./reducers/MaLoaiNguoiDungReducer";
 import DanhMucKhoaHocReducer from "./reducers/DanhMucKhoaHocReducer";
 import KhoaHocTheoDanhMucReducer from "./reducers/KhoaHocTheoDanhMucReducer";
-export const rootReducer = combineReducers({
+import { AdminQuanLyNguoiDungReducer } from "./reducers/AdminQuanLyNguoiDungReducer";
+const rootReducer = combineReducers({
   //state ứng dụng
   QuanLyNguoiDungReducer,
   ChiTietKhoaHocReducer,
@@ -14,11 +14,6 @@ export const rootReducer = combineReducers({
   MaLoaiNguoiDungReducer,
   DanhMucKhoaHocReducer,
   KhoaHocTheoDanhMucReducer,
+  AdminQuanLyNguoiDungReducer
 });
-
-let middleWare = applyMiddleware(reduxThunk);
-let composeCustom = compose(
-  middleWare,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-export const store = createStore(rootReducer, composeCustom);
+export default rootReducer;

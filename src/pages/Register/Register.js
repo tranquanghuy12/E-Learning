@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { DangKySchema } from "../../services/NguoiDungSchema";
-import Helmet from "react-helmet";
 import signUp from "../../assets/img/signup.jpg";
 import styles from "../Register/Register.module.css";
 

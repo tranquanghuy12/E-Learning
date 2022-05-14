@@ -1,4 +1,7 @@
 @import '../../../../assets/sass/app.scss';
+nav.navbar{
+  margin-bottom: 0 !important;
+}
 .displayWhenSmallScreen {
   li {
     padding-left: 12px;
@@ -74,12 +77,12 @@
       &:focus + .input-group-append {
         .input-group-text {
           text-decoration: none;
-          background-color: $btn-color;
+          background-color: $btn-color-1;
         }
         &:hover {
           .input-group-text {
-            background-color: $btn-color;
-            color: $bg-color;
+            background-color: $btn-color-0;
+            color:$primary-darkblue;
           }
         }
       }
@@ -94,8 +97,8 @@
         font-size: 1.2rem;
         transition: all ease 0.5s;
         &:hover {
-          background-color: $btn-color;
-          color: white;
+          background-color:$btn-color-1;
+          color: $primary-darkblue;
         }
       }
     }
@@ -135,7 +138,7 @@
       .navlink.nameUser {
         padding: 10px;
         text-decoration: none;
-        background-color: white;
+        background-color: $bg-slate-1;
         color: black;
       }
       .navlink.logout {
@@ -147,7 +150,7 @@
         }
         padding: 10px;
         text-decoration: none;
-        background-color: white;
+        background-color: $bg-slate-1;
         color: black;
         margin-right: 10px;
       }
@@ -156,7 +159,11 @@
 }
 
 .header__right {
- 
+  @include responsive(MD){
+    .navbar-nav{
+      display: none !important;
+    }
+  }
 }
 
 .header__left {
@@ -167,7 +174,7 @@
   }
   @include responsive(SM) {
     .navbar-brand {
-      display: flex;
+      display: flex !important;
       justify-content: center;
       align-items: center;
     }

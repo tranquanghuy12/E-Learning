@@ -1,21 +1,20 @@
+import { Fragment } from "react";
 import { Route } from "react-router-dom";
-import Footer from "./Layouts/Footer";
-import Header from "./Layouts/Header";
 
+import Footer from "./Layouts/Footer/Footer";
+import Header from "./Layouts/Header/Header";
 export const AdminTemplate = (props) => {
-  //props => props.path = '/login' , props.component = LoginComponent
-
+  const { Component, ...restRoute } = props;
   return (
     <Route
-      exact
-      path={props.path}
+      {...restRoute}
       render={(propsRoute) => {
         return (
-          <div>
-            
-            <props.Component {...propsRoute} />
-            
-          </div>
+          <Fragment>
+            <Header  {...propsRoute}/>
+            <Component {...propsRoute} />
+            <Footer {...propsRoute} />
+          </Fragment>
         );
       }}
     />
