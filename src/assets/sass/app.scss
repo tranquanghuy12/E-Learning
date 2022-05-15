@@ -2,6 +2,9 @@
 @import './helpers/variable';
 @import './helpers/mixin';
 
+//import Component
+@import './components/button';
+
 //import Reset and Global
 @import './base/reset';
 @import './base/global';
@@ -12,15 +15,9 @@
 //import Pages
 @import './pages/home';
 
-html{
-    width: 100vw;
-}
 body{
     padding: 0 !important;
 }
-
-.row{
-    display:flex;
-    flex-wrap: wrap;
-    margin: 0 -0.9375rem;
+.container-fluid{
+    padding: 0 !important;
 }

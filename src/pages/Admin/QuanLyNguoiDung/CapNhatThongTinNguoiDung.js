@@ -66,110 +66,115 @@ export default function CapNhatThongTinNguoiDung() {
       validationSchema={CapNhatNguoiDungSchema}
       render={(formikProps) => (
         <Form>
-          <div className="form-group">
-            <label>Tài khoản</label>
-            <Field
-              className="form-control"
-              value={formikProps.values.taiKhoan}
-              type="text"
-              name="taiKhoan"
-              onChange={formikProps.handleChange}
-            />
-            <ErrorMessage name="taiKhoan" />
+          <div className="container mt-5">
+          <h1>Thêm người dùng</h1>
+            <div className="form-group">
+              <label>Tài khoản</label>
+              <Field
+                className="form-control"
+                value={formikProps.values.taiKhoan}
+                type="text"
+                name="taiKhoan"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="taiKhoan" />
+            </div>
+            <div className="form-group position-relative">
+              <label>Mật khẩu</label>
+              <Field
+                className="form-control"
+                value={formikProps.values.matKhau}
+                type={passwordShow ? "text" : "password"}
+                name="matKhau"
+                onChange={formikProps.handleChange}
+              />
+              {passwordShow ? (
+                <i style={{top:'37px',right:'8px'}} className={`fas fa-eye position-absolute`} onClick={togglePassword}></i>
+              ) : (
+                <i style={{top:'37px',right:'8px'}} className={`far fa-eye-slash position-absolute`} onClick={togglePassword}></i>
+              )}
+              <ErrorMessage name="matKhau" />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <Field
+                className="form-control"
+                value={formikProps.values.email}
+                type="text"
+                name="email"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="email" />
+            </div>
+            <div className="form-group">
+              <label>Số điện thoại</label>
+              <Field
+                className="form-control"
+                value={formikProps.values.soDT}
+                type="number"
+                name="soDT"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="soDT" />
+            </div>
+            <div className="form-group">
+              <label>Họ tên</label>
+              <Field
+                className="form-control"
+                value={formikProps.values.hoTen}
+                type="text"
+                name="hoTen"
+                onChange={formikProps.handleChange}
+              />
+              <ErrorMessage name="hoTen" />
+            </div>
+            <div className="form-group">
+              <label>Mã loại</label>
+              <Field
+                component="select"
+                className="form-control"
+                value={formikProps.values.maLoaiNguoiDung}
+                type="select"
+                name="maLoaiNguoiDung"
+                onChange={formikProps.handleChange}
+              >
+                <option>Học viên</option>
+                <option>Giáo vụ</option>
+              </Field>
+              <ErrorMessage name="maLoaiNguoiDung" />
+            </div>
+            <div className="form-group">
+              <label>Mã nhóm</label>
+              <Field
+                className="form-control"
+                component="select"
+                value={formikProps.values.maNhom}
+                type="select"
+                name="maNhom"
+                onChange={formikProps.handleChange}
+              >
+                <option>GP01</option>
+                <option>GP02</option>
+                <option>GP03</option>
+                <option>GP04</option>
+                <option>GP05</option>
+                <option>GP06</option>
+                <option>GP07</option>
+                <option>GP08</option>
+                <option>GP09</option>
+                <option>GP10</option>
+              </Field>
+              <ErrorMessage name="maNhom" />
+            </div>
+            <div className="text-center">
+              <button type="submit " className="mr-5 btn btn-success">
+                Sửa thông tin
+              </button>
+              <button type="button" className="btn btn-danger">
+                Rời khỏi
+              </button>
+            </div>
           </div>
-          <div className="form-group">
-            <label>Mật khẩu</label>
-            <Field
-              className="form-control"
-              value={formikProps.values.matKhau}
-              type={passwordShow ? "text" : "password"}
-              name="matKhau"
-              onChange={formikProps.handleChange}
-            />
-            {passwordShow ? (
-              <i className={`fas fa-eye`} onClick={togglePassword}></i>
-            ) : (
-              <i className={`far fa-eye-slash`} onClick={togglePassword}></i>
-            )}
-            <ErrorMessage name="matKhau" />
-          </div>
-          <div className="form-group">
-            <label>Email</label>
-            <Field
-              className="form-control"
-              value={formikProps.values.email}
-              type="text"
-              name="email"
-              onChange={formikProps.handleChange}
-            />
-            <ErrorMessage name="email" />
-          </div>
-          <div className="form-group">
-            <label>Số điện thoại</label>
-            <Field
-              className="form-control"
-              value={formikProps.values.soDT}
-              type="number"
-              name="soDT"
-              onChange={formikProps.handleChange}
-            />
-            <ErrorMessage name="soDT" />
-          </div>
-          <div className="form-group">
-            <label>Họ tên</label>
-            <Field
-              className="form-control"
-              value={formikProps.values.hoTen}
-              type="text"
-              name="hoTen"
-              onChange={formikProps.handleChange}
-            />
-            <ErrorMessage name="hoTen" />
-          </div>
-          <div className="form-group">
-            <label>Mã loại</label>
-            <Field
-              component="select"
-              className="form-control"
-              value={formikProps.values.maLoaiNguoiDung}
-              type="select"
-              name="maLoaiNguoiDung"
-              onChange={formikProps.handleChange}
-            >
-              <option>Học viên</option>
-              <option>Giáo vụ</option>
-            </Field>
-            <ErrorMessage name="maLoaiNguoiDung" />
-          </div>
-          <div className="form-group">
-            <label>Mã nhóm</label>
-            <Field
-              className="form-control"
-              component="select"
-              value={formikProps.values.maNhom}
-              type="select"
-              name="maNhom"
-              onChange={formikProps.handleChange}
-            >
-              <option>GP01</option>
-              <option>GP02</option>
-              <option>GP03</option>
-              <option>GP04</option>
-              <option>GP05</option>
-              <option>GP06</option>
-              <option>GP07</option>
-              <option>GP08</option>
-              <option>GP09</option>
-              <option>GP10</option>
-            </Field>
-            <ErrorMessage name="maNhom" />
-          </div>
-          <button type="submit" className="btn btn-success">
-            Sửa thông tin
-          </button>
-          <button type="button" className="btn btn-danger">
-            Rời khỏi
-          </button>
         </Form>
       )}
     />

@@ -1,5 +1,5 @@
-import { Table } from "antd";
-import React, { Fragment, useEffect } from "react";
+import {Modal, Table } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
 import { Input } from "antd";
 import {
   SearchOutlined,
@@ -15,13 +15,33 @@ import CapNhatThongTinNguoiDung from "../../../../pages/Admin/QuanLyNguoiDung/Ca
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-const { Search } = Input;
+import GhiDanh from "../GhiDanh/GhiDanh";
 
 export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
+  const { Search } = Input;
   const dispatch = useDispatch();
   const { danhSachNguoiDung } = useSelector(
     (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
   );
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const onSearch = (value) => {
+    if (danhSachNguoiDung.taiKhoan === value) {
+      return value;
+    }
+  };
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const xoaNguoiDungAdmin = (taiKhoan) => {
     swal({
@@ -41,8 +61,32 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
-      sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
-      sortDirections: ["descend"],
+      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => {
+        return (
+          <Input
+            autoFocus
+            placeholder="Type text here"
+            value={selectedKeys[0]}
+            onChange={(e) => {
+              setSelectedKeys(e.target.value ? [e.target.value] : []);
+            }}
+            onPressEnter={() => {
+              confirm();
+            }}
+            onBlur={() => {
+              confirm();
+            }}
+          ></Input>
+        );
+      },
+      filterIcon: () => {
+        <SearchOutlined />;
+      },
+      onFilter: (value, data) => {
+        return data.taiKhoan.toLowerCase().includes(value.toLowerCase());
+      },
+      // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
+      // sortDirections: ["descend"],
     },
     {
       title: "Họ tên",
@@ -96,19 +140,30 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
       render: (text, nguoiDung) => {
         return (
           <Fragment>
-            <NavLink
+            <Link
               className="btn bg-primary text-white mr-2"
               to={`/admin/quanlynguoidung/${nguoiDung.taiKhoan}`}
               Component={CapNhatThongTinNguoiDung}
             >
               <EditOutlined />
-            </NavLink>
+            </Link>
             <button
               className="btn bg-danger text-white"
               onClick={() => xoaNguoiDungAdmin(nguoiDung.taiKhoan)}
             >
               <DeleteOutlined />
             </button>
+            <button className="btn btn-success ml-2" onClick={showModal}>
+              Ghi danh
+            </button>
+            <Modal
+              title="Basic Modal"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <GhiDanh nguoiDung={nguoiDung} />
+            </Modal>
           </Fragment>
         );
       },
@@ -116,33 +171,31 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
   ];
 
   const data = danhSachNguoiDung;
+
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);
   }
 
-  const onSearch = (value) => console.log(value);
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row">
-        <div className="col-md-4">
-          <h3>Quản lý người dùng</h3>
+        <div className="col-md-6">
+          <h1>Quản lý người dùng</h1>
           <button className="btn btn-default mb-5">
             <Link to="/admin/quanlynguoidung/themnguoidung">
               Thêm người dùng
             </Link>
           </button>
         </div>
-        <div className="col-md-5">
+        <div className="col-md-6">
           <Search
-            className="mb-5"
             placeholder="input search text"
-            enterButton={<SearchOutlined />}
-            size="large"
             onSearch={onSearch}
+            enterButton
           />
         </div>
-        <Table columns={columns} dataSource={data} onChange={onChange} />
       </div>
+      <Table columns={columns} dataSource={data} onChange={onChange} />
     </div>
   );
 }

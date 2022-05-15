@@ -1,9 +1,9 @@
 import React from "react";
 import { Carousel } from "antd";
 import carousel from "../../assets/img/Carouselmg/carousel.jpeg";
-import carousel1 from "../../assets/img/Carouselmg/carousel1.jpeg";
+import carousel1 from "../../assets/img/Carouselmg/carousel1.png";
 import carousel2 from "../../assets/img/Carouselmg/carousel2.jpeg";
-import carousel3 from "../../assets/img/Carouselmg/carousel3.png";
+import carousel3 from "../../assets/img/Carouselmg/carousel3.jpeg";
 export default function HomeCarousel() {
   const contentStyle = {
     height: "160px",
@@ -17,22 +17,22 @@ export default function HomeCarousel() {
     <Carousel autoplay>
       <div>
         <a style={contentStyle}>
-          <img src={carousel} className='w-100' alt="" />
+          <img src={carousel} className="w-100" alt="" />
         </a>
       </div>
       <div>
         <a style={contentStyle}>
-          <img src={carousel1} className='w-100' alt="" />
+          <img src={carousel1} className="w-100" alt="" />
         </a>
       </div>
       <div>
         <a style={contentStyle}>
-          <img src={carousel2} className='w-100' alt="" />
+          <img src={carousel2} className="w-100" alt="" />
         </a>
       </div>
       <div>
         <a style={contentStyle}>
-          <img src={carousel3} className='w-100' alt="" />
+          <img src={carousel3} className="w-100" alt="" />
         </a>
       </div>
     </Carousel>

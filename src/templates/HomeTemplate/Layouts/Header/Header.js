@@ -55,7 +55,7 @@ export default function Header(props) {
     <>
       <header>
         <nav className="bg-light navbar navbar-expand-md d-flex justify-content-between flex-row px-4">
-          <div className="col-sm-1 d-md-none d-lg-none">
+          <div className="col-sm-1 col-md-1 d-lg-none">
             <div className="nav-item dropdown displayWhenSmallScreen">
               <Link
                 className="nav-link"
@@ -97,7 +97,7 @@ export default function Header(props) {
               </div>
             </div>
           </div>
-          <div className="col-sm-11 col-md-12 col-lg-9">
+          <div className="col-sm-11 col-md-11 col-lg-9">
             <div className="header__left d-flex justify-content-start flex-row align-items-start">
               <NavLink className="navbar-brand text-center" to="/">
                 <img src={logo} alt="logo" />
@@ -151,7 +151,7 @@ export default function Header(props) {
                         Đăng xuất
                       </NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item mr-3">
                       <NavLink to="/profile" className="navlink nameUser">
                         {`Xin chào, ${
                           userLogin.hoTen.toString().length > 10
