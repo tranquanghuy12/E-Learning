@@ -8,14 +8,15 @@ import { AdminTemplate } from "./templates/AdminTemplate/AdminTemplate";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
-import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
+import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
 import DanhMucKhoaHoc from "./pages/Home/DanhMucKhoaHoc";
 import KhoaHocTheoDanhMuc from "./pages/Home/KhoaHocTheoDanhMuc";
 import 'antd/dist/antd.css'
 import QuanLyKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/QuanLyKhoaHoc";
-import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung";
-import DanhSachNguoiDung from "./templates/AdminTemplate/Layouts/DanhSachNguoiDung/DanhSachNguoiDung";
+
+import DanhSachNguoiDung from "./pages/Admin/QuanLyNguoiDung/DanhSachNguoiDung/DanhSachNguoiDung";
 import Admin from "./pages/Admin/Admin";
+import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung/ThemNguoiDung";
 
 
 export const history = createBrowserHistory();
@@ -36,8 +37,9 @@ function App() {
         <AdminTemplate path="/admin" exact Component={Admin} />   
         <AdminTemplate path='/admin/quanlynguoidung' exact Component={DanhSachNguoiDung} />
         <AdminTemplate path='/admin/quanlynguoidung/themnguoidung' exact Component={ThemNguoiDung}/>
-        <AdminTemplate path='/admin/quanlynguoidung/:taiKhoan' exact Component={CapNhatThongTinNguoiDung}/>
+        <AdminTemplate path='/admin/quanlynguoidung/capnhatthongtinnguoidung/:taiKhoan' exact Component={CapNhatThongTinNguoiDung}/>
         <AdminTemplate path='/admin/quanlykhoahoc' exact Component={QuanLyKhoaHoc}/>
+        
         
         <Route component={PageNotFound} />
       </Switch>

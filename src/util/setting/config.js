@@ -36,6 +36,13 @@ export const API_THEM_NGUOI_DUNG_ADMIN =
   DOMAIN + API_NGUOIDUNG + "ThemNguoiDung";
 export const API_CHI_TIET_NGUOI_DUNG_ADMIN =
   DOMAIN + API_NGUOIDUNG + "TimKiemNguoiDung";
+export const API_TIM_KIEM_NGUOI_DUNG_ADMIN =
+  DOMAIN + API_NGUOIDUNG + "TimKiemNguoiDung?";
+//API Admin nâng cao khoá học
+export const API_LAY_DANH_SACH_KHOA_HOC_CHUA_GHI_DANH_ADMIN =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachKhoaHocChuaGhiDanh?";
+export const API_GHI_DANH_KHOA_HOC_ADMIN =
+  DOMAIN + API_KHOAHOC + "GhiDanhKhoaHoc";
 //config axios
 export const http = axios.create({
   baseURL: DOMAIN,

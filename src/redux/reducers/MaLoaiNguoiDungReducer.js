@@ -2,14 +2,16 @@ import {
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_DATA,
   LAY_MA_LOAI_NGUOI_DUNG,
-  LAY_DANH_SACH_NGUOI_DUNG
+  LAY_DANH_SACH_NGUOI_DUNG,
+  TIM_KIEM_NGUOI_DUNG
 } from "../types/QuanLyNguoiDungType";
 
 let stateDefault = {
   maLoaiNguoiDung: [],
   danhSachNguoiDungPhanTrang: [],
   danhSachNguoiDungPhanTrangData: [],
-  danhSachNguoiDung:[]
+  danhSachNguoiDung:[],
+  timKiemNguoiDung:[]
 };
 
 export const MaLoaiNguoiDungReducer = (state = stateDefault, action) => {
@@ -26,6 +28,9 @@ export const MaLoaiNguoiDungReducer = (state = stateDefault, action) => {
       return { ...state };
     case LAY_DANH_SACH_NGUOI_DUNG:
       state.danhSachNguoiDung = payload;
+      return {...state}
+    case TIM_KIEM_NGUOI_DUNG:
+      state.timKiemNguoiDung = payload;
       return {...state}
     default:
       return state;

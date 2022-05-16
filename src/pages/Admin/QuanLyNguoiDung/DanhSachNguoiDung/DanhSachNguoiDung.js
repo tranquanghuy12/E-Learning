@@ -1,6 +1,5 @@
-import {Modal, Table } from "antd";
+import { Modal, Table, Input } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
-import { Input } from "antd";
 import {
   SearchOutlined,
   EditOutlined,
@@ -10,12 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   layDanhSachNguoiDung,
   adminXoaNguoiDungAction,
+  layDanhSachNguoiDungSearch,
 } from "../../../../redux/actions/AdminQuanLyAction";
-import CapNhatThongTinNguoiDung from "../../../../pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
-import { NavLink } from "react-router-dom";
+import CapNhatThongTinNguoiDung from "../CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import GhiDanh from "../GhiDanh/GhiDanh";
+import GhiDanhKhoaHoc from "../GhiDanhKhoaHoc/GhiDanhKhoaHoc";
 
 export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
   const { Search } = Input;
@@ -36,12 +35,11 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     setIsModalVisible(false);
   };
   const onSearch = (value) => {
-    if (danhSachNguoiDung.taiKhoan === value) {
-      return value;
-    }
+    //if (danhSachNguoiDung.taiKhoan === value) {
+    // return value;
+    //}
+    dispatch(layDanhSachNguoiDungSearch(value));
   };
-
-  const [searchTerm, setSearchTerm] = useState("");
 
   const xoaNguoiDungAdmin = (taiKhoan) => {
     swal({
@@ -61,58 +59,15 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
-      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }) => {
-        return (
-          <Input
-            autoFocus
-            placeholder="Type text here"
-            value={selectedKeys[0]}
-            onChange={(e) => {
-              setSelectedKeys(e.target.value ? [e.target.value] : []);
-            }}
-            onPressEnter={() => {
-              confirm();
-            }}
-            onBlur={() => {
-              confirm();
-            }}
-          ></Input>
-        );
-      },
-      filterIcon: () => {
-        <SearchOutlined />;
-      },
-      onFilter: (value, data) => {
-        return data.taiKhoan.toLowerCase().includes(value.toLowerCase());
-      },
-      // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
-      // sortDirections: ["descend"],
     },
     {
       title: "Họ tên",
       dataIndex: "hoTen",
-      sorter: (a, b) => {
-        let tenUserA = a.hoTen.toLowerCase().trim();
-        let tenUserB = b.hoTen.toLowerCase().trim();
-        if (tenUserA > tenUserB) {
-          return 1;
-        }
-        return -1;
-      },
-      sortDirections: ["descend"],
+      
     },
     {
       title: "Email",
       dataIndex: "email",
-      sorter: (a, b) => {
-        let tenUserA = a.email.toLowerCase().trim();
-        let tenUserB = b.email.toLowerCase().trim();
-        if (tenUserA > tenUserB) {
-          return 1;
-        }
-        return -1;
-      },
-      sortDirections: ["descend"],
       render: (text, nguoiDung) => {
         return (
           <Fragment>
@@ -126,13 +81,11 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Số điện thoại",
       dataIndex: "soDt",
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.soDt - b.soDt,
     },
     {
       title: "Loại người dùng",
       dataIndex: "maLoaiNguoiDung",
-      sortDirections: ["descend"],
+      
     },
     {
       title: "Chức năng",
@@ -142,7 +95,7 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
           <Fragment>
             <Link
               className="btn bg-primary text-white mr-2"
-              to={`/admin/quanlynguoidung/${nguoiDung.taiKhoan}`}
+              to={`/admin/quanlynguoidung/capnhatthongtinnguoidung/${nguoiDung.taiKhoan}`}
               Component={CapNhatThongTinNguoiDung}
             >
               <EditOutlined />
@@ -157,13 +110,17 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
               Ghi danh
             </button>
             <Modal
-              title="Basic Modal"
+              title="Ghi danh"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
             >
-              <GhiDanh nguoiDung={nguoiDung} />
+              <GhiDanhKhoaHoc nguoiDung={nguoiDung} />
             </Modal>
+            <Link
+              to={`/admin/quanlynguoidung/${nguoiDung.taiKhoan}`}
+              Component={GhiDanhKhoaHoc}
+            ></Link>
           </Fragment>
         );
       },

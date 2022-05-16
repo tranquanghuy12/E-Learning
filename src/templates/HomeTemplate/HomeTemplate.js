@@ -1,5 +1,6 @@
 import React,{ Fragment } from "react";
 import { Route } from "react-router-dom";
+import Review from "../../components/Review/Review";
 import Footer from "./Layouts/Footer/Footer";
 import Header from "./Layouts/Header/Header";
 
@@ -17,6 +18,7 @@ export const HomeTemplate = (props) => {
           <Fragment>
             <Header {...propsRoute} />            
             <Component {...propsRoute} />
+            <Review {...propsRoute} />
             <Footer {...propsRoute} />
           </Fragment>
         );

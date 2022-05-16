@@ -6,8 +6,8 @@ import swal from "sweetalert";
 import {
   capNhatThongTinNguoiDungAdmin,
   chiTietNguoiDungAdminAction,
-} from "../../../redux/actions/AdminQuanLyAction";
-import { CapNhatNguoiDungSchema } from "../../../services/NguoiDungSchema";
+} from "../../../../redux/actions/AdminQuanLyAction";
+import { CapNhatNguoiDungSchema } from "../../../../services/NguoiDungSchema";
 
 export default function CapNhatThongTinNguoiDung() {
   const dispatch = useDispatch();
@@ -67,7 +67,7 @@ export default function CapNhatThongTinNguoiDung() {
       render={(formikProps) => (
         <Form>
           <div className="container mt-5">
-          <h1>Thêm người dùng</h1>
+          <h1>Sửa thông tin người dùng</h1>
             <div className="form-group">
               <label>Tài khoản</label>
               <Field

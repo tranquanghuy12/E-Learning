@@ -55,7 +55,7 @@ export default function Header(props) {
     <>
       <header>
         <nav className="bg-light navbar navbar-expand-md d-flex justify-content-between flex-row px-4">
-          <div className="col-sm-1 col-md-1 d-lg-none">
+          <div className="col-sm-1 d-lg-none d-md-none display__when_small">
             <div className="nav-item dropdown displayWhenSmallScreen">
               <Link
                 className="nav-link"
@@ -97,10 +97,10 @@ export default function Header(props) {
               </div>
             </div>
           </div>
-          <div className="col-sm-11 col-md-11 col-lg-9">
+          <div className="col-sm-11 col-md-8 col-lg-8 display__sm">
             <div className="header__left d-flex justify-content-start flex-row align-items-start">
               <NavLink className="navbar-brand text-center" to="/">
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo"/>
               </NavLink>
               <div className="nav-item dropdown Categories">
                 <Link
@@ -136,47 +136,45 @@ export default function Header(props) {
               </form>
             </div>
           </div>
-          <div className="col-lg-3 d-flex justify-content-between flex-row-reverse">
-            <div className="header__right">
-              <ul className="navbar-nav d-flex float-right align-items-center flex-row-reverse">
-                {userLogin.taiKhoan ? (
-                  <>
-                    <li className="nav-item">
-                      <NavLink
-                        to="/"
-                        className="navlink logout"
-                        onClick={logout}
-                      >
-                        <i className="fas fa-sign-out-alt  test__scss"></i>
-                        Đăng xuất
-                      </NavLink>
-                    </li>
-                    <li className="nav-item mr-3">
-                      <NavLink to="/profile" className="navlink nameUser">
-                        {`Xin chào, ${
-                          userLogin.hoTen.toString().length > 10
-                            ? userLogin.hoTen.substring(0, 8) + "..."
-                            : userLogin.hoTen
-                        }`}
-                      </NavLink>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li className="nav-item">
-                      <NavLink to="/login" className="navlink signIn">
-                        Đăng nhập
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <NavLink to="/register" className="navlink signUp">
-                        Đăng ký
-                      </NavLink>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
+          <div className="col-lg-4 col__display">
+            <ul className="navbar-nav float-right">
+              {userLogin.taiKhoan ? (
+                <>
+                  <li className="nav-item mr-3">
+                    <NavLink to="/profile" className="nav-link btn-custom-login">
+                      {`Xin chào, ${
+                        userLogin.hoTen.toString().length > 10
+                          ? userLogin.hoTen.substring(0, 8) + "..."
+                          : userLogin.hoTen
+                      }`}
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      to="/"
+                      className="nav-link btn-custom-logout"
+                      onClick={logout}
+                    >
+                      <i className="fas fa-sign-out-alt  test__scss"></i>
+                      Đăng xuất
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/login" className="nav-link btn-custom-login mr-3">
+                      Đăng nhập
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/register" className="nav-link btn-custom-logout">
+                      Đăng ký
+                    </NavLink>
+                  </li>
+                </>
+              )}
+            </ul>
           </div>
         </nav>
       </header>

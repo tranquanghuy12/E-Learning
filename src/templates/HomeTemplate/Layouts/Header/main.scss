@@ -33,8 +33,7 @@ nav.navbar{
 .header__left {
   .navbar-brand {
     img {
-      width: 90px;
-      
+      width:100px !important;      
     }
     padding: 8px 16px !important;
   }
@@ -56,7 +55,7 @@ nav.navbar{
     .input-group{
       display: flex !important;
       position: relative;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       align-items: stretch;
       width: 100%;
       margin-top: 8px;
@@ -109,79 +108,23 @@ nav.navbar{
     }
   }
 }
-.header__right {
-  .navbar-nav {
-    height: 40px;
-    .nav-item {
-      .navlink {
-        text-decoration: none;
-        color: black;
-      }
-      .navlink.signUp {
-        padding: 10px;
-        text-decoration: none;
-        background-color: white;
-        color: $primary-darkblue;
-        transition: all ease 0.2s;
-        margin-right: 10px;
-        &:hover {
-          color: black;
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        }
-      }
-      .navlink.signIn {
-        padding: 10px;
-        text-decoration: none;
-        background-color: $primary-darkblue;
-        color: white;
-        transition: all ease 0.2s;
-        margin-right: 10px;
-        &:hover {
-          background-color: $second-color-light;
-        }
-      }
-      .navlink.nameUser {
-        padding: 10px;
-        text-decoration: none;
-        background-color: $bg-color;
-        color: $second-color;
-        border: 1px solid $second-color;
-      }
-      .navlink.logout {
-        line-height: height;
-        i {
-          color: $btn-color-1;
-          font-size: 14px;
-          margin-right: 4px;         
-        }
-        padding: 10px;
-        text-decoration: none;
-        background-color: $second-color;
-        color: $btn-color-1;
-        margin-right: 10px;
-        transition: .2s;
-        &:hover{
-          background-color: $second-color;
-          color:$bg-color;
-          transition: .2s;          
-          box-shadow: 10px 10px 5px #aaaaaa;
-          i{
-            color: $bg-color;
-          }
-        }
-      }
-    }
+
+//responsive
+.display__when_small{
+  @include responsive(SM){
+    width: auto !important;
   }
 }
-
-.header__right {
+.display__sm{
+  @include responsive(SM){
+    width: auto !important;
+  }
+}
+.col__display{
   @include responsive(MD){
-    .navbar-nav{
-      display: none !important;
-    }
+    display: none;
   }
 }
-
 .header__left {
   @include responsive(MD) {
     .Categories {
