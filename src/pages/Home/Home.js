@@ -9,6 +9,7 @@ export default function Home(props) {
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
+  console.log('mang khoa hoc',typeof mangKhoaHoc);
   useEffect(() => {
     const action = layDanhSachPhimAction();
     dispatch(action);
@@ -17,16 +18,17 @@ export default function Home(props) {
   const layDanhSachKhoaHoc = () => {
     return mangKhoaHoc.map((item, index) => {
       return (
-        <div className="col-3" key={index}>
-          <RenderCardKhoaHoc item={item} />
+        <div className="col-sm-12 col-md-4 col-lg-3" key={index}>
+          <RenderCardKhoaHoc item={item} />         
         </div>
       );
     });
   };
   return (
-    <div>
+    <div className="container-fluid">
+      {/* 1 trong 2 cái này, tắt di thì het scrool ngang */}
       <div>{HomeCarousel()}</div>
-      <div className="row container m-auto">{layDanhSachKhoaHoc()}</div>
+      <div className="row m-auto">{layDanhSachKhoaHoc()}</div>
     </div>
   );
 }

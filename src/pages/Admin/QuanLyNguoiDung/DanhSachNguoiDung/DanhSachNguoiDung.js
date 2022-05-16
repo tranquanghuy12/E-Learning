@@ -1,6 +1,5 @@
-import { Table } from "antd";
-import React, { Fragment, useEffect } from "react";
-import { Input } from "antd";
+import { Modal, Table, Input } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   SearchOutlined,
   EditOutlined,
@@ -10,18 +9,37 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   layDanhSachNguoiDung,
   adminXoaNguoiDungAction,
+  layDanhSachNguoiDungSearch,
 } from "../../../../redux/actions/AdminQuanLyAction";
-import CapNhatThongTinNguoiDung from "../../../../pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
-import { NavLink } from "react-router-dom";
+import CapNhatThongTinNguoiDung from "../CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-const { Search } = Input;
+import GhiDanhKhoaHoc from "../GhiDanhKhoaHoc/GhiDanhKhoaHoc";
 
 export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
+  const { Search } = Input;
   const dispatch = useDispatch();
   const { danhSachNguoiDung } = useSelector(
     (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
   );
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const onSearch = (value) => {
+    //if (danhSachNguoiDung.taiKhoan === value) {
+    // return value;
+    //}
+    dispatch(layDanhSachNguoiDungSearch(value));
+  };
 
   const xoaNguoiDungAdmin = (taiKhoan) => {
     swal({
@@ -41,34 +59,15 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
-      sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
-      sortDirections: ["descend"],
     },
     {
       title: "Họ tên",
       dataIndex: "hoTen",
-      sorter: (a, b) => {
-        let tenUserA = a.hoTen.toLowerCase().trim();
-        let tenUserB = b.hoTen.toLowerCase().trim();
-        if (tenUserA > tenUserB) {
-          return 1;
-        }
-        return -1;
-      },
-      sortDirections: ["descend"],
+      
     },
     {
       title: "Email",
       dataIndex: "email",
-      sorter: (a, b) => {
-        let tenUserA = a.email.toLowerCase().trim();
-        let tenUserB = b.email.toLowerCase().trim();
-        if (tenUserA > tenUserB) {
-          return 1;
-        }
-        return -1;
-      },
-      sortDirections: ["descend"],
       render: (text, nguoiDung) => {
         return (
           <Fragment>
@@ -82,13 +81,11 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Số điện thoại",
       dataIndex: "soDt",
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.soDt - b.soDt,
     },
     {
       title: "Loại người dùng",
       dataIndex: "maLoaiNguoiDung",
-      sortDirections: ["descend"],
+      
     },
     {
       title: "Chức năng",
@@ -96,19 +93,34 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
       render: (text, nguoiDung) => {
         return (
           <Fragment>
-            <NavLink
+            <Link
               className="btn bg-primary text-white mr-2"
-              to={`/admin/quanlynguoidung/${nguoiDung.taiKhoan}`}
+              to={`/admin/quanlynguoidung/capnhatthongtinnguoidung/${nguoiDung.taiKhoan}`}
               Component={CapNhatThongTinNguoiDung}
             >
               <EditOutlined />
-            </NavLink>
+            </Link>
             <button
               className="btn bg-danger text-white"
               onClick={() => xoaNguoiDungAdmin(nguoiDung.taiKhoan)}
             >
               <DeleteOutlined />
             </button>
+            <button className="btn btn-success ml-2" onClick={showModal}>
+              Ghi danh
+            </button>
+            <Modal
+              title="Ghi danh"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <GhiDanhKhoaHoc nguoiDung={nguoiDung} />
+            </Modal>
+            <Link
+              to={`/admin/quanlynguoidung/${nguoiDung.taiKhoan}`}
+              Component={GhiDanhKhoaHoc}
+            ></Link>
           </Fragment>
         );
       },
@@ -116,33 +128,31 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
   ];
 
   const data = danhSachNguoiDung;
+
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);
   }
 
-  const onSearch = (value) => console.log(value);
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row">
-        <div className="col-md-4">
-          <h3>Quản lý người dùng</h3>
+        <div className="col-md-6">
+          <h1>Quản lý người dùng</h1>
           <button className="btn btn-default mb-5">
             <Link to="/admin/quanlynguoidung/themnguoidung">
               Thêm người dùng
             </Link>
           </button>
         </div>
-        <div className="col-md-5">
+        <div className="col-md-6">
           <Search
-            className="mb-5"
             placeholder="input search text"
-            enterButton={<SearchOutlined />}
-            size="large"
             onSearch={onSearch}
+            enterButton
           />
         </div>
-        <Table columns={columns} dataSource={data} onChange={onChange} />
       </div>
+      <Table columns={columns} dataSource={data} onChange={onChange} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default function RenderCardKhoaHoc({ item }) {
   return (
     <Card
       hoverable
-      style={{ width: 240 }}
+      style={{ width: '100%' }}
       cover={<img alt={item.tenKhoaHoc} src={item.hinhAnh} />}
     >
       <Meta title={item.tenKhoaHoc} description={`Lượt xem: ${item.luotXem}`} />

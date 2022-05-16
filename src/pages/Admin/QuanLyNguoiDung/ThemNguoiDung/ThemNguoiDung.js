@@ -3,8 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import { useDispatch } from "react-redux";
 
-import { DangKySchema } from "../../../services/NguoiDungSchema";
-import { adminThemNguoiDungAction } from "../../../redux/actions/AdminQuanLyAction";
+
+
+import { DangKySchema } from "../../../../services/NguoiDungSchema";
+import { adminThemNguoiDungAction } from "../../../../redux/actions/AdminQuanLyAction";
 
 export default function ThemNguoiDung({ maLoaiNguoiDung }) {
   const dispatch = useDispatch();

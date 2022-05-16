@@ -1,8 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "../../assets/sass/app.scss";
 
-.containerLogin{
+.bg__login {
   background-color: #00ac96;
-  font-family: 'Roboto,sans-serif';
+}
+
+.containerLogin {
+  background-color: #00ac96;
+  font-family: "Roboto,sans-serif";
 }
 .contentLogin {
   margin: 8%;
@@ -10,12 +15,21 @@
   padding: 4rem 1rem 4rem 1rem;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
 }
+form{
+  .form-group{
+    color: $primary-darkblue;
+  }
+  .form-check{
+    color: $primary-darkblue;
+  }
+}
 .signinText {
   font-style: normal;
   font-weight: 600 !important;
+  color: $primary-darkblue;
 }
-.formCheck{
-  padding-left:0 !important;
+.formCheck {
+  padding-left: 0 !important;
 }
 .formControl {
   display: block;

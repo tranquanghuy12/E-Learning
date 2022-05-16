@@ -1,0 +1,66 @@
+.btn-custom {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  background-color: $second-color;
+  border-color: $second-color;
+  color: $bg-color;
+  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+
+  &:hover {
+    color: $btn-color-0;
+    transform: scale(1.05);
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
+  }
+}
+
+.btn-custom-1 {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  background-color: $btn-color-1;
+  border-color: $primary-darkblue;
+  color: $primary-darkblue;
+  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+
+  &:hover {
+    color: $second-color;
+    transform: scale(1.05);
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
+  }
+}
+
+.btn-custom-login {
+  padding: 10px !important;
+  line-height: 1.3333333 !important;
+  text-decoration: none;
+  border-radius: 4px;
+  background-color: $btn-color-1;
+  border-color: $primary-darkblue;
+  color: $primary-darkblue;
+  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+  &:hover {
+    color: $second-color;
+    transform: scale(1.05) ;
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9) ;
+  }
+}
+
+.btn-custom-logout {
+  padding: 10px !important;
+  line-height: 1.3333333 !important;
+  text-decoration: none;
+  border-radius: 4px;
+  background-color: $primary-darkblue;
+  border-color: $primary-darkblue;
+  color: $bg-color;
+  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+
+  &:hover {
+    color: $bg-color;
+    transform: scale(1.05);
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
+  }
+}

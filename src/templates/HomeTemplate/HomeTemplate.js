@@ -1,5 +1,7 @@
 import React,{ Fragment } from "react";
 import { Route } from "react-router-dom";
+import Review from "../../components/Review/Review";
+import Footer from "./Layouts/Footer/Footer";
 import Header from "./Layouts/Header/Header";
 
 
@@ -14,12 +16,10 @@ export const HomeTemplate = (props) => {
         //props.location, props.history, props.match
         return (
           <Fragment>
-            <Header {...propsRoute} />
-            
+            <Header {...propsRoute} />            
             <Component {...propsRoute} />
-            <footer className="bg-warning text-white">
-              Đây là footer homepage
-            </footer>
+            <Review {...propsRoute} />
+            <Footer {...propsRoute} />
           </Fragment>
         );
       }}

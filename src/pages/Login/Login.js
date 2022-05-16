@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styles from "../Login/Login.module.css";
+import "./main.scss";
 import loginSvg from "../../assets/img/login.svg";
 import { Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
@@ -20,18 +20,18 @@ export default function Login(props) {
   });
 
   return (
-    <div className={`${styles.containerLogin}`}>
-      <div className={`row ${styles.contentLogin}`}>
+    <div className="container-fluid bg__login">
+      <div className='row contentLogin align-items-center'>
         <div className="col-md-6 mb-3">
           <img src={loginSvg} className="img-fluid" alt="image" />
         </div>
         <div className="col-md-6">
-          <h2 className={`${styles.signinText} mb-3`}>Đăng nhập</h2>
+          <h2 className={`signinText mb-3`}>Đăng nhập</h2>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-group">
               <label htmlFor="taiKhoan">Tài khoản</label>
               <input
-                className={`form-control ${styles.formControl}`}
+                className='form-control'
                 type="text"
                 name="taiKhoan"
                 onChange={formik.handleChange}
@@ -40,13 +40,13 @@ export default function Login(props) {
             <div className="form-group">
               <label htmlFor="password">Mật khẩu</label>
               <input
-                className={`form-control ${styles.formControl}`}
+                className='form-control'
                 type="password"
                 name="matKhau"
                 onChange={formik.handleChange}
               />
             </div>
-            <div className={`form-check ${styles.formCheck}`}>
+            <div className='form-check pl-0'>
               <input
                 type="checkbox"
                 name="checkbox"
@@ -62,18 +62,12 @@ export default function Login(props) {
             </p>
             <div className="row text-center mt-5">
               <div className="col-6">
-                <button
-                  type="submit"
-                  className={`btn btn-class ${styles.btnClassLogin}`}
-                >
+                <button type="submit" className="btn btn-custom">
                   Tiếp theo
                 </button>
               </div>
               <div className="col-6">
-                <button
-                  type="submit"
-                  className={`btn btn-class ${styles.btnClass}`}
-                >
+                <button type="submit" className="btn btn-custom-1">
                   Đăng ký
                 </button>
               </div>
