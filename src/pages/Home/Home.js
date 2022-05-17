@@ -9,7 +9,6 @@ export default function Home(props) {
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
-  console.log('mang khoa hoc',typeof mangKhoaHoc);
   useEffect(() => {
     const action = layDanhSachPhimAction();
     dispatch(action);
@@ -26,7 +25,6 @@ export default function Home(props) {
   };
   return (
     <div className="container-fluid">
-      {/* 1 trong 2 cái này, tắt di thì het scrool ngang */}
       <div>{HomeCarousel()}</div>
       <div className="row m-auto">{layDanhSachKhoaHoc()}</div>
     </div>

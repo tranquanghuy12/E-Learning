@@ -1,21 +1,18 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { act } from "react-dom/test-utils";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ghiDanhKhoaHocAdminAction,
   layDanhSachKhoaHocChuaGhiDanh,
 } from "../../../../redux/actions/AdminQuanLyAction";
+import LayDanhSachKhoaHocChoXetDuyet from "../LayDanhSachKhoaHocChoXetDuyet/LayDanhSachKhoaHocChoXetDuyet";
 
 export default function GhiDanhKhoaHoc(props) {
   const dispatch = useDispatch();
-  //string
-  const taiKhoan = props.nguoiDung.taiKhoan;
   const { dsKhoaHocChuaGhiDanh } = useSelector(
-    (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
+    (rootReducer) => rootReducer.AdminQuanLyKhoaHocReducer
   );
-
   useEffect(() => {
-    dispatch(layDanhSachKhoaHocChuaGhiDanh(taiKhoan));
+    dispatch(layDanhSachKhoaHocChuaGhiDanh());
   }, [dispatch]);
 
   const layDsKhoaHocChuaGhiDanh = () => {
@@ -27,30 +24,28 @@ export default function GhiDanhKhoaHoc(props) {
       );
     });
   };
-
-  const [data, setData] = useState({ maKhoaHoc: "", taiKhoan: "" });
-  const handleChangeInput = (e) => {
-    let { value, maKhoaHoc, taiKhoan } = e.target;
-    setData({
-      ...data,
-      [maKhoaHoc]: value,
-      [taiKhoan]: value,
-    });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const action = ghiDanhKhoaHocAdminAction(data);
-    dispatch(action);
-  };
+  // const [data, setData] = useState({ maKhoaHoc: ""});
+  // const handleChangeInput = (e) => {
+  //   let { value, maKhoaHoc } = e.target;
+  //   setData({
+  //     ...data,
+  //     [maKhoaHoc]: value,
+  //   });
+  // };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const action = ghiDanhKhoaHocAdminAction(data);
+  //   dispatch(action);
+  // };
   return (
     <>
       <div className="dropdown">
         <label>Chọn khoá học</label>
-        <form className="input-group" onSubmit={handleSubmit}>
+        <form className="input-group">
           <div className="form-group row align-items-center">
             <div className="col-8">
               <select
-                onChange={handleChangeInput}
+                
                 className="input-large form-control"
                 name=""
                 id=""
@@ -66,15 +61,20 @@ export default function GhiDanhKhoaHoc(props) {
           </div>
         </form>
         <hr />
-        <div className="row">
+        <div className="row align-items-center">
           <div className="col-6">
-            <h5>Học viên chờ xác thực</h5>
+            <label>Học viên chờ xác thực</label>
           </div>
-          <div className="col-6">
-            <input type="text" placeholder="Nhập tên học viên" />
+          <div className="col-6 form-group">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Nhập tên học viên"
+            />
           </div>
-          {/* <Table columns={columns} dataSource={data} /> */}
         </div>
+        <LayDanhSachKhoaHocChoXetDuyet />
+        <hr />
       </div>
     </>
   );

@@ -6,6 +6,7 @@ import { MaLoaiNguoiDungReducer } from "./reducers/MaLoaiNguoiDungReducer";
 import DanhMucKhoaHocReducer from "./reducers/DanhMucKhoaHocReducer";
 import KhoaHocTheoDanhMucReducer from "./reducers/KhoaHocTheoDanhMucReducer";
 import { AdminQuanLyNguoiDungReducer } from "./reducers/AdminQuanLyNguoiDungReducer";
+import { AdminQuanLyKhoaHocReducer } from "./reducers/AdminQuanLyKhoaHocReducer";
 const rootReducer = combineReducers({
   //state ứng dụng
   QuanLyNguoiDungReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   MaLoaiNguoiDungReducer,
   DanhMucKhoaHocReducer,
   KhoaHocTheoDanhMucReducer,
-  AdminQuanLyNguoiDungReducer
+  AdminQuanLyNguoiDungReducer,
+  AdminQuanLyKhoaHocReducer
 });
 export default rootReducer;
