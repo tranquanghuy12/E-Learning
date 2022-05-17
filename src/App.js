@@ -17,6 +17,7 @@ import QuanLyKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/QuanLyKhoaHoc";
 import DanhSachNguoiDung from "./pages/Admin/QuanLyNguoiDung/DanhSachNguoiDung/DanhSachNguoiDung";
 import Admin from "./pages/Admin/Admin";
 import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung/ThemNguoiDung";
+import GhiDanhNguoiDung from "./pages/Admin/QuanLyNguoiDung/GhiDanhKhoaHoc/GhiDanhNguoiDung";
 
 
 export const history = createBrowserHistory();
@@ -38,6 +39,7 @@ function App() {
         <AdminTemplate path='/admin/quanlynguoidung' exact Component={DanhSachNguoiDung} />
         <AdminTemplate path='/admin/quanlynguoidung/themnguoidung' exact Component={ThemNguoiDung}/>
         <AdminTemplate path='/admin/quanlynguoidung/capnhatthongtinnguoidung/:taiKhoan' exact Component={CapNhatThongTinNguoiDung}/>
+        <AdminTemplate path='/admin/quanlynguoidung/ghidanhnguoidung/:taiKhoan' exact Component={GhiDanhNguoiDung}/>
         <AdminTemplate path='/admin/quanlykhoahoc' exact Component={QuanLyKhoaHoc}/>
         
         

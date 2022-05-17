@@ -8,6 +8,7 @@ import {
   API_LAY_DANH_SACH_KHOA_HOC_CHUA_GHI_DANH_ADMIN,
   API_LAY_DANH_SACH_NGUOI_DUNG,
   API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
+  API_LAY_DS_KHOA_HOC_CHO_XET_DUYET,
   API_THEM_NGUOI_DUNG_ADMIN,
   API_TIM_KIEM_NGUOI_DUNG_ADMIN,
   API_XOA_NGUOI_DUNG_ADMIN,
@@ -16,14 +17,15 @@ import {
 import {
   ADMIN_CAPNHAT_THONGTIN_NGUOIDUNG,
   ADMIN_CHI_TIET_THONG_TIN_NGUOI_DUNG,
-  ADMIN_DANH_SACH_KHOA_HOC_CHUA_GHI_DANH,
+  ADMIN_GHI_DANH_KHOA_HOC,
+  ADMIN_LAY_DS_KHOA_HOC_CHO_XET_DUYET,
+  ADMIN_LAY_DS_KHOA_HOC_CHUA_GHI_DANH,
   ADMIN_THEM_NGUOI_DUNG,
 } from "../types/AdminNguoiDungType";
 import {
   LAY_DANH_SACH_NGUOI_DUNG,
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG_DATA,
-  TIM_KIEM_NGUOI_DUNG,
 } from "../types/QuanLyNguoiDungType";
 
 export const layDanhSachNguoiDungPhanTrang = (param) => {
@@ -134,7 +136,6 @@ export const chiTietNguoiDungAdminAction = () => {
   return async (dispatch) => {
     try {
       let result = await http.get(API_CHI_TIET_NGUOI_DUNG_ADMIN);
-      console.log("res action", result);
       if (result.status === 200) {
         dispatch(
           createAction(ADMIN_CHI_TIET_THONG_TIN_NGUOI_DUNG, result.data)
@@ -152,9 +153,8 @@ export const layDanhSachKhoaHocChuaGhiDanh = (taiKhoan) => {
         `${API_LAY_DANH_SACH_KHOA_HOC_CHUA_GHI_DANH_ADMIN}&taiKhoan=${taiKhoan}`
       );
       if (result.status === 200) {
-        // console.log('result action',result.data)
         dispatch(
-          createAction(ADMIN_DANH_SACH_KHOA_HOC_CHUA_GHI_DANH, result.data)
+          createAction(ADMIN_LAY_DS_KHOA_HOC_CHUA_GHI_DANH, result.data)
         );
       }
     } catch (error) {
@@ -162,14 +162,28 @@ export const layDanhSachKhoaHocChuaGhiDanh = (taiKhoan) => {
     }
   };
 };
-
+export const layDanhSachKhoaHocChoXetDuyet = (taiKhoan) => {
+  return async (dispatch) => {
+    try {
+      let result = await http.post(API_LAY_DS_KHOA_HOC_CHO_XET_DUYET, taiKhoan);
+      dispatch(createAction(ADMIN_LAY_DS_KHOA_HOC_CHO_XET_DUYET, result.data));
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};
 export const ghiDanhKhoaHocAdminAction = (values) => {
   return async (dispatch) => {
     try {
-      let result = await http.post(API_GHI_DANH_KHOA_HOC_ADMIN,values);
+      let result = await http.post(API_GHI_DANH_KHOA_HOC_ADMIN, values);
       if (result.status === 200) {
-        console.log("result", result);        
+        swal({
+          title: "Ghi Danh Thành Công",
+          icon: "success",
+        });
+        dispatch(createAction(ADMIN_GHI_DANH_KHOA_HOC, result));
       }
+      window.location.reload();
     } catch (error) {
       console.log(error.response?.data);
     }

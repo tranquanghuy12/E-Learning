@@ -15,6 +15,7 @@ import CapNhatThongTinNguoiDung from "../CapNhatThongTinNguoiDung/CapNhatThongTi
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import GhiDanhKhoaHoc from "../GhiDanhKhoaHoc/GhiDanhKhoaHoc";
+import GhiDanhNguoiDung from "../GhiDanhKhoaHoc/GhiDanhNguoiDung";
 
 export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
   const { Search } = Input;
@@ -63,7 +64,6 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Họ tên",
       dataIndex: "hoTen",
-      
     },
     {
       title: "Email",
@@ -85,7 +85,6 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Loại người dùng",
       dataIndex: "maLoaiNguoiDung",
-      
     },
     {
       title: "Chức năng",
@@ -106,21 +105,12 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
             >
               <DeleteOutlined />
             </button>
-            <button className="btn btn-success ml-2" onClick={showModal}>
-              Ghi danh
-            </button>
-            <Modal
-              title="Ghi danh"
-              visible={isModalVisible}
-              onOk={handleOk}
-              onCancel={handleCancel}
-            >
-              <GhiDanhKhoaHoc nguoiDung={nguoiDung} />
-            </Modal>
+              
             <Link
-              to={`/admin/quanlynguoidung/${nguoiDung.taiKhoan}`}
-              Component={GhiDanhKhoaHoc}
-            ></Link>
+              className="btn bg-warning"
+              to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
+              Component={GhiDanhNguoiDung}
+            >Ghi Danh</Link>
           </Fragment>
         );
       },
