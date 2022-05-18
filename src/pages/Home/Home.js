@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Review from "../../components/Review/Review";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyKhoaHocAction";
 import HomeCarousel from "./HomeCarousel";
 import RenderCardKhoaHoc from "./RenderCardKhoaHoc";
@@ -27,6 +28,7 @@ export default function Home(props) {
     <div className="container-fluid">
       <div>{HomeCarousel()}</div>
       <div className="row m-auto">{layDanhSachKhoaHoc()}</div>
+      <Review/>
     </div>
   );
 }

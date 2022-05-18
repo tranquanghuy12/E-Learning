@@ -5,10 +5,12 @@ import {
   API_CAPNHAT_THONGTIN_NGUOIDUNG_ADMIN,
   API_CHI_TIET_NGUOI_DUNG_ADMIN,
   API_GHI_DANH_KHOA_HOC_ADMIN,
+  API_HUYGHIDANH_KHOAHOC,
   API_LAY_DANH_SACH_KHOA_HOC_CHUA_GHI_DANH_ADMIN,
   API_LAY_DANH_SACH_NGUOI_DUNG,
   API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
   API_LAY_DS_KHOA_HOC_CHO_XET_DUYET,
+  API_LAY_DS_KHOA_HOC_DA_XET_DUYET,
   API_THEM_NGUOI_DUNG_ADMIN,
   API_TIM_KIEM_NGUOI_DUNG_ADMIN,
   API_XOA_NGUOI_DUNG_ADMIN,
@@ -20,6 +22,7 @@ import {
   ADMIN_GHI_DANH_KHOA_HOC,
   ADMIN_LAY_DS_KHOA_HOC_CHO_XET_DUYET,
   ADMIN_LAY_DS_KHOA_HOC_CHUA_GHI_DANH,
+  ADMIN_LAY_DS_KHOA_HOC_DA_XET_DUYET,
   ADMIN_THEM_NGUOI_DUNG,
 } from "../types/AdminNguoiDungType";
 import {
@@ -172,6 +175,16 @@ export const layDanhSachKhoaHocChoXetDuyet = (taiKhoan) => {
     }
   };
 };
+export const layDanhSachKhoaHocDaXetDuyet = (taiKhoan) => {
+  return async (dispatch) => {
+    try {
+      let result = await http.post(API_LAY_DS_KHOA_HOC_DA_XET_DUYET, taiKhoan);      
+      dispatch(createAction(ADMIN_LAY_DS_KHOA_HOC_DA_XET_DUYET, result.data));
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};
 export const ghiDanhKhoaHocAdminAction = (values) => {
   return async (dispatch) => {
     try {
@@ -183,6 +196,23 @@ export const ghiDanhKhoaHocAdminAction = (values) => {
         });
         dispatch(createAction(ADMIN_GHI_DANH_KHOA_HOC, result));
       }
+      window.location.reload();
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};
+
+export const huyGhiDanhKhoaHocAdmin = (data) => {
+  return async (dispatch) => {
+    try {
+      let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
+      console.log('huy ghi danh',result)
+      swal({
+        title: "Thành công",
+        text: "Bạn đã xoá thành công",
+      });
+
       window.location.reload();
     } catch (error) {
       console.log(error.response?.data);

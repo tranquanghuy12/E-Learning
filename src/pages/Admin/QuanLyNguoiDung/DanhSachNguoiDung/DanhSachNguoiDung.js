@@ -1,7 +1,6 @@
 import { Modal, Table, Input } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
 import {
-  SearchOutlined,
   EditOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
@@ -14,7 +13,6 @@ import {
 import CapNhatThongTinNguoiDung from "../CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import GhiDanhKhoaHoc from "../GhiDanhKhoaHoc/GhiDanhKhoaHoc";
 import GhiDanhNguoiDung from "../GhiDanhKhoaHoc/GhiDanhNguoiDung";
 
 export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
@@ -36,9 +34,6 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     setIsModalVisible(false);
   };
   const onSearch = (value) => {
-    //if (danhSachNguoiDung.taiKhoan === value) {
-    // return value;
-    //}
     dispatch(layDanhSachNguoiDungSearch(value));
   };
 
