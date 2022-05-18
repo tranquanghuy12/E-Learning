@@ -82,19 +82,17 @@ export default function GhiDanhNguoiDung(props) {
       </form>
       <hr />
       <div className="row align-items-center">
-        <div className="col-6">
-          <label>Học viên chờ xác thực</label>
-        </div>
-        <div className="col-6 form-group">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Nhập tên học viên"
-          />
+        <div className="col-12">
+          <label>Khoá học chờ xác thực</label>
         </div>
       </div>
       <LayDanhSachKhoaHocChoXetDuyet taiKhoan={props.match.params} />
       <hr />
+      <div className="row align-items-center">
+        <div className="col-12">
+          <label>Khoá học đã xác thực</label>
+        </div>
+      </div>     
       <KhoaHocDaGhiDanh taiKhoan={props.match.params} />
     </div>
   );

@@ -95,6 +95,7 @@ export const huyGhiDanhKhoaHoc = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
+      console.log('huy ghi danh',result)
       swal({
         title: "Thành công",
         text: "Bạn đã xoá thành công",

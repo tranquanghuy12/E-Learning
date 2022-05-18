@@ -18,19 +18,19 @@ export default function Profile() {
   const { userProfile } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
-  let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];
-  console.log(chiTietCacKhoaHocDaDangKy);
+  
+  let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];  
+  
   useEffect(() => {
     dispatch(layThongTinNguoiDungAction());
   }, [dispatch]);
   const xoaKhoaHoc = (maKhoaHoc) => {
     if (userProfile) {
-      let taiKhoan = userProfile.taiKhoan;
+      let taiKhoan = userProfile.taiKhoan;      
       let data = {
         taiKhoan: taiKhoan,
         maKhoaHoc: maKhoaHoc,
       };
-      console.log("data index", data);
       swal({
         title: "Xoá khoá học",
         text: "Bạn có chắc chắc muốn xoá?",
@@ -148,7 +148,6 @@ export default function Profile() {
                 </button>
               </div>
             </div>
-
             <div className="row">{khoaHocDaDangKy()}</div>
           </>
         )}

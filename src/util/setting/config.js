@@ -43,7 +43,10 @@ export const API_LAY_DANH_SACH_KHOA_HOC_CHUA_GHI_DANH_ADMIN =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachKhoaHocChuaGhiDanh?";
 export const API_GHI_DANH_KHOA_HOC_ADMIN =
   DOMAIN + API_KHOAHOC + "GhiDanhKhoaHoc";
-export const API_LAY_DS_KHOA_HOC_CHO_XET_DUYET = DOMAIN + API_NGUOIDUNG + 'LayDanhSachKhoaHocChoXetDuyet';
+export const API_LAY_DS_KHOA_HOC_CHO_XET_DUYET =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachKhoaHocChoXetDuyet";
+export const API_LAY_DS_KHOA_HOC_DA_XET_DUYET =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachKhoaHocDaXetDuyet";
 //config axios
 export const http = axios.create({
   baseURL: DOMAIN,
