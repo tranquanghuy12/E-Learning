@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
-import styles from "./ModalCapNhatNguoiDung.module.css";
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
@@ -9,10 +9,10 @@ import { CapNhatNguoiDungSchema } from "../../services/NguoiDungSchema";
 
 const ModalCapNhatNguoiDung = (props) => {
   const dispatch = useDispatch();
-  const { userProfile } = useSelector(
-    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
-  );
-
+  // const { userProfile } = useSelector(
+  //   (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+  // );
+  const userProfile = props.userProfile;
   const suaThongTinNguoiDung = (values) => {
     swal({
       title: "Bạn có chắc chắn muốn sửa không?",
@@ -33,6 +33,8 @@ const ModalCapNhatNguoiDung = (props) => {
     setPasswordShow(!passwordShow);
   };
   return (
+ 
+
     <Formik
       enableReinitialize="true"
       initialValues={{
@@ -84,7 +86,7 @@ const ModalCapNhatNguoiDung = (props) => {
                 </div>
                 <div className="modal-body">
                   <div className="form-group">
-                    <label>Tài khoản</label>
+                    <label htmlFor="taiKhoan">Tài khoản</label>
                     <Field
                       className="form-control"
                       value={formikProps.values.taiKhoan}
@@ -95,7 +97,7 @@ const ModalCapNhatNguoiDung = (props) => {
                     <ErrorMessage name="taiKhoan" />
                   </div>
                   <div className="form-group">
-                    <label>Mật khẩu</label>
+                    <label htmlFor="matKhau">Mật khẩu</label>
                     <Field
                       className="form-control"
                       value={formikProps.values.matKhau}
@@ -104,20 +106,17 @@ const ModalCapNhatNguoiDung = (props) => {
                       onChange={formikProps.handleChange}
                     />
                     {passwordShow ? (
-                      <i
-                        className={`fas fa-eye ${styles.flexIcon}`}
-                        onClick={togglePassword}
-                      ></i>
+                      <i className="fas fa-eye" onClick={togglePassword}></i>
                     ) : (
                       <i
-                        className={`far fa-eye-slash ${styles.flexIcon}`}
+                        className="far fa-eye-slash"
                         onClick={togglePassword}
                       ></i>
                     )}
                     <ErrorMessage name="matKhau" />
                   </div>
                   <div className="form-group">
-                    <label>Email</label>
+                    <label htmlFor="email">Email</label>
                     <Field
                       className="form-control"
                       value={formikProps.values.email}
@@ -128,7 +127,7 @@ const ModalCapNhatNguoiDung = (props) => {
                     <ErrorMessage name="email" />
                   </div>
                   <div className="form-group">
-                    <label>Số điện thoại</label>
+                    <label htmlFor="soDT">Số điện thoại</label>
                     <Field
                       className="form-control"
                       value={formikProps.values.soDT}
@@ -139,7 +138,7 @@ const ModalCapNhatNguoiDung = (props) => {
                     <ErrorMessage name="soDT" />
                   </div>
                   <div className="form-group">
-                    <label>Họ tên</label>
+                    <label htmlFor="hoTen">Họ tên</label>
                     <Field
                       className="form-control"
                       value={formikProps.values.hoTen}
@@ -150,40 +149,40 @@ const ModalCapNhatNguoiDung = (props) => {
                     <ErrorMessage name="hoTen" />
                   </div>
                   <div className="form-group">
-                    <label>Mã loại</label>
+                    <label htmlFor="maLoaiNguoiDung">Mã loại</label>
                     <Field
-                      component="select"
+                      as="select"
                       className="form-control"
                       value={formikProps.values.maLoaiNguoiDung}
                       type="select"
                       name="maLoaiNguoiDung"
                       onChange={formikProps.handleChange}
                     >
-                      <option>HV</option>
-                      <option>GV</option>
+                      <option value="HV">HV</option>
+                      <option value="GV">GV</option>
                     </Field>
                     <ErrorMessage name="maLoaiNguoiDung" />
                   </div>
                   <div className="form-group">
-                    <label>Mã nhóm</label>
+                    <label htmlFor="maNhom">Mã nhóm</label>
                     <Field
                       className="form-control"
-                      component="select"
+                      as="select"
                       value={formikProps.values.maNhom}
                       type="select"
                       name="maNhom"
                       onChange={formikProps.handleChange}
                     >
-                      <option>GP01</option>
-                      <option>GP02</option>
-                      <option>GP03</option>
-                      <option>GP04</option>
-                      <option>GP05</option>
-                      <option>GP06</option>
-                      <option>GP07</option>
-                      <option>GP08</option>
-                      <option>GP09</option>
-                      <option>GP10</option>
+                      <option value="GP01">GP01</option>
+                      <option value="GP02">GP02</option>
+                      <option value="GP03">GP03</option>
+                      <option value="GP04">GP04</option>
+                      <option value="GP05">GP05</option>
+                      <option value="GP06">GP06</option>
+                      <option value="GP07">GP07</option>
+                      <option value="GP08">GP08</option>
+                      <option value="GP09">GP09</option>
+                      <option value="GP10">GP10</option>
                     </Field>
                     <ErrorMessage name="maNhom" />
                   </div>

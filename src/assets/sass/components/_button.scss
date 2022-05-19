@@ -33,7 +33,7 @@
 }
 
 .btn-custom-login {
-  padding: 10px !important;
+  padding: 8px !important;
   line-height: 1.3333333 !important;
   text-decoration: none;
   border-radius: 4px;
@@ -43,13 +43,13 @@
   transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
   &:hover {
     color: $second-color;
-    transform: scale(1.05) ;
-    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9) ;
+    transform: scale(1.05);
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
   }
 }
 
 .btn-custom-logout {
-  padding: 10px !important;
+  padding: 8px !important;
   line-height: 1.3333333 !important;
   text-decoration: none;
   border-radius: 4px;
@@ -59,8 +59,34 @@
   transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
 
   &:hover {
-    color: $bg-color;
+    color: $btn-color-1;
     transform: scale(1.05);
     transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
   }
+}
+
+.btn__small_card {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: $btn-color-1;
+  color: $primary-dark;
+  border: none;
+  margin-top: 6px;
 }

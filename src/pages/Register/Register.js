@@ -12,7 +12,7 @@ export default function Register(props) {
   return (
     <div className={`${styles.containerRegister}`}>
       
-      <div className="vh-100 mx-auto">
+      <div className="mx-auto">
         <div className="container">
           <div className={`row align-items-center ${styles.contentRegister}`}>
             <div className="col-md-6 mb-3 ">

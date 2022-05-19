@@ -2,16 +2,15 @@
 @import "../../assets/sass/app.scss";
 
 .bg__login {
-  background-color: #00ac96;
+  background-color: #00ac96 !important;
 }
 
 .containerLogin {
-  background-color: #00ac96;
+  background-color: #00ac96 !important;
   font-family: "Roboto,sans-serif";
 }
 .contentLogin {
-  margin: 8%;
-  background-color: #fff;
+  background-color: $bg-login;
   padding: 4rem 1rem 4rem 1rem;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
 }
@@ -26,10 +25,12 @@ form{
 .signinText {
   font-style: normal;
   font-weight: 600 !important;
-  color: $primary-darkblue;
+  color:$bg-slate-1;
+  
 }
-.formCheck {
-  padding-left: 0 !important;
+.signin__label{
+  color: $bg-slate-1 !important;
+  font-size: $fontSize-0;
 }
 .formControl {
   display: block;

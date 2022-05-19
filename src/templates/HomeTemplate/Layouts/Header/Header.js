@@ -54,7 +54,7 @@ export default function Header(props) {
   return (
     <>
       <header>
-        <nav className="bg-light navbar navbar-expand-md d-flex justify-content-between flex-row px-4">
+        <nav className="bg-light navbar navbar-expand-md d-flex align-items-center justify-content-between flex-row px-4">
           <div className="col-sm-1 d-lg-none d-md-none display__when_small">
             <div className="nav-item dropdown displayWhenSmallScreen">
               <Link
@@ -72,14 +72,14 @@ export default function Header(props) {
                 {danhMucKhoaHocCollapse()}
                 {userLogin.taiKhoan ? (
                   <>
-                    <Link className="dropdown-item" to="">
+                    <Link className="dropdown-item" to="/profile">
                       {`Xin chào, ${
                         userLogin.hoTen.toString().length > 15
                           ? userLogin.hoTen.substring(0, 8) + "..."
                           : userLogin.hoTen
                       }`}
                     </Link>
-                    <Link className="dropdown-item" onClick={logout} to="">
+                    <Link className="dropdown-item" onClick={logout} to="/">
                       Đăng xuất
                     </Link>
                   </>
@@ -97,8 +97,8 @@ export default function Header(props) {
               </div>
             </div>
           </div>
-          <div className="col-sm-11 col-md-8 col-lg-8 display__sm">
-            <div className="header__left d-flex justify-content-start flex-row align-items-start">
+          <div className="col-sm-11 col-md-8 col-lg-8 display__sm align-items-center">
+            <div className="header__left d-flex justify-content-start flex-row">
               <NavLink className="navbar-brand text-center" to="/">
                 <img src={logo} alt="logo"/>
               </NavLink>
@@ -113,7 +113,7 @@ export default function Header(props) {
                 </Link>
               </div>
 
-              <form className="form__search ml-5">
+              <form className="form__search">
                 <div className="input-group">
                   <input
                     type="text"
@@ -125,7 +125,7 @@ export default function Header(props) {
                   <div className="input-group-append">
                     <Link
                       to="/"
-                      className="input-group-text"
+                      className="btn input__group_text"
                       id="basic-addon2"
                       style={{ textDecoration: "none" }}
                     >
@@ -155,7 +155,7 @@ export default function Header(props) {
                       className="nav-link btn-custom-logout"
                       onClick={logout}
                     >
-                      <i className="fas fa-sign-out-alt  test__scss"></i>
+                      <i className="fas fa-sign-out-alt  test__scss mr-1"></i>
                       Đăng xuất
                     </NavLink>
                   </li>

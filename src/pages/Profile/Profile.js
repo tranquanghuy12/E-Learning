@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import swal from "sweetalert";
 import ModalCapNhatNguoiDung from "../../components/Modal/ModalCapNhatNguoiDung";
-
+import "./main.scss";
 import {
   huyGhiDanhKhoaHoc,
   layThongTinNguoiDungAction,
@@ -18,15 +18,25 @@ export default function Profile() {
   const { userProfile } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
-  
-  let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];  
-  
+
+  let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];
+  console.log(chiTietCacKhoaHocDaDangKy);
+  var input = "IT";
+  var sorted = chiTietCacKhoaHocDaDangKy.sort((a, b) => {
+    if (a.maKhoaHoc.startsWith(input) && b.maKhoaHoc.startsWith(input))
+      return a.maKhoaHoc.localeCompare(b.maKhoaHoc);
+    else if (a.maKhoaHoc.startsWith(input)) return -1;
+    else if (b.maKhoaHoc.startsWith(input)) return 1;
+
+    return a.maKhoaHoc.localeCompare(b.course);
+  });
   useEffect(() => {
     dispatch(layThongTinNguoiDungAction());
   }, [dispatch]);
+
   const xoaKhoaHoc = (maKhoaHoc) => {
     if (userProfile) {
-      let taiKhoan = userProfile.taiKhoan;      
+      let taiKhoan = userProfile.taiKhoan;
       let data = {
         taiKhoan: taiKhoan,
         maKhoaHoc: maKhoaHoc,
@@ -40,7 +50,6 @@ export default function Profile() {
       }).then((result) => {
         if (result === true) {
           swal("Đã xoá!", "Khoá học đã được xoá.");
-          //dispatch vô đây mà ko qua Action
           dispatch(huyGhiDanhKhoaHoc(data));
         }
       });
@@ -49,20 +58,28 @@ export default function Profile() {
   const khoaHocDaDangKy = () => {
     return chiTietCacKhoaHocDaDangKy?.map((khoaHoc, index) => {
       return (
-        <div className="col-md-3 card-deck mt-4" key={index}>
+        <div className="col-md-3 col-sm-12 col-lg-3 card-deck mt-4" key={index}>
           <div className="card text-white bg-primary">
             <img
               className="card-img-top"
               src={khoaHoc.hinhAnh}
               alt="Hình ảnh khoá học"
+              style={{ height: 200 }}
             />
-            <div className="card-body">
-              <h5 className="card-title">{khoaHoc.tenKhoaHoc}</h5>
+            <div className="card-body bg__card_body">
+              <h5 className="card-title color__card_title">
+                {khoaHoc.tenKhoaHoc}
+              </h5>
+              <p style={{ height: "100px" }}>
+                {khoaHoc.moTa.toString().length >= 20
+                  ? khoaHoc.moTa.substr(0, 50) + "..."
+                  : khoaHoc.moTa}
+              </p>
               <button
                 onClick={() => xoaKhoaHoc(khoaHoc.maKhoaHoc)}
-                className="btn btn-danger"
+                className="float-right btn__small_card"
               >
-                Huỷ khoá học
+                Huỷ
               </button>
             </div>
           </div>
@@ -75,83 +92,97 @@ export default function Profile() {
     return <Redirect to="/login" />;
   }
   return (
-    <div className="container rounded bg-white mb-5 mt-5">
-      <h3 className="text-center">Thông tin tài khoản</h3>
-      <div className="row mt-5">
-        <div className="col-md-4 border-right border-secondary">
-          <div className="d-flex flex-column align-items-center p-3 py-5">
-            <img
-              src="https://picsum.photos/200"
-              alt="ảnh đại diện"
-              className="rounded-circle mt-5"
-            />
-            <span className="font-weight-bold">{userProfile.taiKhoan}</span>
-            <span className="text-black-50">{userProfile.email}</span>
-            <span></span>
-          </div>
-        </div>
-        <div className="col-md-8">
-          <div className="form-group">
-            <h5>Tài khoản</h5>
-            <p>{userProfile.taiKhoan}</p>
-          </div>
-          <div className="form-group border-top border-danger">
-            <h5 className="mt-2">Họ Tên</h5>
-            <p>{userProfile.hoTen}</p>
-          </div>
-          <div className="form-group border-top border-danger">
-            <h5 className="mt-2">Email</h5>
-            <p>{userProfile.email}</p>
-          </div>
-          <div className="form-group border-top border-danger">
-            <h5 className="mt-2">Số điện thoại</h5>
-            <p>{userProfile.soDT}</p>
-          </div>
-          <div className="form-group border-top border-danger">
-            <h5 className="mt-2">Mã nhóm</h5>
-            <p>{userProfile.maNhom}</p>
-          </div>
-          <div className="form-group border-top border-danger">
-            <h5 className="mt-2">Mã loại người dùng</h5>
-            <p>{userProfile.maLoaiNguoiDung}</p>
-          </div>
-          <div className="d-flex justify-content-center">
-            <ModalCapNhatNguoiDung userProfile={userProfile} />
-            {userProfile.maLoaiNguoiDung==='GV' ? (<button className="btn btn-success ml-3">
-            <Link to='/admin' style={{color:'white'}}>Quản Lý</Link>
-            </button>) : (<></>)}
-            <NavLink className="ml-3 btn btn-danger" to="/">
-              Rời khỏi
-            </NavLink>
-          </div>
-        </div>
-      </div>
-
-      {/* Khoá học đã đăng ký */}
-      <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>
-      <div className="mt-5">
-        {!userProfile.chiTietKhoaHocGhiDanh ? (
-          <>
-            <div className="text-center">Bạn chưa đăng ký khoá học nào</div>
-          </>
-        ) : (
-          <>
-            <div className="input-group mb-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search"
+    <>
+      <div className="container rounded bg-white mb-5 mt-5">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Thông tin tài khoản
+            </li>
+          </ol>
+        </nav>
+        <h3 className="text-center">Thông tin tài khoản</h3>
+        <div className="row mt-5">
+          <div className="col-md-4 border-right border-secondary">
+            <div className="d-flex flex-column align-items-center p-3 py-5">
+              <img
+                src="https://picsum.photos/200"
+                alt="ảnh đại diện"
+                className="rounded-circle mt-5"
               />
-              <div className="input-group-append">
-                <button className="btn btn-success" type="submit">
-                  Go
-                </button>
-              </div>
+              <span className="font-weight-bold">{userProfile.taiKhoan}</span>
+              <span className="text-black-50">{userProfile.email}</span>
+              <span></span>
             </div>
-            <div className="row">{khoaHocDaDangKy()}</div>
-          </>
-        )}
+          </div>
+          <div className="col-md-8">
+            <div className="form-group">
+              <h5>Tài khoản</h5>
+              <p>{userProfile.taiKhoan}</p>
+            </div>
+            <div className="form-group border-top border-danger">
+              <h5 className="mt-2">Họ Tên</h5>
+              <p>{userProfile.hoTen}</p>
+            </div>
+            <div className="form-group border-top border-danger">
+              <h5 className="mt-2">Email</h5>
+              <p>{userProfile.email}</p>
+            </div>
+            <div className="form-group border-top border-danger">
+              <h5 className="mt-2">Số điện thoại</h5>
+              <p>{userProfile.soDT}</p>
+            </div>
+            <div className="form-group border-top border-danger">
+              <h5 className="mt-2">Mã nhóm</h5>
+              <p>{userProfile.maNhom}</p>
+            </div>
+            <div className="form-group border-top border-danger">
+              <h5 className="mt-2">Mã loại người dùng</h5>
+              <p>{userProfile.maLoaiNguoiDung}</p>
+            </div>
+            <div className="d-flex justify-content-center">
+              <ModalCapNhatNguoiDung userProfile={userProfile} />
+              {userProfile.maLoaiNguoiDung === "GV" ? (
+                <button className="btn btn-success ml-3">
+                  <Link to="/admin" style={{ color: "white" }}>
+                    Quản Lý
+                  </Link>
+                </button>
+              ) : (
+                <></>
+              )}
+              <Link className="ml-3 btn btn-danger" to="/">
+                Rời khỏi
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Khoá học đã đăng ký */}
+        <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>
+        <div className="mt-5">
+          {!userProfile.chiTietKhoaHocGhiDanh ? (
+            <>
+              <div className="text-center">Bạn chưa đăng ký khoá học nào</div>
+            </>
+          ) : (
+            <>
+              <div className="input-group mb-3">
+                <input
+                  onChange={(e) => e.target.value}
+                  type="text"
+                  className="form-control"
+                  placeholder="Search"
+                />
+              </div>
+              <div className="row">{khoaHocDaDangKy()}</div>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

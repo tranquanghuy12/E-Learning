@@ -1,0 +1,28 @@
+@import '../../../../assets/sass/app.scss';
+.btn__ghidanh{
+    background-color: $bg-color-1;
+    color: $primary-darkblue;
+    
+    &:hover{
+        background-color: $bg-color-2;
+        border:1px solid $primary-darkblue;
+        color: $primary-darkblue;
+    }
+}
+.btn__trove{
+    background-color:$color-hyper-500;
+    color: $bg-color-1;
+    
+    &:hover{
+        background-color: $bg-color-2;        
+        color: $primary-darkblue;
+    }
+}
+.btn__responsive_sm{
+    @include responsive(MD){
+        margin-top: 10px !important;        
+        text-align: right !important;
+        
+    }
+}
+

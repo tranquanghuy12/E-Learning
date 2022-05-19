@@ -18,6 +18,7 @@ import DanhSachNguoiDung from "./pages/Admin/QuanLyNguoiDung/DanhSachNguoiDung/D
 import Admin from "./pages/Admin/Admin";
 import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung/ThemNguoiDung";
 import GhiDanhNguoiDung from "./pages/Admin/QuanLyNguoiDung/GhiDanhKhoaHoc/GhiDanhNguoiDung";
+import ModalCapNhatNguoiDung from "./components/Modal/ModalCapNhatNguoiDung";
 
 
 export const history = createBrowserHistory();
@@ -44,7 +45,7 @@ function App() {
         
         
         <Route component={PageNotFound} />
-      </Switch>
+      </Switch>      
     </Router>
   );
 }

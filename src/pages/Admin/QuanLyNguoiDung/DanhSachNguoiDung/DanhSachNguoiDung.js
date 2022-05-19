@@ -1,9 +1,6 @@
 import { Modal, Table, Input } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
-import {
-  EditOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   layDanhSachNguoiDung,
@@ -100,12 +97,14 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
             >
               <DeleteOutlined />
             </button>
-              
+
             <Link
-              className="btn bg-warning"
+              className="btn bg-warning ml-2"
               to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
               Component={GhiDanhNguoiDung}
-            >Ghi Danh</Link>
+            >
+              Ghi Danh
+            </Link>
           </Fragment>
         );
       },
@@ -120,6 +119,19 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
 
   return (
     <div className="container mt-5">
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="breadcrumb-item">
+            <Link to="/admin">Admin</Link>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Quản lý người dùng
+          </li>
+        </ol>
+      </nav>
       <div className="row">
         <div className="col-md-6">
           <h1>Quản lý người dùng</h1>
