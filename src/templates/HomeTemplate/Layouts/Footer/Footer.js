@@ -13,22 +13,22 @@ export default function Footer() {
         {/* Left */}
         {/* Right */}
         <div>
-          <a href className="me-4 text-reset ml-3">
+          <a className="me-4 text-reset ml-3">
             <i className="fab fa-facebook-f" />
           </a>
-          <a href className="me-4 text-reset ml-3">
+          <a className="me-4 text-reset ml-3">
             <i className="fab fa-twitter" />
           </a>
-          <a href className="me-4 text-reset ml-3">
+          <a className="me-4 text-reset ml-3">
             <i className="fab fa-google" />
           </a>
-          <a href className="me-4 text-reset ml-3">
+          <a className="me-4 text-reset ml-3">
             <i className="fab fa-instagram" />
           </a>
-          <a href className="me-4 text-reset ml-3">
+          <a className="me-4 text-reset ml-3">
             <i className="fab fa-linkedin" />
           </a>
-          <a href className="me-4 text-reset ml-3">
+          <a className="me-4 text-reset ml-3">
             <i className="fab fa-github" />
           </a>
         </div>
@@ -36,7 +36,7 @@ export default function Footer() {
       </section>
       {/* Section: Social media */}
       {/* Section: Links  */}
-      <section className>
+      <section>
         <div className="container text-center text-md-start mt-5">
           {/* Grid row */}
           <div className="row mt-3">
@@ -59,22 +59,22 @@ export default function Footer() {
               {/* Links */}
               <h6 className="text-uppercase fw-bold mb-4">Khoá học</h6>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   Angular
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   React
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   Vue
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   Laravel
                 </a>
               </p>
@@ -85,22 +85,22 @@ export default function Footer() {
               {/* Links */}
               <h6 className="text-uppercase fw-bold mb-4">Liên kết</h6>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   Học phí
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   Liên hệ
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   Về chúng tôi
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#" className="text-reset">
                   Trợ giúp
                 </a>
               </p>

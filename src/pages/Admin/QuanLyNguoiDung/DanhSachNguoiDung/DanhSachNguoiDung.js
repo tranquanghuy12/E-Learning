@@ -1,9 +1,6 @@
 import { Modal, Table, Input } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
-import {
-  EditOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   layDanhSachNguoiDung,
@@ -13,26 +10,14 @@ import {
 import CapNhatThongTinNguoiDung from "../CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import GhiDanhNguoiDung from "../GhiDanhKhoaHoc/GhiDanhNguoiDung";
+import GhiDanhNguoiDung from "../../QuanLyGhiDanh/GhiDanhNguoiDung/GhiDanhNguoiDung";
 
-export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
+export default function DanhSachNguoiDung() {
   const { Search } = Input;
   const dispatch = useDispatch();
   const { danhSachNguoiDung } = useSelector(
     (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
   );
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
   const onSearch = (value) => {
     dispatch(layDanhSachNguoiDungSearch(value));
   };
@@ -51,21 +36,25 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
   useEffect(() => {
     dispatch(layDanhSachNguoiDung());
   }, []);
+
   const columns = [
     {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
+      key: "taiKhoan",
     },
     {
       title: "Họ tên",
       dataIndex: "hoTen",
+      key: "hoTen",
     },
     {
       title: "Email",
       dataIndex: "email",
+      key: "email",
       render: (text, nguoiDung) => {
         return (
-          <Fragment>
+          <Fragment key={nguoiDung.email}>
             {nguoiDung.email.length > 20
               ? nguoiDung.email.substr(0, 20) + "..."
               : nguoiDung.email}
@@ -76,36 +65,42 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
     {
       title: "Số điện thoại",
       dataIndex: "soDt",
+      key: "soDt",
     },
     {
       title: "Loại người dùng",
       dataIndex: "maLoaiNguoiDung",
+      key: "maLoaiNguoiDung",
     },
     {
       title: "Chức năng",
-      dataIndex: "action",
+      dataIndex: "nguoiDung",
+      key: "taiKhoan",
       render: (text, nguoiDung) => {
         return (
-          <Fragment>
+          <Fragment key={nguoiDung.taiKhoan}>
             <Link
-              className="btn bg-primary text-white mr-2"
               to={`/admin/quanlynguoidung/capnhatthongtinnguoidung/${nguoiDung.taiKhoan}`}
-              Component={CapNhatThongTinNguoiDung}
             >
-              <EditOutlined />
+              <button
+                className="btn__edit_user mr-2"
+                Component={CapNhatThongTinNguoiDung}
+              >
+                <EditOutlined />
+              </button>
             </Link>
             <button
-              className="btn bg-danger text-white"
+              className="btn__delete_user text-white mr-2"
               onClick={() => xoaNguoiDungAdmin(nguoiDung.taiKhoan)}
             >
               <DeleteOutlined />
             </button>
-              
             <Link
-              className="btn bg-warning"
               to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
               Component={GhiDanhNguoiDung}
-            >Ghi Danh</Link>
+            >
+              <button className="btn__ghidanh_user">Ghi Danh</button>
+            </Link>
           </Fragment>
         );
       },
@@ -120,18 +115,36 @@ export default function DanhSachNguoiDung({ maLoaiNguoiDung }) {
 
   return (
     <div className="container mt-5">
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link className="style__navlink" to="/">
+              Home
+            </Link>
+          </li>
+          <li className="breadcrumb-item">
+            <Link className="style__navlink" to="/admin">
+              Admin
+            </Link>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Quản lý người dùng
+          </li>
+        </ol>
+      </nav>
       <div className="row">
         <div className="col-md-6">
           <h1>Quản lý người dùng</h1>
-          <button className="btn btn-default mb-5">
-            <Link to="/admin/quanlynguoidung/themnguoidung">
-              Thêm người dùng
-            </Link>
-          </button>
+          <Link
+            className="btn btn-success mb-5"
+            to="/admin/quanlynguoidung/themnguoidung"
+          >
+            Thêm người dùng
+          </Link>
         </div>
         <div className="col-md-6">
           <Search
-            placeholder="input search text"
+            placeholder="Tìm kiếm mã khoá học"
             onSearch={onSearch}
             enterButton
           />

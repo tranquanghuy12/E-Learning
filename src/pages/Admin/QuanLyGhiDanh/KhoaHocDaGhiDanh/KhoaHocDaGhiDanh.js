@@ -7,7 +7,6 @@ import {
   huyGhiDanhKhoaHocAdmin,
   layDanhSachKhoaHocDaXetDuyet,
 } from "../../../../redux/actions/AdminQuanLyAction";
-import { huyGhiDanhKhoaHoc } from "../../../../redux/actions/QuanLyNguoiDungAction";
 
 export default function KhoaHocDaGhiDanh(props) {
   const dispatch = useDispatch();
@@ -19,44 +18,7 @@ export default function KhoaHocDaGhiDanh(props) {
     const action = layDanhSachKhoaHocDaXetDuyet(taiKhoan);
     dispatch(action);
   }, []);
-  const xoaKhoaHoc = (maKhoaHoc) => {
-    if (taiKhoan) {
-      let data = {
-        taiKhoan: taiKhoan.taiKhoan,
-        maKhoaHoc: maKhoaHoc,
-      };
-      console.log("data xoaKhoaHoc", data);
-      swal({
-        title: "Xoá khoá học",
-        text: "Bạn có chắc chắc muốn xoá?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Chắc chắn!",
-      }).then((result) => {
-        if (result === true) {
-          swal("Đã xoá!", "Khoá học đã được xoá.");          
-          dispatch(huyGhiDanhKhoaHocAdmin(data));
-        }
-      });
-    }
-  };
- 
-  const renderDsKhoaHocDaXetDuyet = dsKhoaHocDaXetDuyet?.map((item, index) => {
-    return (
-      <tr key={index}>       
-        <td>{item.maKhoaHoc}</td>
-        <td>{item.tenKhoaHoc}</td>
-        <td>
-          <button
-            onClick={() => xoaKhoaHoc(item.maKhoaHoc)}
-            className="btn btn-warning"
-          >
-            Huỷ
-          </button>
-        </td>
-      </tr>
-    );
-  });
+
   const dataSource = dsKhoaHocDaXetDuyet;
 
   const columns = [
@@ -78,7 +40,7 @@ export default function KhoaHocDaGhiDanh(props) {
             let data = {
               taiKhoan: taiKhoan.taiKhoan,
               maKhoaHoc: khoaHoc.maKhoaHoc,
-            };            
+            };
             swal({
               title: "Xoá khoá học",
               text: "Bạn có chắc chắc muốn xoá?",
@@ -87,7 +49,7 @@ export default function KhoaHocDaGhiDanh(props) {
               confirmButtonText: "Chắc chắn!",
             }).then((result) => {
               if (result === true) {
-                swal("Đã xoá!", "Khoá học đã được xoá.");                
+                swal("Đã xoá!", "Khoá học đã được xoá.");
                 dispatch(huyGhiDanhKhoaHocAdmin(data));
               }
             });
@@ -96,7 +58,7 @@ export default function KhoaHocDaGhiDanh(props) {
         return (
           <Fragment>
             <button
-              className="btn btn-warning"
+              className="btn btn-danger"
               onClick={() => xoaKhoaHoc(khoaHoc.maKhoaHoc)}
             >
               Huỷ
@@ -109,15 +71,5 @@ export default function KhoaHocDaGhiDanh(props) {
 
   return (
     <Table dataSource={dataSource} columns={columns} scroll={{ y: 300 }} />
-    // <table class="table">
-    //   <thead>
-    //     <tr>
-    //       <th scope="col">Mã khoá học</th>
-    //       <th scope="col">Tên Khoá học</th>
-    //       <th scope="col">Chờ xác nhận</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>{renderDsKhoaHocDaXetDuyet}</tbody>
-    // </table>
   );
 }

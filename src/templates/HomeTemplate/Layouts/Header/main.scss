@@ -92,17 +92,17 @@ nav.navbar{
       
     }
     .input-group-append {
-      .input-group-text {
+      .input__group_text {
         border: none;
-        background-color: $second-color !important;
-        color: $btn-color-1 !important;
-        padding: 10px 14px !important;
-        margin-left: 1px !important;
-        font-size: 1.2rem !important;
-        transition: all ease 0.5s !important;
+        background-color: $second-color;
+        color: $btn-color-1;
+        padding: 0px 12px;
+        margin-left: 1px;
+        font-size: 1.2rem;
+        transition: all ease 0.5s;
         &:hover {
-          background-color:$btn-color-1 !important;
-          color: $primary-darkblue !important;
+          background-color:$btn-color-1;
+          color: $primary-darkblue;
         }
       }
     }
@@ -113,6 +113,11 @@ nav.navbar{
 .display__when_small{
   @include responsive(SM){
     width: auto !important;
+  }
+}
+.logo__when_md{
+  @include responsive(MD){
+    text-align: right;
   }
 }
 .display__sm{

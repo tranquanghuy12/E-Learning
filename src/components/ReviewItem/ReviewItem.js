@@ -5,7 +5,7 @@ export default function ReviewItem({reviewDetail}) {
   return (
     <div className='item'>
       <div className="shadow-effect">
-        <img src={img} alt="" srcset="" className='img-circle'/>
+        <img src={img} alt="" className='img-circle'/>
         <p className='text__description'>{description}</p>
       </div>
       <div className="testimonial-name">

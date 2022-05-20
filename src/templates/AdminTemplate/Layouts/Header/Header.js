@@ -5,7 +5,7 @@ import { Avatar, Image } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { NavLink, Link } from "react-router-dom";
 import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../../../util/setting/config";
-
+import "./main.scss";
 export default function Header() {
   const history = useHistory();
   const userLogin =
@@ -20,9 +20,9 @@ export default function Header() {
   };
   return (
     <Fragment>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded-0">
-        <NavLink className="navbar-brand" to="/">
-          Admin page
+      <nav className="navbar navbar-expand-lg navbar-dark bg__primary_darkblue rounded-0">
+        <NavLink className="navbar-brand nav__color_label" exact to="/">
+          Admin Page
         </NavLink>
         <button
           className="navbar-toggler"
@@ -35,62 +35,48 @@ export default function Header() {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
+        <div className="collapse navbar-collapse row" id="navbarNavDropdown">
+          <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/admin">
+              <NavLink className="nav-link nav__color" exact to="/admin">
                 Home Admin
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/admin/quanlynguoidung">
+              <NavLink
+                className="nav-link nav__color"
+                exact
+                to="/admin/quanlynguoidung"
+              >
                 Quản lý người dùng
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/admin/quanlykhoahoc">
+              <NavLink
+                exact
+                className="nav-link nav__color"
+                to="/admin/quanlykhoahoc"
+              >
                 Quản lý khoá học
               </NavLink>
             </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown link
-              </a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <a class="dropdown-item" href="#">
-                  Action
-                </a>
-                <a class="dropdown-item" href="#">
-                  Another action
-                </a>
-                <a class="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
           </ul>
-          <ul className="navbar-nav float-right">
+          <ul className="navbar-nav">
             <li className="nav-item">
               <Avatar
                 className="nav-link"
-                style={{ backgroundColor: "#87d068", marginTop: "6px" }}
+                style={{
+                  backgroundColor: "#10152F",
+                  marginTop: "2px",
+                  color: "#ffd302",
+                }}
                 icon={<UserOutlined />}
               />
             </li>
             {userLogin.taiKhoan ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="">
+                  <Link className="nav-link nav__color" to='#'>
                     {`Xin chào, ${
                       userLogin.hoTen.toString().length > 15
                         ? userLogin.hoTen.substring(0, 8) + "..."
@@ -99,7 +85,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" onClick={logout} to="">
+                  <Link to='#' className="nav-link nav__color" onClick={logout}>
                     Đăng xuất
                   </Link>
                 </li>
@@ -107,13 +93,13 @@ export default function Header() {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link">
+                  <Link to="/login" className="nav-link nav__color">
                     <i className="fa fa-sign-in" aria-hidden="true"></i>
                     Đăng nhập
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/register" className="nav-link">
+                  <Link to="/register" className="nav-link nav__color">
                     Đăng kí
                   </Link>
                 </li>

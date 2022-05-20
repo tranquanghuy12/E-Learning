@@ -4,6 +4,7 @@ import loginSvg from "../../assets/img/login.svg";
 import { Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
+import { Link } from "react-router-dom";
 
 export default function Login(props) {
   const dispatch = useDispatch();
@@ -20,16 +21,16 @@ export default function Login(props) {
   });
 
   return (
-    <div className="container-fluid bg__login">
+    <div className="container containerLogin bg__login">
       <div className='row contentLogin align-items-center'>
         <div className="col-md-6 mb-3">
           <img src={loginSvg} className="img-fluid" alt="image" />
         </div>
         <div className="col-md-6">
-          <h2 className={`signinText mb-3`}>Đăng nhập</h2>
+          <h2 className='signinText mb-3 text-center'>Đăng nhập</h2>
           <form onSubmit={formik.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="taiKhoan">Tài khoản</label>
+              <label className="signin__label" htmlFor="taiKhoan">Tài khoản</label>
               <input
                 className='form-control'
                 type="text"
@@ -38,7 +39,7 @@ export default function Login(props) {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Mật khẩu</label>
+              <label className="signin__label" htmlFor="password">Mật khẩu</label>
               <input
                 className='form-control'
                 type="password"
@@ -46,19 +47,19 @@ export default function Login(props) {
                 onChange={formik.handleChange}
               />
             </div>
-            <div className='form-check pl-0'>
+            <div className='form-check'>
               <input
                 type="checkbox"
                 name="checkbox"
-                className="form-check-input"
+                className="form-check-input signin__label"
                 id="checkbox"
               />
-              <label className="form-check-label ml-4" htmlFor="checkbox">
+              <label className="form-check-label signin__label" htmlFor="checkbox">
                 Duy trì đăng nhập
               </label>
             </div>
-            <p className="text-center">
-              Nếu bạn quên mật khẩu. <a href="#">Nhấp vào đây</a>
+            <p className="text-center text-white">
+              Nếu bạn quên mật khẩu. <Link to="#">Nhấp vào đây</Link>
             </p>
             <div className="row text-center mt-5">
               <div className="col-6">
@@ -67,9 +68,9 @@ export default function Login(props) {
                 </button>
               </div>
               <div className="col-6">
-                <button type="submit" className="btn btn-custom-1">
+                <Link to='/register' className="btn btn-custom-1">
                   Đăng ký
-                </button>
+                </Link>
               </div>
             </div>
           </form>
