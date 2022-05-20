@@ -75,12 +75,8 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   background-image: none;
   border: 1px solid transparent;
@@ -89,4 +85,57 @@
   color: $primary-dark;
   border: none;
   margin-top: 6px;
+}
+
+.btn__edit_user {
+  padding: 8px;
+  font-size: 14px;
+  line-height: 1.3333333;
+  border-radius: 2px;
+  background-color: $btn-color-1;
+  border: none;
+  color: $primary-darkblue;
+  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+  &:focus{
+    outline: none;
+  }
+  &:hover {
+    transform: scale(1.05);
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
+  }
+}
+.btn__delete_user {
+  padding: 8px;
+  font-size: 14px;
+  line-height: 1.3333333;
+  border-radius: 2px;
+  background-color: $btn-color-2;
+  border: none;
+  color: $primary-darkblue;
+  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+  &:focus{
+    outline: none;
+  }
+  &:hover {
+    transform: scale(1.05);
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
+  }
+}
+.btn__ghidanh_user {
+  padding: 9px;
+  font-size: 14px;
+  line-height: 1.3333333;
+  font-weight: 500;
+  border-radius: 2px;
+  background-color: $second-color-light;
+  border: none;
+  color: $bg-color;
+  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+  &:focus{
+    outline: none;
+  }
+  &:hover {
+    transform: scale(1.05);
+    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
+  }
 }

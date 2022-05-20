@@ -28,7 +28,6 @@ export default function CapNhatThongTinNguoiDung() {
       }
     }
   }
-  console.log("user", nguoiDung);
   const capNhatThongTinNguoiDung = (values) => {
     swal({
       title: "Bạn có chắc chắn muốn sửa không?",
@@ -50,15 +49,15 @@ export default function CapNhatThongTinNguoiDung() {
     <Formik
       enableReinitialize="true"
       initialValues={{
-        taiKhoan: nguoiDung.taiKhoan,
-        matKhau: nguoiDung.matKhau,
-        hoTen: nguoiDung.hoTen,
-        soDT: nguoiDung.soDt,
+        taiKhoan: nguoiDung.taiKhoan || "",
+        matKhau: nguoiDung.matKhau || "",
+        hoTen: nguoiDung.hoTen || "",
+        soDT: nguoiDung.soDt || "",
         maNhom: nguoiDung.maNhom ? nguoiDung.maNhom : "GP01",
-        email: nguoiDung.email,
+        email: nguoiDung.email || "",
         maLoaiNguoiDung: nguoiDung.maLoaiNguoiDung
           ? nguoiDung.maLoaiNguoiDung
-          : "HV",
+          : "",
       }}
       onSubmit={(values) => {
         capNhatThongTinNguoiDung(values);
@@ -78,6 +77,7 @@ export default function CapNhatThongTinNguoiDung() {
                     type="text"
                     name="taiKhoan"
                     onChange={formikProps.handleChange}
+                    disabled
                   />
                   <ErrorMessage name="taiKhoan" />
                 </div>
@@ -145,7 +145,6 @@ export default function CapNhatThongTinNguoiDung() {
             </div>
             <div className="row">
               <div className="col-6">
-                {" "}
                 <div className="form-group">
                   <label>Mã loại</label>
                   <Field

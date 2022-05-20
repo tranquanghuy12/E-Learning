@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { layKhoaHocTheoDanhMucAction } from "../../redux/actions/KhoaHocTheoDanhMucAction";
-import './KhoaHocTheoDanhMuc.scss'
+import "./KhoaHocTheoDanhMuc.scss";
 import RenderCardKhoaHoc from "./RenderCardKhoaHoc";
 
 export default function KhoaHocTheoDanhMuc() {

@@ -17,8 +17,9 @@ import QuanLyKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/QuanLyKhoaHoc";
 import DanhSachNguoiDung from "./pages/Admin/QuanLyNguoiDung/DanhSachNguoiDung/DanhSachNguoiDung";
 import Admin from "./pages/Admin/Admin";
 import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung/ThemNguoiDung";
-import GhiDanhNguoiDung from "./pages/Admin/QuanLyNguoiDung/GhiDanhKhoaHoc/GhiDanhNguoiDung";
+
 import ModalCapNhatNguoiDung from "./components/Modal/ModalCapNhatNguoiDung";
+import GhiDanhNguoiDung from "./pages/Admin/QuanLyGhiDanh/GhiDanhNguoiDung/GhiDanhNguoiDung";
 
 
 export const history = createBrowserHistory();

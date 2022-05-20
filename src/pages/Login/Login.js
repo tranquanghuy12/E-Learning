@@ -59,7 +59,7 @@ export default function Login(props) {
               </label>
             </div>
             <p className="text-center text-white">
-              Nếu bạn quên mật khẩu. <Link href="/">Nhấp vào đây</Link>
+              Nếu bạn quên mật khẩu. <Link to="#">Nhấp vào đây</Link>
             </p>
             <div className="row text-center mt-5">
               <div className="col-6">
@@ -68,9 +68,9 @@ export default function Login(props) {
                 </button>
               </div>
               <div className="col-6">
-                <button type="submit" className="btn btn-custom-1">
+                <Link to='/register' className="btn btn-custom-1">
                   Đăng ký
-                </button>
+                </Link>
               </div>
             </div>
           </form>

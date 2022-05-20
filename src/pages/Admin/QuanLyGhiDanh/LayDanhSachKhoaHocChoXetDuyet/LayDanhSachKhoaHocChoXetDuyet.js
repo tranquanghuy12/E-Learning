@@ -19,11 +19,6 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
   useEffect(() => {
     dispatch(layDanhSachKhoaHocChoXetDuyet(taiKhoan));
   }, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const action = ghiDanhKhoaHocAdminAction();
-    dispatch(action);
-  };
   const dataSource = dsKhoaHocChoXetDuyet;
 
   const columns = [

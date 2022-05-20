@@ -115,6 +115,11 @@ nav.navbar{
     width: auto !important;
   }
 }
+.logo__when_md{
+  @include responsive(MD){
+    text-align: right;
+  }
+}
 .display__sm{
   @include responsive(SM){
     width: auto !important;

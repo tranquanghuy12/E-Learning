@@ -1,20 +1,21 @@
 @import "../../../../assets/sass/app.scss";
 .bg__primary_darkblue {
-  background-color: $primary-darkblue;
+  background-color: $bg-color-2;
+  
 }
 .nav__color {
-  color:$bg-color !important;
+  color:$second-color !important;
   transition: all 0.3s ease-in-out;
   &:hover {
-    color: $second-color !important;
-    background-color: $btn-color-1 !important;
+    color: $btn-color-1 !important;
+    background-color: $primary-darkblue;
     transition: all 0.3s ease-in-out;
     padding: 6px 12px;
-    margin: 10px;
+    margin: 2px;
     font-weight: 400;
   }
 }
 .nav__color_label{
-    color: $bg-color !important;
+    color: $second-color !important;
     transition: all 0.3s ease-in-out;
 }

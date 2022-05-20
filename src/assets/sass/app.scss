@@ -22,3 +22,22 @@ body{
 .container-fluid{
     padding: 0 !important;
 }
+
+.breadcrumb{
+    background-color: $primary-darkblue;
+    text-decoration: none;
+    .style__navlink{
+        color: $bg-color;
+        &:hover{
+            color: $btn-color-0;
+        }
+    }
+    .breadcrumb-item{
+        color: $bg-color;
+        
+    }
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: $primary-darkblue;
+}

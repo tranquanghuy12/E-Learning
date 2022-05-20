@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import './main.scss'
+import '../main.scss'
 import {
   chiTietNguoiDungAdminAction,
   ghiDanhKhoaHocAdminAction,
   layDanhSachKhoaHocChuaGhiDanh,
 } from "../../../../redux/actions/AdminQuanLyAction";
+
+import KhoaHocDaGhiDanh from '../KhoaHocDaGhiDanh/KhoaHocDaGhiDanh';
 import LayDanhSachKhoaHocChoXetDuyet from "../LayDanhSachKhoaHocChoXetDuyet/LayDanhSachKhoaHocChoXetDuyet";
-import KhoaHocDaGhiDanh from "./KhoaHocDaGhiDanh";
 
 export default function GhiDanhNguoiDung(props) {
   const history = useHistory();
@@ -56,13 +57,13 @@ export default function GhiDanhNguoiDung(props) {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
+            <Link className="style__navlink" to="/">Home</Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to="/admin">Admin</Link>
+            <Link className="style__navlink" to="/admin">Admin</Link>
           </li>
           <li className="breadcrumb-item">
-            <Link to="/admin/quanlynguoidung">Quản lý người dùng</Link>
+            <Link className="style__navlink" to="/admin/quanlynguoidung">Quản lý người dùng</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Ghi danh người dùng
@@ -71,9 +72,9 @@ export default function GhiDanhNguoiDung(props) {
       </nav>
 
       <label>Chọn khoá học</label>
-      <form onSubmit={handleSubmit} className="input-group">
+      <form onSubmit={handleSubmit}>
         <div className="form-group row justify-content-center">
-          <div className="col-sm-12 col-md-8 col-lg-9">
+          <div className="col-sm-12 col-md-8 col-lg-8">
             <select
               onChange={handleChangeInput}
               className="input-large form-control"
@@ -83,7 +84,7 @@ export default function GhiDanhNguoiDung(props) {
               {layDsKhoaHocChuaGhiDanh()}
             </select>
           </div>
-          <div className="btn__responsive_sm col-sm-12 col-md-4 col-lg-3 text-center">
+          <div className="btn__responsive_sm col-sm-12 col-md-4 col-lg-4 text-center">
             <button type="submit" className="btn btn__ghidanh mr-3">
               Ghi Danh
             </button>

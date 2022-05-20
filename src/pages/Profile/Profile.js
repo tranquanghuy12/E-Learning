@@ -1,92 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import swal from "sweetalert";
 import ModalCapNhatNguoiDung from "../../components/Modal/ModalCapNhatNguoiDung";
 import "./main.scss";
 import {
-  huyGhiDanhKhoaHoc,
   layThongTinNguoiDungAction,
 } from "../../redux/actions/QuanLyNguoiDungAction";
-
 import { ACCESSTOKEN } from "../../util/setting/config";
+import DanhSachKhoaHocDaDangKy from "./DanhSachKhoaHocDaDangKy";
 
 export default function Profile() {
   const dispatch = new useDispatch();
   const { userProfile } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
-
-  let chiTietCacKhoaHocDaDangKy = userProfile.chiTietKhoaHocGhiDanh || [];
-  console.log(chiTietCacKhoaHocDaDangKy);
-  var input = "IT";
-  var sorted = chiTietCacKhoaHocDaDangKy.sort((a, b) => {
-    if (a.maKhoaHoc.startsWith(input) && b.maKhoaHoc.startsWith(input))
-      return a.maKhoaHoc.localeCompare(b.maKhoaHoc);
-    else if (a.maKhoaHoc.startsWith(input)) return -1;
-    else if (b.maKhoaHoc.startsWith(input)) return 1;
-
-    return a.maKhoaHoc.localeCompare(b.course);
-  });
   useEffect(() => {
     dispatch(layThongTinNguoiDungAction());
   }, [dispatch]);
-
-  const xoaKhoaHoc = (maKhoaHoc) => {
-    if (userProfile) {
-      let taiKhoan = userProfile.taiKhoan;
-      let data = {
-        taiKhoan: taiKhoan,
-        maKhoaHoc: maKhoaHoc,
-      };
-      swal({
-        title: "Xoá khoá học",
-        text: "Bạn có chắc chắc muốn xoá?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Chắc chắn!",
-      }).then((result) => {
-        if (result === true) {
-          swal("Đã xoá!", "Khoá học đã được xoá.");
-          dispatch(huyGhiDanhKhoaHoc(data));
-        }
-      });
-    }
-  };
-  const khoaHocDaDangKy = () => {
-    return chiTietCacKhoaHocDaDangKy?.map((khoaHoc, index) => {
-      return (
-        <div className="col-md-3 col-sm-12 col-lg-3 card-deck mt-4" key={index}>
-          <div className="card text-white bg-primary">
-            <img
-              className="card-img-top"
-              src={khoaHoc.hinhAnh}
-              alt="Hình ảnh khoá học"
-              style={{ height: 200 }}
-            />
-            <div className="card-body bg__card_body">
-              <h5 className="card-title color__card_title">
-                {khoaHoc.tenKhoaHoc}
-              </h5>
-              <p style={{ height: "100px" }}>
-                {khoaHoc.moTa.toString().length >= 20
-                  ? khoaHoc.moTa.substr(0, 50) + "..."
-                  : khoaHoc.moTa}
-              </p>
-              <button
-                onClick={() => xoaKhoaHoc(khoaHoc.maKhoaHoc)}
-                className="float-right btn__small_card"
-              >
-                Huỷ
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    });
-  };
+  
   if (!localStorage.getItem(ACCESSTOKEN)) {
     swal("Yêu cầu đăng nhập tài khoản !");
     return <Redirect to="/login" />;
@@ -97,7 +30,7 @@ export default function Profile() {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <NavLink to="/">Home</NavLink>
+              <Link className='style__navlink' to="/">Home</Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Thông tin tài khoản
@@ -113,7 +46,7 @@ export default function Profile() {
                 alt="ảnh đại diện"
                 className="rounded-circle mt-5"
               />
-              <span className="font-weight-bold">{userProfile.taiKhoan}</span>
+              <h5 className="font-weight-bold mt-3">Xin chào, {userProfile.taiKhoan}</h5>
               <span className="text-black-50">{userProfile.email}</span>
               <span></span>
             </div>
@@ -154,7 +87,7 @@ export default function Profile() {
               ) : (
                 <></>
               )}
-              <Link className="ml-3 btn btn-danger" to="/">
+              <Link className="ml-3 btn btn__color_return" to="/">
                 Rời khỏi
               </Link>
             </div>
@@ -162,26 +95,16 @@ export default function Profile() {
         </div>
 
         {/* Khoá học đã đăng ký */}
-        <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>
-        <div className="mt-5">
-          {!userProfile.chiTietKhoaHocGhiDanh ? (
-            <>
-              <div className="text-center">Bạn chưa đăng ký khoá học nào</div>
-            </>
-          ) : (
-            <>
-              <div className="input-group mb-3">
-                <input
-                  onChange={(e) => e.target.value}
-                  type="text"
-                  className="form-control"
-                  placeholder="Search"
-                />
-              </div>
-              <div className="row">{khoaHocDaDangKy()}</div>
-            </>
-          )}
-        </div>
+        <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>               
+        {!userProfile.chiTietKhoaHocGhiDanh ? (
+          <>
+            <div>Bạn chưa đăng ký khoá học nào</div>
+          </>
+        ) : (
+          <>
+            <div><DanhSachKhoaHocDaDangKy userProfile={userProfile}/></div>
+          </>
+        )}
       </div>
     </>
   );

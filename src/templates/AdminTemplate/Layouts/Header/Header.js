@@ -5,7 +5,7 @@ import { Avatar, Image } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { NavLink, Link } from "react-router-dom";
 import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../../../util/setting/config";
-import './main.scss'
+import "./main.scss";
 export default function Header() {
   const history = useHistory();
   const userLogin =
@@ -21,8 +21,8 @@ export default function Header() {
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-dark bg__primary_darkblue rounded-0">
-        <NavLink className="navbar-brand" to="/">
-          <label className="nav__color_label">Admin Page</label>
+        <NavLink className="navbar-brand nav__color_label" exact to="/">
+          Admin Page
         </NavLink>
         <button
           className="navbar-toggler"
@@ -35,36 +35,48 @@ export default function Header() {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
+        <div className="collapse navbar-collapse row" id="navbarNavDropdown">
+          <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link nav__color" to="/admin">
+              <NavLink className="nav-link nav__color" exact to="/admin">
                 Home Admin
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link nav__color" to="/admin/quanlynguoidung">
+              <NavLink
+                className="nav-link nav__color"
+                exact
+                to="/admin/quanlynguoidung"
+              >
                 Quản lý người dùng
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link nav__color" to="/admin/quanlykhoahoc">
+              <NavLink
+                exact
+                className="nav-link nav__color"
+                to="/admin/quanlykhoahoc"
+              >
                 Quản lý khoá học
               </NavLink>
-            </li>           
+            </li>
           </ul>
-          <ul className="navbar-nav float-right">
-            <li className="nav-item nav__color">
+          <ul className="navbar-nav">
+            <li className="nav-item">
               <Avatar
                 className="nav-link"
-                style={{ backgroundColor: "#87d068", marginTop: "6px" }}
+                style={{
+                  backgroundColor: "#10152F",
+                  marginTop: "2px",
+                  color: "#ffd302",
+                }}
                 icon={<UserOutlined />}
               />
             </li>
             {userLogin.taiKhoan ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link nav__color" to="">
+                  <Link className="nav-link nav__color" to='#'>
                     {`Xin chào, ${
                       userLogin.hoTen.toString().length > 15
                         ? userLogin.hoTen.substring(0, 8) + "..."
@@ -73,7 +85,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link nav__color" onClick={logout} to="">
+                  <Link to='#' className="nav-link nav__color" onClick={logout}>
                     Đăng xuất
                   </Link>
                 </li>

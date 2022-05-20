@@ -4,22 +4,21 @@ import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
 import { useDispatch } from "react-redux";
 import { DangKySchema } from "../../services/NguoiDungSchema";
 import signUp from "../../assets/img/signup.jpg";
-import styles from "../Register/Register.module.css";
+import "./Register.scss";
+import { Link } from "react-router-dom";
 
 export default function Register(props) {
-  
   const dispatch = useDispatch();
   return (
-    <div className={`${styles.containerRegister}`}>
-      
+    <div className={`containerRegister`}>
       <div className="mx-auto">
         <div className="container">
-          <div className={`row align-items-center ${styles.contentRegister}`}>
+          <div className={`row align-items-center contentRegister`}>
             <div className="col-md-6 mb-3 ">
               <img src={signUp} className="img-fluid" alt="đăng ký" />
             </div>
             <div className="col-md-6">
-              <h1 className={`${styles.signupText} text-center`}>Đăng ký</h1>
+              <h1 className={`signupText`}>Đăng ký</h1>
               <Formik
                 initialValues={{
                   email: "",
@@ -40,32 +39,32 @@ export default function Register(props) {
                       <label>Tài khoản</label>
                       <Field
                         type="text"
-                        className={`form-control ${styles.formControlRegister}`}
+                        className={`formControlRegister`}
                         name="taiKhoan"
                         onChange={formikProps.handleChange}
-                        placeholder='Nhập tài khoản'
+                        placeholder="Nhập tài khoản"
                       />
                       <ErrorMessage name="taiKhoan" />
                     </div>
                     <div className="form-group">
                       <label>Mật khẩu</label>
                       <Field
-                        className={`form-control ${styles.formControlRegister}`}
+                        className={`formControlRegister`}
                         name="matKhau"
                         type="password"
                         onChange={formikProps.handleChange}
-                        placeholder='Nhập nhập khẩu'
+                        placeholder="Nhập nhập khẩu"
                       />
                       <ErrorMessage name="matKhau" />
                     </div>
                     <div className="form-group">
                       <label>Email</label>
                       <Field
-                        className={`form-control ${styles.formControlRegister}`}
+                        className={`formControlRegister`}
                         name="email"
                         type="email"
                         onChange={formikProps.handleChange}
-                        placeholder='Nhập email'
+                        placeholder="Nhập email"
                       />
                       <ErrorMessage name="email" />
                     </div>
@@ -73,7 +72,7 @@ export default function Register(props) {
                       <label>Họ tên: </label>
                       <Field
                         placeholder="Nhập họ tên"
-                        className={`form-control ${styles.formControlRegister}`}
+                        className={`formControlRegister`}
                         name="hoTen"
                         onChange={formikProps.handleChange}
                       />
@@ -83,7 +82,7 @@ export default function Register(props) {
                       <label>Số điện thoại: </label>
                       <Field
                         placeholder="Số điện thoại"
-                        className={`form-control ${styles.formControlRegister}`}
+                        className={`formControlRegister`}
                         name="soDT"
                         onChange={formikProps.handleChange}
                       />
@@ -94,7 +93,7 @@ export default function Register(props) {
                       <Field
                         component="select"
                         name="maNhom"
-                        className={`form-control ${styles.formControl}`}
+                        className={`formControl`}
                         onChange={formikProps.handleChange}
                       >
                         <option>GP01</option>
@@ -111,18 +110,17 @@ export default function Register(props) {
                       <ErrorMessage name="maNhom" />
 
                       <div className="d-flex justify-content-center mt-5">
-                        <button
-                          className={`btn ${styles.btnClassReturn} mr-2 `}
-                          type="submit"
-                        >
-                          Trở về
-                        </button>
-                        <button
-                          className={`btn ${styles.btnClass}`}
-                          type="submit"
-                        >
+                        <button className={`btn btnClass`} type="submit">
                           Đăng ký
                         </button>
+                        <Link to="/login">
+                          <button
+                            type="submit"
+                            className="btn btnClassReturn ml-2"
+                          >
+                            Đăng nhập
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </Form>

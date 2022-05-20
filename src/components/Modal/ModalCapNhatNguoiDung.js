@@ -1,17 +1,13 @@
 import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
-
+import './ModalCapNhatNguoiDung.scss';
 import { capNhatThongTinNguoiDung } from "../../redux/actions/QuanLyNguoiDungAction";
 import { CapNhatNguoiDungSchema } from "../../services/NguoiDungSchema";
 
 const ModalCapNhatNguoiDung = (props) => {
   const dispatch = useDispatch();
-  // const { userProfile } = useSelector(
-  //   (rootReducer) => rootReducer.QuanLyNguoiDungReducer
-  // );
   const userProfile = props.userProfile;
   const suaThongTinNguoiDung = (values) => {
     swal({
@@ -38,15 +34,15 @@ const ModalCapNhatNguoiDung = (props) => {
     <Formik
       enableReinitialize="true"
       initialValues={{
-        taiKhoan: userProfile.taiKhoan,
-        matKhau: userProfile.matKhau,
-        hoTen: userProfile.hoTen,
-        soDT: userProfile.soDT,
+        taiKhoan: userProfile.taiKhoan || "",
+        matKhau: userProfile.matKhau || "",
+        hoTen: userProfile.hoTen || "",
+        soDT: userProfile.soDT || "",
         maNhom: userProfile.maNhom ? userProfile.maNhom : "GP01",
-        email: userProfile.email,
+        email: userProfile.email || "",
         maLoaiNguoiDung: userProfile.maLoaiNguoiDung
           ? userProfile.maLoaiNguoiDung
-          : "HV",
+          : "",
       }}
       onSubmit={(values) => {
         suaThongTinNguoiDung(values);
@@ -56,7 +52,7 @@ const ModalCapNhatNguoiDung = (props) => {
         <Form>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn bg__color_edit"
             data-toggle="modal"
             data-target="#modelId"
           >
@@ -93,6 +89,7 @@ const ModalCapNhatNguoiDung = (props) => {
                       type="text"
                       name="taiKhoan"
                       onChange={formikProps.handleChange}
+                      disabled
                     />
                     <ErrorMessage name="taiKhoan" />
                   </div>
@@ -106,10 +103,10 @@ const ModalCapNhatNguoiDung = (props) => {
                       onChange={formikProps.handleChange}
                     />
                     {passwordShow ? (
-                      <i className="fas fa-eye" onClick={togglePassword}></i>
+                      <i className="fas fa-eye flexIcon" onClick={togglePassword}></i>
                     ) : (
                       <i
-                        className="far fa-eye-slash"
+                        className="far fa-eye-slash flexIcon"
                         onClick={togglePassword}
                       ></i>
                     )}
@@ -122,7 +119,7 @@ const ModalCapNhatNguoiDung = (props) => {
                       value={formikProps.values.email}
                       type="text"
                       name="email"
-                      onChange={formikProps.handleChange}
+                      onChange={formikProps.handleChange}                      
                     />
                     <ErrorMessage name="email" />
                   </div>
