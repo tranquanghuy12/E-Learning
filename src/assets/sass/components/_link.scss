@@ -1,0 +1,28 @@
+//style link
+.style__link_a {
+  position: relative;
+  &:after {
+    content: "";
+    background: linear-gradient(
+      120deg,
+      #1c99fe 20.69%,
+      #7644ff 50.19%,
+      #fd4766 79.69%
+    );
+    height: 2px;
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    top: 21px;
+    left: 0;
+    transition: all 0.3s ease-in-out !important;
+  }
+  &:hover {
+    transition: all 0.3s ease-in-out !important;
+    &:after {
+      width: 100%;
+      transition: all 0.3s ease-in-out !important;
+    }
+  }
+}

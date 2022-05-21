@@ -8,7 +8,7 @@ export default function Admin() {
   if (token && token.maLoaiNguoiDung === "GV") {
     return (
       <>
-        <div className="jumbotron text-right pr-5 animate__animated animate__fadeInRight animate__delay-0.5s">
+        <div className="rounded-0 jumbotron text-right pr-5 animate__animated animate__fadeInRight animate__delay-0.5s">
           <h1 className="display-4 jumbotron__title">Quản lý người dùng</h1>
           <hr className="my-4 hr__color" />
           <p className="lead">
@@ -19,7 +19,7 @@ export default function Admin() {
             </Link>
           </p>
         </div>
-        <div className="jumbotron animate__animated animate__fadeInLeft animate__delay-1s">
+        <div className="rounded-0 jumbotron animate__animated animate__fadeInLeft animate__delay-1s">
           <h1 className="display-4 jumbotron__title">Quản lý khoá học</h1>
           <hr className="my-4 hr__color" />
           <p className="lead">
