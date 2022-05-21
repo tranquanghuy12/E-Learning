@@ -1,43 +1,51 @@
 //import Variable and Mixin
-@import './helpers/variable';
-@import './helpers/mixin';
+@import "./helpers/variable";
+@import "./helpers/mixin";
 
 //import Component
-@import './components/button';
-@import './components/card';
+@import "./components/button";
+@import "./components/card";
+@import "./components/link";
 
 //import Reset and Global
-@import './base/reset';
-@import './base/global';
+@import "./base/reset";
+@import "./base/global";
 
 //imp layouts
-@import './layouts/header';
+@import "./layouts/header";
 
 //import Pages
-@import './pages/home';
+@import "./pages/home";
 
-body{
-    padding: 0 !important;
+body {
+  padding: 0 !important;
 }
-.container-fluid{
-    padding: 0 !important;
+.container-fluid {
+  padding: 0 !important;
 }
 
-.breadcrumb{
-    background-color: $primary-darkblue;
-    text-decoration: none;
-    .style__navlink{
-        color: $bg-color;
-        &:hover{
-            color: $btn-color-0;
-        }
+.breadcrumb {
+  background-color: $primary-darkblue;
+  text-decoration: none;
+  .style__navlink {
+    color: $bg-color;
+    &:hover {
+      color: $btn-color-0;
     }
-    .breadcrumb-item{
-        color: $bg-color;
-        
-    }
+  }
+  .breadcrumb-item {
+    color: $bg-color;
+  }
 }
 
-h1, h2, h3, h4, h5, h6{
-    color: $primary-darkblue;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $second-color;
+}
+p {
+  color: $primary-darkblue;
 }

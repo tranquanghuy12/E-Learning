@@ -59,22 +59,22 @@ export default function Footer() {
               {/* Links */}
               <h6 className="text-uppercase fw-bold mb-4">Khoá học</h6>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   Angular
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   React
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   Vue
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   Laravel
                 </a>
               </p>
@@ -85,22 +85,22 @@ export default function Footer() {
               {/* Links */}
               <h6 className="text-uppercase fw-bold mb-4">Liên kết</h6>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   Học phí
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   Liên hệ
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   Về chúng tôi
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="#!" className="text-reset style__link_a">
                   Trợ giúp
                 </a>
               </p>

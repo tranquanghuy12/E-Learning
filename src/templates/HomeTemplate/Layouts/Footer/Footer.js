@@ -1,7 +1,6 @@
 import React from "react";
-import './main.scss'
+import "./main.scss";
 export default function Footer() {
-    
   return (
     <footer className="text-center text-lg-start bg-light text-muted">
       {/* Section: Social media */}
@@ -43,7 +42,7 @@ export default function Footer() {
             {/* Grid column */}
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text__hover">
               {/* Content */}
-              <h6 className="text-uppercase fw-bold mb-4">
+              <h6 className="footer__title text-uppercase fw-bold mb-4">
                 <i className="fas fa-gem me-3" />
                 E-learning
               </h6>
@@ -57,24 +56,26 @@ export default function Footer() {
             {/* Grid column */}
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               {/* Links */}
-              <h6 className="text-uppercase fw-bold mb-4">Khoá học</h6>
+              <h6 className="footer__title_middle text-uppercase fw-bold mb-4">
+                Khoá học
+              </h6>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   Angular
                 </a>
               </p>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   React
                 </a>
               </p>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   Vue
                 </a>
               </p>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   Laravel
                 </a>
               </p>
@@ -83,24 +84,26 @@ export default function Footer() {
             {/* Grid column */}
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
               {/* Links */}
-              <h6 className="text-uppercase fw-bold mb-4">Liên kết</h6>
+              <h6 className="footer__title_middle text-uppercase fw-bold mb-4">
+                Liên kết
+              </h6>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   Học phí
                 </a>
               </p>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   Liên hệ
                 </a>
               </p>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   Về chúng tôi
                 </a>
               </p>
               <p>
-                <a href="#" className="text-reset">
+                <a href="#" className="text-reset style__link_a">
                   Trợ giúp
                 </a>
               </p>
@@ -109,19 +112,30 @@ export default function Footer() {
             {/* Grid column */}
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 text__hover">
               {/* Links */}
-              <h6 className="text-uppercase fw-bold mb-4">Liên hệ</h6>
+              <h6 className="footer__title text-uppercase fw-bold mb-4">
+                Liên hệ
+              </h6>
               <p>
-                <i className="fas fa-home me-3" /> Hồ Chí Minh, Quận 7, Việt Nam
+                <a className="text-reset style__link_a" href="">
+                  <i className="fas fa-home me-3" /> Hồ Chí Minh, Quận 7, Việt
+                  Nam
+                </a>
               </p>
               <p>
-                <i className="fas fa-envelope me-3" />
-                elearning@example.com
+                <a className="text-reset style__link_a" href="">
+                  <i className="fas fa-envelope me-3" />
+                  elearning@example.com
+                </a>
               </p>
               <p>
-                <i className="fas fa-phone me-3" /> + 01 234 567 88
+                <a className="text-reset style__link_a" href="">
+                  <i className="fas fa-phone me-3" /> + 01 234 567 88
+                </a>
               </p>
               <p>
-                <i className="fas fa-print me-3" /> + 01 234 567 89
+                <a className="text-reset style__link_a" href="">
+                  <i className="fas fa-print me-3" /> + 01 234 567 89{" "}
+                </a>
               </p>
             </div>
             {/* Grid column */}
@@ -140,7 +154,7 @@ export default function Footer() {
           Elearning.com.vn
         </a>
       </div>
-      {/* Copyright */}     
+      {/* Copyright */}
     </footer>
   );
 }
