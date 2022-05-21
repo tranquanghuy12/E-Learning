@@ -1,0 +1,53 @@
+@import "../../assets/sass/app.scss";
+.count {
+  padding: 5rem 0;
+  background-image: url(../../assets/img/bg14.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.count__content {
+  justify-content: space-evenly;
+  text-align: center;
+}
+.style__icon{
+    margin-top: 1.5rem !important;
+    font-size: 4rem !important;
+}
+.icon {
+  margin-bottom: 1rem;
+  background-image: linear-gradient(
+    to right,
+    #f55f8d 0,
+    #f8ae56 51%,
+    #f55f8d 100%
+  );
+  color: white;
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  text-align: center;
+  line-height: 7rem;
+  margin-left: 1rem;
+  background-size: 200%;
+}
+
+.icon span i {
+  font-size: 3rem;
+}
+.count__title{
+    font-size: 4rem;
+  color: #f55f8d;
+}
+.style__description
+{
+    font-size: 1rem;
+}
+.count__item .content h2,
+.count__item .content span {
+  font-size: 4rem;
+  color: #f55f8d;
+}
+
+.count__item .content p {
+  font-size: 1.1rem;
+}

@@ -1,20 +1,22 @@
-@import '../../../../assets/sass/app.scss';
-.text-uppercase{
-    color: $primary-darkblue;
+@import "../../../../assets/sass/app.scss";
+.text-uppercase {
+  color: $primary-darkblue;
 }
-.text__hover{
-    transition: all .2s ;
-    &:hover{
-        color: $color-hyper-500 !important;
-        transition: all .2s ;
-    }
+.text__hover {
+  transition: all 0.2s;
+  &:hover {
+    color: $color-hyper-500 !important;
+    transition: all 0.2s;
+  }
 }
-.text-reset{
-    &:hover{
-        color: $color-hyper-500 !important;
-    }
+.text-reset {
+  &:hover {
+    color: $color-hyper-500 !important;
+  }
 }
-.bg__footer{
-    background-color: $primary-darkblue !important;
-    color: $bg-color !important;
+.bg__footer {
+  background-color: $primary-darkblue !important;
+  color: $bg-color !important;
 }
+
+
