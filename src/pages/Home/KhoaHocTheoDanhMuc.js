@@ -50,7 +50,7 @@ export default function KhoaHocTheoDanhMuc() {
           Trở về danh mục
         </Link>
       </div>
-      <div className="row container m-auto">{renderKhoaHocTheoDanhMuc()}</div>
+      <div className="row m-auto p-5">{renderKhoaHocTheoDanhMuc()}</div>
     </div>
   );
 }
