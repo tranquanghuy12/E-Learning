@@ -17,11 +17,14 @@ export default function Home(props) {
     dispatch(action);
   }, []);
 
+  //Lấy ra 8 khóa học đầu tiên
+  const mangKhoaHocDauTien = mangKhoaHoc.slice(0, 8);
+
   const layDanhSachKhoaHoc = () => {
-    return mangKhoaHoc.map((item, index) => {
+    return mangKhoaHocDauTien.map((item, index) => {
       return (
-        <div className="col-sm-12 col-md-4 col-lg-3" key={index}>
-          <RenderCardKhoaHoc item={item} />         
+        <div className="mb-4 col-sm-12 col-md-4 col-lg-3" key={index}>
+          <RenderCardKhoaHoc item={item} />
         </div>
       );
     });
@@ -29,9 +32,10 @@ export default function Home(props) {
   return (
     <div className="container-fluid">
       <div>{HomeCarousel()}</div>
-      <div className="row m-auto">{layDanhSachKhoaHoc()}</div>
-      <CountUp/>
-      <Review/>
+      <h3 className="ml-5 pl-3">Most Popular Courses</h3>
+      <div className="row m-auto p-5">{layDanhSachKhoaHoc()}</div>
+      <CountUp />
+      <Review />
     </div>
   );
 }

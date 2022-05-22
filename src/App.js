@@ -20,6 +20,7 @@ import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung/ThemNguoi
 
 import ModalCapNhatNguoiDung from "./components/Modal/ModalCapNhatNguoiDung";
 import GhiDanhNguoiDung from "./pages/Admin/QuanLyGhiDanh/GhiDanhNguoiDung/GhiDanhNguoiDung";
+import ChiTietKhoaHoc from "./pages/Home/ChiTietKhoaHoc";
 
 
 export const history = createBrowserHistory();
@@ -31,6 +32,7 @@ function App() {
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/danhmuckhoahoc" exact Component={DanhMucKhoaHoc} />
         <HomeTemplate path="/danhmuckhoahoc/:madanhmuc" exact Component={KhoaHocTheoDanhMuc} />
+        <HomeTemplate path="/chitietkhoahoc" exact Component={ChiTietKhoaHoc} />
         <HomeTemplate path="/profile" exact Component={Profile} />
         <HomeTemplate path="/" exact Component={Home} />
         
