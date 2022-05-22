@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { Avatar, Image } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { NavLink, Link } from "react-router-dom";
-import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../../../util/setting/config";
 import "./main.scss";
 export default function Header() {
   const history = useHistory();
@@ -13,8 +12,7 @@ export default function Header() {
       (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
     ) || {};
   const logout = () => {
-    localStorage.removeItem(USER_LOGIN);
-    localStorage.removeItem(TOKEN_CYBERSOFT);
+    localStorage.clear();
     history.push("/home");
     window.location.reload();
   };
@@ -33,9 +31,9 @@ export default function Header() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" />
+          <i className="fa fa-bars style__hamburger"></i>
         </button>
-        <div className="collapse navbar-collapse row" id="navbarNavDropdown">
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <NavLink className="nav-link nav__color" exact to="/admin">

@@ -21,8 +21,7 @@ export default function Header(props) {
   );
 
   const logout = () => {
-    localStorage.removeItem(USER_LOGIN);
-    localStorage.removeItem(TOKEN_CYBERSOFT);
+    localStorage.clear();
     history.push("/home");
     window.location.reload();
   };
