@@ -15,36 +15,25 @@ export default function RenderCardKhoaHoc({ item }) {
     history.push("/chitietkhoahoc");
   };
   return (
-    // <Card
-    //   hoverable
-    //   style={{ width: "100%" }}
-    //   cover={<img alt={item.tenKhoaHoc} src={item.hinhAnh} />}
-    // >
-    //   <Meta title={item.tenKhoaHoc} description={`Lượt xem: ${item.luotXem}`} />
-    // </Card>
-
-    <Card sx={{ maxWidth: 345 }} onClick={handleClick}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="150"
-          image={item.hinhAnh}
-          alt={item.tenKhoaHoc}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {item.tenKhoaHoc}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {`Lượt xem: ${item.luotXem}`}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions className="d-flex justify-content-end">
-        <Button variant="contained" size="small" color="primary">
-          Add to cart
-        </Button>
-      </CardActions>
-    </Card>
+    <div className="card project text-center" onClick={handleClick}>
+      <div className="overlay">
+        <div className="thumbnail">
+         
+          <img className="card-img-top w-100" src={item.hinhAnh} alt />
+        </div>
+      </div>
+      <div className="card-body text-block">
+        <div className="text-header">
+          <h4>
+            {item.tenKhoaHoc}              
+          </h4>
+          <h5>Lượt xem: {item.luotXem}</h5>
+          
+        </div>
+        <span className="text-hover">
+            <p className="btn btn-warning more__detail">More Detail</p>
+          </span>
+      </div>
+    </div>
   );
 }

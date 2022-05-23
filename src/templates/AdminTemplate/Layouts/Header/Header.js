@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Avatar, Image } from "antd";
+import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { NavLink, Link } from "react-router-dom";
 import "./main.scss";

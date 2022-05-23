@@ -1,0 +1,13 @@
+@import '../../assets/sass/app.scss';
+.header__title{
+    background: linear-gradient(120deg, #1c99fe 20.69%, $color-hyper-500 50.19%, #fd4766 79.69%);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 18px;
+    font-size: 24px; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-top: $margin-3;
+    margin-bottom: 0;
+}
