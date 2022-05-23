@@ -49,3 +49,8 @@ h6 {
 p {
   color: $primary-darkblue;
 }
+button{
+  &:focus{
+    outline: none;
+  }
+}

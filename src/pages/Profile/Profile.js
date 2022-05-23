@@ -6,20 +6,26 @@ import swal from "sweetalert";
 import ModalCapNhatNguoiDung from "../../components/Modal/ModalCapNhatNguoiDung";
 import "./main.scss";
 import {
+  layMaLoaiNguoiDung,
   layThongTinNguoiDungAction,
 } from "../../redux/actions/QuanLyNguoiDungAction";
 import { ACCESSTOKEN } from "../../util/setting/config";
 import DanhSachKhoaHocDaDangKy from "./DanhSachKhoaHocDaDangKy";
-
+import LoadingLazy from "../../components/LoadingLazy/LoadingLazy";
 export default function Profile() {
   const dispatch = new useDispatch();
   const { userProfile } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
+  const { maLoaiNguoiDung } = useSelector(
+    (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
+  );
+  console.log("ma loai ng dung", maLoaiNguoiDung);
   useEffect(() => {
+    dispatch(layMaLoaiNguoiDung());
     dispatch(layThongTinNguoiDungAction());
   }, [dispatch]);
-  
+
   if (!localStorage.getItem(ACCESSTOKEN)) {
     swal("Yêu cầu đăng nhập tài khoản !");
     return <Redirect to="/login" />;
@@ -30,7 +36,9 @@ export default function Profile() {
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <Link className='style__navlink' to="/">Home</Link>
+              <Link className="style__navlink" to="/">
+                Home
+              </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Thông tin tài khoản
@@ -46,7 +54,9 @@ export default function Profile() {
                 alt="ảnh đại diện"
                 className="rounded-circle mt-5"
               />
-              <h5 className="font-weight-bold mt-3">Xin chào, {userProfile.taiKhoan}</h5>
+              <h5 className="font-weight-bold mt-3">
+                Xin chào, {userProfile.taiKhoan}
+              </h5>
               <span className="text-black-50">{userProfile.email}</span>
               <span></span>
             </div>
@@ -95,14 +105,16 @@ export default function Profile() {
         </div>
 
         {/* Khoá học đã đăng ký */}
-        <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>               
+        <h3 className="text-center mt-5">Khoá học đã đăng ký</h3>
         {!userProfile.chiTietKhoaHocGhiDanh ? (
           <>
             <div>Bạn chưa đăng ký khoá học nào</div>
           </>
         ) : (
           <>
-            <div><DanhSachKhoaHocDaDangKy userProfile={userProfile}/></div>
+            <div>
+              <DanhSachKhoaHocDaDangKy userProfile={userProfile} />
+            </div>
           </>
         )}
       </div>

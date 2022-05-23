@@ -128,7 +128,7 @@ export const capNhatThongTinNguoiDung = (data) => {
   };
 };
 
-export const layMaNguoiDung = () => {
+export const layMaLoaiNguoiDung = () => {
   return async (dispatch) => {
     try {
       let result = await http.get(API_LAY_MA_LOAI_NGUOI_DUNG);

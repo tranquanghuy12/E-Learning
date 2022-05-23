@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { TOKEN_CYBERSOFT, USER_LOGIN } from "../../../../util/setting/config";
 import logo from "../../../../assets/img/logo-udemy.svg";
 import "./main.scss";
 export default function Header(props) {
   const history = useHistory();
-
-  const onSearch = (e) => {
-    console.log(e.target.value);
-  };
+  const [search,setSearch] = useState("");
   const userLogin =
     useSelector(
       (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
@@ -21,8 +17,7 @@ export default function Header(props) {
   );
 
   const logout = () => {
-    localStorage.removeItem(USER_LOGIN);
-    localStorage.removeItem(TOKEN_CYBERSOFT);
+    localStorage.clear();
     history.push("/home");
     window.location.reload();
   };
@@ -121,10 +116,14 @@ export default function Header(props) {
                     placeholder="Search for anything"
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
+                    onChange={(e)=>{
+                      setSearch(e.target.value);
+                      console.log(e.target.value)
+                    }}
                   />
                   <div className="input-group-append">
                     <Link
-                      to="/"
+                      to={`/danhmuckhoahoc/timkiem/${search}`}
                       className="btn input__group_text"
                       id="basic-addon2"
                       style={{ textDecoration: "none" }}

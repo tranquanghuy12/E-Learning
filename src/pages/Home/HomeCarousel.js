@@ -32,7 +32,12 @@ export default function HomeCarousel() {
       </div>
       <div>
         <a style={contentStyle}>
-          <img src={carousel3} className="w-100" alt="" />
+          <img src={carousel} className="w-100" alt="" />
+        </a>
+      </div>
+      <div>
+        <a style={contentStyle}>
+          <img src={carousel1} className="w-100" alt="" />
         </a>
       </div>
     </Carousel>
