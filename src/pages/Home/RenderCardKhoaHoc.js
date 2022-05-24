@@ -17,9 +17,8 @@ export default function RenderCardKhoaHoc({ item }) {
   return (
     <div className="card project text-center" onClick={handleClick}>
       <div className="overlay">
-        <div className="thumbnail">
-         
-          <img className="card-img-top w-100" src={item.hinhAnh} alt />
+        <div className="thumbnail">         
+          <img className="card-img-top w-100" src={item.hinhAnh} />
         </div>
       </div>
       <div className="card-body text-block">

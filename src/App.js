@@ -31,7 +31,7 @@ function App() {
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate path="/danhmuckhoahoc" exact Component={DanhMucKhoaHoc} />        
         <HomeTemplate
-          path="/danhmuckhoahoc/timkiem/:makhoahoc"
+          path="/timkiemkhoahoc/:value"
           exact
           Component={TimKiemKhoaHoc}
         />
