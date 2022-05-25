@@ -4,12 +4,14 @@ import {
   ADMIN_LAY_DS_KHOA_HOC_CHUA_GHI_DANH,
   ADMIN_LAY_DS_KHOA_HOC_DA_XET_DUYET,
 } from "../types/AdminNguoiDungType";
+import { ADMIN_THEM_KHOA_HOC } from "../types/AdminThemKhoaHocType";
 
 let stateDefault = {
   dsKhoaHocChuaGhiDanh: [],
   ghiDanhKhoaHoc: [],
-  dsKhoaHocChoXetDuyet:[],
-  dsKhoaHocDaXetDuyet:[]
+  dsKhoaHocChoXetDuyet: [],
+  dsKhoaHocDaXetDuyet: [],
+  themKhoaHoc: [],
 };
 export const AdminQuanLyKhoaHocReducer = (state = stateDefault, action) => {
   switch (action.type) {
@@ -22,9 +24,12 @@ export const AdminQuanLyKhoaHocReducer = (state = stateDefault, action) => {
     case ADMIN_LAY_DS_KHOA_HOC_CHO_XET_DUYET:
       state.dsKhoaHocChoXetDuyet = action.payload;
       return { ...state };
-      case ADMIN_LAY_DS_KHOA_HOC_DA_XET_DUYET:
-        state.dsKhoaHocDaXetDuyet = action.payload;
-        return { ...state };
+    case ADMIN_LAY_DS_KHOA_HOC_DA_XET_DUYET:
+      state.dsKhoaHocDaXetDuyet = action.payload;
+      return { ...state };
+    case ADMIN_THEM_KHOA_HOC:
+      state.themKhoaHoc = action.payload;
+      return { ...state };
     default:
       return state;
   }
