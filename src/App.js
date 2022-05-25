@@ -22,6 +22,7 @@ import ModalCapNhatNguoiDung from "./components/Modal/ModalCapNhatNguoiDung";
 import GhiDanhNguoiDung from "./pages/Admin/QuanLyGhiDanh/GhiDanhNguoiDung/GhiDanhNguoiDung";
 import ChiTietKhoaHoc from "./pages/Home/ChiTietKhoaHoc";
 import TimKiemKhoaHoc from "./pages/TimKiemKhoaHoc/TimKiemKhoaHoc";
+import ThemKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/ThemKhoaHoc";
 
 export const history = createBrowserHistory();
 function App() {
@@ -29,9 +30,9 @@ function App() {
     <Router history={history}>
       <Switch>
         <HomeTemplate path="/home" exact Component={Home} />
-        <HomeTemplate path="/danhmuckhoahoc" exact Component={DanhMucKhoaHoc} />        
+        <HomeTemplate path="/danhmuckhoahoc" exact Component={DanhMucKhoaHoc} />
         <HomeTemplate
-          path="/danhmuckhoahoc/timkiem/:makhoahoc"
+          path="/timkiemkhoahoc/:value"
           exact
           Component={TimKiemKhoaHoc}
         />
@@ -74,7 +75,7 @@ function App() {
           exact
           Component={QuanLyKhoaHoc}
         />
-
+        
         <Route component={PageNotFound} />
       </Switch>
     </Router>

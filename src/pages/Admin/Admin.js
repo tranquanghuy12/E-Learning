@@ -8,6 +8,7 @@ export default function Admin() {
   if (token && token.maLoaiNguoiDung === "GV") {
     return (
       <>
+        <h1 className="text-center display-4">Dashboard Admin</h1>
         <div className="rounded-0 jumbotron text-right pr-5 animate__animated animate__fadeInRight animate__delay-0.5s">
           <h1 className="display-4 jumbotron__title">Quản lý người dùng</h1>
           <hr className="my-4 hr__color" />

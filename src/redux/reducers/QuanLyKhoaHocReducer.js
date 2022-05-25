@@ -1,6 +1,7 @@
-import { LAY_DANH_SACH_KHOA_HOC_ACTION } from "../types/QuanLyKhoaHocType";
+import { LAY_DANH_SACH_KHOA_HOC_ACTION, TIM_KIEM_KHOA_HOC_ACTION } from "../types/QuanLyKhoaHocType";
 let stateDefault = {
   mangKhoaHoc: [],
+  timKiemKhoaHoc:[]
 };
 
 const QuanLyKhoaHocReducer = (state = stateDefault, action) => {
@@ -9,7 +10,9 @@ const QuanLyKhoaHocReducer = (state = stateDefault, action) => {
     case LAY_DANH_SACH_KHOA_HOC_ACTION:
       state.mangKhoaHoc = payload;
       return { ...state };
-
+    case TIM_KIEM_KHOA_HOC_ACTION:
+      state.timKiemKhoaHoc = payload;
+      return {...state}
     default:
       return state;
   }

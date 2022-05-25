@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/img/logo-udemy.svg";
+import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHocAction";
 import "./main.scss";
 export default function Header(props) {
+  const dispatch = useDispatch();
   const history = useHistory();
-  const [search,setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const userLogin =
     useSelector(
       (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
@@ -15,7 +16,16 @@ export default function Header(props) {
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
+  const { mangKhoaHoc } = useSelector(
+    (rootReducer) => rootReducer.QuanLyKhoaHocReducer
+  );
 
+  useEffect(() => {
+    dispatch(timKiemTenKhoaHocAction(mangKhoaHoc.tenKhoaHoc));
+  }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   const logout = () => {
     localStorage.clear();
     history.push("/home");
@@ -59,7 +69,8 @@ export default function Header(props) {
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                exact to="/"
+                exact
+                to="/"
               >
                 <i className="fa fa-bars" aria-hidden="true"></i>
               </NavLink>
@@ -100,15 +111,15 @@ export default function Header(props) {
               <div className="nav-item dropdown Categories">
                 <NavLink
                   className="nav-link"
-                  exact to="/danhmuckhoahoc"
+                  exact
+                  to="/danhmuckhoahoc"
                   id="navbarDropdown"
                 >
                   <i className="fa fa-th"></i>
                   Danh Mục Khoá Học
                 </NavLink>
               </div>
-
-              <form className="form__search">
+              <form className="form__search" onSubmit={handleSubmit}>
                 <div className="input-group">
                   <input
                     type="text"
@@ -116,14 +127,11 @@ export default function Header(props) {
                     placeholder="Search for anything"
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
-                    onChange={(e)=>{
-                      setSearch(e.target.value);
-                      console.log(e.target.value)
-                    }}
+                    onChange={(e) => setSearch(e.target.value)}
                   />
                   <div className="input-group-append">
                     <Link
-                      to={`/danhmuckhoahoc/timkiem/${search}`}
+                      to={`/timkiemkhoahoc/${search}`}
                       className="btn input__group_text"
                       id="basic-addon2"
                       style={{ textDecoration: "none" }}
