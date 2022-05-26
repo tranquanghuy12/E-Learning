@@ -27,6 +27,7 @@ export const API_HUYGHIDANH_KHOAHOC = DOMAIN + API_KHOAHOC + "HuyGhiDanh";
 export const API_TIM_KIEM_KHOA_HOC =
   DOMAIN + API_KHOAHOC + "LayDanhSachKhoaHoc?tenKhoaHoc=";
 export const API_THEM_KHOA_HOC_ADMIN = DOMAIN + API_KHOAHOC + "ThemKhoaHoc";
+export const API_LAY_DANH_SACH_KHOA_HOC_PHAN_TRANG = DOMAIN + API_KHOAHOC + 'LayDanhSachKhoaHoc_PhanTrang?'
 //API Admin
 export const API_LAY_DANH_SACH_NGUOI_DUNG =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung?";
