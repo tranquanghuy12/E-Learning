@@ -47,7 +47,7 @@ export default function Home(props) {
         <div className="row m-auto p-5">{layDanhSachKhoaHoc()}</div>
         <div className="text-center">
           <button
-            className="btn__custom"
+            className="btn__custom_sm"
             disabled={mangKhoaHocPhanTrang.currentPage <= 1}
             onClick={() => {
               console.log(mangKhoaHocPhanTrang.currentPage);
@@ -57,7 +57,7 @@ export default function Home(props) {
             Prev
           </button>
           <button
-            className="btn__custom btn__color_next"
+            className="btn__custom_sm btn__color_next"
             disabled={
               mangKhoaHocPhanTrang.currentPage >=
               mangKhoaHocPhanTrang.totalPages

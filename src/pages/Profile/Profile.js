@@ -11,7 +11,6 @@ import {
 } from "../../redux/actions/QuanLyNguoiDungAction";
 import { ACCESSTOKEN } from "../../util/setting/config";
 import DanhSachKhoaHocDaDangKy from "./DanhSachKhoaHocDaDangKy";
-import LoadingLazy from "../../components/LoadingLazy/LoadingLazy";
 export default function Profile() {
   const dispatch = new useDispatch();
   const { userProfile } = useSelector(
@@ -20,7 +19,6 @@ export default function Profile() {
   const { maLoaiNguoiDung } = useSelector(
     (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
   );
-  console.log("ma loai ng dung", maLoaiNguoiDung);
   useEffect(() => {
     dispatch(layMaLoaiNguoiDung());
     dispatch(layThongTinNguoiDungAction());

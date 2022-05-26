@@ -8,7 +8,7 @@ import { CapNhatNguoiDungSchema } from "../../services/NguoiDungSchema";
 
 const ModalCapNhatNguoiDung = (props) => {
   const dispatch = useDispatch();
-  const userProfile = props.userProfile;
+  const userProfile = props.userProfile;  
   const suaThongTinNguoiDung = (values) => {
     swal({
       title: "Bạn có chắc chắn muốn sửa không?",

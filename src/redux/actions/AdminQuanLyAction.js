@@ -11,7 +11,6 @@ import {
   API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
   API_LAY_DS_KHOA_HOC_CHO_XET_DUYET,
   API_LAY_DS_KHOA_HOC_DA_XET_DUYET,
-  API_THEM_KHOA_HOC_ADMIN,
   API_THEM_NGUOI_DUNG_ADMIN,
   API_TIM_KIEM_NGUOI_DUNG_ADMIN,
   API_XOA_NGUOI_DUNG_ADMIN,
@@ -26,7 +25,6 @@ import {
   ADMIN_LAY_DS_KHOA_HOC_DA_XET_DUYET,
   ADMIN_THEM_NGUOI_DUNG,
 } from "../types/AdminNguoiDungType";
-import { ADMIN_THEM_KHOA_HOC } from "../types/AdminThemKhoaHocType";
 import {
   LAY_DANH_SACH_NGUOI_DUNG,
   LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
@@ -221,15 +219,4 @@ export const huyGhiDanhKhoaHocAdmin = (data) => {
   };
 };
 
-export const themKhoaHocAdminAction = (values) => {
-  return async (dispatch) => {
-   
-      let result = await http.post(API_THEM_KHOA_HOC_ADMIN, values);
-      console.log("result them khoá học", result);
-      swal({
-        title: "Thêm khoá học thành công",
-      });
-      dispatch(createAction(ADMIN_THEM_KHOA_HOC, result));
-    
-  };
-};
+

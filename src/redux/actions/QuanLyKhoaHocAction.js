@@ -28,6 +28,7 @@ export function timKiemTenKhoaHocAction(text) {
     try {
       let result = await http.get(`${API_TIM_KIEM_KHOA_HOC}${text}`);
       dispatch(createAction(TIM_KIEM_KHOA_HOC_ACTION, result.data));
+      
     } catch (error) {
       console.log(error.response?.data);
     }

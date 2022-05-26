@@ -1,8 +1,10 @@
 import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
-import { Table } from "antd";
-import React, { useEffect } from "react";
+import { Button, Modal, Table } from "antd";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import swal from "sweetalert";
+import ModalCapNhatKhoaHoc from "../../../components/ModalCapNhatKhoaHoc/ModalCapNhatKhoaHoc";
+import { xoaKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 import { layDanhSachPhimAction } from "../../../redux/actions/QuanLyKhoaHocAction";
 
 export default function DanhSachKhoaHoc() {
@@ -11,6 +13,36 @@ export default function DanhSachKhoaHoc() {
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modaldata, setModaldata] = useState([]);
+  const showModal = (record) => {
+    console.log(record);
+    setModaldata(record);
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const xoaKhoaHocAdmin = (maKhoaHoc) => {
+    swal({
+      title: "Bạn có chắc chắn muốn xoá không?",
+      icon: "warning",
+      dangerMode: true,
+      buttons: {
+        cancel: "Huỷ bỏ",
+        confirm: "Đồng ý",
+      },
+    }).then((result) => {
+      if (result === true) {
+        dispatch(xoaKhoaHocAdminAction(maKhoaHoc));
+      }
+    });
+  };
   useEffect(() => {
     dispatch(layDanhSachPhimAction());
   }, []);
@@ -36,7 +68,7 @@ export default function DanhSachKhoaHoc() {
             src={item.hinhAnh}
             className="w-100"
             style={{ height: "100px" }}
-            alt=""
+            alt="Hình ảnh khoá học"
           />
         );
       },
@@ -66,19 +98,44 @@ export default function DanhSachKhoaHoc() {
       title: "Mã danh mục",
       dataIndex: "maDanhMucKhoaHoc",
       key: "maDanhMucKhoaHoc",
-      render: (text, item, index) => {
+      render: (text, record, index) => {
         return (
-          <div key={index}>
-            <Link to='/'>
+          <>
+            {/* Modal cập nhật khoá học */}
+            {/* <button
+              className="btn__icon"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={(e)=>console.log(e.target.value)}
+            >
               <EditOutlined />
-            </Link>
-            <Link to='/'>
+            </button> */}
+            <button className="btn__icon" onClick={() => showModal(record)}>
+              <EditOutlined />
+            </button>
+            <button
+              className="btn__icon ml-2"
+              onClick={() => xoaKhoaHocAdmin(record.maKhoaHoc)}
+            >
               <DeleteOutlined />
-            </Link>
-          </div>
+            </button>
+          </>
         );
       },
     },
   ];
-  return <Table dataSource={dataSource} columns={columns} />;
+  return (
+    <>
+      <Modal
+        title="Cập nhật thông tin khoá học"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}        
+      >
+        <ModalCapNhatKhoaHoc modaldata={modaldata}/>
+      </Modal>
+      {/* <ModalCapNhatKhoaHoc /> */}
+      <Table dataSource={dataSource} columns={columns} />
+    </>
+  );
 }
