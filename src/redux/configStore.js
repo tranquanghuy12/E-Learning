@@ -16,6 +16,6 @@ const rootReducer = combineReducers({
   DanhMucKhoaHocReducer,
   KhoaHocTheoDanhMucReducer,
   AdminQuanLyNguoiDungReducer,
-  AdminQuanLyKhoaHocReducer
+  AdminQuanLyKhoaHocReducer,
 });
 export default rootReducer;

@@ -101,15 +101,6 @@ export default function DanhSachKhoaHoc() {
       render: (text, record, index) => {
         return (
           <>
-            {/* Modal cập nhật khoá học */}
-            {/* <button
-              className="btn__icon"
-              data-toggle="modal"
-              data-target="#exampleModal"
-              onClick={(e)=>console.log(e.target.value)}
-            >
-              <EditOutlined />
-            </button> */}
             <button className="btn__icon" onClick={() => showModal(record)}>
               <EditOutlined />
             </button>
@@ -130,9 +121,9 @@ export default function DanhSachKhoaHoc() {
         title="Cập nhật thông tin khoá học"
         visible={isModalVisible}
         onOk={handleOk}
-        onCancel={handleCancel}        
+        onCancel={handleCancel}
       >
-        <ModalCapNhatKhoaHoc modaldata={modaldata}/>
+        <ModalCapNhatKhoaHoc modaldata={modaldata} />
       </Modal>
       {/* <ModalCapNhatKhoaHoc /> */}
       <Table dataSource={dataSource} columns={columns} />

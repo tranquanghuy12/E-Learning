@@ -7,7 +7,7 @@ export default function RenderCardKhoaHoc({ item }) {
   // const { Meta } = Card;
   const history = useHistory();
   const handleClick = () => {
-    history.push("/chitietkhoahoc");
+    history.push(`/chitietkhoahoc/${item.maKhoaHoc}`);
   };
   return (
     <div className="card project text-center" onClick={handleClick}>
