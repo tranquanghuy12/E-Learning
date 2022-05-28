@@ -41,3 +41,13 @@ export const xoaKhoaHocAdminAction = (maKhoaHoc) => {
     }
   };
 };
+export const capNhatThongTinKhoaHoc=(values)=>{
+return async dispatch=>{
+  try {
+    let result = await http.put("https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc",values)
+    console.log(result);
+  } catch (error) {
+    console.log(error.response?.data)
+  }
+}
+}
