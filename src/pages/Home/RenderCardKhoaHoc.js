@@ -2,11 +2,6 @@ import React from "react";
 import "./RenderCardKhoaHoc.scss";
 import { useHistory } from "react-router-dom";
 // import { Avatar, Card, Col, Row } from "antd";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
 
 export default function RenderCardKhoaHoc({ item }) {
   // const { Meta } = Card;
@@ -17,21 +12,18 @@ export default function RenderCardKhoaHoc({ item }) {
   return (
     <div className="card project text-center" onClick={handleClick}>
       <div className="overlay">
-        <div className="thumbnail">         
+        <div className="thumbnail">
           <img className="card-img-top w-100" src={item.hinhAnh} />
         </div>
       </div>
       <div className="card-body text-block">
         <div className="text-header">
-          <h4>
-            {item.tenKhoaHoc}              
-          </h4>
+          <h4>{item.tenKhoaHoc}</h4>
           <h5>Lượt xem: {item.luotXem}</h5>
-          
         </div>
         <span className="text-hover">
-            <p className="btn btn-warning more__detail">More Detail</p>
-          </span>
+          <p className="btn btn-warning more__detail">More Detail</p>
+        </span>
       </div>
     </div>
   );

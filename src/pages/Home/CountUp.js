@@ -3,7 +3,7 @@ import "./CountUp.scss";
 import CountUpReact from "react-countup";
 export default function CountUp() {
   return (
-    <div className="count">
+    <div className="count mt-5">
       <div className="count__content row">
         <div className="count__item col-sm-12 col-md-3 col-lg-3">
           <i className="icon style__icon fas fa-smile"></i>
@@ -38,64 +38,5 @@ export default function CountUp() {
         </div>
       </div>
     </div>
-    // <section className="count">
-    //   <div className="count__content">
-    //     <div className="count__item">
-    //       <div className="icon">
-    //         <span className="icon__detail">
-    //           <i class="style__icon fas fa-smile"></i>
-    //         </span>
-    //       </div>
-    //       <div className="content">
-    //         <h2>
-    //           <span className="counter">18</span>
-    //           Ml
-    //         </h2>
-    //         <p>Satisfied Clients</p>
-    //       </div>
-    //     </div>
-    //     <div className="count__item">
-    //       <div className="icon">
-    //         <span className="icon__detail">
-    //           <i class="style__icon fas fa-chart-line"></i>
-    //         </span>
-    //       </div>
-    //       <div className="content">
-    //         <h2>
-    //           <span className="counter">20</span>
-    //           Ml
-    //         </h2>
-    //         <p>Project Completed</p>
-    //       </div>
-    //     </div>
-    //     <div className="count__item">
-    //       <div className="icon">
-    //         <span className="icon__detail">
-    //         <i class="style__icon fas fa-rocket"></i>
-    //         </span>
-    //       </div>
-    //       <div className="content">
-    //         <h2>
-    //           <span className="counter">30</span>
-    //           Ml
-    //         </h2>
-    //         <p>Project Lunched</p>
-    //       </div>
-    //     </div>
-    //     <div className="count__item">
-    //       <div className="icon">
-    //         <span className="icon__detail">
-    //         <i class="style__icon fa fa-birthday-cake"></i>
-    //         </span>
-    //       </div>
-    //       <div className="content">
-    //         <h2>
-    //           <span className="counter">50</span>
-    //         </h2>
-    //         <p>Years Completed</p>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>
   );
 }

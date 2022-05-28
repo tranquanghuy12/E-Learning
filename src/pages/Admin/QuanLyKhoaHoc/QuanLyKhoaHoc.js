@@ -5,7 +5,7 @@ import ThemKhoaHoc from "./ThemKhoaHoc";
 
 export default function QuanLyKhoaHoc() {
   return (
-    <div>
+    <div className="container-fluid mt-5">
       <ul
         className="nav nav-tabs justify-content-center"
         id="myTab"
@@ -27,11 +27,11 @@ export default function QuanLyKhoaHoc() {
         <li className="nav-item">
           <a
             className="nav-link"
-            id="themkhoahoc-tab"
+            id="profile-tab"
             data-toggle="tab"
-            href="#themkhoahoc"
+            href="#profile"
             role="tab"
-            aria-controls="themkhoahoc"
+            aria-controls="profile"
             aria-selected="false"
           >
             Thêm khoá học
@@ -49,9 +49,9 @@ export default function QuanLyKhoaHoc() {
         </div>
         <div
           className="tab-pane fade"
-          id="themkhoahoc"
+          id="profile"
           role="tabpanel"
-          aria-labelledby="themkhoahoc-tab"
+          aria-labelledby="profile-tab"
         >
           <ThemKhoaHoc />
         </div>

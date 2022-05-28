@@ -3,7 +3,6 @@ import { Carousel } from "antd";
 import carousel from "../../assets/img/Carouselmg/carousel.jpeg";
 import carousel1 from "../../assets/img/Carouselmg/carousel1.png";
 import carousel2 from "../../assets/img/Carouselmg/carousel2.jpeg";
-import carousel3 from "../../assets/img/Carouselmg/carousel3.jpeg";
 export default function HomeCarousel() {
   const contentStyle = {
     height: "160px",

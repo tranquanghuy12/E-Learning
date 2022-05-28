@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyAction";
+import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
 import KhoaHocSchema from "../../../services/KhoaHocSchema";
 
@@ -128,7 +128,7 @@ export default function ThemKhoaHoc() {
               <div className="form-group col-sm-12 col-md-6 col-lg-6">
                 <label htmlFor="biDanh">Bí danh</label>
                 <Field
-                  type="number"
+                  type="text"
                   className="form-control"
                   name="biDanh"
                   placeholder="Bí danh"
