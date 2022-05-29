@@ -16,7 +16,7 @@ export default function Home(props) {
   const [filters, setFilters] = useState({
     layKhoaHoc,
     page: 1,
-    pageSize: 12,
+    pageSize: 9,
   });
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Home(props) {
   const layDanhSachKhoaHoc = () => {
     return layKhoaHoc?.map((item, index) => {
       return (
-        <div className="mb-4 col-sm-12 col-md-4 col-lg-3" key={index}>
+        <div className="mb-4 col-sm-12 col-md-3 col-lg-4" key={index}>
           <RenderCardKhoaHoc item={item} />
         </div>
       );
@@ -42,9 +42,11 @@ export default function Home(props) {
   return (
     <div className="container-fluid">
       <div>{HomeCarousel()}</div>
-      <div className="container">
-        <h3 className="ml-5 pl-3 header__title">Most Popular Courses</h3>
-        <div className="row m-auto p-5">{layDanhSachKhoaHoc()}</div>
+      <div className="container mt-5">
+        <div className="text-center">
+          <h1 className="text-center header__title">CÁC KHÓA HỌC PHỔ BIẾN</h1>
+        </div>
+        <div className="row m-auto pt-5 pb-5">{layDanhSachKhoaHoc()}</div>
         <div className="text-center">
           <button
             className="btn__custom_sm"

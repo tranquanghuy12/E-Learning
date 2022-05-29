@@ -16,9 +16,9 @@ export default function RenderCardKhoaHoc({ item }) {
           <img className="card-img-top w-100" src={item.hinhAnh} />
         </div>
       </div>
-      <div className="card-body text-block">
+      <div className="card-body p-3">
         <div className="text-header">
-          <h4>{item.tenKhoaHoc}</h4>
+          <h4 className="text-black">{item.tenKhoaHoc}</h4>
           <h5>Lượt xem: {item.luotXem}</h5>
         </div>
         <span className="text-hover">
