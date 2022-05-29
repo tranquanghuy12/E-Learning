@@ -124,8 +124,7 @@ export default function DanhSachKhoaHoc() {
         onCancel={handleCancel}
       >
         <ModalCapNhatKhoaHoc modaldata={modaldata} />
-      </Modal>
-      {/* <ModalCapNhatKhoaHoc /> */}
+      </Modal>     
       <Table dataSource={dataSource} columns={columns} />
     </>
   );

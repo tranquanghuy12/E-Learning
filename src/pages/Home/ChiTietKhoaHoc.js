@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ChiTietKhoaHocAction } from "../../redux/actions/ChiTietKhoaHocAction";
+import ChiTietKhoaHocItem from "../../templates/HomeTemplate/Layouts/ChiTietKhoaHocItem/ChiTietKhoaHocItem";
+import Footer from "../../templates/HomeTemplate/Layouts/Footer/Footer";
 
 export default function ChiTietKhoaHoc() {
   const dispatch = useDispatch();
@@ -11,16 +13,15 @@ export default function ChiTietKhoaHoc() {
   const chiTietKhoaHoc = useSelector(
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
-
+console.log("chi tiet",chiTietKhoaHoc)
   useEffect(() => {
     const action = ChiTietKhoaHocAction(makhoahoc);
     dispatch(action);
   }, []);
 
   return (
-    <div className="container">
-      <h1>{chiTietKhoaHoc.tenKhoaHoc}</h1>
-      <p>{chiTietKhoaHoc.moTa}</p>
-    </div>
+    <>
+      <ChiTietKhoaHocItem chiTietKhoaHoc={chiTietKhoaHoc} />
+    </>
   );
 }

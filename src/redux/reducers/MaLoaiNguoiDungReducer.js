@@ -32,6 +32,7 @@ export const MaLoaiNguoiDungReducer = (state = stateDefault, action) => {
     case TIM_KIEM_NGUOI_DUNG:
       state.timKiemNguoiDung = payload;
       return {...state}
+      
     default:
       return state;
   }
