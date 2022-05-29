@@ -4,7 +4,7 @@ import CountUpReact from "react-countup";
 export default function CountUp() {
   return (
     <div className="count mt-5">
-      <div className="count__content row">
+      <div className="count__content row m-0">
         <div className="count__item col-sm-12 col-md-3 col-lg-3">
           <i className="icon style__icon fas fa-smile"></i>
           <h2 className="count__title">

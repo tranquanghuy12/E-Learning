@@ -1,11 +1,13 @@
 import swal from "sweetalert";
 import { createAction } from ".";
 import {
+  API_DANG_KY_KHOA_HOC,
   API_THEM_KHOA_HOC_ADMIN,
   API_XOA_KHOA_HOC_ADMIN,
   http,
 } from "../../util/setting/config";
 import { ADMIN_THEM_KHOA_HOC } from "../types/AdminThemKhoaHocType";
+import { DANG_KY_KHOA_HOC_ACTION } from "../types/QuanLyKhoaHocType";
 import { layDanhSachPhimAction } from "./QuanLyKhoaHocAction";
 
 export const themKhoaHocAdminAction = (values) => {
@@ -36,18 +38,37 @@ export const xoaKhoaHocAdminAction = (maKhoaHoc) => {
       swal({
         title: "Không thành công",
         text: error.response?.data,
-        button:'Trở về'
+        button: "Trở về",
       });
     }
   };
 };
-export const capNhatThongTinKhoaHoc=(values)=>{
-return async dispatch=>{
-  try {
-    let result = await http.put("https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc",values)
-    console.log(result);
-  } catch (error) {
-    console.log(error.response?.data)
-  }
-}
-}
+export const capNhatThongTinKhoaHoc = (values) => {
+  return async (dispatch) => {
+    try {
+      let result = await http.put(
+        "https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc",
+        values
+      );
+      console.log(result);
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};
+export const dangKyKhoaHocAntion = (data) => {
+  return async (dispatch) => {
+    try {
+      let result = await http.post(API_DANG_KY_KHOA_HOC, data);
+      if (result.status === 200) {
+        swal({
+          title: "Đăng ký thành công",
+          icon: "success",
+        });
+        dispatch(createAction(DANG_KY_KHOA_HOC_ACTION, result));
+      }
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};

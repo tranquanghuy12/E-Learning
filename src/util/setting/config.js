@@ -23,6 +23,7 @@ export const API_LAY_MA_LOAI_NGUOI_DUNG =
 export const API_LAY_DANH_SACH_NGUOI_DUNG_PHAN_TRANG =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung_PhanTrang?";
 //API Khoá Học
+export const API_DANG_KY_KHOA_HOC = DOMAIN + API_KHOAHOC + "DangKyKhoaHoc";
 export const API_DANHMUC_KHOAHOC = DOMAIN + API_KHOAHOC + "LayDanhMucKhoaHoc";
 export const API_CHITIET_KHOAHOC =
   DOMAIN + API_KHOAHOC + "LayThongTinKhoaHoc?maKhoaHoc=";
