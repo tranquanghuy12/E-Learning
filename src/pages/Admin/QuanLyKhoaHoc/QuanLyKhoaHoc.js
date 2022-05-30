@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import DanhSachKhoaHoc from "./DanhSachKhoaHoc";
 import ThemKhoaHoc from "./ThemKhoaHoc";
 
-export default function QuanLyKhoaHoc() {
+export default function QuanLyKhoaHoc(props) {
   return (
     <div className="container-fluid mt-5">
       <ul

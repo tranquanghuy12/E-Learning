@@ -23,6 +23,7 @@ import GhiDanhNguoiDung from "./pages/Admin/QuanLyGhiDanh/GhiDanhNguoiDung/GhiDa
 import ChiTietKhoaHoc from "./pages/Home/ChiTietKhoaHoc";
 import TimKiemKhoaHoc from "./pages/TimKiemKhoaHoc/TimKiemKhoaHoc";
 import ThemKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/ThemKhoaHoc";
+import GhiDanhKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/GhiDanhKhoaHoc";
 
 export const history = createBrowserHistory();
 function App() {
@@ -70,6 +71,10 @@ function App() {
           exact
           Component={GhiDanhNguoiDung}
         />
+        <AdminTemplate
+          path="/admin/quanlykhoahoc/ghidanhkhoahoc/:maKhoaHoc"
+          exact Component={GhiDanhKhoaHoc}
+         />
         <AdminTemplate
           path="/admin/quanlykhoahoc"
           exact

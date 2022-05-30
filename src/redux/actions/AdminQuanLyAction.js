@@ -195,7 +195,8 @@ export const ghiDanhKhoaHocAdminAction = (values) => {
           icon: "success",
         });
         dispatch(createAction(ADMIN_GHI_DANH_KHOA_HOC, result));
-      }
+      } 
+      await dispatch(layDanhSachKhoaHocChuaGhiDanh(values))     
       window.location.reload();
     } catch (error) {
       console.log(error.response?.data);
@@ -211,7 +212,6 @@ export const huyGhiDanhKhoaHocAdmin = (data) => {
         title: "Thành công",
         text: "Bạn đã xoá thành công",
       });
-
       window.location.reload();
     } catch (error) {
       console.log(error.response?.data);

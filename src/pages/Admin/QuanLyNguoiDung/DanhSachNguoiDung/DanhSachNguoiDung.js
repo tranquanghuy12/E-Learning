@@ -96,8 +96,7 @@ export default function DanhSachNguoiDung() {
               <DeleteOutlined />
             </button>
             <Link
-              to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
-              Component={GhiDanhNguoiDung}
+              to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}             
             >
               <button className="btn__ghidanh_user">Ghi Danh</button>
             </Link>
