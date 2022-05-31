@@ -5,7 +5,26 @@ import ThemKhoaHoc from "./ThemKhoaHoc";
 
 export default function QuanLyKhoaHoc(props) {
   return (
-    <div className="container-fluid mt-5">
+    <div className="container mt-5">
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <Link className="style__navlink" to="/">
+              Home
+            </Link>
+          </li>
+          <li className="breadcrumb-item">
+            <Link className="style__navlink" to="/admin">
+              Admin
+            </Link>
+          </li>
+          <li className="breadcrumb-item">
+            <Link className="style__navlink" to="/admin/quanlykhoahoc">
+              Quản lý khoá học
+            </Link>
+          </li>
+        </ol>
+      </nav>
       <ul
         className="nav nav-tabs justify-content-center"
         id="myTab"

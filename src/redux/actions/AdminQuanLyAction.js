@@ -193,11 +193,11 @@ export const ghiDanhKhoaHocAdminAction = (values) => {
         swal({
           title: "Ghi Danh Thành Công",
           icon: "success",
+          button:false
         });
         dispatch(createAction(ADMIN_GHI_DANH_KHOA_HOC, result));
-      } 
-      await dispatch(layDanhSachKhoaHocChuaGhiDanh(values))     
-      window.location.reload();
+        window.location.reload();
+      }        
     } catch (error) {
       console.log(error.response?.data);
     }
@@ -209,8 +209,9 @@ export const huyGhiDanhKhoaHocAdmin = (data) => {
     try {
       let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
       swal({
-        title: "Thành công",
-        text: "Bạn đã xoá thành công",
+        title:"Xoá thành công",
+        icon:"success",
+        button:false
       });
       window.location.reload();
     } catch (error) {

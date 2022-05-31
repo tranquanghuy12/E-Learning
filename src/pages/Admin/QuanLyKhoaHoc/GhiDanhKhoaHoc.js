@@ -70,7 +70,7 @@ export default function GhiDanhKhoaHoc(props) {
           <div className="col-sm-12 col-md-8 col-lg-8">
             <select
               className="input-large form-control"
-              onChange={handleChangeInput}
+              onChange={handleChangeInput}            
             >
               {layDsNguoiDungChuaGhiDanhKhoaHoc()}
             </select>

@@ -2,8 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { Field, Form, Formik } from "formik";
-import { capNhatThongTinKhoaHoc } from "../../redux/actions/AdminQuanLyKhoaHocAction";
-import { Link } from "react-router-dom";
+import { capNhatThongTinKhoaHoc, capNhatThongTinKhoaHocAction } from "../../redux/actions/AdminQuanLyKhoaHocAction";
 export default function ModalCapNhatKhoaHoc(props) {
   const dispatch = useDispatch();
   const item = props.modaldata;
@@ -27,7 +26,7 @@ export default function ModalCapNhatKhoaHoc(props) {
     }).then((result) => {
       if (result === true) {
         console.log("sua thông tin", values);
-        dispatch(capNhatThongTinKhoaHoc(values));
+        dispatch(capNhatThongTinKhoaHocAction(values));
       }
     });
   };
@@ -46,8 +45,8 @@ export default function ModalCapNhatKhoaHoc(props) {
           hinhAnh: item.hinhAnh || "",
           maNhom: item.maNhom ? item.maNhom : "GP01",
           ngayTao: item.ngayTao || "",
-          maDanhMucKhoaHoc: item.danhMucKhoaHoc.maDanhMucKhoaHoc || "",
-          taiKhoanNguoiTao: item.nguoiTao.taiKhoan || "",
+          maDanhMucKhoaHoc: item.danhMucKhoaHoc || "BackEnd",
+          taiKhoanNguoiTao: item.nguoiTao || "",
         } || ""
       }
       onSubmit={(values) => {
@@ -55,7 +54,7 @@ export default function ModalCapNhatKhoaHoc(props) {
         console.log("value submit", values);
       }}
       render={(formikProps) => (
-        <Form>
+        <Form>                   
           <div className="container row">
             <div className="form-group col-md-6">
               <label htmlFor="maKhoaHoc">Mã khoá học</label>
@@ -151,7 +150,7 @@ export default function ModalCapNhatKhoaHoc(props) {
             </div>
             <button type="submit" className="btn btn-success">
               OK
-            </button>           
+            </button>
           </div>
         </Form>
       )}

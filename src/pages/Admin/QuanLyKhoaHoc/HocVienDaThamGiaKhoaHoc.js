@@ -37,11 +37,10 @@ export default function HocVienDaThamGiaKhoaHoc(props) {
               taiKhoan: taiKhoan,
             };
             swal({
-              title: "Xoá khoá học chờ xác thực",
-              text: "Bạn có chắc chắc muốn xoá?",
-              icon: "warning",
-              showCancelButton: true,
-              confirmButtonText: "Chắc chắn!",
+              title: "Huỷ khoá học chờ xác thực",
+              text: "Bạn có chắc chắc muốn huỷ?",
+              icon: "warning",              
+              buttons: ["Trở về","Chắc chắn!"],
             }).then((result) => {
               if (result === true) {
                 swal("Đã xoá!", "Khoá học đã được xoá.");

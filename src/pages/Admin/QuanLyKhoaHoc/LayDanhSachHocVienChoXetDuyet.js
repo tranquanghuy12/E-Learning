@@ -11,7 +11,6 @@ export default function LayDanhSachHocVienChoXetDuyet(props) {
     (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
   );
   const maKhoaHoc = props.maKhoaHoc;
-  console.log("ds", dsHocVienChoXacThuc);
   useEffect(() => {
     dispatch(layDsHocVienChoXacThucAction(maKhoaHoc));
   }, []);
@@ -41,8 +40,7 @@ export default function LayDanhSachHocVienChoXetDuyet(props) {
               title: "Xoá khoá học chờ xác thực",
               text: "Bạn có chắc chắc muốn xoá?",
               icon: "warning",
-              showCancelButton: true,
-              confirmButtonText: "Chắc chắn!",
+              buttons:["Cancel","Confirm"]
             }).then((result) => {
               if (result === true) {
                 swal("Đã xoá!", "Khoá học đã được xoá.");
@@ -62,8 +60,7 @@ export default function LayDanhSachHocVienChoXetDuyet(props) {
                 title: "Xác thực ghi danh",
                 text: "Bạn có chắc chắc muốn xác thực?",
                 icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Chắc chắn!",
+                buttons:["Cancel","Confirm"]
               }).then((result) => {
                 if (result === true) {
                   swal("Đã ghi danh!", "Ghi danh khoá học đã được xác nhận.");

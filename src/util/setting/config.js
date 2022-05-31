@@ -33,7 +33,10 @@ export const API_TIM_KIEM_KHOA_HOC =
 export const API_THEM_KHOA_HOC_ADMIN = DOMAIN + API_KHOAHOC + "ThemKhoaHoc";
 export const API_LAY_DANH_SACH_KHOA_HOC_PHAN_TRANG =
   DOMAIN + API_KHOAHOC + "LayDanhSachKhoaHoc_PhanTrang?";
-
+export const API_LAY_THONG_TIN_KHOA_HOC_ACTION =
+  DOMAIN + API_KHOAHOC + "LayThongTinKhoaHoc?maKhoaHoc=";
+export const API_CAPNHAT_THONG_TIN_KHOA_HOC =
+  DOMAIN + API_KHOAHOC + "CapNhatKhoaHoc";
 //API Admin
 export const API_LAY_DANH_SACH_NGUOI_DUNG =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung?";

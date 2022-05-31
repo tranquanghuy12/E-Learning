@@ -7,29 +7,13 @@ import ModalCapNhatKhoaHoc from "../../../components/ModalCapNhatKhoaHoc/ModalCa
 import { xoaKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 import { layDanhSachPhimAction } from "../../../redux/actions/QuanLyKhoaHocAction";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-export default function DanhSachKhoaHoc() {
+import { NavLink } from "react-router-dom";
+export default function DanhSachKhoaHoc(props) {
   const dispatch = useDispatch();
-
   //danh mục khóa học
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
-  console.log("mảng ", mangKhoaHoc);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [modaldata, setModaldata] = useState([]);
-  const showModal = (record) => {
-    console.log(record);
-    setModaldata(record);
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
   const xoaKhoaHocAdmin = (maKhoaHoc) => {
     swal({
       title: "Bạn có chắc chắn muốn xoá không?",
@@ -51,7 +35,7 @@ export default function DanhSachKhoaHoc() {
   const dataSource = mangKhoaHoc;
   const columns = [
     {
-      title: "Mã khoá học",
+      title: "Mã khoá",
       dataIndex: "maKhoaHoc",
       key: "maKhoaHoc",
     },
@@ -90,7 +74,7 @@ export default function DanhSachKhoaHoc() {
       },
     },
     {
-      title: "Mã danh mục",
+      title: "Mã mục",
       dataIndex: "maDanhMucKhoaHoc",
       key: "maDanhMucKhoaHoc",
 
@@ -103,26 +87,30 @@ export default function DanhSachKhoaHoc() {
       dataIndex: "action",
       key: "action",
 
-      render: (text, record, index) => {
+      render: (text, record) => {
         return (
           <>
-            <button
-              className="btn__edit_user mr-2"
-              onClick={() => showModal(record)}
+            <NavLink
+              key={1}
+              to={`/admin/quanlykhoahoc/capnhatthongtinkhoahoc/${record.maKhoaHoc}`}
             >
-              <EditOutlined />
-            </button>
+              <button className="btn__edit_user mr-1">
+                <EditOutlined />
+              </button>
+            </NavLink>
             <button
-              className="btn__delete_user text-white mr-2"
+              key={2}
+              className="btn__delete_user text-white mr-1"
               onClick={() => xoaKhoaHocAdmin(record.maKhoaHoc)}
             >
               <DeleteOutlined />
             </button>
-            <Link
+            <NavLink
+              key={3}
               to={`/admin/quanlykhoahoc/ghidanhkhoahoc/${record.maKhoaHoc}`}
             >
               <button className="btn__ghidanh_user">Ghi Danh</button>
-            </Link>
+            </NavLink>
           </>
         );
       },
@@ -130,14 +118,7 @@ export default function DanhSachKhoaHoc() {
   ];
   return (
     <div className="container mt-5">
-      <Modal
-        title="Cập nhật thông tin khoá học"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <ModalCapNhatKhoaHoc modaldata={modaldata} />
-      </Modal>
+     
       <Table dataSource={dataSource} columns={columns} />
     </div>
   );
