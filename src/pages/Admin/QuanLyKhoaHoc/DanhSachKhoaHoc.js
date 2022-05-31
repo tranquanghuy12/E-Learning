@@ -1,33 +1,19 @@
-import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
-import { Button, Modal, Table } from "antd";
+import { Modal, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import ModalCapNhatKhoaHoc from "../../../components/ModalCapNhatKhoaHoc/ModalCapNhatKhoaHoc";
 import { xoaKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 import { layDanhSachPhimAction } from "../../../redux/actions/QuanLyKhoaHocAction";
-
-export default function DanhSachKhoaHoc() {
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
+export default function DanhSachKhoaHoc(props) {
   const dispatch = useDispatch();
   //danh mục khóa học
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [modaldata, setModaldata] = useState([]);
-  const showModal = (record) => {
-    console.log(record);
-    setModaldata(record);
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
   const xoaKhoaHocAdmin = (maKhoaHoc) => {
     swal({
       title: "Bạn có chắc chắn muốn xoá không?",
@@ -49,7 +35,7 @@ export default function DanhSachKhoaHoc() {
   const dataSource = mangKhoaHoc;
   const columns = [
     {
-      title: "Mã khoá học",
+      title: "Mã khoá",
       dataIndex: "maKhoaHoc",
       key: "maKhoaHoc",
     },
@@ -62,12 +48,12 @@ export default function DanhSachKhoaHoc() {
       title: "Hình ảnh",
       dataIndex: "hinhAnh",
       key: "hinhAnh",
+
       render: (text, item) => {
         return (
           <img
             src={item.hinhAnh}
-            className="w-100"
-            style={{ height: "100px" }}
+            style={{ height: "100px", width: "100%" }}
             alt="Hình ảnh khoá học"
           />
         );
@@ -82,50 +68,58 @@ export default function DanhSachKhoaHoc() {
       title: "Tên danh mục",
       dataIndex: "tenDanhMucKhoaHoc",
       key: "tenDanhMucKhoaHoc",
+
       render: (text, item, index) => {
         return <div key={index}>{item.danhMucKhoaHoc.tenDanhMucKhoaHoc}</div>;
       },
     },
     {
-      title: "Mã danh mục",
+      title: "Mã mục",
       dataIndex: "maDanhMucKhoaHoc",
       key: "maDanhMucKhoaHoc",
+
       render: (text, item, index) => {
         return <div key={index}>{item.danhMucKhoaHoc.maDanhMucKhoahoc}</div>;
       },
     },
     {
-      title: "Mã danh mục",
-      dataIndex: "maDanhMucKhoaHoc",
-      key: "maDanhMucKhoaHoc",
-      render: (text, record, index) => {
+      title: "Thao tác",
+      dataIndex: "action",
+      key: "action",
+
+      render: (text, record) => {
         return (
           <>
-            <button className="btn__icon" onClick={() => showModal(record)}>
-              <EditOutlined />
-            </button>
+            <NavLink
+              key={1}
+              to={`/admin/quanlykhoahoc/capnhatthongtinkhoahoc/${record.maKhoaHoc}`}
+            >
+              <button className="btn__edit_user mr-1">
+                <EditOutlined />
+              </button>
+            </NavLink>
             <button
-              className="btn__icon ml-2"
+              key={2}
+              className="btn__delete_user text-white mr-1"
               onClick={() => xoaKhoaHocAdmin(record.maKhoaHoc)}
             >
               <DeleteOutlined />
             </button>
+            <NavLink
+              key={3}
+              to={`/admin/quanlykhoahoc/ghidanhkhoahoc/${record.maKhoaHoc}`}
+            >
+              <button className="btn__ghidanh_user">Ghi Danh</button>
+            </NavLink>
           </>
         );
       },
     },
   ];
   return (
-    <>
-      <Modal
-        title="Cập nhật thông tin khoá học"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <ModalCapNhatKhoaHoc modaldata={modaldata} />
-      </Modal>     
+    <div className="container mt-5">
+     
       <Table dataSource={dataSource} columns={columns} />
-    </>
+    </div>
   );
 }

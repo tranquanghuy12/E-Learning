@@ -1,11 +1,17 @@
 import swal from "sweetalert";
 import { createAction } from ".";
 import {
+  API_CAPNHAT_THONG_TIN_KHOA_HOC,
   API_DANG_KY_KHOA_HOC,
+  API_LAY_THONG_TIN_KHOA_HOC_ACTION,
   API_THEM_KHOA_HOC_ADMIN,
   API_XOA_KHOA_HOC_ADMIN,
   http,
 } from "../../util/setting/config";
+import {
+  ADMIN_CAP_NHAT_THONG_TIN_KHOA_HOC,
+  ADMIN_LAY_THONG_TIN_KHOA_HOC,
+} from "../types/AdminKhoaHocType";
 import { ADMIN_THEM_KHOA_HOC } from "../types/AdminThemKhoaHocType";
 import { DANG_KY_KHOA_HOC_ACTION } from "../types/QuanLyKhoaHocType";
 import { layDanhSachPhimAction } from "./QuanLyKhoaHocAction";
@@ -43,14 +49,12 @@ export const xoaKhoaHocAdminAction = (maKhoaHoc) => {
     }
   };
 };
-export const capNhatThongTinKhoaHoc = (values) => {
+export const capNhatThongTinKhoaHocAction = (values) => {
   return async (dispatch) => {
     try {
-      let result = await http.put(
-        "https://elearningnew.cybersoft.edu.vn/api/QuanLyKhoaHoc/CapNhatKhoaHoc",
-        values
-      );
-      console.log(result);
+      let result = await http.put(API_CAPNHAT_THONG_TIN_KHOA_HOC, values);
+      dispatch(createAction(ADMIN_CAP_NHAT_THONG_TIN_KHOA_HOC, result));
+      window.location.reload();
     } catch (error) {
       console.log(error.response?.data);
     }
@@ -67,6 +71,19 @@ export const dangKyKhoaHocAntion = (data) => {
         });
         dispatch(createAction(DANG_KY_KHOA_HOC_ACTION, result));
       }
+    } catch (error) {
+      console.log(error.response?.data);
+    }
+  };
+};
+
+export const layThongTinKhoaHocAction = (maKhoaHoc) => {
+  return async (dispatch) => {
+    try {
+      let result = await http.get(
+        `${API_LAY_THONG_TIN_KHOA_HOC_ACTION}${maKhoaHoc}`
+      );
+      dispatch(createAction(ADMIN_LAY_THONG_TIN_KHOA_HOC, result.data));
     } catch (error) {
       console.log(error.response?.data);
     }

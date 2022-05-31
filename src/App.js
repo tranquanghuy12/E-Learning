@@ -23,6 +23,8 @@ import GhiDanhNguoiDung from "./pages/Admin/QuanLyGhiDanh/GhiDanhNguoiDung/GhiDa
 import ChiTietKhoaHoc from "./pages/Home/ChiTietKhoaHoc";
 import TimKiemKhoaHoc from "./pages/TimKiemKhoaHoc/TimKiemKhoaHoc";
 import ThemKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/ThemKhoaHoc";
+import GhiDanhKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/GhiDanhKhoaHoc";
+import CapNhatThongTinKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/CapNhatThongTinKhoaHoc";
 
 export const history = createBrowserHistory();
 function App() {
@@ -42,7 +44,11 @@ function App() {
           exact
           Component={KhoaHocTheoDanhMuc}
         />
-        <HomeTemplate path="/chitietkhoahoc/:makhoahoc" exact Component={ChiTietKhoaHoc} />
+        <HomeTemplate
+          path="/chitietkhoahoc/:makhoahoc"
+          exact
+          Component={ChiTietKhoaHoc}
+        />
         <HomeTemplate path="/profile" exact Component={Profile} />
         <HomeTemplate path="/" exact Component={Home} />
 
@@ -66,16 +72,26 @@ function App() {
           Component={CapNhatThongTinNguoiDung}
         />
         <AdminTemplate
+          path="/admin/quanlykhoahoc/capnhatthongtinkhoahoc/:maKhoaHoc"
+          exact
+          Component={CapNhatThongTinKhoaHoc}
+        />
+        <AdminTemplate
           path="/admin/quanlynguoidung/ghidanhnguoidung/:taiKhoan"
           exact
           Component={GhiDanhNguoiDung}
+        />
+        <AdminTemplate
+          path="/admin/quanlykhoahoc/ghidanhkhoahoc/:maKhoaHoc"
+          exact
+          Component={GhiDanhKhoaHoc}
         />
         <AdminTemplate
           path="/admin/quanlykhoahoc"
           exact
           Component={QuanLyKhoaHoc}
         />
-        
+
         <Route component={PageNotFound} />
       </Switch>
     </Router>

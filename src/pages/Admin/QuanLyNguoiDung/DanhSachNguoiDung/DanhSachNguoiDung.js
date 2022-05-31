@@ -80,6 +80,7 @@ export default function DanhSachNguoiDung() {
         return (
           <Fragment key={nguoiDung.taiKhoan}>
             <Link
+              key={1}
               to={`/admin/quanlynguoidung/capnhatthongtinnguoidung/${nguoiDung.taiKhoan}`}
             >
               <button
@@ -90,14 +91,15 @@ export default function DanhSachNguoiDung() {
               </button>
             </Link>
             <button
+              key={2}
               className="btn__delete_user text-white mr-2"
               onClick={() => xoaNguoiDungAdmin(nguoiDung.taiKhoan)}
             >
               <DeleteOutlined />
             </button>
             <Link
+              key={3}
               to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
-              Component={GhiDanhNguoiDung}
             >
               <button className="btn__ghidanh_user">Ghi Danh</button>
             </Link>

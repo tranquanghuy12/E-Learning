@@ -15,7 +15,6 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
   const { dsKhoaHocChoXetDuyet } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyKhoaHocReducer
   );
-
   useEffect(() => {
     dispatch(layDanhSachKhoaHocChoXetDuyet(taiKhoan));
   }, []);
@@ -51,19 +50,19 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
               confirmButtonText: "Chắc chắn!",
             }).then((result) => {
               if (result === true) {
-                swal("Đã xoá!", "Khoá học đã được xoá.");                
+                swal("Đã xoá!", "Khoá học đã được xoá.");
                 dispatch(huyGhiDanhKhoaHocAdmin(data));
               }
             });
           }
         };
         const ghiDanh = (maKhoaHoc) => {
-          if(taiKhoan){
+          if (taiKhoan) {
             let data = {
               taiKhoan: taiKhoan.taiKhoan,
               maKhoaHoc: maKhoaHoc,
-            }
-            console.log('data ghi danh',data);
+            };
+            console.log("data ghi danh", data);
             swal({
               title: "Xác thực ghi danh",
               text: "Bạn có chắc chắc muốn xác thực?",
@@ -72,17 +71,27 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
               confirmButtonText: "Chắc chắn!",
             }).then((result) => {
               if (result === true) {
-                swal("Đã ghi danh!", "Ghi danh khoá học đã được xác nhận.");                
+                swal("Đã ghi danh!", "Ghi danh khoá học đã được xác nhận.");
                 dispatch(ghiDanhKhoaHocAdminAction(data));
               }
             });
           }
-        }
+        };
         return (
           <>
             <Fragment>
-              <button onClick={()=>ghiDanh(khoaHoc.maKhoaHoc)} className="btn btn-primary">Xác thực</button>
-              <button onClick={()=>xoaKhoaHoc(khoaHoc.maKhoaHoc)} className="btn btn-danger ml-3">Huỷ</button>
+              <button
+                onClick={() => ghiDanh(khoaHoc.maKhoaHoc)}
+                className="btn btn-primary"
+              >
+                Xác thực
+              </button>
+              <button
+                onClick={() => xoaKhoaHoc(khoaHoc.maKhoaHoc)}
+                className="btn btn-danger ml-3"
+              >
+                Huỷ
+              </button>
             </Fragment>
           </>
         );

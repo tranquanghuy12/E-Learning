@@ -1,4 +1,4 @@
-import {  
+import {
   DANG_KY_KHOA_HOC_ACTION,
   LAY_DANH_SACH_KHOA_HOC_ACTION,
   LAY_DS_KHOA_HOC_PHAN_TRANG_ACTION,
@@ -9,7 +9,7 @@ let stateDefault = {
   mangKhoaHocPhanTrang: [],
   mangKhoaHocPhanTrangData: [],
   timKiemKhoaHoc: [],
-  dangKyKhoaHoc:[]
+  dangKyKhoaHoc: [],
 };
 
 const QuanLyKhoaHocReducer = (state = stateDefault, action) => {
@@ -21,7 +21,6 @@ const QuanLyKhoaHocReducer = (state = stateDefault, action) => {
     case LAY_DS_KHOA_HOC_PHAN_TRANG_ACTION:
       state.mangKhoaHocPhanTrangData = payload.items;
       state.mangKhoaHocPhanTrang = payload;
-
       return { ...state };
     case TIM_KIEM_KHOA_HOC_ACTION:
       state.timKiemKhoaHoc = payload;

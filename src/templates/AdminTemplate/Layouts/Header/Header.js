@@ -74,7 +74,7 @@ export default function Header() {
             {userLogin.taiKhoan ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link nav__color" to='#'>
+                  <Link className="nav-link nav__color" to='/profile'>
                     {`Xin chào, ${
                       userLogin.hoTen.toString().length > 15
                         ? userLogin.hoTen.substring(0, 8) + "..."

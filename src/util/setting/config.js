@@ -33,7 +33,10 @@ export const API_TIM_KIEM_KHOA_HOC =
 export const API_THEM_KHOA_HOC_ADMIN = DOMAIN + API_KHOAHOC + "ThemKhoaHoc";
 export const API_LAY_DANH_SACH_KHOA_HOC_PHAN_TRANG =
   DOMAIN + API_KHOAHOC + "LayDanhSachKhoaHoc_PhanTrang?";
-
+export const API_LAY_THONG_TIN_KHOA_HOC_ACTION =
+  DOMAIN + API_KHOAHOC + "LayThongTinKhoaHoc?maKhoaHoc=";
+export const API_CAPNHAT_THONG_TIN_KHOA_HOC =
+  DOMAIN + API_KHOAHOC + "CapNhatKhoaHoc";
 //API Admin
 export const API_LAY_DANH_SACH_NGUOI_DUNG =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDung?";
@@ -58,6 +61,13 @@ export const API_LAY_DS_KHOA_HOC_CHO_XET_DUYET =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachKhoaHocChoXetDuyet";
 export const API_LAY_DS_KHOA_HOC_DA_XET_DUYET =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachKhoaHocDaXetDuyet";
+//API Admin nâng cao người dùng
+export const API_LAY_DS_NGUOI_DUNG_CHUA_GHI_DANH =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDungChuaGhiDanh";
+export const API_LAY_DS_HOC_VIEN_CHO_XAC_THUC =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachHocVienChoXetDuyet";
+export const API_LAY_HOC_VIEN_DA_THAM_GIA =
+  DOMAIN + API_NGUOIDUNG + "LayDanhSachHocVienKhoaHoc";
 //config axios
 export const http = axios.create({
   baseURL: DOMAIN,

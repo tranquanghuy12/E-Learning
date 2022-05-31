@@ -2,47 +2,36 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import "../main.scss";
-import {
-  chiTietNguoiDungAdminAction,
-  ghiDanhKhoaHocAdminAction,
-  layDanhSachKhoaHocChuaGhiDanh,
-} from "../../../../redux/actions/AdminQuanLyAction";
+import { layDsNguoiDungChuaGhiDanhAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
+import { ghiDanhKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyAction";
+import HocVienDaThamGiaKhoaHoc from "./HocVienDaThamGiaKhoaHoc";
+import LayDanhSachHocVienChoXetDuyet from "./LayDanhSachHocVienChoXetDuyet";
 
-import KhoaHocDaGhiDanh from "../KhoaHocDaGhiDanh/KhoaHocDaGhiDanh";
-import LayDanhSachKhoaHocChoXetDuyet from "../LayDanhSachKhoaHocChoXetDuyet/LayDanhSachKhoaHocChoXetDuyet";
-
-export default function GhiDanhNguoiDung(props) {
-  const history = useHistory();
+export default function GhiDanhKhoaHoc(props) {
   const dispatch = useDispatch();
-  const { taiKhoan } = useParams();
-
-  const { dsKhoaHocChuaGhiDanh } = useSelector(
-    (rootReducer) => rootReducer.AdminQuanLyKhoaHocReducer
+  const history = useHistory();
+  const { dsNguoiDungChuaGhiDanh } = useSelector(
+    (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
   );
-
+  const maKhoaHoc = props.match.params;
   useEffect(() => {
-    dispatch(layDanhSachKhoaHocChuaGhiDanh(taiKhoan));
-    dispatch(chiTietNguoiDungAdminAction());
+    dispatch(layDsNguoiDungChuaGhiDanhAction(maKhoaHoc));
   }, [dispatch]);
-
-  const layDsKhoaHocChuaGhiDanh = () => {
-    return dsKhoaHocChuaGhiDanh?.map((course, index) => {
+  const layDsNguoiDungChuaGhiDanhKhoaHoc = () => {
+    return dsNguoiDungChuaGhiDanh.map((item, index) => {
       return (
-        <option value={course.maKhoaHoc} key={index}>
-          {course.tenKhoaHoc}
+        <option value={item.taiKhoan} key={index}>
+          {item.hoTen}
         </option>
       );
     });
   };
-
   const [data, setData] = useState({ maKhoaHoc: "", taiKhoan: "" });
   const handleChangeInput = (e) => {
     let { value, maKhoaHoc, taiKhoan } = e.target;
     setData({
-      maKhoaHoc: value,
-      taiKhoan: props.match.params.taiKhoan,
+      maKhoaHoc: props.match.params.maKhoaHoc,
+      taiKhoan: value,
     });
   };
   const handleSubmit = (e) => {
@@ -66,27 +55,24 @@ export default function GhiDanhNguoiDung(props) {
             </Link>
           </li>
           <li className="breadcrumb-item">
-            <Link className="style__navlink" to="/admin/quanlynguoidung">
-              Quản lý người dùng
+            <Link className="style__navlink" to="/admin/quanlykhoahoc">
+              Quản lý khoá học
             </Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Ghi danh người dùng
+            Ghi danh khoá học
           </li>
         </ol>
       </nav>
-
-      <label>Chọn khoá học</label>
+      <label>Chọn người dùng</label>
       <form onSubmit={handleSubmit}>
         <div className="form-group row justify-content-center">
           <div className="col-sm-12 col-md-8 col-lg-8">
             <select
-              onChange={handleChangeInput}
               className="input-large form-control"
-              name=""
-              id=""
+              onChange={handleChangeInput}            
             >
-              {layDsKhoaHocChuaGhiDanh()}
+              {layDsNguoiDungChuaGhiDanhKhoaHoc()}
             </select>
           </div>
           <div className="btn__responsive_sm col-sm-12 col-md-4 col-lg-4 text-center">
@@ -95,7 +81,7 @@ export default function GhiDanhNguoiDung(props) {
             </button>
             <button
               onClick={() => {
-                history.push("/admin/quanlynguoidung");
+                history.push("/admin/quanlykhoahoc");
               }}
               className="btn btn__trove"
             >
@@ -107,17 +93,17 @@ export default function GhiDanhNguoiDung(props) {
       <hr />
       <div className="row align-items-center">
         <div className="col-12">
-          <label>Khoá học chờ xác thực</label>
+          <label>Học viên chờ xác thực</label>
         </div>
       </div>
-      <LayDanhSachKhoaHocChoXetDuyet taiKhoan={props.match.params} />
+      <LayDanhSachHocVienChoXetDuyet maKhoaHoc={props.match.params} />
       <hr />
       <div className="row align-items-center">
         <div className="col-12">
-          <label>Khoá học đã xác thực</label>
+          <label>Học viên đã tham gia khoá học</label>
         </div>
       </div>
-      <KhoaHocDaGhiDanh taiKhoan={props.match.params} />
+      <HocVienDaThamGiaKhoaHoc maKhoaHoc={props.match.params} />
     </div>
   );
 }
