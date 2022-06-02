@@ -1,27 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import DanhSachKhoaHoc from "./DanhSachKhoaHoc";
+// import ThemKhoaHoc from "./ThemKhoaHocAntd";
 import ThemKhoaHoc from "./ThemKhoaHoc";
-
 export default function QuanLyKhoaHoc(props) {
   return (
     <div className="container mt-5">
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <Link className="style__navlink" to="/">
+            <NavLink className="style__navlink" to="/">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="breadcrumb-item">
-            <Link className="style__navlink" to="/admin">
+            <NavLink className="style__navlink" to="/admin">
               Admin
-            </Link>
+            </NavLink>
           </li>
           <li className="breadcrumb-item">
-            <Link className="style__navlink" to="/admin/quanlykhoahoc">
+            <NavLink className="style__navlink" to="/admin/quanlykhoahoc">
               Quản lý khoá học
-            </Link>
+            </NavLink>
           </li>
         </ol>
       </nav>

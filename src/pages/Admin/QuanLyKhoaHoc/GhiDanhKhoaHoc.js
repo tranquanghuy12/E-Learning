@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { layDsNguoiDungChuaGhiDanhAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
 import { ghiDanhKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyAction";
 import HocVienDaThamGiaKhoaHoc from "./HocVienDaThamGiaKhoaHoc";
-import LayDanhSachHocVienChoXetDuyet from "./LayDanhSachHocVienChoXetDuyet";
+import LayDanhSachHocVienChoXetDuyet from "./LayDanhSachHocVienChoXacThuc";
 
 export default function GhiDanhKhoaHoc(props) {
   const dispatch = useDispatch();

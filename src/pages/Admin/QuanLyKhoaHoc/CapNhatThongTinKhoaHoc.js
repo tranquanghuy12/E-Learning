@@ -16,6 +16,7 @@ export default function CapNhatThongTinKhoaHoc(props) {
     (rootReducer) => rootReducer.AdminQuanLyKhoaHocReducer
   );
   const item = layThongTinKhoaHoc;
+  console.log('lay thong tin',item)
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
@@ -53,12 +54,12 @@ export default function CapNhatThongTinKhoaHoc(props) {
         tenKhoaHoc: item.tenKhoaHoc || "",
         biDanh: item.biDanh || "",
         moTa: item.moTa || "",
-        luotXem: item.luotXem,
-        danhGia: item.danhGia,
+        luotXem: item.luotXem||0,
+        danhGia: item.danhGia||0,
         hinhAnh: item.hinhAnh || "",
         maNhom: item.maNhom ? item.maNhom : "GP01",
         ngayTao: item.ngayTao || "",
-        maDanhMucKhoaHoc: item.danhMucKhoaHoc?.maDanhMucKhoaHoc || "",
+        maDanhMucKhoaHoc: item.danhMucKhoaHoc?.maDanhMucKhoaHoc || "BackEnd",
         taiKhoanNguoiTao: item.nguoiTao?.taiKhoan || "",
       }}
       onSubmit={(values) => {
@@ -163,7 +164,7 @@ export default function CapNhatThongTinKhoaHoc(props) {
                 className="form-control"
                 as="select"
                 name="maDanhMucKhoaHoc"
-                onChange={formikProps.handleChange}
+                onChange={formikProps.handleChange}                
               >
                 {renderDanhMucKhoaHoc()}
               </Field>
@@ -192,7 +193,6 @@ export default function CapNhatThongTinKhoaHoc(props) {
                 onChange={formikProps.handleChange}
               ></Field>
             </div>
-
             <button type="submit" className="btn btn-success mt-4">
               Submit
             </button>

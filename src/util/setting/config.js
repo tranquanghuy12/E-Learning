@@ -64,7 +64,7 @@ export const API_LAY_DS_KHOA_HOC_DA_XET_DUYET =
 //API Admin nâng cao người dùng
 export const API_LAY_DS_NGUOI_DUNG_CHUA_GHI_DANH =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachNguoiDungChuaGhiDanh";
-export const API_LAY_DS_HOC_VIEN_CHO_XAC_THUC =
+export const API_LAY_DS_HOC_VIEN_CHO_XET_DUYET =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachHocVienChoXetDuyet";
 export const API_LAY_HOC_VIEN_DA_THAM_GIA =
   DOMAIN + API_NGUOIDUNG + "LayDanhSachHocVienKhoaHoc";

@@ -1,212 +1,211 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
+import {
+  Form,
+  Input,
+  Button,
+  Radio,
+  Select,
+  Cascader,
+  DatePicker,
+  InputNumber,
+  TreeSelect,
+  Switch,
+} from "antd";
+import { useFormik } from "formik";
+import moment from "moment";
 import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
-import KhoaHocSchema from "../../../services/KhoaHocSchema";
-
-export default function ThemKhoaHoc() {
+import { useDispatch, useSelector } from "react-redux";
+import swal from "sweetalert";
+import {
+  themKhoaHocUploadHinhAction,
+  uploadHinhAnhKhoaHoc,
+} from "../../../redux/actions/AdminUploadHinhAnh";
+import { GROUPID } from "../../../util/setting/config";
+import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
+const ThemKhoaHoc = () => {
+  const taiKhoanNguoiTao = JSON.parse(localStorage.getItem("userLogin"));
   const dispatch = useDispatch();
-  let user = "";
-  user = JSON.parse(localStorage.getItem("userLogin"));
+  const [componentSize, setComponentSize] = useState("default");
+  const [imgSrc, setImgSrc] = useState("");
+  const onFormLayoutChange = ({ size }) => {
+    setComponentSize(size);
+  };
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
   const renderDanhMucKhoaHoc = () => {
     return mangDanhMucKhoaHoc.map((item, index) => {
       return (
-        <option key={index} value={item.maDanhMuc}>
+        <Select.Option key={index} value={item.maDanhMuc}>
           {item.tenDanhMuc}
-        </option>
+        </Select.Option>
       );
     });
+  };
+  const handleChangeFile = (value) => {
+    let hinhAnh = imgSrc;
+    formik.setFieldValue("hinhAnh", hinhAnh);
+  };
+  const handleChangeSelect = (name) => {
+    return (value) => {
+      formik.setFieldValue(name, value);
+    };
   };
   useEffect(() => {
     const action = layDanhMucKhoaHocAction();
     dispatch(action);
   }, []);
-  const [data, setData] = useState({
-    maKhoaHoc: "",
-    tenKhoaHoc: "",
-    biDanh: "",
-    moTa: "",
-    luotXem: 0,
-    danhGia: 0,
-    hinhAnh: "",
-    maNhom: "GP01" || "",
-    ngayTao: "",
-    maDanhMucKhoaHoc: "BackEnd",
-    taiKhoanNguoiTao: user.taiKhoan,
+  const handleChangeDatePicker = (value) => {
+    let ngayTao = moment(value).format("DD/MM/YYYY");
+    formik.setFieldValue("ngayTao", ngayTao);
+  };
+  const handleChangeInputNumber = (name) => {
+    return (value) => {
+      formik.setFieldValue(name, value);
+    };
+  };
+  // const handleChangeFile = (e) => {
+  //   //Lấy file ra từ e
+  //   let file = e.target.files[0];
+  //   console.log("file", file);
+  //   if (
+  //     file.type === "image/jpg" ||
+  //     file.type === "image/jpeg" ||
+  //     file.type === "image/png"
+  //   ) {
+  //     //Tạo đối tượng đọc file
+  //     let reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = (e) => {
+  //       //load hình khi chọn hình khác
+  //       //hình base64
+
+  //       setImgSrc(e.target.result);
+  //     };
+  //     formik.setFieldValue("hinhAnh", file);
+  //   } else {
+  //     console.log("Dịnh dạnh không phù hợp");
+  //   }
+  // };
+
+  const formik = useFormik({
+    initialValues: {
+      maKhoaHoc: "",
+      biDanh: "",
+      tenKhoaHoc: "",
+      moTa: "",
+      luotXem: 0,
+      danhGia: 0,
+      hinhAnh: "",
+      maNhom: "",
+      ngayTao: "",
+      maDanhMucKhoaHoc: "",
+      taiKhoanNguoiTao: taiKhoanNguoiTao.taiKhoan,
+    },
+    onSubmit: (values) => {
+      console.log("values", values);
+      // values.maNhom = GROUPID;
+      // //Tạo formData
+      // let formData = new FormData();
+      // for (let key in values) {
+      //   if (key === "hinhAnh") {
+      //     formData.append("file", values.hinhAnh, values.hinhAnh.name);
+      //   } else {
+      //     formData.append(key, values[key]);
+      //   }
+      // }
+      //Gọi api
+      dispatch(themKhoaHocAdminAction(values));
+    },
   });
   return (
-    <div className="container">
-      <Formik
-        initialValues={data || ""}
-        onSubmit={(value) => {
-          console.log(value);
-          const action = themKhoaHocAdminAction(value);
-          dispatch(action);
-        }}
-        validationSchema={KhoaHocSchema}
-        render={(formikProps) => (
-          <Form>
-            <div className="row mt-2">
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="maKhoaHoc">Mã khoá học</label>
-                <Field
-                  type="text"
-                  className="form-control"
-                  name="maKhoaHoc"
-                  placeholder="Nhập mã khoá học"
-                  onChange={formikProps.handleChange}
-                />
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="tenKhoaHoc">Tên khoá học</label>
-                <Field
-                  type="text"
-                  className="form-control"
-                  name="tenKhoaHoc"
-                  placeholder="Nhập tên khoá học"
-                  onChange={formikProps.handleChange}
-                />
-                <ErrorMessage name="tenKhoaHoc">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-              <div className="form-group col-sm-12 col-md-12 col-lg-12">
-                <label htmlFor="moTa">Mô tả</label>
-                <Field
-                  type="text"
-                  className="form-control"
-                  name="moTa"
-                  placeholder="Mô tả khoá học"
-                  onChange={formikProps.handleChange}
-                />
-                <ErrorMessage name="moTa">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="luotXem">Lượt xem</label>
-                <Field
-                  type="number"
-                  className="form-control"
-                  name="luotXem"
-                  placeholder="Lượt xem"
-                  onChange={formikProps.handleChange}
-                />
-                <ErrorMessage name="luotXem">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="danhGia">Đánh giá</label>
-                <Field
-                  type="number"
-                  className="form-control"
-                  name="danhGia"
-                  placeholder="Đánh giá"
-                  onChange={formikProps.handleChange}
-                />
-                <ErrorMessage name="danhGia">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="hinhAnh">Hình ảnh</label>
-                <Field
-                  type="file"
-                  className="form-control-file"
-                  name="hinhAnh"
-                  onChange={formikProps.handleChange}
-                />
-                <ErrorMessage name="hinhAnh">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="biDanh">Bí danh</label>
-                <Field
-                  type="text"
-                  className="form-control"
-                  name="biDanh"
-                  placeholder="Bí danh"
-                  onChange={formikProps.handleChange}
-                />
-                <ErrorMessage name="biDanh">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="maNhom">Mã nhóm</label>
-                <Field
-                  as="select"
-                  className="form-control"
-                  name="maNhom"
-                  onChange={formikProps.handleChange}
-                >
-                  <option value="GP01">GP01</option>
-                  <option value="GP02">GP02</option>
-                  <option value="GP03">GP03</option>
-                  <option value="GP04">GP04</option>
-                  <option value="GP05">GP05</option>
-                </Field>
-                <ErrorMessage name="maNhom">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="maDanhMucKhoaHoc">Mã danh mục khoá học</label>
-                <Field
-                  as="select"
-                  className="form-control"
-                  name="maDanhMucKhoaHoc"
-                  onChange={formikProps.handleChange}
-                >
-                  {renderDanhMucKhoaHoc()}
-                </Field>
-              </div>
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="ngayTao">Ngày tạo</label>
-                <Field
-                  type="date"
-                  className="form-control"
-                  name="ngayTao"
-                  placeholder="Ngày tạo"
-                  onChange={formikProps.handleChange}
-                />
-                <ErrorMessage name="ngayTao">
-                  {(msg) => <div className="text-danger">{msg}</div>}
-                </ErrorMessage>
-              </div>
-
-              <div className="form-group col-sm-12 col-md-6 col-lg-6">
-                <label htmlFor="taiKhoanNguoiTao">Tài khoản người tạo</label>
-                <Field
-                  type="text"
-                  className="form-control"
-                  name="taiKhoanNguoiTao"
-                  placeholder="Tài khoản người tạo"
-                  onChange={formikProps.handleChange}
-                  disabled
-                />
-              </div>
-            </div>
-            <div className="text-center">
-              <button type="submit" className="btn btn-success">
-                Thêm khoá học
-              </button>
-              <button
-                className="btn btn-danger"
-                onClick={formikProps.handleReset}
-              >
-                Đặt lại
-              </button>
-            </div>
-          </Form>
-        )}
-      />
-    </div>
+    <Form
+      onSubmitCapture={formik.handleSubmit}
+      labelCol={{
+        span: 4,
+      }}
+      wrapperCol={{
+        span: 14,
+      }}
+      layout="horizontal"
+      initialValues={{
+        size: componentSize,
+      }}
+      onValuesChange={onFormLayoutChange}
+      size={componentSize}
+    >
+      <Form.Item label="Form Size" name="size">
+        <Radio.Group>
+          <Radio.Button value="small">Small</Radio.Button>
+          <Radio.Button value="default">Default</Radio.Button>
+          <Radio.Button value="large">Large</Radio.Button>
+        </Radio.Group>
+      </Form.Item>
+      <Form.Item label="Mã khoá học">
+        <Input name="maKhoaHoc" onChange={formik.handleChange} />
+      </Form.Item>
+      <Form.Item label="Tên khoá học">
+        <Input name="tenKhoaHoc" onChange={formik.handleChange} />
+      </Form.Item>
+      <Form.Item label="Bí danh">
+        <Input name="biDanh" onChange={formik.handleChange} />
+      </Form.Item>
+      <Form.Item label="Mô tả">
+        <Input name="moTa" onChange={formik.handleChange} />
+      </Form.Item>
+      <Form.Item label="Lượt xem">
+        <Input name="luotXem" onChange={formik.handleChange} />
+      </Form.Item>
+      <Form.Item label="Tài khoản">
+        <Input
+          name="taiKhoanNguoiTao"
+          onChange={formik.handleChange}
+          value={taiKhoanNguoiTao.taiKhoan}
+          disabled
+        />
+      </Form.Item>
+      <Form.Item label="Danh mục">
+        <Select onChange={handleChangeSelect("maDanhMucKhoaHoc")}>
+          {renderDanhMucKhoaHoc()}
+        </Select>
+      </Form.Item>
+      <Form.Item label="Mã nhóm">
+        <Select onChange={handleChangeSelect("maNhom")}>
+          <Select.Option value="GP01">GP01</Select.Option>
+          <Select.Option value="GP02">GP02</Select.Option>
+          <Select.Option value="GP03">GP03</Select.Option>
+          <Select.Option value="GP04">GP04</Select.Option>
+          <Select.Option value="GP05">GP05</Select.Option>
+        </Select>
+      </Form.Item>
+      <Form.Item label="Ngày tạo">
+        <DatePicker
+          name="ngayTao"
+          format={"DD/MM/YYYY"}
+          onChange={handleChangeDatePicker}
+        />
+      </Form.Item>
+      <Form.Item label="Upload Hình">
+        <Input type="file" name="hinhAnh" onChange={formik.handleChange} />
+      </Form.Item>
+      <Form.Item label="Đánh giá">
+        <InputNumber
+          name="danhGia"
+          onChange={handleChangeInputNumber("danhGia")}
+          min={0}
+          max={10}
+        />
+      </Form.Item>
+      <Form.Item label="Tác vụ">
+        <button className="btn btn-primary mr-2" type="submit">
+          Thêm
+        </button>
+        <button onClick={formik.handleReset} className="btn btn-warning">
+          Đặt lại
+        </button>
+      </Form.Item>
+    </Form>
   );
-}
+};
+
+export default ThemKhoaHoc;
