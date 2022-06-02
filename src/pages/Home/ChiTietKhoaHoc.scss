@@ -1,0 +1,61 @@
+@import "../../assets/sass/app.scss";
+
+.black-transparent-overlay {
+  position: relative;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/img/banner-details-course.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 80px 65px;
+  &::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.664);
+  }
+
+  h1 {
+    font-weight: 400;
+  }
+
+  p {
+    font-size: $fontSize-0;
+  }
+
+  .btn-dangky {
+    background-color: $btn-color-1;
+    border-color: $btn-color-1;
+    color: $primary-dark;
+    padding-left: $padding-2;
+    padding-right: $padding-2;
+    &:hover {
+      background-color: transparent;
+      color: $btn-color-1;
+    }
+  }
+
+  .card-img-top {
+    border-radius: 5px;
+    width: 25%;
+    height: auto;
+  }
+}
+
+.course-intro {
+  p {
+    font-size: $fontSize-0;
+    letter-spacing: 0.1;
+  }
+}

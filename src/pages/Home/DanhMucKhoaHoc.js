@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { layDanhMucKhoaHocAction } from "../../redux/actions/DanhMucKhoaHocAction";
+import { Menu, Dropdown, Space } from "antd";
+import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import "./DanhMucKhoaHoc.scss";
 
 export default function DanhMucKhoaHoc() {
+  const style = {
+    color: "#ffd302",
+  };
   const dispatch = useDispatch();
 
   //danh mục khóa học
@@ -17,20 +22,28 @@ export default function DanhMucKhoaHoc() {
     dispatch(action);
   }, []);
 
-  const renderDanhMucKhoaHoc = () => {
-    return mangDanhMucKhoaHoc.map((item, index) => {
-      return (
-        <div key={index} className="col-4 p-4 d-flex justify-content-center">
-          <Link
-            to={`/danhmuckhoahoc/${item.maDanhMuc}`}
-            className="button-link btn d-flex justify-content-center align-items-center"
-          >
-            {item.tenDanhMuc}
-          </Link>
-        </div>
-      );
-    });
-  };
+  //sử dụng cho dropdown menu của antd
+  const mangDanhMucKhoaHocDropdown = mangDanhMucKhoaHoc.map((item, index) => {
+    return {
+      key: `${index}`,
+      label: (
+        <NavLink activeStyle={style} to={`/danhmuckhoahoc/${item.maDanhMuc}`}>
+          {item.tenDanhMuc}
+        </NavLink>
+      ),
+    };
+  });
 
-  return <div className="container row m-auto">{renderDanhMucKhoaHoc()}</div>;
+  const menu = <Menu items={mangDanhMucKhoaHocDropdown} />;
+
+  return (
+    <Dropdown overlay={menu}>
+      <a onClick={(e) => e.preventDefault()}>
+        <Space className="danhmuc-dropdown">
+          Danh mục khóa học
+          <i class="fa fa-angle-down"></i>
+        </Space>
+      </a>
+    </Dropdown>
+  );
 }
