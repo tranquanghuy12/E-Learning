@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { ghiDanhKhoaHocAdminAction } from "../../redux/actions/AdminQuanLyAction";
 import { timKiemTenKhoaHocAction } from "../../redux/actions/QuanLyKhoaHocAction";
 
-const TimKiemKhoaHoc = () => {
+const TimKiemKhoaHoc = (props) => {
   const { value } = useParams();
+  const maKhoaHoc = value;
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   const { timKiemKhoaHoc } = useSelector(
@@ -21,6 +23,7 @@ const TimKiemKhoaHoc = () => {
           <th scope="col">Mã khoá học</th>
           <th scope="col">Tên khoá học</th>
           <th scope="col">Lượt xem</th>
+          <th scope="col">Thao tác</th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +37,9 @@ const TimKiemKhoaHoc = () => {
               <td>{item.maKhoaHoc}</td>
               <td>{item.tenKhoaHoc}</td>
               <td>{item.luotXem}</td>
+              <td>
+                <button onClick={(maKhoaHoc)=>ghiDanhKhoaHocAdminAction(maKhoaHoc)} className="btn btn-success">ENROLL</button>
+              </td>
             </tr>
           );
         })}

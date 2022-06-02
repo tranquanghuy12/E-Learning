@@ -3,9 +3,12 @@ import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { layDsHocVienChoXacThucAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
-import { ghiDanhKhoaHocAdminAction, huyGhiDanhKhoaHocAdmin } from "../../../redux/actions/AdminQuanLyAction";
+import {
+  ghiDanhKhoaHocAdminAction,
+  huyGhiDanhKhoaHocAdmin,
+} from "../../../redux/actions/AdminQuanLyAction";
 
-export default function LayDanhSachHocVienChoXetDuyet(props) {
+export default function LayDanhSachHocVienChoXacThuc(props) {
   const dispatch = useDispatch();
   const { dsHocVienChoXacThuc } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
@@ -13,7 +16,7 @@ export default function LayDanhSachHocVienChoXetDuyet(props) {
   const maKhoaHoc = props.maKhoaHoc;
   useEffect(() => {
     dispatch(layDsHocVienChoXacThucAction(maKhoaHoc));
-  }, []);
+  }, [dispatch]);
   const dataSource = dsHocVienChoXacThuc;
   const columns = [
     {
@@ -40,7 +43,7 @@ export default function LayDanhSachHocVienChoXetDuyet(props) {
               title: "Xoá khoá học chờ xác thực",
               text: "Bạn có chắc chắc muốn xoá?",
               icon: "warning",
-              buttons:["Cancel","Confirm"]
+              buttons: ["Cancel", "Confirm"],
             }).then((result) => {
               if (result === true) {
                 swal("Đã xoá!", "Khoá học đã được xoá.");
@@ -50,25 +53,25 @@ export default function LayDanhSachHocVienChoXetDuyet(props) {
           }
         };
         const ghiDanh = (taiKhoan) => {
-            if (taiKhoan) {
-              let data = {
-                maKhoaHoc: maKhoaHoc.maKhoaHoc,
-                taiKhoan: taiKhoan,
-              };
-              console.log("data ghi danh", data);
-              swal({
-                title: "Xác thực ghi danh",
-                text: "Bạn có chắc chắc muốn xác thực?",
-                icon: "warning",
-                buttons:["Cancel","Confirm"]
-              }).then((result) => {
-                if (result === true) {
-                  swal("Đã ghi danh!", "Ghi danh khoá học đã được xác nhận.");
-                  dispatch(ghiDanhKhoaHocAdminAction(data));
-                }
-              });
-            }
-          };
+          if (taiKhoan) {
+            let data = {
+              maKhoaHoc: maKhoaHoc.maKhoaHoc,
+              taiKhoan: taiKhoan,
+            };
+            console.log("data ghi danh", data);
+            swal({
+              title: "Xác thực ghi danh",
+              text: "Bạn có chắc chắc muốn xác thực?",
+              icon: "warning",
+              buttons: ["Cancel", "Confirm"],
+            }).then((result) => {
+              if (result === true) {
+                swal("Đã ghi danh!", "Ghi danh khoá học đã được xác nhận.");
+                dispatch(ghiDanhKhoaHocAdminAction(data));
+              }
+            });
+          }
+        };
         return (
           <>
             <Fragment>
@@ -91,6 +94,11 @@ export default function LayDanhSachHocVienChoXetDuyet(props) {
     },
   ];
   return (
-    <Table dataSource={dataSource} columns={columns} scroll={{ y: 300 }} />
+    <Table
+      dataSource={dataSource}
+      rowKey="taiKhoan"
+      columns={columns}
+      scroll={{ y: 300 }}
+    />
   );
 }

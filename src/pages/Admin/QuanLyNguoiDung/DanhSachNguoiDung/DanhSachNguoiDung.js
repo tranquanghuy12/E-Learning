@@ -7,10 +7,8 @@ import {
   adminXoaNguoiDungAction,
   layDanhSachNguoiDungSearch,
 } from "../../../../redux/actions/AdminQuanLyAction";
-import CapNhatThongTinNguoiDung from "../CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import GhiDanhNguoiDung from "../../QuanLyGhiDanh/GhiDanhNguoiDung/GhiDanhNguoiDung";
 
 export default function DanhSachNguoiDung() {
   const { Search } = Input;
@@ -42,21 +40,24 @@ export default function DanhSachNguoiDung() {
       title: "Tài khoản",
       dataIndex: "taiKhoan",
       key: "taiKhoan",
+      width: "10%",
     },
     {
       title: "Họ tên",
       dataIndex: "hoTen",
       key: "hoTen",
+      width: "15%",
     },
     {
       title: "Email",
       dataIndex: "email",
       key: "email",
+      width: "25%",
       render: (text, nguoiDung) => {
         return (
           <Fragment key={nguoiDung.email}>
             {nguoiDung.email.length > 20
-              ? nguoiDung.email.substr(0, 20) + "..."
+              ? nguoiDung.email.substr(0, 30) + "..."
               : nguoiDung.email}
           </Fragment>
         );
@@ -66,16 +67,19 @@ export default function DanhSachNguoiDung() {
       title: "Số điện thoại",
       dataIndex: "soDt",
       key: "soDt",
+      width: "10%",
     },
     {
       title: "Loại người dùng",
       dataIndex: "maLoaiNguoiDung",
       key: "maLoaiNguoiDung",
+      width: "17%",
     },
     {
       title: "Chức năng",
       dataIndex: "nguoiDung",
       key: "taiKhoan",
+      width: "23%",
       render: (text, nguoiDung) => {
         return (
           <Fragment key={nguoiDung.taiKhoan}>
@@ -83,10 +87,7 @@ export default function DanhSachNguoiDung() {
               key={1}
               to={`/admin/quanlynguoidung/capnhatthongtinnguoidung/${nguoiDung.taiKhoan}`}
             >
-              <button
-                className="btn__edit_user mr-2"
-                Component={CapNhatThongTinNguoiDung}
-              >
+              <button className="btn__edit_user mr-2">
                 <EditOutlined />
               </button>
             </Link>
@@ -101,7 +102,9 @@ export default function DanhSachNguoiDung() {
               key={3}
               to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
             >
-              <button className="btn__ghidanh_user">Ghi Danh</button>
+              <button className="btn__ghidanh_user">
+                <i className="fas fa-registered"></i>
+              </button>
             </Link>
           </Fragment>
         );
@@ -152,7 +155,12 @@ export default function DanhSachNguoiDung() {
           />
         </div>
       </div>
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        rowKey="taiKhoan"
+      />
     </div>
   );
 }

@@ -99,6 +99,6 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
     },
   ];
   return (
-    <Table dataSource={dataSource} columns={columns} scroll={{ y: 300 }} />
+    <Table dataSource={dataSource} rowKey="maKhoaHoc" columns={columns} scroll={{ y: 300 }} />
   );
 }

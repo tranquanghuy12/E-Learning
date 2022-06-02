@@ -2,7 +2,7 @@ import { Table } from "antd";
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
-import { layDsHocVienDaThamGiaAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
+import { layDsHocVienKhoaHocAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
 import { huyGhiDanhKhoaHocAdmin } from "../../../redux/actions/AdminQuanLyAction";
 
 export default function HocVienDaThamGiaKhoaHoc(props) {
@@ -12,7 +12,7 @@ export default function HocVienDaThamGiaKhoaHoc(props) {
   );
   const maKhoaHoc = props.maKhoaHoc;
   useEffect(() => {
-    dispatch(layDsHocVienDaThamGiaAction(maKhoaHoc));
+    dispatch(layDsHocVienKhoaHocAction(maKhoaHoc));
   }, []);
   const dataSource = dsHocVienDaThamGia;
   const columns = [
@@ -60,6 +60,6 @@ export default function HocVienDaThamGiaKhoaHoc(props) {
     },
   ];
   return (
-    <Table dataSource={dataSource} columns={columns} scroll={{ y: 300 }} />
+    <Table dataSource={dataSource} rowKey="taiKhoan" columns={columns} scroll={{ y: 300 }} />
   );
 }

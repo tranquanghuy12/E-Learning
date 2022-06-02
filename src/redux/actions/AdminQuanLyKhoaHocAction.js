@@ -18,12 +18,16 @@ import { layDanhSachPhimAction } from "./QuanLyKhoaHocAction";
 
 export const themKhoaHocAdminAction = (values) => {
   return async (dispatch) => {
-    let result = await http.post(API_THEM_KHOA_HOC_ADMIN, values);
-    console.log("result them khoá học", result);
-    swal({
-      title: "Thêm khoá học thành công",
-    });
-    dispatch(createAction(ADMIN_THEM_KHOA_HOC, result));
+    try {
+      let result = await http.post(API_THEM_KHOA_HOC_ADMIN, values);
+      console.log("result them khoá học", result);
+      swal({
+        title: "Thêm khoá học thành công",
+      });
+      dispatch(createAction(ADMIN_THEM_KHOA_HOC, result));
+    } catch (error) {
+      console.log("error", error.response?.data);
+    }
   };
 };
 
