@@ -1,8 +1,8 @@
-@import '../../../../assets/sass/app.scss';
-.bg-light{
+@import "../../../../assets/sass/app.scss";
+.bg-light {
   background-color: $bg-color-1 !important;
 }
-nav.navbar{
+nav.navbar {
   margin-bottom: 0 !important;
 }
 .displayWhenSmallScreen {
@@ -33,7 +33,7 @@ nav.navbar{
 .header__left {
   .navbar-brand {
     img {
-      width:100px !important;      
+      width: 100px !important;
     }
     padding: 8px 16px !important;
   }
@@ -41,6 +41,8 @@ nav.navbar{
     display: block;
   }
   .Categories {
+    display: flex;
+    align-items: center;
     #navbarDropdown {
       color: $second-color;
       margin-top: 4px;
@@ -52,7 +54,7 @@ nav.navbar{
   }
   .form__search {
     flex-grow: 10;
-    .input-group{
+    .input-group {
       display: flex !important;
       position: relative;
       flex-wrap: nowrap;
@@ -63,7 +65,7 @@ nav.navbar{
     .form-control {
       padding: 10px;
       background-color: $bg-color !important;
-      border:1px solid $second-color !important;
+      border: 1px solid $second-color !important;
       transition: none;
       font-size: 1.2rem;
       transition: all ease 0.5s;
@@ -76,7 +78,7 @@ nav.navbar{
       &:value {
         font-size: 1.2rem;
       }
-      
+
       &:focus + .input-group-append {
         .input-group-text {
           text-decoration: none;
@@ -85,11 +87,10 @@ nav.navbar{
         &:hover {
           .input-group-text {
             background-color: $btn-color-0;
-            color:$primary-darkblue;
+            color: $primary-darkblue;
           }
         }
       }
-      
     }
     .input-group-append {
       .input__group_text {
@@ -101,7 +102,7 @@ nav.navbar{
         font-size: 1.2rem;
         transition: all ease 0.5s;
         &:hover {
-          background-color:$btn-color-1;
+          background-color: $btn-color-1;
           color: $primary-darkblue;
         }
       }
@@ -110,23 +111,23 @@ nav.navbar{
 }
 
 //responsive
-.display__when_small{
-  @include responsive(SM){
+.display__when_small {
+  @include responsive(SM) {
     width: auto !important;
   }
 }
-.logo__when_md{
-  @include responsive(MD){
+.logo__when_md {
+  @include responsive(MD) {
     text-align: right;
   }
 }
-.display__sm{
-  @include responsive(SM){
+.display__sm {
+  @include responsive(SM) {
     width: auto !important;
   }
 }
-.col__display{
-  @include responsive(MD){
+.col__display {
+  @include responsive(MD) {
     display: none;
   }
 }

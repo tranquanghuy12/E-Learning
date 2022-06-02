@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/img/logo-udemy.svg";
+import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc";
 import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHocAction";
 import "./main.scss";
 export default function Header(props) {
@@ -13,9 +14,11 @@ export default function Header(props) {
     useSelector(
       (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
     ) || {};
+
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
+
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
@@ -23,14 +26,17 @@ export default function Header(props) {
   useEffect(() => {
     dispatch(timKiemTenKhoaHocAction(mangKhoaHoc.tenKhoaHoc));
   }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   const logout = () => {
     localStorage.clear();
     history.push("/home");
     window.location.reload();
   };
+
   const layDanhMucKhoaHoc = (mangDanhMucKhoaHoc) => {
     return mangDanhMucKhoaHoc.map((item) => {
       return (
@@ -44,6 +50,7 @@ export default function Header(props) {
       );
     });
   };
+
   const danhMucKhoaHocCollapse = () => {
     return (
       <ul className="dropdown-submenu list-unstyled">
@@ -56,6 +63,7 @@ export default function Header(props) {
       </ul>
     );
   };
+
   return (
     <>
       <header>
@@ -109,15 +117,7 @@ export default function Header(props) {
                 <img src={logo} alt="logo" />
               </NavLink>
               <div className="nav-item dropdown Categories">
-                <NavLink
-                  className="nav-link"
-                  exact
-                  to="/danhmuckhoahoc"
-                  id="navbarDropdown"
-                >
-                  <i className="fa fa-th"></i>
-                  Danh Mục Khoá Học
-                </NavLink>
+                <DanhMucKhoaHoc />
               </div>
               <form className="form__search" onSubmit={handleSubmit}>
                 <div className="input-group">
