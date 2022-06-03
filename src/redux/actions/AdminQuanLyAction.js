@@ -118,6 +118,7 @@ export const adminXoaNguoiDungAction = (taikhoan) => {
 export const capNhatThongTinNguoiDungAdmin = (data) => {
   return async (dispatch) => {
     try {
+      console.log('data',data)
       let result = await http.put(API_CAPNHAT_THONGTIN_NGUOIDUNG_ADMIN, data);
 
       if (result.status === 200) {
@@ -130,7 +131,7 @@ export const capNhatThongTinNguoiDungAdmin = (data) => {
         history.push("/admin/quanlynguoidung");
       }
     } catch (error) {
-      swal("Error", error.response?.data);
+      console.log('error',error.response?.data)
     }
   };
 };

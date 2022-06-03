@@ -82,9 +82,8 @@ export default function DanhSachNguoiDung() {
       width: "23%",
       render: (text, nguoiDung) => {
         return (
-          <Fragment key={nguoiDung.taiKhoan}>
+          <Fragment>
             <Link
-              key={1}
               to={`/admin/quanlynguoidung/capnhatthongtinnguoidung/${nguoiDung.taiKhoan}`}
             >
               <button className="btn__edit_user mr-2">
@@ -92,14 +91,12 @@ export default function DanhSachNguoiDung() {
               </button>
             </Link>
             <button
-              key={2}
               className="btn__delete_user text-white mr-2"
               onClick={() => xoaNguoiDungAdmin(nguoiDung.taiKhoan)}
             >
               <DeleteOutlined />
             </button>
             <Link
-              key={3}
               to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
             >
               <button className="btn__ghidanh_user">

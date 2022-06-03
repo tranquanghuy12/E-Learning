@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import {
   capNhatThongTinKhoaHocAction,
   layThongTinKhoaHocAction,
 } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
 import { Link } from "react-router-dom";
+import KhoaHocSchema from "../../../services/KhoaHocSchema";
 
 export default function CapNhatThongTinKhoaHoc(props) {
   const dispatch = useDispatch();
@@ -16,7 +17,6 @@ export default function CapNhatThongTinKhoaHoc(props) {
     (rootReducer) => rootReducer.AdminQuanLyKhoaHocReducer
   );
   const item = layThongTinKhoaHoc;
-  console.log('lay thong tin',item)
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
@@ -32,15 +32,15 @@ export default function CapNhatThongTinKhoaHoc(props) {
   useEffect(() => {
     dispatch(layThongTinKhoaHocAction(maKhoaHoc));
     dispatch(layDanhMucKhoaHocAction());
-  }, [dispatch,maKhoaHoc]);
+  }, [dispatch, maKhoaHoc]);
   const suaThongTinKhoaHoc = (values) => {
     swal({
       title: "Bạn có chắc chắn muốn sửa không?",
       text: "Bạn sẽ không thể phục hồi",
       icon: "warning",
-      buttons:["Trở về","Đồng ý"]
+      buttons: ["Trở về", "Đồng ý"],
     }).then((result) => {
-      if (result === true) {  
+      if (result === true) {
         dispatch(capNhatThongTinKhoaHocAction(values));
       }
     });
@@ -54,14 +54,15 @@ export default function CapNhatThongTinKhoaHoc(props) {
         tenKhoaHoc: item.tenKhoaHoc || "",
         biDanh: item.biDanh || "",
         moTa: item.moTa || "",
-        luotXem: item.luotXem||0,
-        danhGia: item.danhGia||0,
+        luotXem: item.luotXem || 0,
+        danhGia: item.danhGia || 0,
         hinhAnh: item.hinhAnh || "",
         maNhom: item.maNhom ? item.maNhom : "GP01",
         ngayTao: item.ngayTao || "",
         maDanhMucKhoaHoc: item.danhMucKhoaHoc?.maDanhMucKhoaHoc || "BackEnd",
         taiKhoanNguoiTao: item.nguoiTao?.taiKhoan || "",
       }}
+      validationSchema={KhoaHocSchema}
       onSubmit={(values) => {
         suaThongTinKhoaHoc(values);
       }}
@@ -90,15 +91,15 @@ export default function CapNhatThongTinKhoaHoc(props) {
             </ol>
           </nav>
           <div className="row align-items-center justify-content-center">
-          <h2>Cập nhật khoá học</h2>
+            <h2 className="border__title">Cập nhật khoá học</h2>
             <div className="form-group col-md-12 col-lg-12">
               <label htmlFor="maKhoaHoc">Mã khoá học</label>
               <Field
                 className="form-control"
                 type="text"
                 name="maKhoaHoc"
-                onChange={formikProps.handleChange}
-                disabled
+                onChange={formikProps.handleChange}         
+                disabled       
               ></Field>
             </div>
             <div className="form-group col-sm-12 col-md-6">
@@ -129,6 +130,9 @@ export default function CapNhatThongTinKhoaHoc(props) {
                 name="tenKhoaHoc"
                 onChange={formikProps.handleChange}
               ></Field>
+              <ErrorMessage name="tenKhoaHoc">
+                {(msg) => <div className="text-danger">{msg}</div>}
+              </ErrorMessage>
             </div>
             <div className="form-group col-sm-12 col-md-6">
               <label htmlFor="biDanh">Bí danh</label>
@@ -138,8 +142,10 @@ export default function CapNhatThongTinKhoaHoc(props) {
                 name="biDanh"
                 onChange={formikProps.handleChange}
               ></Field>
+              <ErrorMessage name="biDanh">
+                {(msg) => <div className="text-danger">{msg}</div>}
+              </ErrorMessage>
             </div>
-
             <div className="form-group col-sm-12 col-md-6">
               <label htmlFor="luotXem">Lượt xem</label>
               <Field
@@ -164,7 +170,7 @@ export default function CapNhatThongTinKhoaHoc(props) {
                 className="form-control"
                 as="select"
                 name="maDanhMucKhoaHoc"
-                onChange={formikProps.handleChange}                
+                onChange={formikProps.handleChange}
               >
                 {renderDanhMucKhoaHoc()}
               </Field>
@@ -187,7 +193,7 @@ export default function CapNhatThongTinKhoaHoc(props) {
             <div className="form-group col-sm-12 col-md-12">
               <label htmlFor="moTa">Mô tả</label>
               <Field
-                className="form-control"         
+                className="form-control"
                 type="text"
                 name="moTa"
                 onChange={formikProps.handleChange}
