@@ -41,7 +41,7 @@ export default function DanhMucKhoaHoc() {
       <a onClick={(e) => e.preventDefault()}>
         <Space className="danhmuc-dropdown">
           Danh mục khóa học
-          <i class="fa fa-angle-down"></i>
+          <i className="fa fa-angle-down"></i>
         </Space>
       </a>
     </Dropdown>

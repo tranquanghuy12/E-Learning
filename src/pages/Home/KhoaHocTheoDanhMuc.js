@@ -29,10 +29,6 @@ export default function KhoaHocTheoDanhMuc() {
   const danhMuc = mangDanhMucKhoaHoc.find(
     (item) => item.maDanhMuc === madanhmuc
   );
-
-  console.log('danhMuc', danhMuc)
-  console.log("mangKhoaHocTheoDanhMuc", mangKhoaHocTheoDanhMuc);
-
   const renderKhoaHocTheoDanhMuc = () => {
     return mangKhoaHocTheoDanhMuc.map((item, index) => {
       return (

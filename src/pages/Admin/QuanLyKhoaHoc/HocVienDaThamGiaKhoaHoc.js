@@ -39,11 +39,10 @@ export default function HocVienDaThamGiaKhoaHoc(props) {
             swal({
               title: "Huỷ khoá học chờ xác thực",
               text: "Bạn có chắc chắc muốn huỷ?",
-              icon: "warning",              
-              buttons: ["Trở về","Chắc chắn!"],
+              icon: "warning",
+              buttons: ["Trở về", "Chắc chắn!"],
             }).then((result) => {
               if (result === true) {
-                swal("Đã xoá!", "Khoá học đã được xoá.");
                 dispatch(huyGhiDanhKhoaHocAdmin(data));
               }
             });
@@ -52,7 +51,12 @@ export default function HocVienDaThamGiaKhoaHoc(props) {
         return (
           <>
             <Fragment>
-              <button className="btn btn-danger" onClick={() => huyKhoaHoc(hocVien.taiKhoan)}>Huỷ</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => huyKhoaHoc(hocVien.taiKhoan)}
+              >
+                Huỷ
+              </button>
             </Fragment>
           </>
         );
@@ -60,6 +64,11 @@ export default function HocVienDaThamGiaKhoaHoc(props) {
     },
   ];
   return (
-    <Table dataSource={dataSource} rowKey="taiKhoan" columns={columns} scroll={{ y: 300 }} />
+    <Table
+      dataSource={dataSource}
+      rowKey="taiKhoan"
+      columns={columns}
+      scroll={{ y: 300 }}
+    />
   );
 }

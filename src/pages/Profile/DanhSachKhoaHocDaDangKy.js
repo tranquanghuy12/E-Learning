@@ -175,7 +175,7 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
       },
     },
   ];
-  return <Table columns={columns} dataSource={data} />;
+  return <Table columns={columns} dataSource={data} rowKey="maKhoaHoc" />;
 };
 
 export default DanhSachKhoaHocDaDangKy;

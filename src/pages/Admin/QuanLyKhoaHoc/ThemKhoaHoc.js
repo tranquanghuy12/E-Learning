@@ -2,25 +2,19 @@ import React, { useEffect, useState } from "react";
 import {
   Form,
   Input,
-  Button,
   Radio,
   Select,
-  Cascader,
   DatePicker,
   InputNumber,
-  TreeSelect,
-  Switch,
 } from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
 import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
 import { useDispatch, useSelector } from "react-redux";
-import swal from "sweetalert";
 import {
   themKhoaHocUploadHinhAction,
   uploadHinhAnhKhoaHoc,
 } from "../../../redux/actions/AdminUploadHinhAnh";
-import { GROUPID } from "../../../util/setting/config";
 import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 const ThemKhoaHoc = () => {
   const taiKhoanNguoiTao = JSON.parse(localStorage.getItem("userLogin"));
@@ -41,10 +35,6 @@ const ThemKhoaHoc = () => {
         </Select.Option>
       );
     });
-  };
-  const handleChangeFile = (value) => {
-    let hinhAnh = imgSrc;
-    formik.setFieldValue("hinhAnh", hinhAnh);
   };
   const handleChangeSelect = (name) => {
     return (value) => {
@@ -103,7 +93,6 @@ const ThemKhoaHoc = () => {
       taiKhoanNguoiTao: taiKhoanNguoiTao.taiKhoan,
     },
     onSubmit: (values) => {
-      console.log("values", values);
       // values.maNhom = GROUPID;
       // //Tạo formData
       // let formData = new FormData();

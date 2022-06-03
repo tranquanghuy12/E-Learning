@@ -16,7 +16,7 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
   const maKhoaHoc = props.maKhoaHoc;
   useEffect(() => {
     dispatch(layDsHocVienChoXacThucAction(maKhoaHoc));
-  }, [dispatch]);
+  }, [dispatch,maKhoaHoc]);
   const dataSource = dsHocVienChoXacThuc;
   const columns = [
     {
@@ -45,8 +45,7 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
               icon: "warning",
               buttons: ["Cancel", "Confirm"],
             }).then((result) => {
-              if (result === true) {
-                swal("Đã xoá!", "Khoá học đã được xoá.");
+              if (result === true) {                
                 dispatch(huyGhiDanhKhoaHocAdmin(data));
               }
             });
@@ -65,8 +64,7 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
               icon: "warning",
               buttons: ["Cancel", "Confirm"],
             }).then((result) => {
-              if (result === true) {
-                swal("Đã ghi danh!", "Ghi danh khoá học đã được xác nhận.");
+              if (result === true) {               
                 dispatch(ghiDanhKhoaHocAdminAction(data));
               }
             });
