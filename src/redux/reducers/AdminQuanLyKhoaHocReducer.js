@@ -1,4 +1,8 @@
-import { ADMIN_CAP_NHAT_THONG_TIN_KHOA_HOC, ADMIN_LAY_THONG_TIN_KHOA_HOC } from "../types/AdminKhoaHocType";
+import {
+  ADMIN_CAP_NHAT_THONG_TIN_KHOA_HOC,
+  ADMIN_LAY_THONG_TIN_KHOA_HOC,
+  ADMIN_TIM_KIEM_KHOA_HOC,
+} from "../types/AdminKhoaHocType";
 import {
   ADMIN_GHI_DANH_KHOA_HOC,
   ADMIN_LAY_DS_KHOA_HOC_CHO_XET_DUYET,
@@ -14,7 +18,7 @@ let stateDefault = {
   dsKhoaHocDaXetDuyet: [],
   themKhoaHoc: [],
   layThongTinKhoaHoc: [],
-  capNhatKhoaHoc:[]
+  capNhatKhoaHoc: [],
 };
 export const AdminQuanLyKhoaHocReducer = (state = stateDefault, action) => {
   switch (action.type) {
@@ -38,6 +42,9 @@ export const AdminQuanLyKhoaHocReducer = (state = stateDefault, action) => {
       return { ...state };
     case ADMIN_CAP_NHAT_THONG_TIN_KHOA_HOC:
       state.capNhatKhoaHoc = action.payload;
+      return { ...state };
+    case ADMIN_TIM_KIEM_KHOA_HOC:
+      state.timKiemKhoaHoc = action.payload;
       return { ...state };
 
     default:

@@ -10,7 +10,8 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState({ searchText: "", searchedColumn: "" });
   const searchInput = useRef(null);
-  const data = userProfile.chiTietKhoaHocGhiDanh || '';
+  const data = userProfile.chiTietKhoaHocGhiDanh || "";
+  // console.log('data',data)
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -109,21 +110,22 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
       title: "Mã khoá học",
       dataIndex: "maKhoaHoc",
       key: "maKhoaHoc",
-      width: "12%",
       ...getColumnSearchProps("maKhoaHoc"),
     },
     {
       title: "Tên khoá học",
       dataIndex: "tenKhoaHoc",
       key: "tenKhoaHoc",
-      width: "18%",
       ...getColumnSearchProps("tenKhoaHoc"),
+    },
+    {
+      title: "Hình ảnh",
+      dataIndex: "hinhAnh",
+      render: (hinhAnh) => <img width={150} src={hinhAnh} alt="Hình ảnh" />,
     },
     {
       title: "Mô tả",
       dataIndex: "moTa",
-      key: "moTa",
-      width: "50%",
       render: (text, khoaHoc) => {
         return khoaHoc.moTa.length > 20
           ? khoaHoc.moTa.substring(0, 70) + "..."
@@ -134,14 +136,13 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
       title: "Đánh giá",
       dataIndex: "danhGia",
       key: "danhGia",
-      width: "10%",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.danhGia - b.danhGia,
     },
+
     {
       title: "Thao tác",
-      width: "10%",
-      key:'maKhoaHoc',
+      key: "maKhoaHoc",
       render: (text, khoaHoc) => {
         const xoaKhoaHoc = (maKhoaHoc) => {
           if (userProfile) {

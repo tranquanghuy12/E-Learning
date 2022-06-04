@@ -9,9 +9,9 @@
   justify-content: space-evenly;
   text-align: center;
 }
-.style__icon{
-    margin-top: 1.5rem !important;
-    font-size: 4rem !important;
+.style__icon {
+  margin-top: 1.5rem !important;
+  font-size: 4rem !important;
 }
 .icon {
   margin-bottom: 1rem;
@@ -34,13 +34,24 @@
 .icon span i {
   font-size: 3rem;
 }
-.count__title{
-    font-size: 4rem;
+.count__title {
+  width: 100%;
+  font-size: 4rem;
 }
-.style__description
-{
-    font-size: 1rem;
+.style__description {
+  font-size: 1.5rem;
 }
+.count__item {
+  @include responsive(MD) {
+    .count__title {
+      font-size: 2rem;
+    }
+    .style__description {
+      font-size: 1rem;
+    }
+  }
+}
+
 .count__item .content h2,
 .count__item .content span {
   font-size: 4rem;
