@@ -29,13 +29,9 @@ export const dangNhapAction = (userLogin) => {
       let token = usLogin.accessToken;
       localStorage.setItem(ACCESSTOKEN, token);
       localStorage.setItem(USER_LOGIN, JSON.stringify(usLogin));
-      dispatch(createAction(DANG_NHAP_ACTION, result.data));
-      swal({
-        title: "Đăng nhập thành công",
-        icon: "success",
-      });
+      dispatch(createAction(DANG_NHAP_ACTION, result.data));     
       if (result.data.maLoaiNguoiDung === "HV") {
-        history.push("/home");
+        history.goBack();
       } else {
         history.push("/admin");
       }

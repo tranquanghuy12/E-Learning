@@ -10,12 +10,12 @@ export default function QuanLyKhoaHoc(props) {
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
             <NavLink className="style__navlink" to="/">
-              Home
+              Trang chủ
             </NavLink>
           </li>
           <li className="breadcrumb-item">
             <NavLink className="style__navlink" to="/admin">
-              Admin
+              Quản trị
             </NavLink>
           </li>
           <li className="breadcrumb-item">

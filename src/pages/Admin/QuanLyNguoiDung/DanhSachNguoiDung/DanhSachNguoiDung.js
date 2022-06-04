@@ -121,12 +121,12 @@ export default function DanhSachNguoiDung() {
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
             <Link className="style__navlink" to="/">
-              Home
+              Trang chủ
             </Link>
           </li>
           <li className="breadcrumb-item">
             <Link className="style__navlink" to="/admin">
-              Admin
+              Quản trị
             </Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
@@ -136,7 +136,7 @@ export default function DanhSachNguoiDung() {
       </nav>
       <div className="row">
         <div className="col-md-6">
-          <h1>Quản lý người dùng</h1>
+          <h2>Quản lý người dùng</h2>
           <Link
             className="btn btn-success mb-5"
             to="/admin/quanlynguoidung/themnguoidung"
@@ -146,7 +146,7 @@ export default function DanhSachNguoiDung() {
         </div>
         <div className="col-md-6">
           <Search
-            placeholder="Tìm kiếm tên người dùng"
+            placeholder="Nhập tên người dùng muốn dùng"
             onSearch={onSearch}
             enterButton
           />
