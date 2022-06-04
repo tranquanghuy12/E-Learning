@@ -23,7 +23,7 @@ export default function KhoaHocTheoDanhMuc() {
   useEffect(() => {
     const action = layKhoaHocTheoDanhMucAction(madanhmuc);
     dispatch(action);
-  }, []);
+  }, [madanhmuc]);
 
   //tìm danhMuc để lấy trường tenDanhMuc hiển thị ra banner
   const danhMuc = mangDanhMucKhoaHoc.find(

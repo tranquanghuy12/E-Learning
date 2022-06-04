@@ -6,6 +6,7 @@ import logo from "../../../../assets/img/logo-udemy.svg";
 import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc";
 import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHocAction";
 import "./main.scss";
+
 export default function Header(props) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -124,7 +125,7 @@ export default function Header(props) {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Search for anything"
+                    placeholder="What are you looking for?"
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
                     onChange={(e) => setSearch(e.target.value)}
