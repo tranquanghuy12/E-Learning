@@ -146,7 +146,7 @@ export default function DanhSachNguoiDung() {
         </div>
         <div className="col-md-6">
           <Search
-            placeholder="Tìm kiếm mã khoá học"
+            placeholder="Tìm kiếm tên người dùng"
             onSearch={onSearch}
             enterButton
           />

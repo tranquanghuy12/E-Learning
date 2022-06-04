@@ -5,9 +5,7 @@ import { ghiDanhKhoaHocAdminAction } from "../../redux/actions/AdminQuanLyAction
 import { timKiemTenKhoaHocAction } from "../../redux/actions/QuanLyKhoaHocAction";
 
 const TimKiemKhoaHoc = (props) => {
-  const { value } = useParams();
-  const maKhoaHoc = value;
-  const [products, setProducts] = useState([]);
+  const { value } = useParams();  
   const dispatch = useDispatch();
   const { timKiemKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
