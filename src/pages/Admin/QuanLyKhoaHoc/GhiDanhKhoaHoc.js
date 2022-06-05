@@ -46,12 +46,12 @@ export default function GhiDanhKhoaHoc(props) {
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
             <Link className="style__navlink" to="/">
-              Home
+              Trang chủ
             </Link>
           </li>
           <li className="breadcrumb-item">
             <Link className="style__navlink" to="/admin">
-              Admin
+              Quản trị
             </Link>
           </li>
           <li className="breadcrumb-item">

@@ -11,31 +11,30 @@ export default function HomeCarousel() {
     textAlign: "center",
     background: "#364d79",
   };
-
   return (
     <Carousel autoplay>
       <div>
-        <a style={contentStyle}>
+        <a style={contentStyle}>    
           <img src={carousel} className="w-100" alt="" />
         </a>
       </div>
       <div>
-        <a style={contentStyle}>
+        <a style={contentStyle}>    
           <img src={carousel1} className="w-100" alt="" />
         </a>
       </div>
       <div>
-        <a style={contentStyle}>
+        <a style={contentStyle}>    
           <img src={carousel2} className="w-100" alt="" />
         </a>
       </div>
       <div>
-        <a style={contentStyle}>
+        <a style={contentStyle}>    
           <img src={carousel} className="w-100" alt="" />
         </a>
       </div>
       <div>
-        <a style={contentStyle}>
+        <a style={contentStyle}>    
           <img src={carousel1} className="w-100" alt="" />
         </a>
       </div>

@@ -124,7 +124,7 @@ export default function DanhSachKhoaHoc(props) {
     <div className="container mt-5">
       <Input.Search
         className="mb-5"
-        placeholder="input search text"
+        placeholder="Nhập tên khoá học muốn tìm"
         allowClear
         enterButton="Search"
         size="large"

@@ -57,7 +57,7 @@ const ModalCapNhatNguoiDung = (props) => {
             data-target="#modelId"
           >
             <i className="fas fa-edit"></i>
-            Sửa thông tin
+            Cập nhật thông tin
           </button>
           <div
             className="modal fade"

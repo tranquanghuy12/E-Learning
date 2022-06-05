@@ -16,9 +16,6 @@ export default function Profile() {
   const { userProfile } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
-  const { maLoaiNguoiDung } = useSelector(
-    (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
-  );
   useEffect(() => {
     dispatch(layMaLoaiNguoiDung());
     dispatch(layThongTinNguoiDungAction());
@@ -35,7 +32,7 @@ export default function Profile() {
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <Link className="style__navlink" to="/">
-                Home
+                Trang chủ
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">

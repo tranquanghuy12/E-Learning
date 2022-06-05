@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Review from "../../components/Review/Review";
 import { layDanhSachKhoaHocPhanTrang } from "../../redux/actions/QuanLyKhoaHocAction";
-import CountUp from "./CountUp";
+import CountUp from "../../components/CountUp/CountUp";
 import HomeCarousel from "./HomeCarousel";
 import RenderCardKhoaHoc from "./RenderCardKhoaHoc";
 import "./Home.scss";
