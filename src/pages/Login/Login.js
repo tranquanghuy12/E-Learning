@@ -22,54 +22,76 @@ export default function Login(props) {
 
   return (
     <div className="container containerLogin bg__login">
-      <div className='row contentLogin align-items-center'>
+      <div className="row contentLogin align-items-center">
         <div className="col-md-6 mb-3">
-          <img src={loginSvg} className="img-fluid" alt="image" />
+          <img src={loginSvg} className="img" alt="image" />
         </div>
         <div className="col-md-6">
-          <h2 className='signinText mb-3 text-center'>Đăng nhập</h2>
+          <h2 className="signinText mb-3 text-center">Đăng nhập</h2>
           <form onSubmit={formik.handleSubmit}>
-            <div className="form-group">
-              <label className="signin__label" htmlFor="taiKhoan">Tài khoản</label>
-              <input
-                className='form-control'
-                type="text"
-                name="taiKhoan"
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label className="signin__label" htmlFor="password">Mật khẩu</label>
-              <input
-                className='form-control'
-                type="password"
-                name="matKhau"
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className='form-check'>
-              <input
-                type="checkbox"
-                name="checkbox"
-                className="form-check-input signin__label"
-                id="checkbox"
-              />
-              <label className="form-check-label signin__label" htmlFor="checkbox">
-                Duy trì đăng nhập
-              </label>
-            </div>
-            <p className="text-center text-white">
-              Nếu bạn quên mật khẩu. <Link to="#">Nhấp vào đây</Link>
-            </p>
-            <div className="row text-center mt-5">
-              <div className="col-6">
-                <button type="submit" className="btn btn-custom">
+            <div className="row">
+              <div className="col-12 form-group">
+                <label className="signin__label" htmlFor="taiKhoan">
+                  Tài khoản
+                </label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="taiKhoan"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="col-12 form-group">
+                <label className="signin__label" htmlFor="password">
+                  Mật khẩu
+                </label>
+                <input
+                  className="form-control"
+                  type="password"
+                  name="matKhau"
+                  onChange={formik.handleChange}
+                />
+              </div>
+              <div className="col-6 form-check">
+                <label
+                  className="signin__label form-check-label"
+                  htmlFor="checkbox"
+                >
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    className="signin__label"
+                    id="checkbox"
+                  />
+                  Duy trì đăng nhập
+                </label>
+              </div>
+              <div className="col-6 form-group">
+                <p className="text-right">
+                  <Link to="#">Quên mật khẩu</Link>
+                </p>
+              </div>
+              <div className="col-12">
+                <button type="submit" className="col-12 btn btn-custom">
                   Tiếp theo
                 </button>
               </div>
-              <div className="col-6">
-                <Link to='/register' className="btn btn-custom-1">
-                  Đăng ký
+              <div className="col-12 mt-2">
+                <div className="google-btn">
+                  <div className="google-icon-wrapper">
+                    <img
+                      className="google-icon"
+                      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                    />
+                  </div>
+                  <p className="btn-text">
+                    <b>Sign in with google</b>
+                  </p>
+                </div>
+              </div>
+              <div className="col-12 text-center mt-5">
+                <Link to="/register">
+                  <p className="login__dangky">Đăng ký</p>
                 </Link>
               </div>
             </div>
