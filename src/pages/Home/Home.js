@@ -7,6 +7,7 @@ import HomeCarousel from "./HomeCarousel";
 import RenderCardKhoaHoc from "./RenderCardKhoaHoc";
 import "./Home.scss";
 import queryString from "query-string";
+import TabCategory from "../../components/TabCategory/TabCategory";
 export default function Home(props) {
   const dispatch = useDispatch();
   const { mangKhoaHocPhanTrang } = useSelector(
@@ -70,6 +71,10 @@ export default function Home(props) {
           </button>
         </div>
       </div>
+      <div className="text-center">
+          <h1 className="text-center header__title mt-5">KHOÁ HỌC THEO DANH MỤC</h1>
+        </div>
+      <TabCategory />
       <CountUp />
       <Review />
     </div>

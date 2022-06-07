@@ -6,12 +6,12 @@
   background-color: $second-color;
   border-color: $second-color;
   color: $bg-color;
-  transition: transform 100ms cubic-bezier(0.2, 0, 1, 0.9);
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     color: $btn-color-0;
     transform: scale(1.05);
-    transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
+    transition: all 0.2s ease-in-out;
   }
 }
 

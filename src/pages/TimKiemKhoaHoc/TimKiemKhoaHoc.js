@@ -5,16 +5,47 @@ import { ghiDanhKhoaHocAdminAction } from "../../redux/actions/AdminQuanLyAction
 import { timKiemTenKhoaHocAction } from "../../redux/actions/QuanLyKhoaHocAction";
 
 const TimKiemKhoaHoc = (props) => {
-  const { value } = useParams();  
+  const { value } = useParams();
   const dispatch = useDispatch();
   const { timKiemKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
+  
   useEffect(() => {
     dispatch(timKiemTenKhoaHocAction(value));
+    renderTimKiemKhoaHoc();
   }, [value]);
+  
+  const renderTimKiemKhoaHoc = () => {
+   
+    if (timKiemKhoaHoc.length == 0) {
+      return <div>Không tìm thấy khoá học</div>;
+    } else {
+      return timKiemKhoaHoc.map((item, index) => {
+        return (
+          <tr key={index}>
+            <img
+              src={item.hinhAnh}
+              style={{ height: "100px", width: "200px" }}
+            ></img>
+            <td>{item.maKhoaHoc}</td>
+            <td>{item.tenKhoaHoc}</td>
+            <td>{item.luotXem}</td>
+            <td>
+              <button
+                onClick={(maKhoaHoc) => ghiDanhKhoaHocAdminAction(maKhoaHoc)}
+                className="btn btn-success"
+              >
+                ENROLL
+              </button>
+            </td>
+          </tr>
+        );
+      });
+    }
+  };
   return (
-    <table class="table table-hover table-dark">
+    <table className="table table-hover table-dark">
       <thead>
         <tr>
           <th scope="col">Hình ảnh</th>
@@ -25,7 +56,7 @@ const TimKiemKhoaHoc = (props) => {
         </tr>
       </thead>
       <tbody>
-        {timKiemKhoaHoc.map((item, index) => {
+        {/* {timKiemKhoaHoc?.map((item, index) => {
           return (
             <tr key={index}>
               <img
@@ -36,11 +67,17 @@ const TimKiemKhoaHoc = (props) => {
               <td>{item.tenKhoaHoc}</td>
               <td>{item.luotXem}</td>
               <td>
-                <button onClick={(maKhoaHoc)=>ghiDanhKhoaHocAdminAction(maKhoaHoc)} className="btn btn-success">ENROLL</button>
+                <button
+                  onClick={(maKhoaHoc) => ghiDanhKhoaHocAdminAction(maKhoaHoc)}
+                  className="btn btn-success"
+                >
+                  ENROLL
+                </button>
               </td>
             </tr>
           );
-        })}
+        })} */}
+        {renderTimKiemKhoaHoc()}
       </tbody>
     </table>
   );
