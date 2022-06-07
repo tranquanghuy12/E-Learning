@@ -24,7 +24,7 @@ export default function Login(props) {
     <div className="container containerLogin bg__login">
       <div className="row contentLogin align-items-center">
         <div className="col-md-6 mb-3">
-          <img src={loginSvg} className="img" alt="image" />
+          <img src={loginSvg} className="img-fluid" alt="image" />
         </div>
         <div className="col-md-6">
           <h2 className="signinText mb-3 text-center">Đăng nhập</h2>
