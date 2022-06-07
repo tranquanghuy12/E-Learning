@@ -37,7 +37,11 @@ function App() {
           exact
           Component={TimKiemKhoaHoc}
         />
-
+         <HomeTemplate
+          path="/timkiemkhoahoc/"
+          exact
+          Component={TimKiemKhoaHoc}
+        />
         <HomeTemplate
           path="/danhmuckhoahoc/:madanhmuc"
           exact
@@ -90,7 +94,6 @@ function App() {
           exact
           Component={QuanLyKhoaHoc}
         />
-
         <Route component={PageNotFound} />
       </Switch>
     </Router>
