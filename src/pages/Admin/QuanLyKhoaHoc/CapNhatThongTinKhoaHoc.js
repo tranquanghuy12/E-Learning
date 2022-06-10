@@ -98,8 +98,8 @@ export default function CapNhatThongTinKhoaHoc(props) {
                 className="form-control"
                 type="text"
                 name="maKhoaHoc"
-                onChange={formikProps.handleChange}         
-                disabled       
+                onChange={formikProps.handleChange}
+                disabled
               ></Field>
             </div>
             <div className="form-group col-sm-12 col-md-6">
@@ -193,6 +193,7 @@ export default function CapNhatThongTinKhoaHoc(props) {
             <div className="form-group col-sm-12 col-md-12">
               <label htmlFor="moTa">Mô tả</label>
               <Field
+                as="textarea"
                 className="form-control"
                 type="text"
                 name="moTa"

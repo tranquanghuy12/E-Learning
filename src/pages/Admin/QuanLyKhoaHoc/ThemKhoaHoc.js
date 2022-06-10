@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Form,
-  Input,
-  Radio,
-  Select,
-  DatePicker,
-  InputNumber,
-} from "antd";
+import { Form, Input, Radio, Select, DatePicker, InputNumber } from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
 import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
@@ -15,6 +8,7 @@ import {
   themKhoaHocUploadHinhAction,
   uploadHinhAnhKhoaHoc,
 } from "../../../redux/actions/AdminUploadHinhAnh";
+
 import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 const ThemKhoaHoc = () => {
   const taiKhoanNguoiTao = JSON.parse(localStorage.getItem("userLogin"));
@@ -107,6 +101,7 @@ const ThemKhoaHoc = () => {
       dispatch(themKhoaHocAdminAction(values));
     },
   });
+  const { TextArea } = Input;
   return (
     <Form
       onSubmitCapture={formik.handleSubmit}
@@ -139,9 +134,7 @@ const ThemKhoaHoc = () => {
       <Form.Item label="Bí danh">
         <Input name="biDanh" onChange={formik.handleChange} />
       </Form.Item>
-      <Form.Item label="Mô tả">
-        <Input name="moTa" onChange={formik.handleChange} />
-      </Form.Item>
+
       <Form.Item label="Lượt xem">
         <Input name="luotXem" onChange={formik.handleChange} />
       </Form.Item>
@@ -183,6 +176,21 @@ const ThemKhoaHoc = () => {
           onChange={handleChangeInputNumber("danhGia")}
           min={0}
           max={10}
+        />
+      </Form.Item>
+      {/* <Form.Item label="Mô tả">
+        <Input name="moTa" onChange={formik.handleChange} />
+      </Form.Item> */}
+      <Form.Item label="Mô tả">
+        <TextArea
+          allowClear
+          name="moTa"
+          showCount
+          maxLength={100}
+          style={{
+            height: 120,
+          }}
+          onChange={formik.handleChange}
         />
       </Form.Item>
       <Form.Item label="Tác vụ">
