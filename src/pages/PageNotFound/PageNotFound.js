@@ -1,6 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
-import styles from "./PageNotFound.module.css";
+import { Link } from "react-router-dom";
+import styles from "./PageNotFound.module.scss";
 export default function PageNotFound() {
   return (
     <>
@@ -8,18 +9,18 @@ export default function PageNotFound() {
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-              <div className="col-sm-10 col-sm-offset-1 text-center">
+              <div className="col-sm-12 col-sm-offset-1 text-center">
                 <div className={`${styles.four_zero_four_bg}`}>
                   <h1 className={`${styles.h1Size}`}>404</h1>
                 </div>
                 <div className={`${styles.content_box_404}`}>
-                  <h3 className={`${styles.h3Size}`}>Looks Like You're Lost</h3>
+                  <h3 className={`${styles.h3Size}`}>Không tìm thấy</h3>
                   <p className={`${styles.pSize}`}>
-                    The page you are looking for not available
+                    Thật không may, địa chỉ URL bạn yêu cầu không được tìm thấy
                   </p>
-                  <a className={`${styles.a_page_not_found}`} href="/">
-                    Go to Home
-                  </a>
+                  <Link className={`${styles.a_page_not_found}`} to="/">
+                    Về trang chủ
+                  </Link>
                 </div>
               </div>
             </div>

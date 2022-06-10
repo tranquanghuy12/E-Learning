@@ -6,38 +6,37 @@ import { Route, Router, Switch } from "react-router-dom";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
 import { AdminTemplate } from "./templates/AdminTemplate/AdminTemplate";
 import Register from "./pages/Register/Register";
-import Login from "./pages/Login/Login";
+
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
-import DanhMucKhoaHoc from "./pages/Home/DanhMucKhoaHoc";
 import KhoaHocTheoDanhMuc from "./pages/Home/KhoaHocTheoDanhMuc";
-import "antd/dist/antd.css";
+
 import QuanLyKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/QuanLyKhoaHoc";
 
 import DanhSachNguoiDung from "./pages/Admin/QuanLyNguoiDung/DanhSachNguoiDung/DanhSachNguoiDung";
 import Admin from "./pages/Admin/Admin";
 import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung/ThemNguoiDung";
-
-import ModalCapNhatNguoiDung from "./components/Modal/ModalCapNhatNguoiDung";
 import GhiDanhNguoiDung from "./pages/Admin/QuanLyGhiDanh/GhiDanhNguoiDung/GhiDanhNguoiDung";
 import ChiTietKhoaHoc from "./pages/Home/ChiTietKhoaHoc";
 import TimKiemKhoaHoc from "./pages/TimKiemKhoaHoc/TimKiemKhoaHoc";
-import ThemKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/ThemKhoaHoc";
 import GhiDanhKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/GhiDanhKhoaHoc";
 import CapNhatThongTinKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/CapNhatThongTinKhoaHoc";
+import LoginUserTemplate from "./templates/UserTemplate/LoginUserTemplate";
+import UserLogin from "./pages/Login/Login";
 
 export const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
       <Switch>
+        <LoginUserTemplate exact path="/login" Component={UserLogin} />
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate
           path="/timkiemkhoahoc/:value"
           exact
           Component={TimKiemKhoaHoc}
         />
-         <HomeTemplate
+        <HomeTemplate
           path="/timkiemkhoahoc/"
           exact
           Component={TimKiemKhoaHoc}
@@ -55,7 +54,7 @@ function App() {
         <HomeTemplate path="/profile" exact Component={Profile} />
         <HomeTemplate path="/" exact Component={Home} />
 
-        <HomeTemplate path="/login" exact Component={Login} />
+        {/* <HomeTemplate path="/login" exact Component={Login} /> */}
         <HomeTemplate path="/register" exact Component={Register} />
 
         <AdminTemplate path="/admin" exact Component={Admin} />
