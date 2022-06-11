@@ -46,11 +46,12 @@ h5,
 h6 {
   color: $second-color;
 }
+
 p {
   color: $primary-darkblue;
 }
-button{
-  &:focus{
+button {
+  &:focus {
     outline: none;
   }
 }
