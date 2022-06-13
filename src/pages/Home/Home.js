@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import Review from "../../components/Review/Review";
 import { layDanhSachKhoaHocPhanTrang } from "../../redux/actions/QuanLyKhoaHocAction";
 import CountUp from "../../components/CountUp/CountUp";
-import HomeCarousel from "./HomeCarousel";
 import RenderCardKhoaHoc from "./RenderCardKhoaHoc";
 import "./Home.scss";
 import queryString from "query-string";
 import TabCategory from "../../components/TabCategory/TabCategory";
-import { Dropdown, Menu, Space } from "antd";
 import { layDanhMucKhoaHocAction } from "../../redux/actions/DanhMucKhoaHocAction";
+
+import banner1 from "../../assets/img/Banner/pic1.png";
+import banner3 from "../../assets/img/Banner/pic3_1.png";
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -51,14 +52,49 @@ export default function Home(props) {
     });
   };
 
+  const banner = () => {
+    return (
+      <div class="banner">
+        <div class="container row m-auto">
+          <div class="banner__info col-7">
+            <h1>
+              <span>Studying </span>
+              Online is now much easier
+            </h1>
+            <p>
+              We develop the relationships that underpin the next phase in your
+              organisation’s growth.
+            </p>
+            {/* <ul>
+              <li>
+                <i class="las la-check"></i>
+                <span>Master's degree in designing</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>Outstanding mobile design</span>
+              </li>
+            </ul> */}
+            <button>GET STARTED</button>
+          </div>
+
+          <div class="banner__image col-5">
+            <img src={banner3} alt="a" />
+            <img class="swing-image" src={banner1} alt="b" />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="container-fluid">
-      <div className="container pb-5">{HomeCarousel()}</div>
+      <div className="pb-5">{banner()}</div>
       <div className="container pt-5">
         <div className="d-flex align-items-center justify-content-between">
-          <h4 className="m-0 text-center header__title">
+          <h3 className="m-0 text-center header__title">
             CÁC KHÓA HỌC PHỔ BIẾN
-          </h4>
+          </h3>
           <div>
             <button
               className="btn__custom_sm"

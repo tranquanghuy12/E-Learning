@@ -68,7 +68,7 @@ export default function Header(props) {
   return (
     <>
       <header>
-        <nav className="bg-light navbar navbar-expand-md d-flex align-items-center justify-content-between flex-row">
+        <nav className="bg-light navbar navbar-expand-md d-flex align-items-center justify-content-between flex-row py-4">
           <div className="col-sm-1 d-lg-none display__when_small">
             <div className="nav-item dropdown displayWhenSmallScreen">
               <NavLink

@@ -1,6 +1,8 @@
 @import "../../../../assets/sass/app.scss";
 .bg-light {
   background-color: $bg-color-1 !important;
+  position: absolute;
+  width: 100%;
 }
 nav.navbar {
   margin-bottom: 0 !important;
