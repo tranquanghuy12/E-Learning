@@ -14,12 +14,12 @@ export default function KhoaHocTheoDanhMuc() {
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
-    console.log('first',mangDanhMucKhoaHoc)
+  console.log("first", mangDanhMucKhoaHoc);
   //khóa học theo danh mục
   const { mangKhoaHocTheoDanhMuc } = useSelector(
     (rootReducer) => rootReducer.KhoaHocTheoDanhMucReducer
   );
-  console.log('second',mangKhoaHocTheoDanhMuc)
+
   useEffect(() => {
     const action = layKhoaHocTheoDanhMucAction(madanhmuc);
     dispatch(action);
