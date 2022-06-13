@@ -1,19 +1,17 @@
 import React from "react";
 import * as Yup from "yup";
-import './main.scss'
+import "./Login.scss";
 import {
-  EyeInvisibleOutlined,
-  EyeTwoTone,
   UserOutlined,
   LockOutlined,
   FacebookOutlined,
   TwitterOutlined,
   GoogleOutlined,
 } from "@ant-design/icons";
-import { Button, Input, Space } from "antd";
-import { useFormik, withFormik } from "formik";
+import { Button, Input } from "antd";
+import { useFormik } from "formik";
 import { Link } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
 
 const UserLogin = () => {
@@ -41,7 +39,7 @@ const UserLogin = () => {
     <form
       onSubmit={formik.handleSubmit}
       className="container"
-      style={{ height: window.innerHeight,background:"#FFD302" }}
+      style={{ height: window.innerHeight, background: "#FFD302" }}
     >
       <div
         className="d-flex flex-column justify-content-center align-items-center"
@@ -51,7 +49,7 @@ const UserLogin = () => {
           className="text-center display-4"
           style={{ fontWeight: "500", fontSize: "36px" }}
         >
-          Login Elearning
+          ĐĂNG NHẬP
         </h3>
         <div className="d-flex mt-3">
           <Input
@@ -86,7 +84,7 @@ const UserLogin = () => {
           style={{
             minWidth: "300px",
             backgroundColor: "#3A17E5",
-            border:'1px solid #3A17E5',
+            border: "1px solid #3A17E5",
             color: "#fff",
           }}
         >

@@ -5,7 +5,7 @@ import Profile from "./pages/Profile/Profile";
 import { Route, Router, Switch } from "react-router-dom";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
 import { AdminTemplate } from "./templates/AdminTemplate/AdminTemplate";
-import Register from "./pages/Register/Register";
+
 
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
@@ -23,6 +23,7 @@ import GhiDanhKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/GhiDanhKhoaHoc";
 import CapNhatThongTinKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/CapNhatThongTinKhoaHoc";
 import LoginUserTemplate from "./templates/UserTemplate/LoginUserTemplate";
 import UserLogin from "./pages/Login/Login";
+import UserRegister from "./pages/Register/Register";
 
 export const history = createBrowserHistory();
 function App() {
@@ -30,6 +31,7 @@ function App() {
     <Router history={history}>
       <Switch>
         <LoginUserTemplate exact path="/login" Component={UserLogin} />
+        <LoginUserTemplate exact path="/register" Component={UserRegister} />
         <HomeTemplate path="/home" exact Component={Home} />
         <HomeTemplate
           path="/timkiemkhoahoc/:value"
@@ -55,7 +57,7 @@ function App() {
         <HomeTemplate path="/" exact Component={Home} />
 
         {/* <HomeTemplate path="/login" exact Component={Login} /> */}
-        <HomeTemplate path="/register" exact Component={Register} />
+        
 
         <AdminTemplate path="/admin" exact Component={Admin} />
         <AdminTemplate
