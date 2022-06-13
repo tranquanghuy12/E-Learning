@@ -1,0 +1,17 @@
+// Prev and Next page icon
+.fa-chevron-circle-left,
+.fa-chevron-circle-right {
+  font-size: $fontSize-0;
+}
+
+.disabled_btn {
+  color: $bg-slate-3 !important;
+}
+
+//dropdown danh muc khoa hoc
+.danhmuc-dropdown {
+  gap: 3px !important;
+  i {
+    margin-top: 8px !important;
+  }
+}

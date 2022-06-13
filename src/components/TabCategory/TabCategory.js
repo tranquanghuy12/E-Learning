@@ -13,7 +13,7 @@ export default function TabCategory(props) {
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
 
-//   console.log("mảng danh mục khoá học", mangDanhMucKhoaHoc);
+  //   console.log("mảng danh mục khoá học", mangDanhMucKhoaHoc);
   //khóa học theo danh mục
   const { mangKhoaHocTheoDanhMuc } = useSelector(
     (rootReducer) => rootReducer.KhoaHocTheoDanhMucReducer
@@ -27,6 +27,7 @@ export default function TabCategory(props) {
 
   const changeTab = (tab) => {
     setMaDanhMuc(tab);
+    console.log(tab);
   };
 
   const renderMangDanhMuc = () => {
