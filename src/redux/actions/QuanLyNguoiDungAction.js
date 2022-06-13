@@ -29,7 +29,7 @@ export const dangNhapAction = (userLogin) => {
       let token = usLogin.accessToken;
       localStorage.setItem(ACCESSTOKEN, token);
       localStorage.setItem(USER_LOGIN, JSON.stringify(usLogin));
-      dispatch(createAction(DANG_NHAP_ACTION, result.data));     
+      dispatch(createAction(DANG_NHAP_ACTION, result.data));
       if (result.data.maLoaiNguoiDung === "HV") {
         history.goBack();
       } else {
@@ -48,16 +48,17 @@ export const dangKyAction = (values) => {
   return async (dispatch) => {
     try {
       const result = await http.post(API_DANGKY_NGUOIDUNG, values);
-      
+
       if (result.status === 200) {
         dispatch(createAction(DANG_KY_ACTION, result.data));
         swal({
-          title: "Đăng ký thành công",
+          title: "Đăng ký thành công!",
+          text: "Vui lòng đăng nhập lại",
           icon: "success",
+          buttons: false,
         });
-        history.push("/login");
+        history.push("/");
       }
-      
     } catch (error) {
       swal({
         title: "Đăng ký thất bại",
@@ -91,7 +92,7 @@ export const huyGhiDanhKhoaHoc = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
-      console.log('huy ghi danh',result)
+      console.log("huy ghi danh", result);
       swal({
         title: "Thành công",
         text: "Bạn đã xoá thành công",

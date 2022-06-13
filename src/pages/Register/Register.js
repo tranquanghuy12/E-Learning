@@ -1,135 +1,175 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
-import { useDispatch } from "react-redux";
-import { DangKySchema } from "../../services/NguoiDungSchema";
-import signUp from "../../assets/img/signup.jpg";
 import "./Register.scss";
+import {
+  UserOutlined,
+  LockOutlined,
+  FacebookOutlined,
+  TwitterOutlined,
+  GoogleOutlined,
+  MailOutlined,
+  InfoCircleOutlined,
+  GroupOutlined,
+  PhoneOutlined,
+  RollbackOutlined,
+} from "@ant-design/icons";
+import { Select, Button, Input, Form } from "antd";
+import { ErrorMessage, useFormik } from "formik";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
+import { DangKySchema } from "../../services/NguoiDungSchema";
 
-export default function Register(props) {
+const UserRegister = () => {
   const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      taiKhoan: "",
+      matKhau: "",
+      email: "",
+      hoTen: "",
+      maNhom: "GP01",
+      soDT: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      const action = dispatch(dangKyAction(values));
+      dispatch(action);
+    },
+    validationSchema: DangKySchema,
+  });
+  const { Option } = Select;
   return (
-    <div className={`containerRegister`}>
-      <div className="mx-auto">
-        <div className="container">
-          <div className={`row align-items-center contentRegister`}>
-            <div className="col-md-6 mb-3 ">
-              <img src={signUp} className="img-fluid" alt="đăng ký" />
-            </div>
-            <div className="col-md-6">
-              <h1 className={`signupText`}>Đăng ký</h1>
-              <Formik
-                initialValues={{
-                  email: "",
-                  hoTen: "",
-                  maNhom: "GP01",
-                  soDT: "",
-                  taiKhoan: "",
-                  matKhau: "",
-                }}
-                validationSchema={DangKySchema}
-                onSubmit={(values) => {
-                  const action = dangKyAction(values);
-                  dispatch(action);
-                }}
-                render={(formikProps) => (
-                  <Form>
-                    <div className="form-group">
-                      <label>Tài khoản</label>
-                      <Field
-                        type="text"
-                        className={`formControlRegister`}
-                        name="taiKhoan"
-                        onChange={formikProps.handleChange}
-                        placeholder="Nhập tài khoản"
-                      />
-                      <ErrorMessage name="taiKhoan" />
-                    </div>
-                    <div className="form-group">
-                      <label>Mật khẩu</label>
-                      <Field
-                        className={`formControlRegister`}
-                        name="matKhau"
-                        type="password"
-                        onChange={formikProps.handleChange}
-                        placeholder="Nhập nhập khẩu"
-                      />
-                      <ErrorMessage name="matKhau" />
-                    </div>
-                    <div className="form-group">
-                      <label>Email</label>
-                      <Field
-                        className={`formControlRegister`}
-                        name="email"
-                        type="email"
-                        onChange={formikProps.handleChange}
-                        placeholder="Nhập email"
-                      />
-                      <ErrorMessage name="email" />
-                    </div>
-                    <div className="form-group">
-                      <label>Họ tên: </label>
-                      <Field
-                        placeholder="Nhập họ tên"
-                        className={`formControlRegister`}
-                        name="hoTen"
-                        onChange={formikProps.handleChange}
-                      />
-                      <ErrorMessage name="hoTen" />
-                    </div>
-                    <div className="form-group">
-                      <label>Số điện thoại: </label>
-                      <Field
-                        placeholder="Số điện thoại"
-                        className={`formControlRegister`}
-                        name="soDT"
-                        onChange={formikProps.handleChange}
-                      />
-                      <ErrorMessage name="soDT" />
-                    </div>
-                    <div className="form-group">
-                      <label>Mã nhóm: </label>
-                      <Field
-                        component="select"
-                        name="maNhom"
-                        className={`formControl`}
-                        onChange={formikProps.handleChange}
-                      >
-                        <option>GP01</option>
-                        <option>GP02</option>
-                        <option>GP03</option>
-                        <option>GP04</option>
-                        <option>GP05</option>
-                        <option>GP06</option>
-                        <option>GP07</option>
-                        <option>GP08</option>
-                        <option>GP09</option>
-                        <option>GP10</option>
-                      </Field>
-                      <ErrorMessage name="maNhom" />
+    <form onSubmit={formik.handleSubmit} className="container__style">
+      <div
+        className="d-flex flex-column justify-content-center align-items-center"
+        style={{ height: window.innerHeight }}
+      >
+        <h3 className="text-center display-4">ĐĂNG KÝ</h3>
+        <div className="d-flex mt-3">
+          <Input
+            className="input__style"
+            onChange={formik.handleChange}
+            size="large"
+            name="taiKhoan"
+            type="text"
+            placeholder="Nhập tài khoản"
+            prefix={<UserOutlined />}
+          />
+        </div>
+        <div className="text-danger">{formik.errors.taiKhoan}</div>
 
-                      <div className="d-flex justify-content-center mt-5">
-                        <button className={`btn btnClass`} type="submit">
-                          Đăng ký
-                        </button>
-                        <Link to="/login">
-                          <button
-                            type="submit"
-                            className="btn btnClassReturn ml-2"
-                          >
-                            Đăng nhập
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  </Form>
-                )}
-              />
-            </div>
-          </div>
+        <div className="d-flex mt-3">
+          <Input
+            className="input__style"
+            onChange={formik.handleChange}
+            name="matKhau"
+            type="password"
+            size="large"
+            placeholder="Nhập mật khẩu"
+            prefix={<LockOutlined />}
+          />
+        </div>
+        <div className="text-danger">{formik.errors.matKhau}</div>
+
+        <div className="d-flex mt-3">
+          <Input
+            className="input__style"
+            onChange={formik.handleChange}
+            name="hoTen"
+            type="text"
+            size="large"
+            placeholder="Nhập họ tên"
+            prefix={<InfoCircleOutlined />}
+          />
+        </div>
+        <div className="text-danger">{formik.errors.hoTen}</div>
+
+        <div className="d-flex mt-3">
+          <Input
+            className="input__style"
+            onChange={formik.handleChange}
+            name="email"
+            type="text"
+            size="large"
+            placeholder="Nhập email"
+            prefix={<MailOutlined />}
+          />
+        </div>
+        <div className="text-danger">{formik.errors.email}</div>
+        
+        <div className="d-flex mt-3">
+          <Input
+            className="input__style"
+            onChange={formik.handleChange}
+            name="soDT"
+            type="text"
+            size="large"
+            placeholder="Nhập số điện thoại"
+            prefix={<PhoneOutlined />}
+          />
+        </div>
+        <div className="text-danger">{formik.errors.soDT}</div>
+
+        <div className="d-flex mt-3">
+          <Select
+            className="input__style"
+            size="large"
+            // defaultValue="GP01"
+            onChange={formik.handleChange}
+            prefix={<GroupOutlined />}
+            placeholder="Nhập mã nhóm"
+          >
+            <Option value="GP01">GP01</Option>
+            <Option value="GP02">GP02</Option>
+            <Option value="GP03">GP03</Option>
+            <Option value="GP04">GP04</Option>
+            <Option value="GP05">GP05</Option>
+          </Select>
+        </div>
+        <div className="text-danger">{formik.errors.maNhom}</div>
+
+        <Button
+          className="button__register_style"
+          type="primary"
+          size="large"
+          htmlType="submit"
+        >
+          Đăng Ký
+        </Button>
+        <div className="social d-flex mt-3">
+          <Button
+            className="mt-2 mr-2"
+            type="primary"
+            icon={<FacebookOutlined />}
+            size="large"
+            shape="circle"
+            style={{ backgroundColor: "rgb(59,89,152)", border: "none" }}
+          ></Button>
+          <Button
+            className="mt-2 mr-2"
+            type="primary"
+            icon={<TwitterOutlined />}
+            size="large"
+            shape="circle"
+          ></Button>
+          <Button
+            className="mt-2 mr-2"
+            type="primary"
+            icon={<GoogleOutlined />}
+            size="large"
+            shape="circle"
+            style={{ backgroundColor: "RGB(239, 61, 61)", border: "none" }}
+          ></Button>
+        </div>
+        <div className="register mt-5">
+          <Link to="/quenmatkhau">Quên mật khẩu</Link>
+        </div>
+        <div className="register">
+          <Link to="/login">Bạn đã có tài khoản?</Link>
         </div>
       </div>
-    </div>
+    </form>
   );
-}
+};
+
+export default UserRegister;

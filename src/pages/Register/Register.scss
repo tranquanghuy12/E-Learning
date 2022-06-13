@@ -1,54 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "../../assets/sass/app.scss";
 
-.containerRegister{
-  background-color: #fec107;
-  font-family: 'Roboto,sans-serif';
-}
-.contentRegister {
-  background-color: #fff;
-  padding: 2rem 1rem 2rem 1rem;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
-}
-.signupText {
-  font-style: normal;
-  font-weight: 600 !important;
-}
-.formControlRegister {
-  display: block;
-  width: 100%;
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1.5;
-  border-color: #fec107 !important;
-  border-style: solid !important;
-  border-width: 0 0 1px 0 !important;
-  padding: 0px !important;
-  color: #495057;
-  height: auto;
-  border-radius: 0;
-  background-color: #fff;
-  background-clip: padding-box;
-}
-.formControlRegister:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #fff;
-  outline: 0;
-  box-shadow: none;
-}
-.btnClass {
-  background-color: #fec107;
-  color: #fff;
-}
-.btnClass:hover {
-  background-color: #fec107;
-  color: #fff;
-}
-.btnClassReturn{
-    border-color: #495057;
-    color: #495057;
-}
-.btnClassReturn:hover{
-    background-color: #495057;
-    color: #fff;
+.container__style {
+  background-color: $primary-darkblue;
+  h3 {
+    font-weight: 500;
+    font-size: 36px;
+    color: $bg-login;
+  }
+  .input__style {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  .button__register_style {
+    margin-top: $margin-2;
+    min-width: 300px;
+    background-color: $bg-color-2;
+    border: 1px solid $bg-color-2;
+    color: $primary-darkblue;
+    &:hover {
+      background-color: $bg-login;
+      border: 1px solid $bg-login;
+      color: $primary-darkblue;
+    }
+  }
 }
