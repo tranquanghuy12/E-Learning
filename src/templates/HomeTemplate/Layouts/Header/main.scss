@@ -6,6 +6,7 @@
 }
 nav.navbar {
   margin-bottom: 0 !important;
+  padding: 2%;
 }
 .displayWhenSmallScreen {
   li {
@@ -35,7 +36,8 @@ nav.navbar {
 .header__left {
   .navbar-brand {
     img {
-      width: 100px !important;
+      width: 150px !important;
+      max-width: 100% !important;
     }
     padding: 8px 16px !important;
   }
@@ -45,6 +47,20 @@ nav.navbar {
   .Categories {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    .nav__menu {
+      margin: 0;
+      &_item {
+        &:not(:last-child) {
+          margin-right: $margin-3;
+        }
+        a {
+          color: black;
+          font-size: $fontSize-0;
+          font-weight: 600;
+        }
+      }
+    }
     #navbarDropdown {
       color: $second-color;
       margin-top: 4px;
@@ -54,61 +70,13 @@ nav.navbar {
       }
     }
   }
-  .form__search {
-    flex-grow: 10;
-    display: flex;
-    align-items: center;
-    .input-group {
-      display: flex !important;
-      position: relative;
-      flex-wrap: nowrap;
-      align-items: stretch;
-      width: 100%;
-    }
-    .form-control {
-      padding: 10px;
-      background-color: $bg-color !important;
-      border: 1px solid $second-color !important;
-      transition: none;
-      font-size: 1.2rem;
-      transition: all ease 0.5s;
-      width: 90%;
-      &:focus {
-        box-shadow: none;
-        background-color: white;
-        padding: 9px;
-      }
-      &:value {
-        font-size: 1.2rem;
-      }
+}
 
-      &:focus + .input-group-append {
-        .input-group-text {
-          text-decoration: none;
-          background-color: $btn-color-1;
-        }
-        &:hover {
-          .input-group-text {
-            background-color: $btn-color-0;
-            color: $primary-darkblue;
-          }
-        }
-      }
-    }
-    .input-group-append {
-      .input__group_text {
-        border: none;
-        background-color: $second-color;
-        color: $btn-color-1;
-        padding: 0px 12px;
-        margin-left: 1px;
-        font-size: 1.2rem;
-        transition: all ease 0.5s;
-        &:hover {
-          background-color: $btn-color-1;
-          color: $primary-darkblue;
-        }
-      }
+.col__display {
+  .navbar-nav {
+    .nav-item {
+      width: 140px;
+      max-width: 100%;
     }
   }
 }

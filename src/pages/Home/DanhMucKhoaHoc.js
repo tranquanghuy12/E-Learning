@@ -39,9 +39,9 @@ export default function DanhMucKhoaHoc() {
   return (
     <Dropdown overlay={menu}>
       <a onClick={(e) => e.preventDefault()}>
-        <Space className="danhmuc-dropdown">
+        <Space className="danhmuc__dropdown">
           Danh mục khóa học
-          <i className="fa fa-angle-down"></i>
+          <i className="fa fa-angle-down danhmuc__dropdown_icon"></i>
         </Space>
       </a>
     </Dropdown>
