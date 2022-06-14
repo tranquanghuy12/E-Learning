@@ -108,18 +108,30 @@ export default function Header(props) {
             </div>
           </div>
 
-          <div className="col-sm-11 col-md-8 col-lg-8 display__sm align-items-center">
+          <div className="col-sm-11 col-md-8 col-lg-9 display__sm align-items-center">
             <div className="header__left d-flex justify-content-start flex-row">
-              <NavLink className="navbar-brand logo__when_md" exact to="/">
-                <img src={logo} alt="logo" />
-              </NavLink>
+              <div>
+                <NavLink className="navbar-brand logo__when_md" exact to="/">
+                  <img src={logo} alt="logo" />
+                </NavLink>
+              </div>
               <div className="nav-item dropdown Categories">
-                <DanhMucKhoaHoc />
+                <ul className="nav__menu list-unstyled d-flex align-items-center">
+                  <li className="nav__menu_item">
+                    <Link to={`/`}>Home</Link>
+                  </li>
+                  <li className="nav__menu_item">
+                    <DanhMucKhoaHoc />
+                  </li>
+                  <li className="nav__menu_item">
+                    <Link to={`/about`}>About Us</Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
 
-          <div className="col-lg-4 col__display">
+          <div className="col-lg-3 col__display">
             <ul className="navbar-nav float-right">
               {userLogin.taiKhoan ? (
                 <>

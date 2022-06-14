@@ -59,10 +59,10 @@
 
 .btn-custom-login {
   color: white;
-  padding: 12px;
+  padding: 10px;
   border-radius: 3rem;
   border: none;
-  font-size: 18px;
+  font-size: $fontSize-0;
   letter-spacing: 0.2px;
   font-weight: 500;
   cursor: pointer;
@@ -85,10 +85,10 @@
 
 .btn-custom-logout {
   color: black;
-  padding: 12px;
+  padding: 10px;
   border-radius: 3rem;
   border: 1px solid transparent;
-  font-size: 18px;
+  font-size: $fontSize-0;
   letter-spacing: 0.2px;
   font-weight: 500;
   cursor: pointer;
