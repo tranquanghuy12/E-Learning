@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../../../../assets/img/logo-udemy.svg";
+import logo from "../../../../assets/img/branding-logo.png";
 import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc";
 import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHocAction";
 import "./main.scss";
@@ -10,7 +10,6 @@ import "./main.scss";
 export default function Header(props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [search, setSearch] = useState("");
   const userLogin =
     useSelector(
       (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
@@ -27,10 +26,6 @@ export default function Header(props) {
   useEffect(() => {
     dispatch(timKiemTenKhoaHocAction(mangKhoaHoc.tenKhoaHoc));
   }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   const logout = () => {
     localStorage.clear();
@@ -68,7 +63,7 @@ export default function Header(props) {
   return (
     <>
       <header>
-        <nav className="bg-light navbar navbar-expand-md d-flex align-items-center justify-content-between flex-row py-4">
+        <nav className="bg-light navbar navbar-expand-md d-flex align-items-center justify-content-between flex-row">
           <div className="col-sm-1 d-lg-none display__when_small">
             <div className="nav-item dropdown displayWhenSmallScreen">
               <NavLink
@@ -112,6 +107,7 @@ export default function Header(props) {
               </div>
             </div>
           </div>
+
           <div className="col-sm-11 col-md-8 col-lg-8 display__sm align-items-center">
             <div className="header__left d-flex justify-content-start flex-row">
               <NavLink className="navbar-brand logo__when_md" exact to="/">
@@ -120,30 +116,9 @@ export default function Header(props) {
               <div className="nav-item dropdown Categories">
                 <DanhMucKhoaHoc />
               </div>
-              <form className="form__search" onSubmit={handleSubmit}>
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="What are you looking for?"
-                    aria-label="Recipient's username"
-                    aria-describedby="basic-addon2"
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  <div className="input-group-append">
-                    <Link
-                      to={`/timkiemkhoahoc/${search}`}
-                      className="btn input__group_text"
-                      id="basic-addon2"
-                      style={{ textDecoration: "none" }}
-                    >
-                      <i className="fas fa-search"></i>
-                    </Link>
-                  </div>
-                </div>
-              </form>
             </div>
           </div>
+
           <div className="col-lg-4 col__display">
             <ul className="navbar-nav float-right">
               {userLogin.taiKhoan ? (
@@ -179,16 +154,16 @@ export default function Header(props) {
                     <NavLink
                       exact
                       to="/login"
-                      className="nav-link btn-custom-login mr-3"
+                      className="nav-link d-flex justify-content-center btn-custom-login"
                     >
                       Đăng nhập
                     </NavLink>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item ml-3">
                     <NavLink
                       exact
                       to="/register"
-                      className="nav-link btn-custom-logout"
+                      className="nav-link d-flex justify-content-center btn-custom-logout"
                     >
                       Đăng ký
                     </NavLink>
