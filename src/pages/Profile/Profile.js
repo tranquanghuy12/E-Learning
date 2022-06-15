@@ -26,27 +26,24 @@ export default function Profile() {
     return <Redirect to="/login" />;
   }
   return (
-
-    <>
-      <div
-        style={{ paddingTop: 126 }}
-        className="container rounded bg-white mb-5 mt-5"
-      >
-        <h3 className="text-center">Thông tin tài khoản</h3>
-        <div className="row mt-5">
-          <div className="col-md-4 border-right border-secondary">
-            <div className="d-flex flex-column align-items-center p-3 py-5">
-              <img
-                src="https://picsum.photos/200"
-                alt="ảnh đại diện"
-                className="rounded-circle mt-5"
-              />
-              <h5 className="font-weight-bold mt-3">
-                Xin chào, {userProfile.taiKhoan}
-              </h5>
-              <span className="text-black-50">{userProfile.email}</span>
-              <span></span>
-            </div>
+    <div
+      style={{ paddingTop: 126 }}
+      className="container rounded bg-white mb-5 mt-5"
+    >
+      <h3 className="text-center">Thông tin tài khoản</h3>
+      <div className="row mt-5">
+        <div className="col-md-4 border-right border-secondary">
+          <div className="d-flex flex-column align-items-center p-3 py-5">
+            <img
+              src="https://picsum.photos/200"
+              alt="ảnh đại diện"
+              className="rounded-circle mt-5"
+            />
+            <h5 className="font-weight-bold mt-3">
+              Xin chào, {userProfile.taiKhoan}
+            </h5>
+            <span className="text-black-50">{userProfile.email}</span>
+            <span></span>
           </div>
         </div>
         <div className="col-md-8">
