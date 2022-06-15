@@ -1,121 +1,124 @@
 @import "../../../../assets/sass/app.scss";
-.bg-light {
-  background-color: $bg-color-1 !important;
+
+header {
   position: absolute;
   width: 100%;
-}
-nav.navbar {
-  margin-bottom: 0 !important;
-  padding: 2%;
-}
-.displayWhenSmallScreen {
-  li {
-    padding-left: 12px;
+  .bg-light {
+    background-color: $bg-color-1 !important;
   }
-  .dropdown-submenu {
-    padding: 0 0 0 5px;
-    .dropdown-item {
+  nav.navbar {
+    margin-bottom: 0 !important;
+    padding: 2%;
+  }
+  .displayWhenSmallScreen {
+    li {
       padding-left: 12px;
-      i {
-        padding-right: 10px;
-      }
     }
-  }
-  .dropdown:hover > .dropdown-menu {
-    display: block;
-  }
-  #navbarDropdown {
-    color: black;
-    margin-top: 4px;
-    i {
-      margin-top: 3px;
-      font-size: 24px;
-    }
-  }
-}
-.header__left {
-  .navbar-brand {
-    img {
-      width: 150px !important;
-      max-width: 100% !important;
-    }
-    padding: 8px 16px !important;
-  }
-  .dropdown:hover > .dropdown-menu {
-    display: block;
-  }
-  .Categories {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    .nav__menu {
-      margin: 0;
-      &_item {
-        &:not(:last-child) {
-          margin-right: $margin-3;
-        }
-        a {
-          color: black;
-          font-size: $fontSize-0;
-          font-weight: 600;
+    .dropdown-submenu {
+      padding: 0 0 0 5px;
+      .dropdown-item {
+        padding-left: 12px;
+        i {
+          padding-right: 10px;
         }
       }
+    }
+    .dropdown:hover > .dropdown-menu {
+      display: block;
     }
     #navbarDropdown {
-      color: $second-color;
+      color: black;
       margin-top: 4px;
       i {
-        margin-top: 8px;
-        padding-right: 8px;
+        margin-top: 3px;
+        font-size: 24px;
       }
     }
   }
-}
-
-.col__display {
-  .navbar-nav {
-    .nav-item {
-      width: 140px;
-      max-width: 100%;
-    }
-  }
-}
-
-//responsive
-.display__when_small {
-  @include responsive(SM) {
-    width: auto !important;
-  }
-}
-.logo__when_md {
-  @include responsive(MD) {
-    text-align: right;
-  }
-}
-.display__sm {
-  @include responsive(SM) {
-    width: auto !important;
-  }
-}
-.col__display {
-  @include responsive(MD) {
-    display: none;
-  }
-}
-.header__left {
-  @include responsive(MD) {
-    .Categories {
-      display: none;
-    }
-  }
-  @include responsive(SM) {
+  .header__left {
     .navbar-brand {
-      display: flex !important;
-      justify-content: center;
-      align-items: center;
+      img {
+        width: 150px !important;
+        max-width: 100% !important;
+      }
+      padding: 8px 16px !important;
     }
-    .form__search {
+    .dropdown:hover > .dropdown-menu {
+      display: block;
+    }
+    .Categories {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .nav__menu {
+        margin: 0;
+        &_item {
+          &:not(:last-child) {
+            margin-right: $margin-3;
+          }
+          a {
+            color: black;
+            font-size: $fontSize-0;
+            font-weight: 600;
+          }
+        }
+      }
+      #navbarDropdown {
+        color: $second-color;
+        margin-top: 4px;
+        i {
+          margin-top: 8px;
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+
+  .col__display {
+    .navbar-nav {
+      .nav-item {
+        width: 140px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  //responsive
+  .display__when_small {
+    @include responsive(SM) {
+      width: auto !important;
+    }
+  }
+  .logo__when_md {
+    @include responsive(MD) {
+      text-align: right;
+    }
+  }
+  .display__sm {
+    @include responsive(SM) {
+      width: auto !important;
+    }
+  }
+  .col__display {
+    @include responsive(MD) {
       display: none;
+    }
+  }
+  .header__left {
+    @include responsive(MD) {
+      .Categories {
+        display: none;
+      }
+    }
+    @include responsive(SM) {
+      .navbar-brand {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+      }
+      .form__search {
+        display: none;
+      }
     }
   }
 }

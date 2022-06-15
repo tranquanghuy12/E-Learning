@@ -100,7 +100,7 @@ export default function Header(props) {
                       Đăng nhập
                     </Link>
                     <Link to="/register" className="dropdown-item">
-                      Đăng kí
+                      Đăng ký
                     </Link>
                   </>
                 )}

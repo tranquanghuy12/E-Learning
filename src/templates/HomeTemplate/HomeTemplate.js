@@ -12,11 +12,19 @@ export const HomeTemplate = (props) => {
       {...restRoute}
       render={(propsRoute) => {
         return (
-          <Fragment>
-            <Header {...propsRoute} />
-            <Component {...propsRoute} />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              minHeight: "100vh",
+            }}
+          >
+            <div style={{ flex: 1 }}>
+              <Header {...propsRoute} />
+              <Component {...propsRoute} />
+            </div>
             <Footer {...propsRoute} />
-          </Fragment>
+          </div>
         );
       }}
     />

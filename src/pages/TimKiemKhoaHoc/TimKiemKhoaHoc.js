@@ -10,14 +10,13 @@ const TimKiemKhoaHoc = (props) => {
   const { timKiemKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
-  
+
   useEffect(() => {
     dispatch(timKiemTenKhoaHocAction(value));
     renderTimKiemKhoaHoc();
   }, [value]);
-  
+
   const renderTimKiemKhoaHoc = () => {
-   
     if (timKiemKhoaHoc.length == 0) {
       return <div>Không tìm thấy khoá học</div>;
     } else {
@@ -45,18 +44,19 @@ const TimKiemKhoaHoc = (props) => {
     }
   };
   return (
-    <table className="table table-hover table-dark">
-      <thead>
-        <tr>
-          <th scope="col">Hình ảnh</th>
-          <th scope="col">Mã khoá học</th>
-          <th scope="col">Tên khoá học</th>
-          <th scope="col">Lượt xem</th>
-          <th scope="col">Thao tác</th>
-        </tr>
-      </thead>
-      <tbody>
-        {/* {timKiemKhoaHoc?.map((item, index) => {
+    <div style={{ paddingTop: 126 }}>
+      <table className="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Mã khoá học</th>
+            <th scope="col">Tên khoá học</th>
+            <th scope="col">Lượt xem</th>
+            <th scope="col">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* {timKiemKhoaHoc?.map((item, index) => {
           return (
             <tr key={index}>
               <img
@@ -77,9 +77,10 @@ const TimKiemKhoaHoc = (props) => {
             </tr>
           );
         })} */}
-        {renderTimKiemKhoaHoc()}
-      </tbody>
-    </table>
+          {renderTimKiemKhoaHoc()}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
