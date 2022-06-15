@@ -82,9 +82,7 @@ export default function Profile() {
             ) : (
               <></>
             )}
-            <Link className="ml-3 btn btn__color_return" to="/">
-              Rời khỏi
-            </Link>
+            
           </div>
         </div>
       </div>
