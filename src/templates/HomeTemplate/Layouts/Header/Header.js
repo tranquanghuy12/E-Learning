@@ -85,7 +85,7 @@ export default function Header(props) {
                     <Link className="dropdown-item" to="/profile">
                       {`Xin chào, ${
                         userLogin.hoTen.toString().length > 15
-                          ? userLogin.hoTen.substring(0, 8) + "..."
+                          ? userLogin.hoTen.substring(0, 5) + "..."
                           : userLogin.hoTen
                       }`}
                     </Link>
@@ -143,7 +143,7 @@ export default function Header(props) {
                     >
                       {`Xin chào, ${
                         userLogin.hoTen.toString().length > 10
-                          ? userLogin.hoTen.substring(0, 8) + "..."
+                          ? userLogin.hoTen.substring(0, 5) + "..."
                           : userLogin.hoTen
                       }`}
                     </NavLink>

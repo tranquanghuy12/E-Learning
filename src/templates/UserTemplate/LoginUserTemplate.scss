@@ -1,0 +1,6 @@
+@import "../../assets/sass/app.scss";
+.sider__style {  
+  @include responsive(SM) {
+    display: none !important;
+  }
+}
