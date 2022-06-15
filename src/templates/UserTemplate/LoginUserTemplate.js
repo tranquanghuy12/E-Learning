@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import React, { useEffect, useState } from "react";
 import { Route } from "react-router-dom";
+import './LoginUserTemplate.scss'
 const { Header, Footer, Sider, Content } = Layout;
 const LoginUserTemplate = (props) => {
   const [{ width, height }, setSize] = useState({
@@ -24,6 +25,7 @@ const LoginUserTemplate = (props) => {
           <>
             <Layout>
               <Sider
+                className="sider__style"
                 width={width / 2}
                 style={{
                   backgroundImage: `url(https://picsum.photos/${Math.round(

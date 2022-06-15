@@ -1,4 +1,50 @@
-
 @import "../../assets/sass/app.scss";
+.container__style_login {
+  background-color: #ffd302;
+  h3 {
+    font-weight: 500;
+    font-size: 36px;
+    color: $primary-darkblue;
+  }
+  .input__style {
+    width: 100%;
+    min-width: 300px;
+  }
 
-
+  .button__register_style {
+    margin-top: $margin-2;
+    min-width: 300px;
+    background-color: $second-color-light;
+    border: 1px solid $second-color-light;
+    color: #f4f4f4;
+    &:hover {
+      background-color: $second-color;
+      border: 1px solid $second-color;
+      color: #fff;
+    }
+  }
+}
+@include responsive(SM) {
+  .container__style_login {
+    background-image: url(https://picsum.photos/2000/2000);
+    background-size: cover;
+    background-position: center;
+    h3 {
+      color: $bg-color;
+      font-weight: 500;
+      font-size: 36px;
+      text-shadow: 2px 2px 4px $primary-darkblue;
+      border-bottom: 2px solid $primary-darkblue;
+    }
+    .button__register_style {
+      color: $btn-color-0 !important;
+      background-color: $primary-darkblue !important;
+      border: 1px solid $btn-color-0 !important;
+      &:hover {
+        background-color: $bg-login !important;
+        border: 1px solid $bg-login !important;
+        color: $primary-darkblue !important;
+      }
+    }
+  }
+}

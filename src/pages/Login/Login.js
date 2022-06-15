@@ -1,6 +1,6 @@
 import React from "react";
+import './Login.scss'
 import * as Yup from "yup";
-import "./Login.scss";
 import {
   UserOutlined,
   LockOutlined,
@@ -36,93 +36,83 @@ const UserLogin = () => {
     validationSchema: SignupSchema,
   });
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      className="container"
-      style={{ height: window.innerHeight, background: "#FFD302" }}
-    >
-      <div
-        className="d-flex flex-column justify-content-center align-items-center"
+    <div className="container__style_login">
+      <form
+        onSubmit={formik.handleSubmit}
         style={{ height: window.innerHeight }}
       >
-        <h3
-          className="text-center display-4"
-          style={{ fontWeight: "500", fontSize: "36px" }}
+        <div
+          className="d-flex flex-column justify-content-center align-items-center"
+          style={{ height: window.innerHeight }}
         >
-          ĐĂNG NHẬP
-        </h3>
-        <div className="d-flex mt-3">
-          <Input
-            onChange={formik.handleChange}
-            size="large"
-            name="taiKhoan"
-            type="text"
-            placeholder="Nhập tài khoản"
-            style={{ width: "100%", minWidth: "300px" }}
-            prefix={<UserOutlined />}
-          />
-        </div>
-        <div className="text-danger">{formik.errors.taiKhoan}</div>
+          <h3 className="text-center display-4">ĐĂNG NHẬP</h3>
+          <div className="d-flex mt-3">
+            <Input
+              className="input__style"
+              onChange={formik.handleChange}
+              size="large"
+              name="taiKhoan"
+              type="text"
+              placeholder="Nhập tài khoản"
+              prefix={<UserOutlined />}
+            />
+          </div>
+          <div className="text-danger">{formik.errors.taiKhoan}</div>
 
-        <div className="d-flex mt-3">
-          <Input
-            onChange={formik.handleChange}
-            name="matKhau"
-            type="password"
-            size="large"
-            style={{ width: "100%", minWidth: "300px" }}
-            placeholder="Nhập mật khẩu"
-            prefix={<LockOutlined />}
-          />
-        </div>
-        <div className="text-danger">{formik.errors.matKhau}</div>
-        <Button
-          className="mt-3"
-          type="primary"
-          size="large"
-          htmlType="submit"
-          style={{
-            minWidth: "300px",
-            backgroundColor: "#3A17E5",
-            border: "1px solid #3A17E5",
-            color: "#fff",
-          }}
-        >
-          Login
-        </Button>
-        <div className="social d-flex mt-3">
+          <div className="d-flex mt-3">
+            <Input
+              className="input__style"
+              onChange={formik.handleChange}
+              name="matKhau"
+              type="password"
+              size="large"
+              placeholder="Nhập mật khẩu"
+              prefix={<LockOutlined />}
+            />
+          </div>
+          <div className="text-danger">{formik.errors.matKhau}</div>
           <Button
-            className="mt-2 mr-2"
+            className="mt-3 button__register_style"
             type="primary"
-            icon={<FacebookOutlined />}
             size="large"
-            shape="circle"
-            style={{ backgroundColor: "rgb(59,89,152)", border: "none" }}
-          ></Button>
-          <Button
-            className="mt-2 mr-2"
-            type="primary"
-            icon={<TwitterOutlined />}
-            size="large"
-            shape="circle"
-          ></Button>
-          <Button
-            className="mt-2 mr-2"
-            type="primary"
-            icon={<GoogleOutlined />}
-            size="large"
-            shape="circle"
-            style={{ backgroundColor: "RGB(239, 61, 61)", border: "none" }}
-          ></Button>
+            htmlType="submit"
+          >
+            Login
+          </Button>
+          <div className="social d-flex mt-3">
+            <Button
+              className="mt-2 mr-2"
+              type="primary"
+              icon={<FacebookOutlined />}
+              size="large"
+              shape="circle"
+              style={{ backgroundColor: "rgb(59,89,152)", border: "none" }}
+            ></Button>
+            <Button
+              className="mt-2 mr-2"
+              type="primary"
+              icon={<TwitterOutlined />}
+              size="large"
+              shape="circle"
+            ></Button>
+            <Button
+              className="mt-2 mr-2"
+              type="primary"
+              icon={<GoogleOutlined />}
+              size="large"
+              shape="circle"
+              style={{ backgroundColor: "RGB(239, 61, 61)", border: "none" }}
+            ></Button>
+          </div>
+          <div className="register mt-5">
+            <Link to="/quenmatkhau">Quên mật khẩu</Link>
+          </div>
+          <div className="register">
+            <Link to="/register">Bạn chưa có tài khoản?</Link>
+          </div>
         </div>
-        <div className="register mt-5">
-          <Link to="/quenmatkhau">Quên mật khẩu</Link>
-        </div>
-        <div className="register">
-          <Link to="/register">Bạn chưa có tài khoản?</Link>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 
