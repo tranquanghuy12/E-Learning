@@ -5,8 +5,6 @@
     font-weight: 500;
     font-size: 36px;
     color: $primary-darkblue;
-    text-shadow: 2px 2px 4px $primary-darkblue;
-    border-bottom: 2px solid $primary-darkblue;
   }
   .input__style {
     width: 100%;
@@ -16,7 +14,7 @@
   .button__register_style {
     margin-top: $margin-2;
     min-width: 300px;
-    background-color:$second-color-light;
+    background-color: $second-color-light;
     border: 1px solid $second-color-light;
     color: #f4f4f4;
     &:hover {
@@ -33,6 +31,10 @@
     background-position: center;
     h3 {
       color: $bg-color;
+      font-weight: 500;
+      font-size: 36px;
+      text-shadow: 2px 2px 4px $primary-darkblue;
+      border-bottom: 2px solid $primary-darkblue;
     }
     .button__register_style {
       color: $btn-color-0 !important;
