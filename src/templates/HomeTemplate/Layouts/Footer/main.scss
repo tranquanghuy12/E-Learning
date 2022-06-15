@@ -1,21 +1,27 @@
 @import "../../../../assets/sass/app.scss";
-.text-uppercase {
-  color: $primary-darkblue;
-}
-.text__hover {
-  transition: all 0.2s;
-  &:hover {
-    color: $color-hyper-500 !important;
-    transition: all 0.2s;
-  }
-}
-.text-reset {
-  &:hover {
-    color: $color-hyper-500 !important;
-  }
-}
-.bg__footer {
-  background-color: $primary-darkblue !important;
-  color: $bg-color !important;
-}
 
+footer {
+  position: relative;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  .text-uppercase {
+    color: $primary-darkblue;
+  }
+  .text__hover {
+    transition: all 0.2s;
+    &:hover {
+      color: $color-hyper-500 !important;
+      transition: all 0.2s;
+    }
+  }
+  .text-reset {
+    &:hover {
+      color: $color-hyper-500 !important;
+    }
+  }
+  .bg__footer {
+    background-color: $primary-darkblue !important;
+    color: $bg-color !important;
+  }
+}

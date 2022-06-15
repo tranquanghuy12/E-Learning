@@ -90,18 +90,14 @@ export default function Home(props) {
                   }}
                 />
                 <div className="input-group-append">
-                  {search.length !== 0 ? (
-                    <Link
-                      to={`/timkiemkhoahoc/${search}`}
-                      className="btn input__group_text"
-                      id="basic-addon2"
-                      style={{
-                        textDecoration: "none",
-                      }}
-                    ></Link>
-                  ) : (
-                    ""
-                  )}
+                  <Link
+                    to={`/timkiemkhoahoc/${search}`}
+                    className="btn input__group_text"
+                    id="basic-addon2"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                  ></Link>
                 </div>
               </div>
             </form>

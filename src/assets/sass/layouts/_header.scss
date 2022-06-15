@@ -12,50 +12,6 @@
       margin: 5px;
     }
   }
-  .form__search {
-    flex-grow: 10;
-    .form-control {
-      padding: 10px;
-      background-color: $bg-slate-3;
-      border: none;
-      transition: none;
-      font-size: $fontSize-1;
-      transition: all ease 0.5s;
-      &:focus {
-        box-shadow: none;
-        background-color: $bg-slate-1;
-        padding: 9px;
-      }
-      &:value {
-        font-size: $fontSize-1;
-      }
-      &:focus + .input-group-append {
-        .input-group-text {
-          background-color: $bg-slate-1;
-        }
-        &:hover {
-          .input-group-text {
-            background-color: $primary-light;
-            color: $bg-slate-2;
-          }
-        }
-      }
-    }
-    .input-group-append {
-      .input-group-text {
-        border: none;
-        background-color: $bg-slate-4;
-        color: $bg-slate-1;
-        padding: $padding-1 15px;
-        margin-left: 1px;
-        font-size: $fontSize-1;
-        &:hover {
-          background-color: $primary-darkblue;
-          color: $bg-slate-1;
-        }
-      }
-    }
-  }
 }
 .header__right {
   .navbar-nav {

@@ -47,7 +47,7 @@ export default function ChiTietKhoaHoc() {
   };
 
   return (
-    <>
+    <div style={{ paddingTop: 126 }}>
       <div className="black-transparent-overlay m-0">
         <div>
           <h1 className="text-white">{chiTietKhoaHoc.tenKhoaHoc}</h1>
@@ -69,6 +69,6 @@ export default function ChiTietKhoaHoc() {
           <p>{chiTietKhoaHoc.moTa}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }

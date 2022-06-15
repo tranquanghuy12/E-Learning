@@ -27,19 +27,10 @@ export default function Profile() {
   }
   return (
     <>
-      <div className="container rounded bg-white mb-5 mt-5">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link className="style__navlink" to="/">
-                Trang chủ
-              </Link>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              Thông tin tài khoản
-            </li>
-          </ol>
-        </nav>
+      <div
+        style={{ paddingTop: 126 }}
+        className="container rounded bg-white mb-5 mt-5"
+      >
         <h3 className="text-center">Thông tin tài khoản</h3>
         <div className="row mt-5">
           <div className="col-md-4 border-right border-secondary">

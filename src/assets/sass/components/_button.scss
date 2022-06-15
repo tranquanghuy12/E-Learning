@@ -93,6 +93,10 @@
   font-weight: 500;
   cursor: pointer;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: white;
   transition: all 0.3s ease-in-out;
 

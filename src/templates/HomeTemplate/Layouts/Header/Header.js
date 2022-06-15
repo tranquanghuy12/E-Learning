@@ -100,7 +100,7 @@ export default function Header(props) {
                       Đăng nhập
                     </Link>
                     <Link to="/register" className="dropdown-item">
-                      Đăng kí
+                      Đăng ký
                     </Link>
                   </>
                 )}
@@ -143,7 +143,7 @@ export default function Header(props) {
                     >
                       {`Xin chào, ${
                         userLogin.hoTen.toString().length > 10
-                          ? userLogin.hoTen.substring(0, 8) + "..."
+                          ? userLogin.hoTen.substring(0, 5) + "..."
                           : userLogin.hoTen
                       }`}
                     </NavLink>
