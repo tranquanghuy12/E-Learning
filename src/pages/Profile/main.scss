@@ -1,17 +1,18 @@
-@import '../../assets/sass/app.scss';
+@import "../../assets/sass/app.scss";
 
-.bg__color_edit{
-    background-color: $color-hyper-500;
-    color: $bg-color;
-    &:hover{
-        color:$btn-color-1;
-    }
+.bg__color_edit {
+  background-color: $btn-color-4;
+  color: white;
+  &:hover {
+    background-color: $bg-color-3;
+    color: white;
+  }
 }
 
-.btn__color_return{
-    background-color:$bg-login ;
-    color: $bg-color;
-    &:hover{
-        color:$btn-color-1;
-    }
+.btn__color_return {
+  background-color: $bg-login;
+  color: $bg-color;
+  &:hover {
+    color: $btn-color-1;
+  }
 }
