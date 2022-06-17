@@ -5,11 +5,11 @@
     content: "";
     background: linear-gradient(
       120deg,
-      #1c99fe 20.69%,
-      #7644ff 50.19%,
+      $btn-color-5 20.69%,
+      $btn-color-4 50.19%,
       #fd4766 79.69%
     );
-    height: 2px;
+    height: 1px;
     width: 0;
     position: absolute;
     top: 0;

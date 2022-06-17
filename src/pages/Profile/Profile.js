@@ -16,6 +16,7 @@ export default function Profile() {
   const { userProfile } = useSelector(
     (rootReducer) => rootReducer.QuanLyNguoiDungReducer
   );
+
   useEffect(() => {
     dispatch(layMaLoaiNguoiDung());
     dispatch(layThongTinNguoiDungAction());
@@ -82,7 +83,6 @@ export default function Profile() {
             ) : (
               <></>
             )}
-            
           </div>
         </div>
       </div>

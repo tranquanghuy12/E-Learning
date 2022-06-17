@@ -1,9 +1,10 @@
 @import "../../assets/sass/app.scss";
 .sectionTitle {
-  color: $second-color;
+  color: $primary-dark;
 }
 .sectionParagraph {
-  color: $second-color;
+  color: $primary-dark;
+  font-size: $fontSize-0;
 }
 .shadow-effect {
   background: #fff;
@@ -19,6 +20,9 @@
   line-height: 1.5;
   margin: 0 0 17px 0;
   font-weight: 300;
+  .text__description {
+    color: $primary-dark;
+  }
 }
 .img-circle {
   border-radius: 50%;
@@ -34,7 +38,7 @@
   display: table;
   width: auto;
   /* background: linear-gradient(100deg, #845EC2, #BE93FD); */
-  background: linear-gradient(100deg, #ff8066, #ff918d);
+  background: linear-gradient(100deg, $btn-color-4, $btn-color-5);
 
   /* background: linear-gradient(135deg, #ff3e00, #eaa400); */
   padding: 9px 35px;
@@ -42,6 +46,9 @@
   text-align: center;
   color: #fff;
   box-shadow: 0px 9px 18px rgba(0, 0, 0, 0.12), 0px 5px 7px rgba(0, 0, 0, 0.5);
+  h5 {
+    color: $primary-darkblue;
+  }
 }
 #customer-testimonoals .item {
   text-align: center;

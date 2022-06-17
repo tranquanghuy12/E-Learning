@@ -33,7 +33,7 @@ export default function Footer() {
           <div className="row mt-3">
             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text__hover">
               <h6 className="footer__title text-uppercase fw-bold mb-4">
-                <i className="fas fa-gem me-3" />
+                <i className="fas fa-gem me-3 mr-1" />
                 E-learning
               </h6>
               <p>
@@ -104,18 +104,17 @@ export default function Footer() {
               </p>
               <p>
                 <a className="text-reset style__link_a" href="">
-                  <i className="fas fa-envelope me-3" />
-                  elearning@example.com
+                  <i className="fas fa-envelope me-3" /> elearning@example.com
                 </a>
               </p>
               <p>
                 <a className="text-reset style__link_a" href="">
-                  <i className="fas fa-phone me-3" /> + 01 234 567 88
+                  <i className="fas fa-phone me-3" /> +01 234 567 88
                 </a>
               </p>
               <p>
                 <a className="text-reset style__link_a" href="">
-                  <i className="fas fa-print me-3" /> + 01 234 567 89{" "}
+                  <i className="fas fa-print me-3" /> +01 234 567 89{" "}
                 </a>
               </p>
             </div>
@@ -127,9 +126,11 @@ export default function Footer() {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
         © 2021 Copyright:
-        <a className="text-reset fw-bold" href="#"> Elearning.com.vn</a>
+        <a className="text-reset fw-bold" href="#">
+          {" "}
+          Elearning.com.vn
+        </a>
       </div>
-
     </footer>
   );
 }
