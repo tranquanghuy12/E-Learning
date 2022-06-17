@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import logo from "../../../../assets/img/branding-logo.png";
 import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc";
 import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHocAction";
+import {
+  layMaLoaiNguoiDung,
+  layThongTinNguoiDungAction,
+} from "../../../../redux/actions/QuanLyNguoiDungAction";
+
 import "./main.scss";
 
 export default function Header(props) {
@@ -22,6 +27,15 @@ export default function Header(props) {
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
+
+  const { userProfile } = useSelector(
+    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+  );
+
+  useEffect(() => {
+    dispatch(layMaLoaiNguoiDung());
+    dispatch(layThongTinNguoiDungAction());
+  }, [userProfile]);
 
   useEffect(() => {
     dispatch(timKiemTenKhoaHocAction(mangKhoaHoc.tenKhoaHoc));
@@ -147,7 +161,17 @@ export default function Header(props) {
                           : userLogin.hoTen
                       }`}
                     </NavLink>
+                    {userProfile.chiTietKhoaHocGhiDanh !== undefined &&
+                      userProfile.chiTietKhoaHocGhiDanh.length > 0 && (
+                        <span class="badge badge-warning" id="lblCartCount">
+                          {" "}
+                          {userProfile.chiTietKhoaHocGhiDanh !== undefined
+                            ? userProfile.chiTietKhoaHocGhiDanh.length
+                            : ""}{" "}
+                        </span>
+                      )}
                   </li>
+
                   <li className="nav-item">
                     <NavLink
                       exact

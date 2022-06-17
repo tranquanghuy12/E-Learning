@@ -7,6 +7,10 @@ import swal from "sweetalert";
 import { dangKyKhoaHocAntion } from "../../redux/actions/AdminQuanLyKhoaHocAction";
 import { ChiTietKhoaHocAction } from "../../redux/actions/ChiTietKhoaHocAction";
 import "./ChiTietKhoaHoc.scss";
+import {
+  layMaLoaiNguoiDung,
+  layThongTinNguoiDungAction,
+} from "../../redux/actions/QuanLyNguoiDungAction";
 
 export default function ChiTietKhoaHoc() {
   const dispatch = useDispatch();
@@ -16,7 +20,8 @@ export default function ChiTietKhoaHoc() {
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
 
-  console.log("chiTietKhoaHoc", chiTietKhoaHoc);
+  // console.log("chiTietKhoaHoc", chiTietKhoaHoc);
+
   useEffect(() => {
     const action = ChiTietKhoaHocAction(makhoahoc);
     dispatch(action);
