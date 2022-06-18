@@ -76,14 +76,14 @@ export default function GhiDanhKhoaHoc(props) {
             </select>
           </div>
           <div className="btn__responsive_sm col-sm-12 col-md-4 col-lg-4 text-center">
-            <button type="submit" className="btn btn__ghidanh mr-3">
+            <button type="submit" className="btn btn-primary mr-3">
               Ghi Danh
             </button>
             <button
               onClick={() => {
                 history.push("/admin/quanlykhoahoc");
               }}
-              className="btn btn__trove"
+              className="btn btn-danger"
             >
               Trở về
             </button>

@@ -163,7 +163,7 @@ export default function Header(props) {
                     </NavLink>
                     {userProfile.chiTietKhoaHocGhiDanh !== undefined &&
                       userProfile.chiTietKhoaHocGhiDanh.length > 0 && (
-                        <span class="badge badge-warning" id="lblCartCount">
+                        <span className="badge badge-warning" id="lblCartCount">
                           {" "}
                           {userProfile.chiTietKhoaHocGhiDanh !== undefined
                             ? userProfile.chiTietKhoaHocGhiDanh.length
