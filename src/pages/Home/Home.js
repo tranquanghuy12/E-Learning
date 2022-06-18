@@ -61,9 +61,9 @@ export default function Home(props) {
 
   const banner = () => {
     return (
-      <div class="banner">
-        <div class="container row m-auto">
-          <div class="banner__info col-7">
+      <div className="banner">
+        <div className="container row m-auto">
+          <div className="banner__info col-7">
             <h1>
               <span>Studying </span>
               Online is now much easier
@@ -104,9 +104,9 @@ export default function Home(props) {
             <button className="mt-5">GET STARTED</button>
           </div>
 
-          <div class="banner__image col-5">
+          <div className="banner__image col-5">
             <img src={banner3} alt="a" />
-            <img class="swing-image" src={banner1} alt="b" />
+            <img className="swing-image" src={banner1} alt="b" />
           </div>
         </div>
       </div>
@@ -133,9 +133,9 @@ export default function Home(props) {
                 }}
               >
                 {mangKhoaHocPhanTrang.currentPage <= 1 ? (
-                  <i class="fas fa-chevron-circle-left disabled_btn"></i>
+                  <i className="fas fa-chevron-circle-left disabled_btn"></i>
                 ) : (
-                  <i class="fas fa-chevron-circle-left"></i>
+                  <i className="fas fa-chevron-circle-left"></i>
                 )}
               </button>
               <button
@@ -148,9 +148,9 @@ export default function Home(props) {
               >
                 {mangKhoaHocPhanTrang.currentPage ===
                 mangKhoaHocPhanTrang.totalPages ? (
-                  <i class="fas fa-chevron-circle-right disabled_btn"></i>
+                  <i className="fas fa-chevron-circle-right disabled_btn"></i>
                 ) : (
-                  <i class="fas fa-chevron-circle-right"></i>
+                  <i className="fas fa-chevron-circle-right"></i>
                 )}
               </button>
             </div>
