@@ -24,7 +24,7 @@ const LoginUserTemplate = (props) => {
         return (
           <>
             <Layout>
-              <Sider
+              {/* <Sider
                 className="sider__style"
                 width={width / 2}
                 style={{
@@ -34,7 +34,7 @@ const LoginUserTemplate = (props) => {
                   height: height,
                   width: "100%",
                 }}
-              ></Sider>
+              ></Sider> */}
               <Layout>
                 <Component {...propsRoute} />
               </Layout>

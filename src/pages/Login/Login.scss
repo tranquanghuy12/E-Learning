@@ -1,26 +1,67 @@
 @import "../../assets/sass/app.scss";
 .container__style_login {
-  background-color: #ffd302;
-  h3 {
-    font-weight: 500;
-    font-size: 36px;
-    color: $primary-darkblue;
-  }
-  .input__style {
-    width: 100%;
-    min-width: 300px;
+  background-image: linear-gradient(140deg, $btn-color-4 15%, $btn-color-5 75%);
+  background-size: 100%;
+  position: relative;
+  .login__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    padding: 0 50px;
+    height: 80% !important;
+    border-radius: 10px;
+    background-color: $bg-color-4;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h3 {
+      font-weight: 500;
+      font-size: 36px;
+      margin-bottom: 60px;
+      color: $primary-darkblue;
+    }
+    .input__style {
+      width: 100%;
+      min-width: 300px;
+    }
+    .register__help {
+      a {
+        color: grey !important;
+        &:hover {
+          color: $btn-color-4 !important;
+        }
+      }
+    }
   }
 
   .button__register_style {
     margin-top: $margin-2;
     min-width: 300px;
-    background-color: $second-color-light;
-    border: 1px solid $second-color-light;
-    color: #f4f4f4;
+    color: white;
+    padding: 8px;
+    border-radius: 3rem;
+    border: none;
+    font-size: $fontSize-0;
+    font-weight: 600;
+    cursor: pointer;
+    background-image: linear-gradient(
+      to right,
+      $btn-color-4,
+      $btn-color-5,
+      $btn-color-4
+    );
+    background-size: 200%;
+    background-position: left;
+    border: none;
+
+    transition: 400ms background-position ease-in-out;
+
     &:hover {
-      background-color: $second-color;
-      border: 1px solid $second-color;
-      color: #fff;
+      background-position: right;
     }
   }
 }

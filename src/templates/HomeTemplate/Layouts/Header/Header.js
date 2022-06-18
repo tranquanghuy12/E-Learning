@@ -149,7 +149,7 @@ export default function Header(props) {
             <ul className="navbar-nav float-right">
               {userLogin.taiKhoan ? (
                 <>
-                  <li className="nav-item mr-3">
+                  <li className="nav-item mr-3 position-relative">
                     <NavLink
                       exact
                       to="/profile"
@@ -163,7 +163,7 @@ export default function Header(props) {
                     </NavLink>
                     {userProfile.chiTietKhoaHocGhiDanh !== undefined &&
                       userProfile.chiTietKhoaHocGhiDanh.length > 0 && (
-                        <span className="badge badge-warning" id="lblCartCount">
+                        <span className="badge registered__courses_count">
                           {" "}
                           {userProfile.chiTietKhoaHocGhiDanh !== undefined
                             ? userProfile.chiTietKhoaHocGhiDanh.length
