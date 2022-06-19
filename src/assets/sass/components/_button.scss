@@ -216,3 +216,30 @@
     transition: 150ms cubic-bezier(0, 0, 0.38, 0.9);
   }
 }
+
+.button__register_login_style {
+  margin-top: $margin-2;
+  min-width: 300px;
+  color: white;
+  padding: 8px;
+  border-radius: 3rem;
+  border: none;
+  font-size: $fontSize-0;
+  font-weight: 600;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    $btn-color-4,
+    $btn-color-5,
+    $btn-color-4
+  );
+  background-size: 200%;
+  background-position: left;
+  border: none;
+
+  transition: 400ms background-position ease-in-out;
+
+  &:hover {
+    background-position: right;
+  }
+}

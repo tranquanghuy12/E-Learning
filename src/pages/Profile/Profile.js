@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import swal from "sweetalert";
 import ModalCapNhatNguoiDung from "../../components/Modal/ModalCapNhatNguoiDung";
-import "./main.scss";
+import "./Profile.scss";
 import {
   layMaLoaiNguoiDung,
   layThongTinNguoiDungAction,

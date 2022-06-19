@@ -69,7 +69,7 @@ const UserLogin = () => {
               />
             </div>
             <div className="text-danger">{formik.errors.matKhau}</div>
-            <button className="mt-5 button__register_style" type="submit">
+            <button className="mt-5 button__register_login_style" type="submit">
               Đăng nhập
             </button>
           </div>
@@ -100,7 +100,7 @@ const UserLogin = () => {
             ></Button>
           </div>
           
-          <div className="register__help d-flex flex-column align-items-center">
+          <div className="login__help">
             <Link className="mb-2" to="/quenmatkhau">Quên mật khẩu?</Link>
             <Link to="/register">Bạn chưa có tài khoản?</Link>
           </div>

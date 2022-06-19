@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { layKhoaHocTheoDanhMucAction } from "../../redux/actions/KhoaHocTheoDanhMucAction";
+import { layKhoaHocTheoDanhMucAction } from "../../../redux/actions/KhoaHocTheoDanhMucAction";
 import "./KhoaHocTheoDanhMuc.scss";
-import RenderCardKhoaHoc from "./RenderCardKhoaHoc";
+import RenderCardKhoaHoc from "../../../components/RenderCardKhoaHoc/RenderCardKhoaHoc";
 
 export default function KhoaHocTheoDanhMuc() {
   const dispatch = useDispatch();
