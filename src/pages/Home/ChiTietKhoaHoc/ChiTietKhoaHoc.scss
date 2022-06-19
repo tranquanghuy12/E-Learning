@@ -1,11 +1,11 @@
-@import "../../assets/sass/app.scss";
+@import "../../../assets/sass/app.scss";
 
 .black-transparent-overlay {
   position: relative;
   z-index: 0;
   height: 100%;
   width: 100%;
-  background-image: url("../../assets/img/banner-details-course.jpg");
+  background-image: url("../../../assets/img/banner-details-course.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

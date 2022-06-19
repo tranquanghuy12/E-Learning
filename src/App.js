@@ -6,10 +6,9 @@ import { Route, Router, Switch } from "react-router-dom";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
 import { AdminTemplate } from "./templates/AdminTemplate/AdminTemplate";
 
-
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import CapNhatThongTinNguoiDung from "./pages/Admin/QuanLyNguoiDung/CapNhatThongTinNguoiDung/CapNhatThongTinNguoiDung";
-import KhoaHocTheoDanhMuc from "./pages/Home/KhoaHocTheoDanhMuc";
+import KhoaHocTheoDanhMuc from "./pages/Home/KhoaHocTheoDanhMuc/KhoaHocTheoDanhMuc";
 
 import QuanLyKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/QuanLyKhoaHoc";
 
@@ -17,7 +16,7 @@ import DanhSachNguoiDung from "./pages/Admin/QuanLyNguoiDung/DanhSachNguoiDung/D
 import Admin from "./pages/Admin/Admin";
 import ThemNguoiDung from "./pages/Admin/QuanLyNguoiDung/ThemNguoiDung/ThemNguoiDung";
 import GhiDanhNguoiDung from "./pages/Admin/QuanLyGhiDanh/GhiDanhNguoiDung/GhiDanhNguoiDung";
-import ChiTietKhoaHoc from "./pages/Home/ChiTietKhoaHoc";
+import ChiTietKhoaHoc from "./pages/Home/ChiTietKhoaHoc/ChiTietKhoaHoc";
 import TimKiemKhoaHoc from "./pages/TimKiemKhoaHoc/TimKiemKhoaHoc";
 import GhiDanhKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/GhiDanhKhoaHoc";
 import CapNhatThongTinKhoaHoc from "./pages/Admin/QuanLyKhoaHoc/CapNhatThongTinKhoaHoc";
@@ -57,7 +56,6 @@ function App() {
         <HomeTemplate path="/" exact Component={Home} />
 
         {/* <HomeTemplate path="/login" exact Component={Login} /> */}
-        
 
         <AdminTemplate path="/admin" exact Component={Admin} />
         <AdminTemplate

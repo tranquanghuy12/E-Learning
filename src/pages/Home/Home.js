@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Review from "../../components/Review/Review";
 import { layDanhSachKhoaHocPhanTrang } from "../../redux/actions/QuanLyKhoaHocAction";
 import CountUp from "../../components/CountUp/CountUp";
-import RenderCardKhoaHoc from "./RenderCardKhoaHoc";
+import RenderCardKhoaHoc from "../../components/RenderCardKhoaHoc/RenderCardKhoaHoc";
 import "./Home.scss";
 import queryString from "query-string";
 import TabCategory from "../../components/TabCategory/TabCategory";

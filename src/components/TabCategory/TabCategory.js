@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import RenderCardKhoaHoc from "../../pages/Home/RenderCardKhoaHoc";
+import RenderCardKhoaHoc from "../RenderCardKhoaHoc/RenderCardKhoaHoc";
 import { layKhoaHocTheoDanhMucAction } from "../../redux/actions/KhoaHocTheoDanhMucAction";
 import { Tabs } from "antd";
+
 export default function TabCategory(props) {
   const dispatch = useDispatch();
   const { TabPane } = Tabs;

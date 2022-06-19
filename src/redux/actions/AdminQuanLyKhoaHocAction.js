@@ -21,7 +21,7 @@ import {
 } from "../types/QuanLyKhoaHocType";
 import { layDanhSachPhimAction } from "./QuanLyKhoaHocAction";
 
-export const themKhoaHocAdminAction = (values) => {
+export const ThemKhoaHocAdminAction = (values) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_THEM_KHOA_HOC_ADMIN, values);
@@ -69,7 +69,7 @@ export const capNhatThongTinKhoaHocAction = (values) => {
     }
   };
 };
-export const dangKyKhoaHocAntion = (data) => {
+export const DangKyKhoaHocAction = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_DANG_KY_KHOA_HOC, data);

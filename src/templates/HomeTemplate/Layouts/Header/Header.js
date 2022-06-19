@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/img/branding-logo.png";
-import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc";
+import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc/DanhMucKhoaHoc";
 import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHocAction";
 import {
   layMaLoaiNguoiDung,

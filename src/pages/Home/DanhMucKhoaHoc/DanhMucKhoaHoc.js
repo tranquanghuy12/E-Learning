@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { layDanhMucKhoaHocAction } from "../../redux/actions/DanhMucKhoaHocAction";
+import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
 import { Menu, Dropdown, Space } from "antd";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import "./DanhMucKhoaHoc.scss";
 
 export default function DanhMucKhoaHoc() {
