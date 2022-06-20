@@ -1,21 +1,10 @@
 import { Layout } from "antd";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 import './LoginUserTemplate.scss'
-const { Header, Footer, Sider, Content } = Layout;
+
 const LoginUserTemplate = (props) => {
-  const [{ width, height }, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  useEffect(() => {
-    window.onresize = () => {
-      setSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-  });
+  
   let { Component, ...restRoute } = props;
   return (
     <Route

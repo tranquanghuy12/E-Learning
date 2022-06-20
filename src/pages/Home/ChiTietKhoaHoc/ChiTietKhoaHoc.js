@@ -16,8 +16,6 @@ export default function ChiTietKhoaHoc() {
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
 
-  // console.log("chiTietKhoaHoc", chiTietKhoaHoc);
-
   useEffect(() => {
     const action = ChiTietKhoaHocAction(makhoahoc);
     dispatch(action);
