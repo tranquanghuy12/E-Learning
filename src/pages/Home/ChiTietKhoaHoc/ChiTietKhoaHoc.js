@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { history } from "../../App";
+import { useHistory, useParams } from "react-router-dom";
 import swal from "sweetalert";
-import { dangKyKhoaHocAntion } from "../../redux/actions/AdminQuanLyKhoaHocAction";
-import { ChiTietKhoaHocAction } from "../../redux/actions/ChiTietKhoaHocAction";
+import { DangKyKhoaHocAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
+import { ChiTietKhoaHocAction } from "../../../redux/actions/ChiTietKhoaHocAction";
 import "./ChiTietKhoaHoc.scss";
 
 export default function ChiTietKhoaHoc() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { makhoahoc } = useParams();
 
@@ -16,7 +16,8 @@ export default function ChiTietKhoaHoc() {
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
 
-  console.log("chiTietKhoaHoc", chiTietKhoaHoc);
+  // console.log("chiTietKhoaHoc", chiTietKhoaHoc);
+
   useEffect(() => {
     const action = ChiTietKhoaHocAction(makhoahoc);
     dispatch(action);
@@ -29,7 +30,7 @@ export default function ChiTietKhoaHoc() {
         taiKhoan: taiKhoan,
         maKhoaHoc: chiTietKhoaHoc.maKhoaHoc,
       };
-      dispatch(dangKyKhoaHocAntion(data));
+      dispatch(DangKyKhoaHocAction(data));
     } else {
       swal({
         title: "Bạn chưa đăng nhập!",

@@ -15,10 +15,13 @@ import {
   ADMIN_TIM_KIEM_KHOA_HOC,
 } from "../types/AdminKhoaHocType";
 import { ADMIN_THEM_KHOA_HOC } from "../types/AdminThemKhoaHocType";
-import { DANG_KY_KHOA_HOC_ACTION, LAY_DANH_SACH_KHOA_HOC_ACTION } from "../types/QuanLyKhoaHocType";
+import {
+  DANG_KY_KHOA_HOC_ACTION,
+  LAY_DANH_SACH_KHOA_HOC_ACTION,
+} from "../types/QuanLyKhoaHocType";
 import { layDanhSachPhimAction } from "./QuanLyKhoaHocAction";
 
-export const themKhoaHocAdminAction = (values) => {
+export const ThemKhoaHocAdminAction = (values) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_THEM_KHOA_HOC_ADMIN, values);
@@ -66,7 +69,7 @@ export const capNhatThongTinKhoaHocAction = (values) => {
     }
   };
 };
-export const dangKyKhoaHocAntion = (data) => {
+export const DangKyKhoaHocAction = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_DANG_KY_KHOA_HOC, data);
@@ -79,6 +82,10 @@ export const dangKyKhoaHocAntion = (data) => {
       }
     } catch (error) {
       console.log(error.response?.data);
+      swal({
+        title: error.response?.data,
+        icon: "error",
+      });
     }
   };
 };
@@ -96,14 +103,14 @@ export const layThongTinKhoaHocAction = (maKhoaHoc) => {
   };
 };
 
-export const timKiemKhoaHocAction=(tenKhoaHoc)=>{
-  return async dispatch =>{
+export const timKiemKhoaHocAction = (tenKhoaHoc) => {
+  return async (dispatch) => {
     try {
-      let result = await http.get(`${API_TIM_KIEM_KHOA_HOC}${tenKhoaHoc}`)
-      console.log('result',result.data)
-      dispatch(createAction(LAY_DANH_SACH_KHOA_HOC_ACTION,result.data))
+      let result = await http.get(`${API_TIM_KIEM_KHOA_HOC}${tenKhoaHoc}`);
+      console.log("result", result.data);
+      dispatch(createAction(LAY_DANH_SACH_KHOA_HOC_ACTION, result.data));
     } catch (error) {
       console.log(error.response?.data);
     }
-  }
-}
+  };
+};

@@ -3,8 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/img/branding-logo.png";
-import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc";
+import DanhMucKhoaHoc from "../../../../pages/Home/DanhMucKhoaHoc/DanhMucKhoaHoc";
 import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHocAction";
+import {
+  layMaLoaiNguoiDung,
+  layThongTinNguoiDungAction,
+} from "../../../../redux/actions/QuanLyNguoiDungAction";
+
 import "./main.scss";
 
 export default function Header(props) {
@@ -22,6 +27,15 @@ export default function Header(props) {
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
+
+  const { userProfile } = useSelector(
+    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+  );
+
+  useEffect(() => {
+    dispatch(layMaLoaiNguoiDung());
+    dispatch(layThongTinNguoiDungAction());
+  }, [userProfile]);
 
   useEffect(() => {
     dispatch(timKiemTenKhoaHocAction(mangKhoaHoc.tenKhoaHoc));
@@ -135,7 +149,7 @@ export default function Header(props) {
             <ul className="navbar-nav float-right">
               {userLogin.taiKhoan ? (
                 <>
-                  <li className="nav-item mr-3">
+                  <li className="nav-item mr-3 position-relative">
                     <NavLink
                       exact
                       to="/profile"
@@ -147,7 +161,17 @@ export default function Header(props) {
                           : userLogin.hoTen
                       }`}
                     </NavLink>
+                    {userProfile.chiTietKhoaHocGhiDanh !== undefined &&
+                      userProfile.chiTietKhoaHocGhiDanh.length > 0 && (
+                        <span className="badge registered__courses_count">
+                          {" "}
+                          {userProfile.chiTietKhoaHocGhiDanh !== undefined
+                            ? userProfile.chiTietKhoaHocGhiDanh.length
+                            : ""}{" "}
+                        </span>
+                      )}
                   </li>
+
                   <li className="nav-item">
                     <NavLink
                       exact

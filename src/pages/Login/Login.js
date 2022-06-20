@@ -1,5 +1,5 @@
 import React from "react";
-import './Login.scss'
+import "./Login.scss";
 import * as Yup from "yup";
 import {
   UserOutlined,
@@ -41,44 +41,39 @@ const UserLogin = () => {
         onSubmit={formik.handleSubmit}
         style={{ height: window.innerHeight }}
       >
-        <div
-          className="d-flex flex-column justify-content-center align-items-center"
-          style={{ height: window.innerHeight }}
-        >
-          <h3 className="text-center display-4">ĐĂNG NHẬP</h3>
-          <div className="d-flex mt-3">
-            <Input
-              className="input__style"
-              onChange={formik.handleChange}
-              size="large"
-              name="taiKhoan"
-              type="text"
-              placeholder="Nhập tài khoản"
-              prefix={<UserOutlined />}
-            />
-          </div>
-          <div className="text-danger">{formik.errors.taiKhoan}</div>
+        <div className="login__form" style={{ height: window.innerHeight }}>
+          <div>
+            <h3 className="text-center display-4">ĐĂNG NHẬP</h3>
+            <div className="d-flex mt-3">
+              <Input
+                className="input__style"
+                onChange={formik.handleChange}
+                size="large"
+                name="taiKhoan"
+                type="text"
+                placeholder="Nhập tài khoản"
+                prefix={<UserOutlined />}
+              />
+            </div>
+            <div className="text-danger">{formik.errors.taiKhoan}</div>
 
-          <div className="d-flex mt-3">
-            <Input
-              className="input__style"
-              onChange={formik.handleChange}
-              name="matKhau"
-              type="password"
-              size="large"
-              placeholder="Nhập mật khẩu"
-              prefix={<LockOutlined />}
-            />
+            <div className="d-flex mt-3">
+              <Input
+                className="input__style"
+                onChange={formik.handleChange}
+                name="matKhau"
+                type="password"
+                size="large"
+                placeholder="Nhập mật khẩu"
+                prefix={<LockOutlined />}
+              />
+            </div>
+            <div className="text-danger">{formik.errors.matKhau}</div>
+            <button className="mt-5 button__register_login_style" type="submit">
+              Đăng nhập
+            </button>
           </div>
-          <div className="text-danger">{formik.errors.matKhau}</div>
-          <Button
-            className="mt-3 button__register_style"
-            type="primary"
-            size="large"
-            htmlType="submit"
-          >
-            Login
-          </Button>
+
           <div className="social d-flex mt-3">
             <Button
               className="mt-2 mr-2"
@@ -104,10 +99,9 @@ const UserLogin = () => {
               style={{ backgroundColor: "RGB(239, 61, 61)", border: "none" }}
             ></Button>
           </div>
-          <div className="register mt-5">
-            <Link to="/quenmatkhau">Quên mật khẩu</Link>
-          </div>
-          <div className="register">
+          
+          <div className="login__help">
+            <Link className="mb-2" to="/quenmatkhau">Quên mật khẩu?</Link>
             <Link to="/register">Bạn chưa có tài khoản?</Link>
           </div>
         </div>
