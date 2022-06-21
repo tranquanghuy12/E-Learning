@@ -162,12 +162,12 @@ export default function Home(props) {
         </div>
       </div>
 
-      <div className="text-center">
+      <div className="course_by_category text-center">
         <h1 className="text-center header__title mt-5">
           KHOÁ HỌC THEO DANH MỤC
         </h1>
+        <TabCategory />
       </div>
-      <TabCategory />
       <CountUp />
       <Review />
     </div>

@@ -1,14 +1,5 @@
 @import "../../assets/sass/app.scss";
 .header__title {
-  // background: linear-gradient(120deg, #1c99fe 20.69%, $color-hyper-500 50.19%, #fd4766 79.69%);
-
-  // letter-spacing: 0.5px;
-  // line-height: 18px;
-  // font-size: 24px;
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
-  // display: inline-block;
-  // padding: $padding-1
   font-weight: 600;
 }
 
@@ -125,9 +116,16 @@
 }
 
 .popular__courses {
-  background-image: url("../../assets/img/bg2.png");
+  background-image: url("../../assets/img/Background/bg2.png");
   background-size: 100%;
   background-position: top;
+  background-repeat: no-repeat;
+}
+
+.course_by_category {
+  background-image: url("../../assets/img/Background/bg16.png");
+  background-size: 100%;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
