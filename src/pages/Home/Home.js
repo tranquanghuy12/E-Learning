@@ -12,6 +12,7 @@ import { layDanhMucKhoaHocAction } from "../../redux/actions/DanhMucKhoaHocActio
 import banner1 from "../../assets/img/Banner/pic1.png";
 import banner3 from "../../assets/img/Banner/pic3_1.png";
 import { Link, useHistory } from "react-router-dom";
+import { ACCESSTOKEN } from "../../util/setting/config";
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -27,11 +28,6 @@ export default function Home(props) {
     page: 1,
     pageSize: 6,
   });
-
-  useEffect(() => {
-    const action = layDanhMucKhoaHocAction();
-    dispatch(action);
-  }, []);
 
   useEffect(() => {
     const paramsString = queryString.stringify(filters);
@@ -55,8 +51,13 @@ export default function Home(props) {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
+    if (!localStorage.getItem(ACCESSTOKEN)) {
+      history.push("login");
+    } else {
+      // window.scrollTo(0, 890);
+      document.getElementById("popular-courses").scrollIntoView();
+    }
   };
 
   const banner = () => {
@@ -72,7 +73,7 @@ export default function Home(props) {
               We develop the relationships that underpin the next phase in your
               organisation’s growth.
             </p>
-            <form className="form__search" onSubmit={handleSubmit}>
+            <form className="form__search" onSubmit={(e) => e.preventDefault()}>
               <div className="input-group">
                 <input
                   type="text"
@@ -101,7 +102,9 @@ export default function Home(props) {
                 </div>
               </div>
             </form>
-            <button className="mt-5">GET STARTED</button>
+            <button className="btn__get_started mt-5" onClick={handleClick}>
+              GET STARTED
+            </button>
           </div>
 
           <div className="banner__image col-5">
@@ -117,7 +120,7 @@ export default function Home(props) {
     <div className="container-fluid">
       <div className="pb-5">{banner()}</div>
 
-      <div className="popular__courses">
+      <div id="popular-courses" className="popular__courses">
         <div className="container pt-5 ">
           <div className="d-flex align-items-center justify-content-between">
             <h3 className="m-0 text-center header__title">

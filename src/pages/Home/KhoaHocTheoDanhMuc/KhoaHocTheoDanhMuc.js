@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { layKhoaHocTheoDanhMucAction } from "../../../redux/actions/KhoaHocTheoDanhMucAction";
 import "./KhoaHocTheoDanhMuc.scss";
 import RenderCardKhoaHoc from "../../../components/RenderCardKhoaHoc/RenderCardKhoaHoc";
+import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
 
 export default function KhoaHocTheoDanhMuc() {
   const dispatch = useDispatch();
@@ -14,11 +15,16 @@ export default function KhoaHocTheoDanhMuc() {
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
-  console.log("first", mangDanhMucKhoaHoc);
+
   //khóa học theo danh mục
   const { mangKhoaHocTheoDanhMuc } = useSelector(
     (rootReducer) => rootReducer.KhoaHocTheoDanhMucReducer
   );
+
+  useEffect(() => {
+    const action = layDanhMucKhoaHocAction();
+    dispatch(action);
+  }, []);
 
   useEffect(() => {
     const action = layKhoaHocTheoDanhMucAction(madanhmuc);
@@ -26,10 +32,10 @@ export default function KhoaHocTheoDanhMuc() {
   }, [madanhmuc]);
 
   //tìm danhMuc để lấy trường tenDanhMuc hiển thị ra banner
-  const danhMuc = mangDanhMucKhoaHoc.find(
+  const danhMuc = mangDanhMucKhoaHoc?.find(
     (item) => item.maDanhMuc === madanhmuc
   );
-  // console.log('danhMuc',danhMuc)
+  console.log('danhMuc',danhMuc)
   const renderKhoaHocTheoDanhMuc = () => {
     return mangKhoaHocTheoDanhMuc.map((item, index) => {
       return (
@@ -42,7 +48,7 @@ export default function KhoaHocTheoDanhMuc() {
   return (
     <div style={{ paddingTop: 126 }} className="container">
       <div className="banner-danhmuc text-center">
-        <h3>{danhMuc.tenDanhMuc}</h3>
+        <h3>{danhMuc?.tenDanhMuc}</h3>
       </div>
       <div className="row m-auto p-5">{renderKhoaHocTheoDanhMuc()}</div>
     </div>

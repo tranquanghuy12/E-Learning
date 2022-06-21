@@ -33,9 +33,8 @@ export default function Header(props) {
   );
 
   useEffect(() => {
-    dispatch(layMaLoaiNguoiDung());
     dispatch(layThongTinNguoiDungAction());
-  }, [userProfile]);
+  }, []);
 
   useEffect(() => {
     dispatch(timKiemTenKhoaHocAction(mangKhoaHoc.tenKhoaHoc));
@@ -53,7 +52,7 @@ export default function Header(props) {
         <Link
           key={item.maDanhMuc}
           className="dropdown-item"
-          to={`/danhmuckhoahoc/${item.maDanhMuc}`}
+          to={`/danhmuckhoahoc=${item.maDanhMuc}`}
         >
           {item.tenDanhMuc}
         </Link>

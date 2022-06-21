@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import swal from "sweetalert";
-import { DangKyKhoaHocAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
+import { dangKyKhoaHocAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 import { ChiTietKhoaHocAction } from "../../../redux/actions/ChiTietKhoaHocAction";
 import "./ChiTietKhoaHoc.scss";
 
@@ -15,8 +15,6 @@ export default function ChiTietKhoaHoc() {
   const chiTietKhoaHoc = useSelector(
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
-
-  // console.log("chiTietKhoaHoc", chiTietKhoaHoc);
 
   useEffect(() => {
     const action = ChiTietKhoaHocAction(makhoahoc);
@@ -30,7 +28,7 @@ export default function ChiTietKhoaHoc() {
         taiKhoan: taiKhoan,
         maKhoaHoc: chiTietKhoaHoc.maKhoaHoc,
       };
-      dispatch(DangKyKhoaHocAction(data));
+      dispatch(dangKyKhoaHocAction(data));
     } else {
       swal({
         title: "Bạn chưa đăng nhập!",
