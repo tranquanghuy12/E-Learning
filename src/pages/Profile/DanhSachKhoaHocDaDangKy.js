@@ -1,5 +1,5 @@
 import React, { Component, useRef, useState } from "react";
-import { Table, Input, Button, Space } from "antd";
+import { Table, Input, Button, Space, Rate } from "antd";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
 import swal from "sweetalert";
@@ -11,6 +11,7 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
   const [state, setState] = useState({ searchText: "", searchedColumn: "" });
   const searchInput = useRef(null);
   const data = userProfile.chiTietKhoaHocGhiDanh || "";
+  console.log("data", data);
   // console.log('data',data)
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -110,22 +111,26 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
       title: "Mã khoá học",
       dataIndex: "maKhoaHoc",
       key: "maKhoaHoc",
+      width: "10%",
       ...getColumnSearchProps("maKhoaHoc"),
     },
     {
       title: "Tên khoá học",
       dataIndex: "tenKhoaHoc",
       key: "tenKhoaHoc",
+      width: "15%",
       ...getColumnSearchProps("tenKhoaHoc"),
     },
     {
       title: "Hình ảnh",
       dataIndex: "hinhAnh",
-      render: (hinhAnh) => <img width={150} src={hinhAnh} alt="Hình ảnh" />,
+      width: "10%",
+      render: (hinhAnh) => <img width={100} src={hinhAnh} alt="Hình ảnh" />,
     },
     {
       title: "Mô tả",
       dataIndex: "moTa",
+      width:"30%",
       render: (text, khoaHoc) => {
         return khoaHoc.moTa.length > 20
           ? khoaHoc.moTa.substring(0, 70) + "..."
@@ -136,13 +141,18 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
       title: "Đánh giá",
       dataIndex: "danhGia",
       key: "danhGia",
+      width:"20%",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.danhGia - b.danhGia,
+      render: (text, khoaHoc) => {
+        return <Rate allowHalf defaultValue={khoaHoc.danhGia / 2} />;
+      },
     },
 
     {
       title: "Thao tác",
       key: "maKhoaHoc",
+      width:"15%",
       render: (text, khoaHoc) => {
         const xoaKhoaHoc = (maKhoaHoc) => {
           if (userProfile) {
