@@ -4,7 +4,7 @@
 
 //import Component
 @import "./components/button";
-@import './components/icon';
+@import "./components/icon";
 @import "./components/card";
 @import "./components/link";
 
@@ -17,6 +17,10 @@
 
 //import Pages
 @import "./pages/home";
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   padding: 0 !important;

@@ -16,27 +16,29 @@
 }
 
 // Button in banner Home component
-.banner__info button {
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 3rem;
-  border: none;
-  font-size: $fontSize-0;
-  font-weight: 600;
-  cursor: pointer;
-  background-image: linear-gradient(
-    to right,
-    $btn-color-4,
-    $btn-color-5,
-    $btn-color-4
-  );
-  background-size: 200%;
-  background-position: left;
+.banner__info {
+  .btn__get_started {
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    border: none;
+    font-size: $fontSize-0;
+    font-weight: 600;
+    cursor: pointer;
+    background-image: linear-gradient(
+      to right,
+      $btn-color-4,
+      $btn-color-5,
+      $btn-color-4
+    );
+    background-size: 200%;
+    background-position: left;
 
-  transition: 400ms background-position ease-in-out;
+    transition: 400ms background-position ease-in-out;
 
-  &:hover {
-    background-position: right;
+    &:hover {
+      background-position: right;
+    }
   }
 }
 

@@ -6,9 +6,6 @@ import { Menu, Dropdown, Space } from "antd";
 import "./DanhMucKhoaHoc.scss";
 
 export default function DanhMucKhoaHoc() {
-  const style = {
-    color: "#ffd302",
-  };
   const dispatch = useDispatch();
 
   //danh mục khóa học
@@ -26,12 +23,17 @@ export default function DanhMucKhoaHoc() {
     return {
       key: `${index}`,
       label: (
-        <NavLink activeStyle={style} to={`/danhmuckhoahoc/${item.maDanhMuc}`}>
+        <NavLink
+          activeStyle={{ color: "#f55f8d" }}
+          to={`/danhmuckhoahoc=${item.maDanhMuc}`}
+        >
           {item.tenDanhMuc}
         </NavLink>
       ),
     };
   });
+
+  console.log("mangDangMucKhoaHoc", mangDanhMucKhoaHoc);
 
   const menu = <Menu items={mangDanhMucKhoaHocDropdown} />;
 

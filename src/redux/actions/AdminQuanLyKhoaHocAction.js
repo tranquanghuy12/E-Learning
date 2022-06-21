@@ -20,6 +20,7 @@ import {
   LAY_DANH_SACH_KHOA_HOC_ACTION,
 } from "../types/QuanLyKhoaHocType";
 import { layDanhSachPhimAction } from "./QuanLyKhoaHocAction";
+import { layThongTinNguoiDungAction } from "./QuanLyNguoiDungAction";
 
 export const ThemKhoaHocAdminAction = (values) => {
   return async (dispatch) => {
@@ -69,7 +70,7 @@ export const capNhatThongTinKhoaHocAction = (values) => {
     }
   };
 };
-export const DangKyKhoaHocAction = (data) => {
+export const dangKyKhoaHocAction = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_DANG_KY_KHOA_HOC, data);
@@ -79,6 +80,8 @@ export const DangKyKhoaHocAction = (data) => {
           icon: "success",
         });
         dispatch(createAction(DANG_KY_KHOA_HOC_ACTION, result));
+        //cập nhật card hiển thị số lượng khóa học
+        dispatch(layThongTinNguoiDungAction());
       }
     } catch (error) {
       console.log(error.response?.data);
