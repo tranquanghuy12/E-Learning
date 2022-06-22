@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import RenderCardKhoaHoc from "../RenderCardKhoaHoc/RenderCardKhoaHoc";
 import { layKhoaHocTheoDanhMucAction } from "../../redux/actions/KhoaHocTheoDanhMucAction";
 import { Tabs } from "antd";
+import "./TabCategory.scss";
 
 export default function TabCategory(props) {
   const dispatch = useDispatch();
@@ -31,6 +30,12 @@ export default function TabCategory(props) {
     console.log(tab);
   };
 
+  const renderKhoaHocTheoDanhMuc = () => {
+    return mangKhoaHocTheoDanhMuc.map((item, index) => {
+      return <RenderCardKhoaHoc item={item} key={index} />;
+    });
+  };
+
   const renderMangDanhMuc = () => {
     return mangDanhMucKhoaHoc.map((item, index) => {
       return (
@@ -40,15 +45,7 @@ export default function TabCategory(props) {
       );
     });
   };
-  const renderKhoaHocTheoDanhMuc = () => {
-    return mangKhoaHocTheoDanhMuc.map((item, index) => {
-      return (
-        <div className="mb-4 col-sm-12 col-md-3 col-lg-4" key={index}>
-          <RenderCardKhoaHoc item={item} />
-        </div>
-      );
-    });
-  };
+
   return (
     <div className="container">
       <Tabs defaultActiveKey="1" centered onChange={changeTab}>

@@ -44,9 +44,7 @@ export default function Home(props) {
   const layDanhSachKhoaHoc = () => {
     return layKhoaHoc?.map((item, index) => {
       return (
-        <div className="mb-4 col-sm-12 col-md-3 col-lg-4" key={index}>
-          <RenderCardKhoaHoc item={item} />
-        </div>
+          <RenderCardKhoaHoc item={item} key={index} />
       );
     });
   };
