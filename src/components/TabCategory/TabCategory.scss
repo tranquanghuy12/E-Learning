@@ -1,0 +1,23 @@
+@import "../../assets/sass/app.scss";
+
+.ant-tabs-content {
+  justify-content: center;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $btn-color-4 !important;
+}
+.ant-tabs-tab-btn:active {
+  color: $btn-color-4 !important;
+}
+.ant-tabs-tab {
+  font-size: $fontSize-0 !important;
+  &:hover {
+    color: $btn-color-4 !important;
+  }
+}
+
+//antd tab active bottom tab bar color
+.ant-tabs-ink-bar {
+  border-bottom: 2px solid $btn-color-4;
+}
