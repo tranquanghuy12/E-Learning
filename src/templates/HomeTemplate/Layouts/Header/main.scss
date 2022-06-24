@@ -52,6 +52,11 @@ header {
       justify-content: flex-start;
       .nav__menu {
         margin: 0;
+        &_item.active {
+          a {
+            color: $btn-color-4 !important;
+          }
+        }
         &_item {
           &:not(:last-child) {
             margin-right: $margin-3;
@@ -60,6 +65,9 @@ header {
             color: black;
             font-size: $fontSize-0;
             font-weight: 600;
+            &:hover {
+              color: $btn-color-4;
+            }
           }
         }
       }

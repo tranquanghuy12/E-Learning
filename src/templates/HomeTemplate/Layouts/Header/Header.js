@@ -130,14 +130,14 @@ export default function Header(props) {
               </div>
               <div className="nav-item dropdown Categories">
                 <ul className="nav__menu list-unstyled d-flex align-items-center">
-                  <li className="nav__menu_item">
-                    <Link to={`/`}>Home</Link>
+                  <li className="nav__menu_item active">
+                    <Link to={`/`}>Trang chủ</Link>
                   </li>
                   <li className="nav__menu_item">
                     <DanhMucKhoaHoc />
                   </li>
                   <li className="nav__menu_item">
-                    <Link to={`/about`}>About Us</Link>
+                    <Link to={`/about`}>Về chúng tôi</Link>
                   </li>
                 </ul>
               </div>

@@ -10,6 +10,20 @@
   border-radius: 10px;
   transition: all 0.5s ease-in-out;
   box-shadow: 0px 0px 15px 1px #8080806e;
+  .overlay {
+    position: relative;
+  }
+  &:hover > .overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+  }
   &:hover {
     box-shadow: 0 25px 55px rgb(253 71 102 / 22%);
     transform: translateY(-10px);
@@ -25,11 +39,28 @@
     transition: all 0.5s ease-in-out;
   }
 }
+
 .thumbnail {
   overflow: hidden;
+  position: relative;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background-color: black;
+  //   opacity: 1;
+  //   transition: all 0.5s ease-in-out;
+  // }
+  // &:hover::after {
+  //   background-color: rgba(0, 0, 0, 0.422);
+  // }
 }
+
 .card-body {
   padding: 0;
   height: 100px;
