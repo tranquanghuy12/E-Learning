@@ -5,3 +5,20 @@
   font-weight: 600;
   gap: 3px !important;
 }
+
+//ant dropdown
+.ant-dropdown {
+  width: 200px;
+  &-menu-title-content {
+    font-size: $fontSize-0;
+  }
+}
+
+.ant-dropdown-menu-item {
+  padding: 12px !important;
+}
+
+.ant-dropdown-menu-item:hover,
+.ant-dropdown-menu-item.ant-dropdown-menu-item-active {
+  background-color: $bg-color-5 !important;
+}
