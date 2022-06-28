@@ -126,7 +126,18 @@ header {
     }
   }
   .header__left {
+    @include responsive(XS) {
+      justify-content: space-between !important;
+    }
     @include responsive(MD) {
+      justify-content: space-between !important;
+      .dropdown {
+        &-menu {
+          left: -170px !important;
+        }
+      }
+    }
+    @include responsive(LG-1) {
       .Categories {
         display: none;
       }
