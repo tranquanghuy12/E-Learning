@@ -5,6 +5,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import swal from "sweetalert";
 import { useDispatch } from "react-redux";
 import { huyGhiDanhKhoaHoc } from "../../redux/actions/QuanLyNguoiDungAction";
+// import "./Profile.scss";
 
 const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
   const dispatch = useDispatch();
@@ -130,7 +131,7 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
     {
       title: "Mô tả",
       dataIndex: "moTa",
-      width:"30%",
+      width: "30%",
       render: (text, khoaHoc) => {
         return khoaHoc.moTa.length > 20
           ? khoaHoc.moTa.substring(0, 70) + "..."
@@ -141,7 +142,7 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
       title: "Đánh giá",
       dataIndex: "danhGia",
       key: "danhGia",
-      width:"20%",
+      width: "20%",
       defaultSortOrder: "descend",
       sorter: (a, b) => a.danhGia - b.danhGia,
       render: (text, khoaHoc) => {
@@ -152,7 +153,7 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
     {
       title: "Thao tác",
       key: "maKhoaHoc",
-      width:"15%",
+      width: "15%",
       render: (text, khoaHoc) => {
         const xoaKhoaHoc = (maKhoaHoc) => {
           if (userProfile) {

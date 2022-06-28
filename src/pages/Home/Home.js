@@ -62,7 +62,7 @@ export default function Home(props) {
     return (
       <div className="banner">
         <div className="container row m-auto">
-          <div className="banner__info col-7">
+          <div className="banner__info col-12 col-xs-12 col-md-8 col-xl-7">
             <h1>
               <span>Studying </span>
               Online is now much easier
@@ -77,7 +77,7 @@ export default function Home(props) {
                   type="text"
                   value={search}
                   className="form-control"
-                  placeholder="What are you looking for?"
+                  placeholder="Search ..."
                   aria-label="Recipient's username"
                   aria-describedby="basic-addon2"
                   onChange={(e) => setSearch(e.target.value)}
@@ -105,7 +105,7 @@ export default function Home(props) {
             </button>
           </div>
 
-          <div className="banner__image col-5">
+          <div className="banner__image col-5 col-md-3 col-xl-5">
             <img src={banner3} alt="a" />
             <img className="swing-image" src={banner1} alt="b" />
           </div>

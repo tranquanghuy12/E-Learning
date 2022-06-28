@@ -77,57 +77,14 @@ export default function Header(props) {
     <>
       <header>
         <nav className="bg-light navbar navbar-expand-md d-flex align-items-center justify-content-between flex-row">
-          <div className="col-sm-1 d-lg-none display__when_small">
-            <div className="nav-item dropdown displayWhenSmallScreen">
-              <NavLink
-                className="nav-link"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                exact
-                to="/"
-              >
-                <i className="fa fa-bars" aria-hidden="true"></i>
-              </NavLink>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                {danhMucKhoaHocCollapse()}
-                {userLogin.taiKhoan ? (
-                  <>
-                    <Link className="dropdown-item" to="/profile">
-                      {`Xin chào, ${
-                        userLogin.hoTen.toString().length > 15
-                          ? userLogin.hoTen.substring(0, 5) + "..."
-                          : userLogin.hoTen
-                      }`}
-                    </Link>
-                    <Link className="dropdown-item" onClick={logout} to="/">
-                      Đăng xuất
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/login" className="dropdown-item">
-                      <i className="fa fa-sign-in" aria-hidden="true"></i>
-                      Đăng nhập
-                    </Link>
-                    <Link to="/register" className="dropdown-item">
-                      Đăng ký
-                    </Link>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="col-sm-11 col-md-8 col-lg-9 display__sm align-items-center">
+          <div className="col-12 col-sm-12 col-md-6 col-lg-9 display__sm align-items-center">
             <div className="header__left d-flex justify-content-start flex-row">
               <div>
                 <NavLink className="navbar-brand logo__when_md" exact to="/">
                   <img src={logo} alt="logo" />
                 </NavLink>
               </div>
+
               <div className="nav-item dropdown Categories">
                 <ul className="nav__menu list-unstyled d-flex align-items-center">
                   <li className="nav__menu_item active">
@@ -140,6 +97,53 @@ export default function Header(props) {
                     <Link to={`/about`}>Về chúng tôi</Link>
                   </li>
                 </ul>
+              </div>
+
+              <div className="col-sm-1 d-lg-none d-flex justify-content-center align-items-center align-content-center display__when_small">
+                <div className="nav-item dropdown displayWhenSmallScreen">
+                  <NavLink
+                    className="nav-link"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    exact
+                    to="/"
+                  >
+                    <i className="fa fa-bars" aria-hidden="true"></i>
+                  </NavLink>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    {danhMucKhoaHocCollapse()}
+                    {userLogin.taiKhoan ? (
+                      <>
+                        <Link className="dropdown-item" to="/profile">
+                          {`Xin chào, ${
+                            userLogin.hoTen.toString().length > 15
+                              ? userLogin.hoTen.substring(0, 5) + "..."
+                              : userLogin.hoTen
+                          }`}
+                        </Link>
+                        <Link className="dropdown-item" onClick={logout} to="/">
+                          Đăng xuất
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <Link to="/login" className="dropdown-item">
+                          <i className="fa fa-sign-in" aria-hidden="true"></i>
+                          Đăng nhập
+                        </Link>
+                        <Link to="/register" className="dropdown-item">
+                          Đăng ký
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

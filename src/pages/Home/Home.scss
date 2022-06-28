@@ -142,3 +142,65 @@
 .swing-image {
   animation: swinging 3s ease-in-out alternate infinite;
 }
+
+/* Responsive */
+.banner {
+  @include responsive(LG) {
+    padding: 10rem 0 2rem 0;
+  }
+  .banner__info {
+    h1 {
+      @include responsive(LG) {
+        font-size: $fontSize-5;
+        line-height: 36px;
+        margin-bottom: 30px;
+      }
+    }
+    .form__search {
+      input::placeholder {
+        @include responsive(SM) {
+          font-size: 12px;
+        }
+        @include responsive(XS) {
+          color: transparent;
+        }
+      }
+    }
+    .btn__get_started {
+      @include responsive(LG) {
+        padding: 10px 20px;
+      }
+    }
+  }
+  .banner__image {
+    @include responsive(MD) {
+      display: none !important;
+    }
+    img {
+      &:nth-child(1) {
+        @include responsive(LG) {
+          width: 200%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        @include responsive(MD-1) {
+          width: 150%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      &:nth-child(2) {
+        @include responsive(LG) {
+          width: 260%;
+          left: -4.5rem;
+          top: 2rem;
+        }
+        @include responsive(MD-1) {
+          top: 4rem;
+          left: -4rem;
+          width: 205%;
+        }
+      }
+    }
+  }
+}

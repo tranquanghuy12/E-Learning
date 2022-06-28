@@ -9,11 +9,9 @@
   justify-content: space-evenly;
   text-align: center;
 }
-.style__icon {
-  margin-top: 1.5rem !important;
-  font-size: 4rem !important;
-}
+
 .icon {
+  position: relative;
   margin-bottom: 1rem;
   background-image: linear-gradient(
     to right,
@@ -26,9 +24,13 @@
   width: 7rem;
   height: 7rem;
   text-align: center;
-  line-height: 7rem;
-  margin-left: 1rem;
   background-size: 200%;
+  font-size: 4rem !important;
+  &::before {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .icon span i {
@@ -40,6 +42,7 @@
 }
 .style__description {
   font-size: 1.5rem;
+  margin-bottom: 0 !important;
 }
 .count__item {
   @include responsive(MD) {
@@ -60,4 +63,42 @@
 
 .count__item .content p {
   font-size: 1.1rem;
+}
+
+/* Responsive */
+.count {
+  @include responsive(MD) {
+    padding: 1rem 0;
+    margin-top: 0 !important;
+  }
+  .count__item {
+    @include responsive(MD) {
+      padding: 1rem 0;
+    }
+    .icon {
+      @include responsive(XL) {
+        width: 6rem;
+        height: 6rem;
+        font-size: 3.5rem !important;
+      }
+      @include responsive(LG) {
+        width: 5rem;
+        height: 5rem;
+        font-size: 3rem !important;
+      }
+    }
+    .count__title {
+      @include responsive(XL) {
+        font-size: 3rem;
+      }
+      @include responsive(LG) {
+        font-size: 2.5rem;
+      }
+    }
+    .style__description {
+      @include responsive(LG) {
+        font-size: $fontSize-2;
+      }
+    }
+  }
 }
