@@ -34,10 +34,10 @@ const TimKiemKhoaHoc = (props) => {
             className="course__item row justify-content-center align-items-center"
             key={index}
           >
-            <div className="course__img col-12 col-sm-8 col-md-7 col-lg-6">
+            <div className="course__img col-12 col-sm-12 col-md-7 col-lg-6">
               <img src={item.hinhAnh} />
             </div>
-            <div className="course__info col-12 col-sm-4 col-md-5 col-lg-6">
+            <div className="course__info col-12 col-sm-12 col-md-5 col-lg-6">
               <h4>{item.tenKhoaHoc}</h4>
               <p>Mã khóa học: {item.maKhoaHoc}</p>
               <p>Lượt xem: {item.luotXem}</p>
