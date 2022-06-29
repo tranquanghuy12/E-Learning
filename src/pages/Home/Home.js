@@ -13,6 +13,7 @@ import banner1 from "../../assets/img/Banner/pic1.png";
 import banner3 from "../../assets/img/Banner/pic3_1.png";
 import { Link, useHistory } from "react-router-dom";
 import { ACCESSTOKEN } from "../../util/setting/config";
+import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -43,9 +44,7 @@ export default function Home(props) {
 
   const layDanhSachKhoaHoc = () => {
     return layKhoaHoc?.map((item, index) => {
-      return (
-          <RenderCardKhoaHoc item={item} key={index} />
-      );
+      return <RenderCardKhoaHoc item={item} key={index} />;
     });
   };
 
@@ -168,6 +167,7 @@ export default function Home(props) {
       </div>
       <CountUp />
       <Review />
+      <ScrollToTop />
     </div>
   );
 }
