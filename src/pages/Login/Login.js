@@ -29,7 +29,7 @@ const UserLogin = () => {
       matKhau: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      console.log("values", values);
       const action = dispatch(dangNhapAction(values));
       dispatch(action);
     },
@@ -99,9 +99,11 @@ const UserLogin = () => {
               style={{ backgroundColor: "RGB(239, 61, 61)", border: "none" }}
             ></Button>
           </div>
-          
+
           <div className="login__help">
-            <Link className="mb-2" to="/quenmatkhau">Quên mật khẩu?</Link>
+            <Link className="mb-2" to="/quenmatkhau">
+              Quên mật khẩu?
+            </Link>
             <Link to="/register">Bạn chưa có tài khoản?</Link>
           </div>
         </div>
