@@ -21,6 +21,7 @@ export default function ChiTietKhoaHoc() {
     dispatch(action);
   }, []);
 
+
   const dangKyKhoaHocClick = () => {
     if (localStorage.getItem("userLogin")) {
       const taiKhoan = JSON.parse(localStorage.getItem("userLogin")).taiKhoan;

@@ -118,30 +118,36 @@ export default function Header(props) {
                     aria-labelledby="navbarDropdown"
                   >
                     {danhMucKhoaHocCollapse()}
-                    {userLogin.taiKhoan ? (
-                      <>
-                        <Link className="dropdown-item" to="/profile">
-                          {`Xin chào, ${
-                            userLogin.hoTen.toString().length > 15
-                              ? userLogin.hoTen.substring(0, 5) + "..."
-                              : userLogin.hoTen
-                          }`}
-                        </Link>
-                        <Link className="dropdown-item" onClick={logout} to="/">
-                          Đăng xuất
-                        </Link>
-                      </>
-                    ) : (
-                      <>
-                        <Link to="/login" className="dropdown-item">
-                          <i className="fa fa-sign-in" aria-hidden="true"></i>
-                          Đăng nhập
-                        </Link>
-                        <Link to="/register" className="dropdown-item">
-                          Đăng ký
-                        </Link>
-                      </>
-                    )}
+                    <div className="collapse__user_info">
+                      {userLogin.taiKhoan ? (
+                        <>
+                          <Link className="dropdown-item" to="/profile">
+                            {`Xin chào, ${
+                              userLogin.hoTen.toString().length > 15
+                                ? userLogin.hoTen.substring(0, 5) + "..."
+                                : userLogin.hoTen
+                            }`}
+                          </Link>
+                          <Link
+                            className="dropdown-item"
+                            onClick={logout}
+                            to="/"
+                          >
+                            Đăng xuất
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          <Link to="/login" className="dropdown-item">
+                            <i className="fa fa-sign-in" aria-hidden="true"></i>
+                            Đăng nhập
+                          </Link>
+                          <Link to="/register" className="dropdown-item">
+                            Đăng ký
+                          </Link>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

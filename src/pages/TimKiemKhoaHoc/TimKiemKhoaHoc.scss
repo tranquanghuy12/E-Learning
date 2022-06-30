@@ -18,3 +18,28 @@
     }
   }
 }
+
+/*Responsive*/
+
+.course__item {
+  @include responsive(MD) {
+    padding: 1rem;
+    .course__img {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .course__info {
+      text-align: center;
+      p {
+        margin-bottom: 2px;
+      }
+    }
+  }
+  @include responsive(SM) {
+    .course__info {
+      h4 {
+        font-size: $fontSize-2;
+      }
+    }
+  }
+}

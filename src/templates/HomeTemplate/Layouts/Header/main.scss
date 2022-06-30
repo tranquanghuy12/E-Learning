@@ -131,17 +131,29 @@ header {
     }
     @include responsive(MD) {
       justify-content: space-between !important;
-      .dropdown {
-        &-menu {
+    }
+    .dropdown {
+      &-menu {
+        @include responsive(MD) {
           left: -170px !important;
         }
       }
     }
-    @include responsive(LG-1) {
-      .Categories {
+    .Categories {
+      @include responsive(LG-1) {
         display: none;
       }
     }
+
+    .collapse__user_info {
+      @include responsive(LG) {
+        display: none;
+      }
+      @include responsive(MD) {
+        display: block;
+      }
+    }
+
     @include responsive(SM) {
       .navbar-brand {
         display: flex !important;
