@@ -11,6 +11,8 @@ header {
     padding: 2%;
   }
   .displayWhenSmallScreen {
+    // display none dropdown menu
+    display: none;
     li {
       padding-left: 12px;
     }
@@ -106,6 +108,11 @@ header {
 
   //responsive
   .display__when_small {
+    @include responsive(LG-1) {
+      .displayWhenSmallScreen {
+        display: block;
+      }
+    }
     @include responsive(SM) {
       width: auto !important;
     }

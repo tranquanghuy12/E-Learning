@@ -99,7 +99,7 @@ export default function Header(props) {
                 </ul>
               </div>
 
-              <div className="col-sm-1 d-lg-none d-flex justify-content-center align-items-center align-content-center display__when_small">
+              <div className="col-sm-1 d-flex justify-content-center align-items-center align-content-center display__when_small">
                 <div className="nav-item dropdown displayWhenSmallScreen">
                   <NavLink
                     className="nav-link"
