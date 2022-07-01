@@ -13,28 +13,9 @@
     }
   }
 }
-.header__right {
-  .navbar-nav {
-    height: 40px;
-  }
-}
 
-.header__right {
-  //1200px
-  @include responsive(XL) {
-  }
-  //768px
-  @include responsive(MD) {
-    .nav__button {
-      display: none;
-    }
-    .navbar-expand-md .navbar-nav .nav-link {
-      padding-right: 0.5rem;
-      padding-left: 0.5rem;
-      color: red;
-    }
-  }
-}
+
+
 .header__left {
   @include responsive(MD) {
     .form__search,
