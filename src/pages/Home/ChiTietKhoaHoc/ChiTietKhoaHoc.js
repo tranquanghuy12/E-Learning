@@ -16,11 +16,16 @@ export default function ChiTietKhoaHoc() {
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
 
+  console.log("chiTietKhoaHoc", chiTietKhoaHoc);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const action = ChiTietKhoaHocAction(makhoahoc);
     dispatch(action);
   }, []);
-
 
   const dangKyKhoaHocClick = () => {
     if (localStorage.getItem("userLogin")) {
