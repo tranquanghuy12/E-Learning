@@ -19,7 +19,7 @@ export default function ChiTietKhoaHoc() {
   console.log("chiTietKhoaHoc", chiTietKhoaHoc);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.history.scrollRestoration = "manual";
   }, []);
 
   useEffect(() => {

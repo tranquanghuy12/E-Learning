@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Route } from "react-router-dom";
 
 import Footer from "./Layouts/Footer/Footer";
