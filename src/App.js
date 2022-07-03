@@ -24,10 +24,13 @@ import LoginUserTemplate from "./templates/UserTemplate/LoginUserTemplate";
 import UserLogin from "./pages/Login/Login";
 import UserRegister from "./pages/Register/Register";
 
+import ScrollRestoration from "react-scroll-restoration";
+
 export const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
+      <ScrollRestoration />
       <Switch>
         <LoginUserTemplate exact path="/login" Component={UserLogin} />
         <LoginUserTemplate exact path="/register" Component={UserRegister} />

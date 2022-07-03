@@ -7,7 +7,6 @@ import RenderCardKhoaHoc from "../../components/RenderCardKhoaHoc/RenderCardKhoa
 import "./Home.scss";
 import queryString from "query-string";
 import TabCategory from "../../components/TabCategory/TabCategory";
-import { layDanhMucKhoaHocAction } from "../../redux/actions/DanhMucKhoaHocAction";
 
 import banner1 from "../../assets/img/Banner/pic1.png";
 import banner3 from "../../assets/img/Banner/pic3_1.png";
@@ -29,6 +28,10 @@ export default function Home(props) {
     page: 1,
     pageSize: 6,
   });
+
+  // useEffect(() => {
+  //   window.history.scrollRestoration = "manual";
+  // }, []);
 
   useEffect(() => {
     const paramsString = queryString.stringify(filters);
