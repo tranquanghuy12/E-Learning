@@ -45,15 +45,10 @@
 }
 @include responsive(SM) {
   .container__style {
-    background-image: url(https://picsum.photos/2000/2000);
-    background-size: cover;
-    background-position: center;
     h3 {
       color: $bg-color;
       font-weight: 500;
       font-size: 36px;
-      text-shadow: 2px 2px 4px $primary-darkblue;
-      border-bottom: 2px solid $primary-darkblue;
     }
   }
 }

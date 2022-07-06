@@ -2,7 +2,7 @@
 // import { Formik, Form, Field, ErrorMessage } from "formik";
 // import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
 // import { useDispatch } from "react-redux";
-// import { DangKySchema } from "../../services/NguoiDungSchema";
+// import { SignupSchema } from "../../services/NguoiDungSchema";
 // import signUp from "../../assets/img/signup.jpg";
 // import "./Register.scss";
 // import { Link } from "react-router-dom";
@@ -28,7 +28,7 @@
 //                   taiKhoan: "",
 //                   matKhau: "",
 //                 }}
-//                 validationSchema={DangKySchema}
+//                 validationSchema={SignupSchema}
 //                 onSubmit={(values) => {
 //                   const action = dangKyAction(values);
 //                   dispatch(action);
