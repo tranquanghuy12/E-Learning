@@ -23,12 +23,11 @@ export default function ScrollToTop() {
 
   // When the user clicks on the button, scroll to the top of the document
   function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
   return (
     <button onClick={topFunction} id="myBtn" title="Go to top">
-      <i class="fa fa-angle-up"></i>
+      <i className="fa fa-angle-up"></i>
     </button>
   );
 }

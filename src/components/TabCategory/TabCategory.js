@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import RenderCardKhoaHoc from "../RenderCardKhoaHoc/RenderCardKhoaHoc";
 import { layKhoaHocTheoDanhMucAction } from "../../redux/actions/KhoaHocTheoDanhMucAction";
 import { Tabs } from "antd";
+import { FixedSizeList as List } from "react-window";
 import "./TabCategory.scss";
 
 export default function TabCategory(props) {
@@ -27,7 +28,6 @@ export default function TabCategory(props) {
 
   const changeTab = (tab) => {
     setMaDanhMuc(tab);
-    console.log(tab);
   };
 
   const renderKhoaHocTheoDanhMuc = () => {
