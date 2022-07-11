@@ -53,9 +53,19 @@
   }
 }
 
-.course-intro {
+.course_intro {
   p {
     font-size: $fontSize-0;
-    letter-spacing: 0.1;
+    letter-spacing: 0.3px;
+  }
+}
+
+.course_info {
+  li {
+    margin-bottom: 1rem;
+    span {
+      font-size: $fontSize-0;
+      letter-spacing: 0.3px;
+    }
   }
 }
