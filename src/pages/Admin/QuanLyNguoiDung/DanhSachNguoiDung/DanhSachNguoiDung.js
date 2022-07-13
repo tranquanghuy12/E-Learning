@@ -16,13 +16,15 @@ export default function DanhSachNguoiDung() {
   const { danhSachNguoiDung } = useSelector(
     (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
   );
+
+  console.log("danhSachNguoiDung", danhSachNguoiDung);
   const onSearch = (value) => {
     dispatch(layDanhSachNguoiDungSearch(value));
   };
 
   const xoaNguoiDungAdmin = (taiKhoan) => {
     swal({
-      title: "Bạn có chắn muốn xoá không?",
+      title: "Bạn có chắc muốn xoá không?",
       showCancelButton: true,
       confirmButtonText: "Chắc chắn",
     }).then((result) => {

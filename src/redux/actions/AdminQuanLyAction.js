@@ -101,7 +101,7 @@ export const adminXoaNguoiDungAction = (taikhoan) => {
   return async (dispatch) => {
     try {
       let res = await http.delete(`${API_XOA_NGUOI_DUNG_ADMIN}${taikhoan}`);
-      console.log("result xoa nguoi dung", res);
+      // console.log("result xoa nguoi dung", res);
       if (res.status === 200) {
         swal({
           title: "Thành công",

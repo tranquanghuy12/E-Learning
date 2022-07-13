@@ -2,7 +2,7 @@ import "./App.css";
 import { createBrowserHistory } from "history";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
-import { Route, Router, Switch } from "react-router-dom";
+import { Route, Router, Switch, useLocation } from "react-router-dom";
 import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
 import { AdminTemplate } from "./templates/AdminTemplate/AdminTemplate";
 
@@ -24,13 +24,27 @@ import LoginUserTemplate from "./templates/UserTemplate/LoginUserTemplate";
 import UserLogin from "./pages/Login/Login";
 import UserRegister from "./pages/Register/Register";
 
+//go to top when refresh
 import ScrollRestoration from "react-scroll-restoration";
+import { useEffect } from "react";
 
 export const history = createBrowserHistory();
+
+export function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router history={history}>
-      <ScrollRestoration />
+      {/* <ScrollRestoration /> */}
+      <ScrollToTop />
       <Switch>
         <LoginUserTemplate exact path="/login" Component={UserLogin} />
         <LoginUserTemplate exact path="/register" Component={UserRegister} />

@@ -16,7 +16,7 @@ export default function ChiTietKhoaHoc() {
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
 
-  console.log("chiTietKhoaHoc", chiTietKhoaHoc);
+  // console.log("chiTietKhoaHoc", chiTietKhoaHoc);
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";

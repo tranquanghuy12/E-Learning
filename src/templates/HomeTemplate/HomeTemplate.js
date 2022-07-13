@@ -1,8 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { Route } from "react-router-dom";
 
 import Footer from "./Layouts/Footer/Footer";
 import Header from "./Layouts/Header/Header";
+
+
 
 export const HomeTemplate = (props) => {
   const { Component, ...restRoute } = props;
@@ -11,6 +13,7 @@ export const HomeTemplate = (props) => {
     <Route
       {...restRoute}
       render={(propsRoute) => {
+        //props.location, props.history, props.match
         return (
           <div
             style={{
