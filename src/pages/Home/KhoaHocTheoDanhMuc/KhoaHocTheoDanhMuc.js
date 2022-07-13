@@ -35,14 +35,14 @@ export default function KhoaHocTheoDanhMuc() {
   const danhMuc = mangDanhMucKhoaHoc?.find(
     (item) => item.maDanhMuc === madanhmuc
   );
-  console.log("danhMuc", danhMuc);
+  // console.log("danhMuc", danhMuc);
   const renderKhoaHocTheoDanhMuc = () => {
     return mangKhoaHocTheoDanhMuc.map((item, index) => {
       return <RenderCardKhoaHoc item={item} key={index} />;
     });
   };
   return (
-    <div style={{ paddingTop: 126 }} className="container">
+    <div className="container">
       <div className="banner-danhmuc text-center">
         <h3>{danhMuc?.tenDanhMuc}</h3>
       </div>

@@ -22,12 +22,14 @@ export default function Home(props) {
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
 
-  const layKhoaHoc = mangKhoaHocPhanTrang.items;
+  const mangKhoaHoc = mangKhoaHocPhanTrang.items;
   const [filters, setFilters] = useState({
-    layKhoaHoc,
+    mangKhoaHoc,
     page: 1,
     pageSize: 6,
   });
+
+  // console.log("mangKhoaHocPhanTrang", mangKhoaHocPhanTrang);
 
   // useEffect(() => {
   //   window.history.scrollRestoration = "manual";
@@ -46,7 +48,7 @@ export default function Home(props) {
   }
 
   const layDanhSachKhoaHoc = () => {
-    return layKhoaHoc?.map((item, index) => {
+    return mangKhoaHoc?.map((item, index) => {
       return <RenderCardKhoaHoc item={item} key={index} />;
     });
   };
@@ -117,7 +119,10 @@ export default function Home(props) {
   };
 
   return (
-    <div className="container-fluid">
+    <div
+      className="container-fluid"
+      style={{ position: "relative", top: -126, zIndex: -1}}
+    >
       <div className="pb-5">{banner()}</div>
 
       <div id="popular-courses" className="popular__courses">
@@ -131,7 +136,7 @@ export default function Home(props) {
                 className="btn__custom_sm"
                 disabled={mangKhoaHocPhanTrang.currentPage <= 1}
                 onClick={() => {
-                  console.log(mangKhoaHocPhanTrang.currentPage);
+                  // console.log(mangKhoaHocPhanTrang.currentPage);
                   onPageChange(filters.page - 1);
                 }}
               >

@@ -19,10 +19,10 @@ import {
   DANG_KY_KHOA_HOC_ACTION,
   LAY_DANH_SACH_KHOA_HOC_ACTION,
 } from "../types/QuanLyKhoaHocType";
-import { layDanhSachPhimAction } from "./QuanLyKhoaHocAction";
+import { layDanhSachKhoaHocAction } from "./QuanLyKhoaHocAction";
 import { layThongTinNguoiDungAction } from "./QuanLyNguoiDungAction";
 
-export const ThemKhoaHocAdminAction = (values) => {
+export const themKhoaHocAdminAction = (values) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_THEM_KHOA_HOC_ADMIN, values);
@@ -48,7 +48,7 @@ export const xoaKhoaHocAdminAction = (maKhoaHoc) => {
           icon: "success",
           text: "Bạn đã xoá thành công",
         });
-        await dispatch(layDanhSachPhimAction());
+        await dispatch(layDanhSachKhoaHocAction());
       }
     } catch (error) {
       swal({

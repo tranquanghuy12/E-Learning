@@ -8,7 +8,7 @@ import {
   timKiemKhoaHocAction,
   xoaKhoaHocAdminAction,
 } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
-import { layDanhSachPhimAction } from "../../../redux/actions/QuanLyKhoaHocAction";
+import { layDanhSachKhoaHocAction } from "../../../redux/actions/QuanLyKhoaHocAction";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 export default function DanhSachKhoaHoc(props) {
@@ -34,7 +34,7 @@ export default function DanhSachKhoaHoc(props) {
   };
   const onSearch = (value) => dispatch(timKiemKhoaHocAction(value));
   useEffect(() => {
-    dispatch(layDanhSachPhimAction());
+    dispatch(layDanhSachKhoaHocAction());
   }, []);
   const dataSource = mangKhoaHoc;
   const columns = [

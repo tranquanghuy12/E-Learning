@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import { useDispatch } from "react-redux";
 
-import { DangKySchema } from "../../../../services/NguoiDungSchema";
+import { SignupSchema } from "../../../../services/NguoiDungSchema";
 import { adminThemNguoiDungAction } from "../../../../redux/actions/AdminQuanLyAction";
 import { Link } from "react-router-dom";
 
@@ -46,7 +46,7 @@ export default function ThemNguoiDung({ maLoaiNguoiDung }) {
                 maLoaiNguoiDung: "GV",
               } || ""
             }
-            validationSchema={DangKySchema}
+            validationSchema={SignupSchema}
             onSubmit={(values) => {
               const action = adminThemNguoiDungAction(values);
               dispatch(action);

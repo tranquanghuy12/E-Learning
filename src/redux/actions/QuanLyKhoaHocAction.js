@@ -10,7 +10,7 @@ import {
   TIM_KIEM_KHOA_HOC_ACTION,
 } from "../types/QuanLyKhoaHocType";
 
-export function layDanhSachPhimAction() {
+export function layDanhSachKhoaHocAction() {
   return async (dispatch) => {
     try {
       let result = await http.get(
@@ -29,7 +29,7 @@ export function timKiemTenKhoaHocAction(text) {
       let result = await http.get(`${API_TIM_KIEM_KHOA_HOC}${text}`);
       dispatch(createAction(TIM_KIEM_KHOA_HOC_ACTION, result.data));
     } catch (error) {
-      dispatch(createAction(TIM_KIEM_KHOA_HOC_ACTION, ""));      
+      dispatch(createAction(TIM_KIEM_KHOA_HOC_ACTION, ""));
     }
   };
 }

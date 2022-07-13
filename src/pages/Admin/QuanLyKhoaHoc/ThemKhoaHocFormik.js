@@ -9,7 +9,7 @@
 // import { forIn } from "lodash";
 // import React, { useEffect, useRef, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
-// import { ThemKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
+// import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 // import { themKhoaHocUploadHinhAction } from "../../../redux/actions/AdminUploadHinhAnh";
 // import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
 // import KhoaHocSchema from "../../../services/KhoaHocSchema";
@@ -81,7 +81,7 @@
 //       }
 //     }
 //     dispatch(themKhoaHocUploadHinhAction(formData));
-//     // dispatch(ThemKhoaHocAdminAction(values));
+//     // dispatch(themKhoaHocAdminAction(values));
 //     console.log("formData", formData.get("File"));
 //   };
 //   return (
@@ -91,7 +91,7 @@
 //         onSubmit={(values) => {
 //           handleSubmit(values);
 //           // console.log(value);
-//           // const action = ThemKhoaHocAdminAction(value);
+//           // const action = themKhoaHocAdminAction(value);
 //           // dispatch(action);
 //         }}
 //         // validationSchema={KhoaHocSchema}

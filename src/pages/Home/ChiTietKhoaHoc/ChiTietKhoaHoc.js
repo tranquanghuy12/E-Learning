@@ -16,7 +16,7 @@ export default function ChiTietKhoaHoc() {
     (rootReducer) => rootReducer.ChiTietKhoaHocReducer
   );
 
-  console.log("chiTietKhoaHoc", chiTietKhoaHoc);
+  // console.log("chiTietKhoaHoc", chiTietKhoaHoc);
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";
@@ -52,7 +52,7 @@ export default function ChiTietKhoaHoc() {
   };
 
   return (
-    <div style={{ paddingTop: 126 }}>
+    <div>
       <div className="black-transparent-overlay m-0">
         <div>
           <h1 className="text-white">{chiTietKhoaHoc.tenKhoaHoc}</h1>
@@ -68,10 +68,74 @@ export default function ChiTietKhoaHoc() {
           alt="Hình ảnh khoá học"
         />
       </div>
-      <div className="course-intro m-0 p-5">
-        <div>
+
+      <div className="row m-0 p-5">
+        <div className="course_intro pl-5 pr-5 col-12 col-xs-12 col-md-6 col-lg-6">
           <h2>Giới thiệu khoá học</h2>
           <p>{chiTietKhoaHoc.moTa}</p>
+        </div>
+
+        <div className="course_info pl-5 pr-5 col-12 col-xs-12 col-md-6 col-lg-6">
+          <div className="course_willable pb-5">
+            <h2>Sau khi hoàn thành khóa học bạn sẽ</h2>
+            <ul className="list-unstyled">
+              <li>
+                <i class="las la-check"></i>
+                <span>Master's degree in designing</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>Outstanding mobile design</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>Outstanding mobile design</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>Outstanding mobile design</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>Outstanding mobile design</span>
+              </li>
+            </ul>
+          </div>
+          <div className="course_required">
+            <h2>Yêu cầu khóa học</h2>
+            <ul className="list-unstyled">
+              <li>
+                <i class="las la-check"></i>
+                <span>User experience (UX)</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>User interface (UI)</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>Visual design.</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>Coding languages including HTML and CSS.</span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>
+                  Frontend web programing languages and skills such as
+                  JavaScript, Ajax and web animation techniques.
+                </span>
+              </li>
+              <li>
+                <i class="las la-check"></i>
+                <span>
+                  Backend web programing languages such as C# or Java, PHP and
+                  Ruby.
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

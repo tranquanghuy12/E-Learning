@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { Route } from "react-router-dom";
 
 import Footer from "./Layouts/Footer/Footer";
@@ -11,6 +11,7 @@ export const HomeTemplate = (props) => {
     <Route
       {...restRoute}
       render={(propsRoute) => {
+        //props.location, props.history, props.match
         return (
           <div
             style={{
@@ -19,8 +20,8 @@ export const HomeTemplate = (props) => {
               minHeight: "100vh",
             }}
           >
-            <div style={{ flex: 1 }}>
-              <Header {...propsRoute} />
+            <Header {...propsRoute} />
+            <div style={{ flex: 1, paddingTop: 126 }}>
               <Component {...propsRoute} />
             </div>
             <Footer {...propsRoute} />

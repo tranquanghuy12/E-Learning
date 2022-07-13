@@ -1,23 +1,33 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { NavLink, Link } from "react-router-dom";
 import "./main.scss";
+
+
+
 export default function Header() {
   const history = useHistory();
+
   const userLogin =
     useSelector(
       (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
     ) || {};
+
   const logout = () => {
     localStorage.clear();
     history.push("/home");
     window.location.reload();
   };
+
+  
+
   return (
     <Fragment>
+      
+
       <nav className="navbar navbar-expand-lg navbar-dark bg__primary_darkblue rounded-0">
         <NavLink className="navbar-brand nav__color_label" exact to="/">
           Admin Page
@@ -74,7 +84,7 @@ export default function Header() {
             {userLogin.taiKhoan ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link nav__color" to='/profile'>
+                  <Link className="nav-link nav__color" to="/profile">
                     {`Xin chào, ${
                       userLogin.hoTen.toString().length > 15
                         ? userLogin.hoTen.substring(0, 8) + "..."
@@ -83,7 +93,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to='#' className="nav-link nav__color" onClick={logout}>
+                  <Link to="#" className="nav-link nav__color" onClick={logout}>
                     Đăng xuất
                   </Link>
                 </li>

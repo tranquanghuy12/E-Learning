@@ -27,10 +27,7 @@ export default function Profile() {
     return <Redirect to="/login" />;
   }
   return (
-    <div
-      style={{ paddingTop: 126 }}
-      className="container rounded bg-white mb-5 mt-5"
-    >
+    <div className="container rounded bg-white mb-5 mt-5">
       <h3 className="text-center">Thông tin tài khoản</h3>
       <div className="row mt-5">
         <div className="col-md-4 border-right border-secondary">

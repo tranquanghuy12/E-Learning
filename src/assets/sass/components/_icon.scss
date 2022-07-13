@@ -2,10 +2,15 @@
 .fa-chevron-circle-left,
 .fa-chevron-circle-right {
   font-size: $fontSize-0;
+  color: $btn-color-4 !important;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    font-size: 18px;
+  }
 }
 
 .disabled_btn {
-  color: $bg-slate-3 !important;
+  color: $btn-color-6 !important;
 }
 
 //dropdown danh muc khoa hoc
@@ -15,4 +20,13 @@
 
 .fa-sign-out-alt {
   padding-top: 1px;
+}
+
+.la-check {
+  font-size: 1rem;
+  padding: 2px;
+  border: 2px solid #f55f8d;
+  border-radius: 2rem;
+  color: #f55f8d;
+  margin-right: 8px;
 }

@@ -2,7 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { Field, Form, Formik } from "formik";
-import { capNhatThongTinKhoaHoc, capNhatThongTinKhoaHocAction } from "../../redux/actions/AdminQuanLyKhoaHocAction";
+import {
+  capNhatThongTinKhoaHoc,
+  capNhatThongTinKhoaHocAction,
+} from "../../redux/actions/AdminQuanLyKhoaHocAction";
 export default function ModalCapNhatKhoaHoc(props) {
   const dispatch = useDispatch();
   const item = props.modaldata;
@@ -54,7 +57,7 @@ export default function ModalCapNhatKhoaHoc(props) {
         console.log("value submit", values);
       }}
       render={(formikProps) => (
-        <Form>                   
+        <Form>
           <div className="container row">
             <div className="form-group col-md-6">
               <label htmlFor="maKhoaHoc">Mã khoá học</label>

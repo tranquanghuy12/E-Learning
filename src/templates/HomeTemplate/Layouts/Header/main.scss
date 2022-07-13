@@ -111,6 +111,16 @@ header {
     @include responsive(LG-1) {
       .displayWhenSmallScreen {
         display: block;
+        .dropdown-submenu {
+          margin-bottom: 0;
+        }
+      }
+    }
+    @include responsive(MD) {
+      .displayWhenSmallScreen {
+        .dropdown-submenu {
+          margin-bottom: 1rem;
+        }
       }
     }
     @include responsive(SM) {
@@ -153,6 +163,9 @@ header {
     }
 
     .collapse__user_info {
+      @include responsive(LG-1) {
+        display: none;
+      }
       @include responsive(LG) {
         display: none;
       }

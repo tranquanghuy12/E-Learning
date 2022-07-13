@@ -9,7 +9,7 @@ import {
   uploadHinhAnhKhoaHoc,
 } from "../../../redux/actions/AdminUploadHinhAnh";
 
-import { ThemKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
+import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 const ThemKhoaHoc = () => {
   const taiKhoanNguoiTao = JSON.parse(localStorage.getItem("userLogin"));
   const dispatch = useDispatch();
@@ -98,7 +98,7 @@ const ThemKhoaHoc = () => {
       //   }
       // }
       //Gọi api
-      dispatch(ThemKhoaHocAdminAction(values));
+      dispatch(themKhoaHocAdminAction(values));
     },
   });
   const { TextArea } = Input;
