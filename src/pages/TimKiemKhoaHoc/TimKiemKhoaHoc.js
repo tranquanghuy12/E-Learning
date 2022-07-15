@@ -49,7 +49,7 @@ const TimKiemKhoaHoc = (props) => {
   };
 
   return (
-    <div className="mt-5">
+    <div className="mt-5" style={{ paddingTop: 126 }}>
       {timKiemKhoaHoc.length !== 0 ? (
         <h1 className="text-center">
           Tìm thấy {timKiemKhoaHoc.length} kết quả cho từ khóa "{value}"

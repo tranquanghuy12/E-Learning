@@ -17,7 +17,7 @@ export default function DanhSachNguoiDung() {
     (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
   );
 
-  console.log("danhSachNguoiDung", danhSachNguoiDung);
+  // console.log("danhSachNguoiDung", danhSachNguoiDung);
   const onSearch = (value) => {
     dispatch(layDanhSachNguoiDungSearch(value));
   };
@@ -148,7 +148,7 @@ export default function DanhSachNguoiDung() {
         </div>
         <div className="col-md-6">
           <Search
-            placeholder="Nhập tên người dùng muốn dùng"
+            placeholder="Nhập tên người dùng..."
             onSearch={onSearch}
             enterButton
           />

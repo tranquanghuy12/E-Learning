@@ -21,34 +21,34 @@ export default function SideBar() {
   }
 
   const items = [
-    getItem("Dashboard admin", "dashboard", <MailOutlined />, [
-      getItem("Quản lý khoa học", "/admin/quanlykhoahoc"),
+    getItem("Dashboard admin", "dashboard", <AppstoreOutlined />, [
+      getItem("Quản lý khóa học", "/admin/quanlykhoahoc"),
       getItem("Quản lý người dùng", "/admin/quanlynguoidung"),
     ]),
   ];
 
   const [theme, setTheme] = useState("dark");
-  const [current, setCurrent] = useState("");
+  const [current, setCurrent] = useState("/admin");
 
   const changeTheme = (value) => {
     setTheme(value ? "dark" : "light");
   };
 
   const handleClick = (e) => {
-    console.log("click ", e);
+    // console.log("click ", e);
     setCurrent(e.key);
     history.push(e.key);
   };
   return (
-    <Fragment>
-      <Switch
+    <div className="mt-5">
+      {/* <Switch
         checked={theme === "dark"}
         onChange={changeTheme}
         checkedChildren="Dark"
         unCheckedChildren="Light"
       />
       <br />
-      <br />
+      <br /> */}
       <Menu
         theme={theme}
         onClick={handleClick}
@@ -60,6 +60,6 @@ export default function SideBar() {
         mode="inline"
         items={items}
       />
-    </Fragment>
+    </div>
   );
 }

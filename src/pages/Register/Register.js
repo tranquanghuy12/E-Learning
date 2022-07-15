@@ -47,7 +47,7 @@ const UserRegister = () => {
       >
         {(formikProps) => {
           const { values, errors, touched } = formikProps;
-          console.log("formikProps", errors);
+          {/* console.log("formikProps", errors); */}
 
           return (
             <Form

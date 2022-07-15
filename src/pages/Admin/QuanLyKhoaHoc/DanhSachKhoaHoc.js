@@ -17,6 +17,7 @@ export default function DanhSachKhoaHoc(props) {
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
+
   const xoaKhoaHocAdmin = (maKhoaHoc) => {
     swal({
       title: "Bạn có chắc chắn muốn xoá không?",
@@ -32,7 +33,9 @@ export default function DanhSachKhoaHoc(props) {
       }
     });
   };
+
   const onSearch = (value) => dispatch(timKiemKhoaHocAction(value));
+
   useEffect(() => {
     dispatch(layDanhSachKhoaHocAction());
   }, []);

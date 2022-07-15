@@ -1,22 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { layDsNguoiDungChuaGhiDanhAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
 import { ghiDanhKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyAction";
+import { layDanhSachKhoaHocAction } from "../../../redux/actions/QuanLyKhoaHocAction";
 import HocVienDaThamGiaKhoaHoc from "./HocVienDaThamGiaKhoaHoc";
 import LayDanhSachHocVienChoXetDuyet from "./LayDanhSachHocVienChoXacThuc";
 
 export default function GhiDanhKhoaHoc(props) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { maKhoaHoc } = useParams();
+
   const { dsNguoiDungChuaGhiDanh } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
   );
-  const maKhoaHoc = props.match.params;
+
+  const { mangKhoaHoc } = useSelector(
+    (rootReducer) => rootReducer.QuanLyKhoaHocReducer
+  );
+
+  // tim khoa hoc co maKhoaHoc trung voi maKhoaHoc tren path
+  const course = mangKhoaHoc.find((course) => course.maKhoaHoc === maKhoaHoc);
+
   useEffect(() => {
-    dispatch(layDsNguoiDungChuaGhiDanhAction(maKhoaHoc));
+    dispatch(layDsNguoiDungChuaGhiDanhAction({ maKhoaHoc }));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(layDanhSachKhoaHocAction());
+  }, []);
+
   const layDsNguoiDungChuaGhiDanhKhoaHoc = () => {
     return dsNguoiDungChuaGhiDanh.map((item, index) => {
       return (
@@ -26,7 +41,9 @@ export default function GhiDanhKhoaHoc(props) {
       );
     });
   };
+
   const [data, setData] = useState({ maKhoaHoc: "", taiKhoan: "" });
+
   const handleChangeInput = (e) => {
     let { value, maKhoaHoc, taiKhoan } = e.target;
     setData({
@@ -34,6 +51,7 @@ export default function GhiDanhKhoaHoc(props) {
       taiKhoan: value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const action = ghiDanhKhoaHocAdminAction(data);
@@ -64,13 +82,16 @@ export default function GhiDanhKhoaHoc(props) {
           </li>
         </ol>
       </nav>
+
+      <h1 className="text-center my-5">{course.tenKhoaHoc}</h1>
+
       <label>Chọn người dùng</label>
       <form onSubmit={handleSubmit}>
         <div className="form-group row justify-content-center">
           <div className="col-sm-12 col-md-8 col-lg-8">
             <select
               className="input-large form-control"
-              onChange={handleChangeInput}            
+              onChange={handleChangeInput}
             >
               {layDsNguoiDungChuaGhiDanhKhoaHoc()}
             </select>
