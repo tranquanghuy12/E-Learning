@@ -2,13 +2,13 @@ import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
-import './ModalCapNhatNguoiDung.scss';
-import { capNhatThongTinNguoiDung } from "../../redux/actions/QuanLyNguoiDungAction";
+import "./ModalCapNhatNguoiDung.scss";
+import { capNhatThongTinNguoiDung } from "../../redux/actions/ThongTinNguoiDungAction";
 import { CapNhatNguoiDungSchema } from "../../services/NguoiDungSchema";
 
 const ModalCapNhatNguoiDung = (props) => {
   const dispatch = useDispatch();
-  const userProfile = props.userProfile;  
+  const userProfile = props.userProfile;
   const suaThongTinNguoiDung = (values) => {
     swal({
       title: "Bạn có chắc chắn muốn sửa không?",
@@ -29,8 +29,6 @@ const ModalCapNhatNguoiDung = (props) => {
     setPasswordShow(!passwordShow);
   };
   return (
- 
-
     <Formik
       enableReinitialize="true"
       initialValues={{
@@ -103,7 +101,10 @@ const ModalCapNhatNguoiDung = (props) => {
                       onChange={formikProps.handleChange}
                     />
                     {passwordShow ? (
-                      <i className="fas fa-eye flexIcon" onClick={togglePassword}></i>
+                      <i
+                        className="fas fa-eye flexIcon"
+                        onClick={togglePassword}
+                      ></i>
                     ) : (
                       <i
                         className="far fa-eye-slash flexIcon"
@@ -119,7 +120,7 @@ const ModalCapNhatNguoiDung = (props) => {
                       value={formikProps.values.email}
                       type="text"
                       name="email"
-                      onChange={formikProps.handleChange}                      
+                      onChange={formikProps.handleChange}
                     />
                     <ErrorMessage name="email" />
                   </div>

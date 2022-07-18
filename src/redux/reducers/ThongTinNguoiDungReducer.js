@@ -18,7 +18,7 @@ const stateDefault = {
   info: {},
 };
 
-export const QuanLyNguoiDungReducer = (state = stateDefault, action) => {
+export const ThongTinNguoiDungReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case DANG_NHAP_ACTION: {
       state.userLogin = action.payload;

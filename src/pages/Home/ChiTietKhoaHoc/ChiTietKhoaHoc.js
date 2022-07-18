@@ -12,11 +12,9 @@ export default function ChiTietKhoaHoc() {
   const dispatch = useDispatch();
   const { makhoahoc } = useParams();
 
-  const chiTietKhoaHoc = useSelector(
-    (rootReducer) => rootReducer.ChiTietKhoaHocReducer
+  const { chiTietKhoaHoc } = useSelector(
+    (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
-
-  // console.log("chiTietKhoaHoc", chiTietKhoaHoc);
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";
@@ -80,23 +78,23 @@ export default function ChiTietKhoaHoc() {
             <h2>Sau khi hoàn thành khóa học bạn sẽ</h2>
             <ul className="list-unstyled">
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>Master's degree in designing</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>Outstanding mobile design</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>Outstanding mobile design</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>Outstanding mobile design</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>Outstanding mobile design</span>
               </li>
             </ul>
@@ -105,30 +103,30 @@ export default function ChiTietKhoaHoc() {
             <h2>Yêu cầu khóa học</h2>
             <ul className="list-unstyled">
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>User experience (UX)</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>User interface (UI)</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>Visual design.</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>Coding languages including HTML and CSS.</span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>
                   Frontend web programing languages and skills such as
                   JavaScript, Ajax and web animation techniques.
                 </span>
               </li>
               <li>
-                <i class="las la-check"></i>
+                <i className="las la-check"></i>
                 <span>
                   Backend web programing languages such as C# or Java, PHP and
                   Ruby.

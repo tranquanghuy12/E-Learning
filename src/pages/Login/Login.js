@@ -12,7 +12,7 @@ import { Button, Input } from "antd";
 import { ErrorMessage, useFormik, Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
+import { dangNhapAction } from "../../redux/actions/ThongTinNguoiDungAction";
 import { LoginSchema } from "../../services/NguoiDungSchema";
 
 const UserLogin = () => {

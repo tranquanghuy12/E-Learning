@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "../main.scss";
 import {
-  chiTietNguoiDungAdminAction,
-  ghiDanhKhoaHocAdminAction,
+  adminChiTietNguoiDungAction,
+  adminGhiDanhKhoaHocAction,
   layDanhSachKhoaHocChuaGhiDanh,
 } from "../../../../redux/actions/AdminQuanLyAction";
 
@@ -24,7 +24,7 @@ export default function GhiDanhNguoiDung(props) {
 
   useEffect(() => {
     dispatch(layDanhSachKhoaHocChuaGhiDanh(taiKhoan));
-    dispatch(chiTietNguoiDungAdminAction());
+    dispatch(adminChiTietNguoiDungAction());
   }, [dispatch]);
 
   const layDsKhoaHocChuaGhiDanh = () => {
@@ -47,7 +47,7 @@ export default function GhiDanhNguoiDung(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const action = ghiDanhKhoaHocAdminAction(data);
+    const action = adminGhiDanhKhoaHocAction(data);
     dispatch(action);
   };
 

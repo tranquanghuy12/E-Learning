@@ -1,4 +1,4 @@
-import { Input, Table } from "antd";
+import { Input, Table, Tooltip } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,14 +9,22 @@ import {
   xoaKhoaHocAdminAction,
 } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
 import { layDanhSachKhoaHocAction } from "../../../redux/actions/QuanLyKhoaHocAction";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  UnorderedListOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
+
 export default function DanhSachKhoaHoc(props) {
   const dispatch = useDispatch();
   //danh mục khóa học
   const { mangKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.QuanLyKhoaHocReducer
   );
+
+  // console.log("mangKhoaHoc", mangKhoaHoc);
 
   const xoaKhoaHocAdmin = (maKhoaHoc) => {
     swal({
@@ -101,22 +109,30 @@ export default function DanhSachKhoaHoc(props) {
             <NavLink
               to={`/admin/quanlykhoahoc/capnhatthongtinkhoahoc/${record.maKhoaHoc}`}
             >
-              <button className="btn__edit_user mr-1">
-                <EditOutlined />
-              </button>
+              <Tooltip title="Edit">
+                <button className="btn__edit_user mr-2">
+                  <EditOutlined />
+                </button>
+              </Tooltip>
             </NavLink>
-            <button
-              className="btn__delete_user text-white mr-1"
-              onClick={() => xoaKhoaHocAdmin(record.maKhoaHoc)}
-            >
-              <DeleteOutlined />
-            </button>
+
+            <Tooltip title="Delete">
+              <button
+                className="btn__delete_user text-white mr-2"
+                onClick={() => xoaKhoaHocAdmin(record.maKhoaHoc)}
+              >
+                <DeleteOutlined />
+              </button>
+            </Tooltip>
+
             <NavLink
               to={`/admin/quanlykhoahoc/ghidanhkhoahoc/${record.maKhoaHoc}`}
             >
-              <button className="btn__ghidanh_user">
-                <i className="fas fa-registered"></i>
-              </button>
+              <Tooltip title="Students of course">
+                <button className="btn__ghidanh_user">
+                  <UserOutlined />
+                </button>
+              </Tooltip>
             </NavLink>
           </>
         );

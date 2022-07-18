@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  ghiDanhKhoaHocAdminAction,
-  huyGhiDanhKhoaHocAdmin,
+  adminGhiDanhKhoaHocAction,
+  adminHuyGhiDanhKhoaHocAction,
   layDanhSachKhoaHocChoXetDuyet,
 } from "../../../../redux/actions/AdminQuanLyAction";
 import swal from "sweetalert";
@@ -51,7 +51,7 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
             }).then((result) => {
               if (result === true) {
                 swal("Đã xoá!", "Khoá học đã được xoá.");
-                dispatch(huyGhiDanhKhoaHocAdmin(data));
+                dispatch(adminHuyGhiDanhKhoaHocAction(data));
               }
             });
           }
@@ -72,7 +72,7 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
             }).then((result) => {
               if (result === true) {
                 swal("Đã ghi danh!", "Ghi danh khoá học đã được xác nhận.");
-                dispatch(ghiDanhKhoaHocAdminAction(data));
+                dispatch(adminGhiDanhKhoaHocAction(data));
               }
             });
           }
@@ -99,6 +99,11 @@ export default function LayDanhSachKhoaHocChoXetDuyet(props) {
     },
   ];
   return (
-    <Table dataSource={dataSource} rowKey="maKhoaHoc" columns={columns} scroll={{ y: 300 }} />
+    <Table
+      dataSource={dataSource}
+      rowKey="maKhoaHoc"
+      columns={columns}
+      scroll={{ y: 300 }}
+    />
   );
 }

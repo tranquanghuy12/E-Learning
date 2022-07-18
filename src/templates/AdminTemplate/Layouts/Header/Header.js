@@ -6,14 +6,12 @@ import { UserOutlined } from "@ant-design/icons";
 import { NavLink, Link } from "react-router-dom";
 import "./main.scss";
 
-
-
 export default function Header() {
   const history = useHistory();
 
   const userLogin =
     useSelector(
-      (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
+      (rootReducer) => rootReducer.ThongTinNguoiDungReducer.userLogin
     ) || {};
 
   const logout = () => {
@@ -22,12 +20,8 @@ export default function Header() {
     window.location.reload();
   };
 
-  
-
   return (
     <Fragment>
-      
-
       <nav className="navbar navbar-expand-lg navbar-dark bg__primary_darkblue rounded-0">
         <NavLink className="navbar-brand nav__color_label" exact to="/">
           Admin Page

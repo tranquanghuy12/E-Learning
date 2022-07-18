@@ -8,7 +8,7 @@ import { timKiemTenKhoaHocAction } from "../../../../redux/actions/QuanLyKhoaHoc
 import {
   layMaLoaiNguoiDung,
   layThongTinNguoiDungAction,
-} from "../../../../redux/actions/QuanLyNguoiDungAction";
+} from "../../../../redux/actions/ThongTinNguoiDungAction";
 
 import "./main.scss";
 
@@ -17,7 +17,7 @@ export default function Header(props) {
   const history = useHistory();
   const userLogin =
     useSelector(
-      (rootReducer) => rootReducer.QuanLyNguoiDungReducer.userLogin
+      (rootReducer) => rootReducer.ThongTinNguoiDungReducer.userLogin
     ) || {};
 
   const { mangDanhMucKhoaHoc } = useSelector(
@@ -29,7 +29,7 @@ export default function Header(props) {
   );
 
   const { userProfile } = useSelector(
-    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+    (rootReducer) => rootReducer.ThongTinNguoiDungReducer
   );
 
   useEffect(() => {

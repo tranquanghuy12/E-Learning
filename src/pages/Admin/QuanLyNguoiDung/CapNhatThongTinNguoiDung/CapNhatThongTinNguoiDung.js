@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
 import {
-  capNhatThongTinNguoiDungAdmin,
-  chiTietNguoiDungAdminAction,
+  adminCapNhatThongTinNguoiDungAction,
+  adminChiTietNguoiDungAction,
 } from "../../../../redux/actions/AdminQuanLyAction";
 import { CapNhatNguoiDungSchema } from "../../../../services/NguoiDungSchema";
 
@@ -16,7 +16,7 @@ export default function CapNhatThongTinNguoiDung(props) {
   const [passwordShow, setPasswordShow] = useState(false);
 
   useEffect(() => {
-    dispatch(chiTietNguoiDungAdminAction());
+    dispatch(adminChiTietNguoiDungAction());
   }, [dispatch]);
 
   const { dsChiTietNguoiDung } = useSelector(
@@ -38,7 +38,7 @@ export default function CapNhatThongTinNguoiDung(props) {
       buttons: ["Cancel", "Submit"],
     }).then((result) => {
       if (result === true) {
-        dispatch(capNhatThongTinNguoiDungAdmin(values));
+        dispatch(adminCapNhatThongTinNguoiDungAction(values));
       }
     });
   };
@@ -46,7 +46,7 @@ export default function CapNhatThongTinNguoiDung(props) {
   const togglePassword = () => {
     setPasswordShow(!passwordShow);
   };
-  
+
   return (
     <Formik
       enableReinitialize="true"

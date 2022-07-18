@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
 import {
-  huyGhiDanhKhoaHocAdmin,
+  adminHuyGhiDanhKhoaHocAction,
   layDanhSachKhoaHocDaXetDuyet,
 } from "../../../../redux/actions/AdminQuanLyAction";
 
@@ -50,7 +50,7 @@ export default function KhoaHocDaGhiDanh(props) {
             }).then((result) => {
               if (result === true) {
                 swal("Đã xoá!", "Khoá học đã được xoá.");
-                dispatch(huyGhiDanhKhoaHocAdmin(data));
+                dispatch(adminHuyGhiDanhKhoaHocAction(data));
               }
             });
           }
@@ -70,6 +70,11 @@ export default function KhoaHocDaGhiDanh(props) {
   ];
 
   return (
-    <Table dataSource={dataSource} rowKey="maKhoaHoc" columns={columns} scroll={{ y: 300 }} />
+    <Table
+      dataSource={dataSource}
+      rowKey="maKhoaHoc"
+      columns={columns}
+      scroll={{ y: 300 }}
+    />
   );
 }

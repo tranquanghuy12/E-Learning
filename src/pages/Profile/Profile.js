@@ -8,13 +8,13 @@ import "./Profile.scss";
 import {
   layMaLoaiNguoiDung,
   layThongTinNguoiDungAction,
-} from "../../redux/actions/QuanLyNguoiDungAction";
+} from "../../redux/actions/ThongTinNguoiDungAction";
 import { ACCESSTOKEN } from "../../util/setting/config";
 import DanhSachKhoaHocDaDangKy from "./DanhSachKhoaHocDaDangKy";
 export default function Profile() {
   const dispatch = new useDispatch();
   const { userProfile } = useSelector(
-    (rootReducer) => rootReducer.QuanLyNguoiDungReducer
+    (rootReducer) => rootReducer.ThongTinNguoiDungReducer
   );
 
   useEffect(() => {

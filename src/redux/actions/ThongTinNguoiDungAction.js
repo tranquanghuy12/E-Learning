@@ -31,7 +31,7 @@ export const dangNhapAction = (userLogin) => {
       localStorage.setItem(USER_LOGIN, JSON.stringify(usLogin));
       dispatch(createAction(DANG_NHAP_ACTION, result.data));
       if (result.data.maLoaiNguoiDung === "HV") {
-        history.push('/');
+        history.push("/");
       } else {
         history.push("/admin");
       }

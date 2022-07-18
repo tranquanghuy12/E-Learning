@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { layDsNguoiDungChuaGhiDanhAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
-import { ghiDanhKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyAction";
+import { adminGhiDanhKhoaHocAction } from "../../../redux/actions/AdminQuanLyAction";
 import { layDanhSachKhoaHocAction } from "../../../redux/actions/QuanLyKhoaHocAction";
 import HocVienDaThamGiaKhoaHoc from "./HocVienDaThamGiaKhoaHoc";
 import LayDanhSachHocVienChoXetDuyet from "./LayDanhSachHocVienChoXacThuc";
@@ -54,7 +54,7 @@ export default function GhiDanhKhoaHoc(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const action = ghiDanhKhoaHocAdminAction(data);
+    const action = adminGhiDanhKhoaHocAction(data);
     dispatch(action);
   };
 
@@ -85,7 +85,7 @@ export default function GhiDanhKhoaHoc(props) {
 
       <h1 className="text-center my-5">{course.tenKhoaHoc}</h1>
 
-      <label>Chọn người dùng</label>
+      <h4>Chọn người dùng</h4>
       <form onSubmit={handleSubmit}>
         <div className="form-group row justify-content-center">
           <div className="col-sm-12 col-md-8 col-lg-8">
@@ -114,14 +114,14 @@ export default function GhiDanhKhoaHoc(props) {
       <hr />
       <div className="row align-items-center">
         <div className="col-12">
-          <label>Học viên chờ xác thực</label>
+          <h4 className="mt-4">Học viên chờ xác thực</h4>
         </div>
       </div>
       <LayDanhSachHocVienChoXetDuyet maKhoaHoc={props.match.params} />
       <hr />
       <div className="row align-items-center">
         <div className="col-12">
-          <label>Học viên đã tham gia khoá học</label>
+          <h4 className="mt-4">Học viên đã tham gia khoá học</h4>
         </div>
       </div>
       <HocVienDaThamGiaKhoaHoc maKhoaHoc={props.match.params} />

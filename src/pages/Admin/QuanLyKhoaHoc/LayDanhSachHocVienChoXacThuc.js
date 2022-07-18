@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { layDsHocVienChoXacThucAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
 import {
-  ghiDanhKhoaHocAdminAction,
-  huyGhiDanhKhoaHocAdmin,
+  adminGhiDanhKhoaHocAction,
+  adminHuyGhiDanhKhoaHocAction,
 } from "../../../redux/actions/AdminQuanLyAction";
 
 export default function LayDanhSachHocVienChoXacThuc(props) {
@@ -16,7 +16,7 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
   const maKhoaHoc = props.maKhoaHoc;
   useEffect(() => {
     dispatch(layDsHocVienChoXacThucAction(maKhoaHoc));
-  }, [dispatch,maKhoaHoc]);
+  }, [dispatch, maKhoaHoc]);
   const dataSource = dsHocVienChoXacThuc;
   const columns = [
     {
@@ -45,8 +45,8 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
               icon: "warning",
               buttons: ["Cancel", "Confirm"],
             }).then((result) => {
-              if (result === true) {                
-                dispatch(huyGhiDanhKhoaHocAdmin(data));
+              if (result === true) {
+                dispatch(adminHuyGhiDanhKhoaHocAction(data));
               }
             });
           }
@@ -64,8 +64,8 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
               icon: "warning",
               buttons: ["Cancel", "Confirm"],
             }).then((result) => {
-              if (result === true) {               
-                dispatch(ghiDanhKhoaHocAdminAction(data));
+              if (result === true) {
+                dispatch(adminGhiDanhKhoaHocAction(data));
               }
             });
           }

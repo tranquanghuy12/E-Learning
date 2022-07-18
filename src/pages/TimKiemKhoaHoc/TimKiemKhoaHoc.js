@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { ghiDanhKhoaHocAdminAction } from "../../redux/actions/AdminQuanLyAction";
+import { adminGhiDanhKhoaHocAction } from "../../redux/actions/AdminQuanLyAction";
 import { timKiemTenKhoaHocAction } from "../../redux/actions/QuanLyKhoaHocAction";
 import "./TimKiemKhoaHoc.scss";
 

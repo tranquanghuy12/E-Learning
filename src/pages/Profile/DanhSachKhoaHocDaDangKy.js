@@ -4,7 +4,7 @@ import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
 import swal from "sweetalert";
 import { useDispatch } from "react-redux";
-import { huyGhiDanhKhoaHoc } from "../../redux/actions/QuanLyNguoiDungAction";
+import { huyGhiDanhKhoaHoc } from "../../redux/actions/ThongTinNguoiDungAction";
 // import "./Profile.scss";
 
 const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
@@ -12,7 +12,6 @@ const DanhSachKhoaHocDaDangKy = ({ userProfile }) => {
   const [state, setState] = useState({ searchText: "", searchedColumn: "" });
   const searchInput = useRef(null);
   const data = userProfile.chiTietKhoaHocGhiDanh || "";
-  console.log("data", data);
   // console.log('data',data)
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({

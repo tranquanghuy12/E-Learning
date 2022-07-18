@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { layDsHocVienKhoaHocAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
-import { huyGhiDanhKhoaHocAdmin } from "../../../redux/actions/AdminQuanLyAction";
+import { adminHuyGhiDanhKhoaHocAction } from "../../../redux/actions/AdminQuanLyAction";
 
 export default function HocVienDaThamGiaKhoaHoc(props) {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ export default function HocVienDaThamGiaKhoaHoc(props) {
               buttons: ["Trở về", "Chắc chắn!"],
             }).then((result) => {
               if (result === true) {
-                dispatch(huyGhiDanhKhoaHocAdmin(data));
+                dispatch(adminHuyGhiDanhKhoaHocAction(data));
               }
             });
           }

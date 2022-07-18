@@ -1,6 +1,10 @@
-import { Modal, Table, Input } from "antd";
+import { Modal, Table, Input, Tooltip } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
   layDanhSachNguoiDung,
@@ -12,14 +16,40 @@ import swal from "sweetalert";
 
 export default function DanhSachNguoiDung() {
   const { Search } = Input;
+  const [data, setData] = useState();
   const dispatch = useDispatch();
   const { danhSachNguoiDung } = useSelector(
-    (rootReducer) => rootReducer.MaLoaiNguoiDungReducer
+    (rootReducer) => rootReducer.DanhSachNguoiDungReducer
   );
 
-  // console.log("danhSachNguoiDung", danhSachNguoiDung);
+  useEffect(() => {
+    dispatch(layDanhSachNguoiDung());
+  }, []);
+
+  useEffect(() => {
+    setData(danhSachNguoiDung);
+  }, [danhSachNguoiDung]);
+
   const onSearch = (value) => {
-    dispatch(layDanhSachNguoiDungSearch(value));
+    // Search only by first name
+    // dispatch(layDanhSachNguoiDungSearch(value));
+
+    // Search by keyword in first and last name
+    setData(
+      danhSachNguoiDung.filter((val) =>
+        // Remove accents/diacritics using normalize() and replace()
+        val.hoTen
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(
+            value
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+          )
+      )
+    );
   };
 
   const xoaNguoiDungAdmin = (taiKhoan) => {
@@ -33,9 +63,6 @@ export default function DanhSachNguoiDung() {
       }
     });
   };
-  useEffect(() => {
-    dispatch(layDanhSachNguoiDung());
-  }, []);
 
   const columns = [
     {
@@ -88,30 +115,37 @@ export default function DanhSachNguoiDung() {
             <Link
               to={`/admin/quanlynguoidung/capnhatthongtinnguoidung/${nguoiDung.taiKhoan}`}
             >
-              <button className="btn__edit_user mr-2">
-                <EditOutlined />
-              </button>
+              <Tooltip title="Edit">
+                <button className="btn__edit_user mr-2">
+                  <EditOutlined />
+                </button>
+              </Tooltip>
             </Link>
-            <button
-              className="btn__delete_user text-white mr-2"
-              onClick={() => xoaNguoiDungAdmin(nguoiDung.taiKhoan)}
-            >
-              <DeleteOutlined />
-            </button>
+
+            <Tooltip title="Delete">
+              <button
+                className="btn__delete_user text-white mr-2"
+                onClick={() => xoaNguoiDungAdmin(nguoiDung.taiKhoan)}
+              >
+                <DeleteOutlined />
+              </button>
+            </Tooltip>
+
             <Link
               to={`/admin/quanlynguoidung/ghidanhnguoidung/${nguoiDung.taiKhoan}`}
             >
-              <button className="btn__ghidanh_user">
-                <i className="fas fa-registered"></i>
-              </button>
+              <Tooltip title="Registered courses">
+                <button className="btn__ghidanh_user">
+                  {/* <i className="fas fa-registered"></i> */}
+                  <UnorderedListOutlined />
+                </button>
+              </Tooltip>
             </Link>
           </Fragment>
         );
       },
     },
   ];
-
-  const data = danhSachNguoiDung;
 
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);

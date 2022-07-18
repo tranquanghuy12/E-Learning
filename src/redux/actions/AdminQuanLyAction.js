@@ -115,7 +115,7 @@ export const adminXoaNguoiDungAction = (taikhoan) => {
   };
 };
 
-export const capNhatThongTinNguoiDungAdmin = (data) => {
+export const adminCapNhatThongTinNguoiDungAction = (data) => {
   return async (dispatch) => {
     try {
       console.log("data", data);
@@ -136,7 +136,7 @@ export const capNhatThongTinNguoiDungAdmin = (data) => {
   };
 };
 
-export const chiTietNguoiDungAdminAction = () => {
+export const adminChiTietNguoiDungAction = () => {
   return async (dispatch) => {
     try {
       let result = await http.get(API_CHI_TIET_NGUOI_DUNG_ADMIN);
@@ -186,7 +186,7 @@ export const layDanhSachKhoaHocDaXetDuyet = (taiKhoan) => {
     }
   };
 };
-export const ghiDanhKhoaHocAdminAction = (values) => {
+export const adminGhiDanhKhoaHocAction = (values) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_GHI_DANH_KHOA_HOC_ADMIN, values);
@@ -205,7 +205,7 @@ export const ghiDanhKhoaHocAdminAction = (values) => {
   };
 };
 
-export const huyGhiDanhKhoaHocAdmin = (data) => {
+export const adminHuyGhiDanhKhoaHocAction = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
