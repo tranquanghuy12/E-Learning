@@ -13,13 +13,17 @@ import KhoaHocSchema from "../../../services/KhoaHocSchema";
 export default function CapNhatThongTinKhoaHoc(props) {
   const dispatch = useDispatch();
   const { maKhoaHoc } = props.match.params;
+
   const { layThongTinKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyKhoaHocReducer
   );
+
   const item = layThongTinKhoaHoc;
+
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
+
   const renderDanhMucKhoaHoc = () => {
     return mangDanhMucKhoaHoc?.map((item, index) => {
       return (
@@ -29,10 +33,12 @@ export default function CapNhatThongTinKhoaHoc(props) {
       );
     });
   };
+
   useEffect(() => {
     dispatch(layThongTinKhoaHocAction(maKhoaHoc));
     dispatch(layDanhMucKhoaHocAction());
   }, [dispatch, maKhoaHoc]);
+
   const suaThongTinKhoaHoc = (values) => {
     swal({
       title: "Bạn có chắc chắn muốn sửa không?",

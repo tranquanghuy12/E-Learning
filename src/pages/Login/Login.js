@@ -12,7 +12,7 @@ import { Button, Input } from "antd";
 import { ErrorMessage, useFormik, Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungAction";
+import { dangNhapAction } from "../../redux/actions/ThongTinNguoiDungAction";
 import { LoginSchema } from "../../services/NguoiDungSchema";
 
 const UserLogin = () => {
@@ -59,10 +59,12 @@ const UserLogin = () => {
                       prefix={<UserOutlined />}
                     />
                   </div>
-                  {errors.taiKhoan && touched.taiKhoan ? (
+                  {/* {errors.taiKhoan && touched.taiKhoan ? (
                     <div className="text-danger">{errors.taiKhoan}</div>
-                  ) : null}
-                  {/* <ErrorMessage name="taiKhoan" /> */}
+                  ) : null} */}
+                  <ErrorMessage name="taiKhoan">
+                    {(msg) => <div className="text-danger">{msg}</div>}
+                  </ErrorMessage>
 
                   <div className="d-flex mt-3">
                     <Input
@@ -76,10 +78,12 @@ const UserLogin = () => {
                       prefix={<LockOutlined />}
                     />
                   </div>
-                  {errors.matKhau && touched.matKhau ? (
+                  {/* {errors.matKhau && touched.matKhau ? (
                     <div className="text-danger">{errors.matKhau}</div>
-                  ) : null}
-                  {/* <ErrorMessage name="matKhau" /> */}
+                  ) : null} */}
+                  <ErrorMessage name="matKhau">
+                    {(msg) => <div className="text-danger">{msg}</div>}
+                  </ErrorMessage>
                 </div>
 
                 <button className="button__register_login_style" type="submit">
@@ -134,60 +138,3 @@ const UserLogin = () => {
 };
 
 export default UserLogin;
-
-// import { FastField, Form, Formik } from "formik";
-// import PropTypes from "prop-types";
-// import React from "react";
-// import { Button, FormGroup, Label } from "reactstrap";
-// import InputField from "./InputField";
-// import * as Yup from "yup";
-
-// function UserLogin(props) {
-//   const initialValues = {
-//     title: "",
-//     categoryId: null,
-//   };
-
-//   const validationSchema = Yup.object().shape({
-//     title: Yup.string().required("This field is required"),
-//     categoryId: Yup.number().required().nullable(),
-//   });
-
-//   // npm i --save react-select
-//   return (
-//     <Formik
-//       initialValues={initialValues}
-//       validationSchema={validationSchema}
-//       onSubmit={(values) => console.log("Submit: ", values)}
-//     >
-//       {(formikProps) => {
-//         // do something here ...
-//         const { values, errors, touched } = formikProps;
-//         console.log("formikProps", { values, errors, touched });
-
-//         return (
-//           <Form className="container">
-//             <FastField
-//               name="title"
-//               component={InputField}
-//               label="Title"
-//               placeholder="Nhập tài khoản"
-//             />
-
-//             <FastField
-//               name="categoryId"
-//               component={InputField}
-//               label="CategoryId"
-//               placeholder="cate"
-//             />
-
-//             <FormGroup>
-//               <Button color="primary">Add to album</Button>
-//             </FormGroup>
-//           </Form>
-//         );
-//       }}
-//     </Formik>
-//   );
-// }
-// export default UserLogin;

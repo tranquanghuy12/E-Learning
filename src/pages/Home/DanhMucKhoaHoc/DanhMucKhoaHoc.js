@@ -33,7 +33,7 @@ export default function DanhMucKhoaHoc() {
     };
   });
 
-  console.log("mangDangMucKhoaHoc", mangDanhMucKhoaHoc);
+  // console.log("mangDangMucKhoaHoc", mangDanhMucKhoaHoc);
 
   const menu = <Menu items={mangDanhMucKhoaHocDropdown} />;
 

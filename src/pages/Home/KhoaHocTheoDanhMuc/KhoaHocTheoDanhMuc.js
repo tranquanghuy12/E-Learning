@@ -42,7 +42,7 @@ export default function KhoaHocTheoDanhMuc() {
     });
   };
   return (
-    <div className="container">
+    <div className="container" style={{ paddingTop: 126 }}>
       <div className="banner-danhmuc text-center">
         <h3>{danhMuc?.tenDanhMuc}</h3>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { ghiDanhKhoaHocAdminAction } from "../../redux/actions/AdminQuanLyAction";
+import { adminGhiDanhKhoaHocAction } from "../../redux/actions/AdminQuanLyAction";
 import { timKiemTenKhoaHocAction } from "../../redux/actions/QuanLyKhoaHocAction";
 import "./TimKiemKhoaHoc.scss";
 
@@ -49,7 +49,7 @@ const TimKiemKhoaHoc = (props) => {
   };
 
   return (
-    <div className="mt-5">
+    <div className="mt-5" style={{ paddingTop: 126 }}>
       {timKiemKhoaHoc.length !== 0 ? (
         <h1 className="text-center">
           Tìm thấy {timKiemKhoaHoc.length} kết quả cho từ khóa "{value}"

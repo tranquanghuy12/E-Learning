@@ -4,12 +4,8 @@ import { useFormik } from "formik";
 import moment from "moment";
 import { layDanhMucKhoaHocAction } from "../../../redux/actions/DanhMucKhoaHocAction";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  themKhoaHocUploadHinhAction,
-  uploadHinhAnhKhoaHoc,
-} from "../../../redux/actions/AdminUploadHinhAnh";
-
 import { themKhoaHocAdminAction } from "../../../redux/actions/AdminQuanLyKhoaHocAction";
+
 const ThemKhoaHoc = () => {
   const taiKhoanNguoiTao = JSON.parse(localStorage.getItem("userLogin"));
   const dispatch = useDispatch();

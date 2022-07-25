@@ -21,7 +21,7 @@ export const HomeTemplate = (props) => {
             }}
           >
             <Header {...propsRoute} />
-            <div style={{ flex: 1, paddingTop: 126 }}>
+            <div style={{ flex: 1 }}>
               <Component {...propsRoute} />
             </div>
             <Footer {...propsRoute} />

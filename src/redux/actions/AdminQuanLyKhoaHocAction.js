@@ -20,7 +20,7 @@ import {
   LAY_DANH_SACH_KHOA_HOC_ACTION,
 } from "../types/QuanLyKhoaHocType";
 import { layDanhSachKhoaHocAction } from "./QuanLyKhoaHocAction";
-import { layThongTinNguoiDungAction } from "./QuanLyNguoiDungAction";
+import { layThongTinNguoiDungAction } from "./ThongTinNguoiDungAction";
 
 export const themKhoaHocAdminAction = (values) => {
   return async (dispatch) => {

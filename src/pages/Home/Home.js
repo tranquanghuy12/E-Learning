@@ -119,10 +119,7 @@ export default function Home(props) {
   };
 
   return (
-    <div
-      className="container-fluid"
-      style={{ position: "relative", top: -126, zIndex: -1}}
-    >
+    <div className="container-fluid">
       <div className="pb-5">{banner()}</div>
 
       <div id="popular-courses" className="popular__courses">

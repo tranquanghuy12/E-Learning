@@ -4,20 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { layDsHocVienChoXacThucAction } from "../../../redux/actions/AdminGhiDanhNguoiDungAction";
 import {
-  ghiDanhKhoaHocAdminAction,
-  huyGhiDanhKhoaHocAdmin,
+  adminGhiDanhKhoaHocAction,
+  adminHuyGhiDanhKhoaHocAction,
 } from "../../../redux/actions/AdminQuanLyAction";
 
-export default function LayDanhSachHocVienChoXacThuc(props) {
+export default function LayDanhSachHocVienChoXetDuyet(props) {
   const dispatch = useDispatch();
-  const { dsHocVienChoXacThuc } = useSelector(
+  const maKhoaHoc = props.maKhoaHoc;
+
+  const { dsHocVienChoXetDuyet } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
   );
-  const maKhoaHoc = props.maKhoaHoc;
+
   useEffect(() => {
     dispatch(layDsHocVienChoXacThucAction(maKhoaHoc));
-  }, [dispatch,maKhoaHoc]);
-  const dataSource = dsHocVienChoXacThuc;
+  }, [dispatch, maKhoaHoc]);
+
+  const dataSource = dsHocVienChoXetDuyet;
   const columns = [
     {
       title: "Tài khoản",
@@ -45,8 +48,8 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
               icon: "warning",
               buttons: ["Cancel", "Confirm"],
             }).then((result) => {
-              if (result === true) {                
-                dispatch(huyGhiDanhKhoaHocAdmin(data));
+              if (result === true) {
+                dispatch(adminHuyGhiDanhKhoaHocAction(data));
               }
             });
           }
@@ -64,8 +67,8 @@ export default function LayDanhSachHocVienChoXacThuc(props) {
               icon: "warning",
               buttons: ["Cancel", "Confirm"],
             }).then((result) => {
-              if (result === true) {               
-                dispatch(ghiDanhKhoaHocAdminAction(data));
+              if (result === true) {
+                dispatch(adminGhiDanhKhoaHocAction(data));
               }
             });
           }

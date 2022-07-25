@@ -115,10 +115,10 @@ export const adminXoaNguoiDungAction = (taikhoan) => {
   };
 };
 
-export const capNhatThongTinNguoiDungAdmin = (data) => {
+export const adminCapNhatThongTinNguoiDungAction = (data) => {
   return async (dispatch) => {
     try {
-      console.log('data',data)
+      console.log("data", data);
       let result = await http.put(API_CAPNHAT_THONGTIN_NGUOIDUNG_ADMIN, data);
 
       if (result.status === 200) {
@@ -131,12 +131,12 @@ export const capNhatThongTinNguoiDungAdmin = (data) => {
         history.push("/admin/quanlynguoidung");
       }
     } catch (error) {
-      console.log('error',error.response?.data)
+      console.log("error", error.response?.data);
     }
   };
 };
 
-export const chiTietNguoiDungAdminAction = () => {
+export const adminChiTietNguoiDungAction = () => {
   return async (dispatch) => {
     try {
       let result = await http.get(API_CHI_TIET_NGUOI_DUNG_ADMIN);
@@ -186,7 +186,7 @@ export const layDanhSachKhoaHocDaXetDuyet = (taiKhoan) => {
     }
   };
 };
-export const ghiDanhKhoaHocAdminAction = (values) => {
+export const adminGhiDanhKhoaHocAction = (values) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_GHI_DANH_KHOA_HOC_ADMIN, values);
@@ -194,25 +194,25 @@ export const ghiDanhKhoaHocAdminAction = (values) => {
         swal({
           title: "Ghi Danh Thành Công",
           icon: "success",
-          button:false
+          button: false,
         });
         dispatch(createAction(ADMIN_GHI_DANH_KHOA_HOC, result));
         window.location.reload();
-      }        
+      }
     } catch (error) {
       console.log(error.response?.data);
     }
   };
 };
 
-export const huyGhiDanhKhoaHocAdmin = (data) => {
+export const adminHuyGhiDanhKhoaHocAction = (data) => {
   return async (dispatch) => {
     try {
       let result = await http.post(API_HUYGHIDANH_KHOAHOC, data);
       swal({
-        title:"Xoá thành công",
-        icon:"success",
-        button:false
+        title: "Xoá thành công",
+        icon: "success",
+        button: false,
       });
       window.location.reload();
     } catch (error) {
@@ -220,5 +220,3 @@ export const huyGhiDanhKhoaHocAdmin = (data) => {
     }
   };
 };
-
-

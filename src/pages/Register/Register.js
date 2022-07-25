@@ -16,7 +16,7 @@ import { Select, Button, Input } from "antd";
 import { ErrorMessage, useFormik, Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
+import { dangKyAction } from "../../redux/actions/ThongTinNguoiDungAction";
 import { SignupSchema } from "../../services/NguoiDungSchema";
 
 const UserRegister = () => {
@@ -47,7 +47,9 @@ const UserRegister = () => {
       >
         {(formikProps) => {
           const { values, errors, touched } = formikProps;
-          console.log("formikProps", errors);
+          {
+            /* console.log("formikProps", errors); */
+          }
 
           return (
             <Form
@@ -231,7 +233,7 @@ export default UserRegister;
 // import { ErrorMessage, useFormik } from "formik";
 // import { Link } from "react-router-dom";
 // import { useDispatch } from "react-redux";
-// import { dangKyAction } from "../../redux/actions/QuanLyNguoiDungAction";
+// import { dangKyAction } from "../../redux/actions/ThongTinNguoiDungAction";
 // import { SignupSchema } from "../../services/NguoiDungSchema";
 
 // const UserRegister = () => {

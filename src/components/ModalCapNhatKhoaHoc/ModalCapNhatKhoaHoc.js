@@ -6,12 +6,17 @@ import {
   capNhatThongTinKhoaHoc,
   capNhatThongTinKhoaHocAction,
 } from "../../redux/actions/AdminQuanLyKhoaHocAction";
+
 export default function ModalCapNhatKhoaHoc(props) {
   const dispatch = useDispatch();
   const item = props.modaldata;
+
   const { mangDanhMucKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.DanhMucKhoaHocReducer
   );
+
+  console.log("mangDanhMucKhoaHoc", mangDanhMucKhoaHoc);
+
   const renderDanhMucKhoaHoc = () => {
     return mangDanhMucKhoaHoc.map((item, index) => {
       return (
@@ -21,6 +26,7 @@ export default function ModalCapNhatKhoaHoc(props) {
       );
     });
   };
+
   const suaThongTinKhoaHoc = (values) => {
     swal({
       title: "Bạn có chắc chắn muốn sửa không?",

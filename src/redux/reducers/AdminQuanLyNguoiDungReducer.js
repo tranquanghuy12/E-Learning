@@ -14,8 +14,8 @@ let stateDefault = {
   editUser: [],
   dsChiTietNguoiDung: [],
   dsNguoiDungChuaGhiDanh: [],
-  dsHocVienChoXacThuc: [],
-  dsHocVienDaThamGia: [],
+  dsHocVienChoXetDuyet: [],
+  dsHocVienDaThamGiaKhoaHoc: [],
 };
 export const AdminQuanLyNguoiDungReducer = (state = stateDefault, action) => {
   switch (action.type) {
@@ -32,10 +32,10 @@ export const AdminQuanLyNguoiDungReducer = (state = stateDefault, action) => {
       state.dsNguoiDungChuaGhiDanh = action.payload;
       return { ...state };
     case ADMIN_LAY_DS_NGUOI_DUNG_CHO_XAC_THUC:
-      state.dsHocVienChoXacThuc = action.payload;
+      state.dsHocVienChoXetDuyet = action.payload;
       return { ...state };
     case ADMIN_LAY_DS_HOC_VIEN_DA_THAM_GIA:
-      state.dsHocVienDaThamGia = action.payload;
+      state.dsHocVienDaThamGiaKhoaHoc = action.payload;
       return { ...state };
     default:
       return state;
