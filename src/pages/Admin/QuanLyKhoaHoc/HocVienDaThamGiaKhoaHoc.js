@@ -7,14 +7,16 @@ import { adminHuyGhiDanhKhoaHocAction } from "../../../redux/actions/AdminQuanLy
 
 export default function HocVienDaThamGiaKhoaHoc(props) {
   const dispatch = useDispatch();
-  const { dsHocVienDaThamGia } = useSelector(
+  const maKhoaHoc = props.maKhoaHoc;
+  const { dsHocVienDaThamGiaKhoaHoc } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
   );
-  const maKhoaHoc = props.maKhoaHoc;
+
   useEffect(() => {
     dispatch(layDsHocVienKhoaHocAction(maKhoaHoc));
   }, []);
-  const dataSource = dsHocVienDaThamGia;
+
+  const dataSource = dsHocVienDaThamGiaKhoaHoc;
   const columns = [
     {
       title: "Tài khoản",

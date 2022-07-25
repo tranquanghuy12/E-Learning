@@ -8,6 +8,7 @@ import {
   adminChiTietNguoiDungAction,
   adminGhiDanhKhoaHocAction,
   layDanhSachKhoaHocChuaGhiDanh,
+  layDanhSachNguoiDung,
 } from "../../../../redux/actions/AdminQuanLyAction";
 
 import KhoaHocDaGhiDanh from "../KhoaHocDaGhiDanh/KhoaHocDaGhiDanh";
@@ -17,10 +18,22 @@ export default function GhiDanhNguoiDung(props) {
   const history = useHistory();
   const dispatch = useDispatch();
   const { taiKhoan } = useParams();
+  const [data, setData] = useState({ maKhoaHoc: "", taiKhoan: "" });
 
   const { dsKhoaHocChuaGhiDanh } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyKhoaHocReducer
   );
+
+  const { danhSachNguoiDung } = useSelector(
+    (rootReducer) => rootReducer.DanhSachNguoiDungReducer
+  );
+
+  //tim nguoi dung co taiKhoan trung voi taiKhoan tren path
+  const user = danhSachNguoiDung.find((val) => val.taiKhoan === taiKhoan);
+
+  useEffect(() => {
+    dispatch(layDanhSachNguoiDung());
+  }, []);
 
   useEffect(() => {
     dispatch(layDanhSachKhoaHocChuaGhiDanh(taiKhoan));
@@ -37,14 +50,13 @@ export default function GhiDanhNguoiDung(props) {
     });
   };
 
-  const [data, setData] = useState({ maKhoaHoc: "", taiKhoan: "" });
   const handleChangeInput = (e) => {
-    let { value, maKhoaHoc, taiKhoan } = e.target;
     setData({
-      maKhoaHoc: value,
-      taiKhoan: props.match.params.taiKhoan,
+      maKhoaHoc: e.target.value,
+      taiKhoan: taiKhoan,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const action = adminGhiDanhKhoaHocAction(data);
@@ -76,6 +88,8 @@ export default function GhiDanhNguoiDung(props) {
         </ol>
       </nav>
 
+      {user ? <h1 className="my-5">Tên học viên: {user.hoTen}</h1> : null}
+
       <label>Chọn khoá học</label>
       <form onSubmit={handleSubmit}>
         <div className="form-group row justify-content-center">
@@ -83,9 +97,8 @@ export default function GhiDanhNguoiDung(props) {
             <select
               onChange={handleChangeInput}
               className="input-large form-control"
-              name=""
-              id=""
             >
+              <option hidden>Select a course</option>
               {layDsKhoaHocChuaGhiDanh()}
             </select>
           </div>

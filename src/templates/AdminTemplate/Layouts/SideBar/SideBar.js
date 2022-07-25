@@ -55,7 +55,7 @@ export default function SideBar() {
         style={{
           width: 256,
         }}
-        defaultOpenKeys={["sub1"]}
+        defaultOpenKeys={["dashboard"]}
         selectedKeys={[current]}
         mode="inline"
         items={items}

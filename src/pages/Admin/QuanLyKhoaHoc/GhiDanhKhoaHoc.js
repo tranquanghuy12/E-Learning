@@ -6,12 +6,13 @@ import { layDsNguoiDungChuaGhiDanhAction } from "../../../redux/actions/AdminGhi
 import { adminGhiDanhKhoaHocAction } from "../../../redux/actions/AdminQuanLyAction";
 import { layDanhSachKhoaHocAction } from "../../../redux/actions/QuanLyKhoaHocAction";
 import HocVienDaThamGiaKhoaHoc from "./HocVienDaThamGiaKhoaHoc";
-import LayDanhSachHocVienChoXetDuyet from "./LayDanhSachHocVienChoXacThuc";
+import LayDanhSachHocVienChoXetDuyet from "./LayDanhSachHocVienChoXetDuyet";
 
 export default function GhiDanhKhoaHoc(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { maKhoaHoc } = useParams();
+  const [data, setData] = useState({ maKhoaHoc: "", taiKhoan: "" });
 
   const { dsNguoiDungChuaGhiDanh } = useSelector(
     (rootReducer) => rootReducer.AdminQuanLyNguoiDungReducer
@@ -42,13 +43,10 @@ export default function GhiDanhKhoaHoc(props) {
     });
   };
 
-  const [data, setData] = useState({ maKhoaHoc: "", taiKhoan: "" });
-
   const handleChangeInput = (e) => {
-    let { value, maKhoaHoc, taiKhoan } = e.target;
     setData({
-      maKhoaHoc: props.match.params.maKhoaHoc,
-      taiKhoan: value,
+      maKhoaHoc: maKhoaHoc,
+      taiKhoan: e.target.value,
     });
   };
 
@@ -83,7 +81,10 @@ export default function GhiDanhKhoaHoc(props) {
         </ol>
       </nav>
 
-      <h1 className="text-center my-5">{course.tenKhoaHoc}</h1>
+      <div className="text-center my-5">
+        {course ? <h1>{course.tenKhoaHoc}</h1> : null}
+        <h5>Mã khóa học: {maKhoaHoc}</h5>
+      </div>
 
       <h4>Chọn người dùng</h4>
       <form onSubmit={handleSubmit}>
@@ -93,6 +94,7 @@ export default function GhiDanhKhoaHoc(props) {
               className="input-large form-control"
               onChange={handleChangeInput}
             >
+              <option hidden>Select a user</option>
               {layDsNguoiDungChuaGhiDanhKhoaHoc()}
             </select>
           </div>
